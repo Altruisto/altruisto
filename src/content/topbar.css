@@ -1,0 +1,146 @@
+#AltruistoTopBarButton,
+#AltruistoTopBarButtonGrey,
+#AltruistoTopBarCTA {
+    display: inline-block;
+    text-align: center;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important;
+}
+
+#AltruistoTopBar {
+    width: 100%!important;
+    height: 50px!important;
+    border: 1px solid #e0e0e0;
+    background-color: #fff!important;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999999999999999;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important;
+    text-align: center!important;
+    line-height: 1.4285;
+    font-size: 14px;
+    color: #959595!important
+}
+
+#AltruistoTopBarLogo {
+    max-width: 30px;
+    margin: 8px 8px 10px 10px;
+    float: left
+}
+
+#AltruistoTopBarIcon {
+    float: right;
+    margin: 18px 10px;
+    cursor: pointer;
+    max-width: 12px
+}
+
+#AltruistoTopBarWelcome {
+    font-size: 12px;
+    width: 30%;
+    float: left;
+    margin: 9px 0 0
+}
+
+#AltruistoTopBarCTA {
+    font-weight: 700;
+    margin: 7px 0;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important;
+}
+
+#AltruistoTopBarButton {
+    border: 1px solid #4CAF50;
+    background: #4CAF50;
+    color: #fff;
+    border-radius: 0;
+    padding: 6px 12px;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 1.4285;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important
+}
+
+#AltruistoTopBarButton:hover {
+    text-decoration: underline;
+    background-color: #439a46
+}
+
+#AltruistoTopBarButtonGrey {
+    border: 1px solid #e0e1e2;
+    background: #e0e1e2;
+    color: #fff;
+    border-radius: 0;
+    padding: 6px 12px;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 1.4285;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important
+}
+
+#AltruistoTopBarButtonGrey:hover {
+    text-decoration: underline;
+    background-color: #cacbcd
+}
+
+#AltruistoTopBarInfo {
+    text-decoration: none;
+    font-size: 10px;
+    float: right;
+    color: #337ab7;
+    margin-top: 18px;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important;
+}
+
+#AltruistoTopBarInfo:hover {
+    color: #337ab7
+}
+
+#AltruistoTopBarInfo:hover+#AltruistoTopBarPopover {
+    display: block
+}
+
+#AltruistoTopBarPopover b,
+strong,
+i,
+em {
+    color: #777!important
+}
+
+#AltruistoTopBarMoreInfo,
+#AltruistoTopBarPopover {
+    color: #777;
+    padding: 10px 10px 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    display: none;
+    width: 400px;
+    position: absolute;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important;
+}
+
+#AltruistoTopBarPopover {
+    font-size: 11px;
+    float: right;
+    right: 0;
+    top: 49px
+}
+
+#AltruistoTopBarMoreInfoLink {
+    font-size: 10px;
+    text-decoration: none;
+    color: #337ab7;
+    cursor: pointer;
+    padding-left: 5px;
+    font-family: Helvetica, Arial, Verdana, sans-serif!important;
+}
+
+#AltruistoTopBarMoreInfoLink:hover+#AltruistoTopBarMoreInfo {
+    display: block
+}
+
+#AltruistoTopBarMoreInfo {
+    font-size: 11px;
+    margin-left: 52%
+}
