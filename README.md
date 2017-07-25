@@ -9,3 +9,26 @@ It's a browser extension that allows users to raise money for charities through 
 <a href="https://chrome.google.com/webstore/detail/altruistocom-chrome-exten/jneoemaenmeibociafkflgjkjaopbggc"><img src="https://altruisto.com/img/chrome_128x128.png" alt="Chrome logo" height="48" width="48"></a>
 
 Install altruisto from <a href="https://chrome.google.com/webstore/detail/altruistocom-chrome-exten/jneoemaenmeibociafkflgjkjaopbggc">Chrome Webstore</a>
+
+<h1>Quick start</h1>
+1. Clone the repository
+
+```bash
+$ git clone https://github.com/Altruisto/altruisto.git
+```
+
+2. Navigate to project directory and install node packages
+
+```bash
+$ cd altruisto
+$ npm install -d
+```
+
+3. Start hacking 
+
+Edit the files in ./src directory
+
+4. Run build
+```bash
+$ npm run build
+```
