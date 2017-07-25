@@ -11,6 +11,7 @@ It's a browser extension that allows users to raise money for charities through 
 Install altruisto from <a href="https://chrome.google.com/webstore/detail/altruistocom-chrome-exten/jneoemaenmeibociafkflgjkjaopbggc">Chrome Webstore</a>
 
 <h1>Quick start</h1>
+
 1. Clone the repository
 
 ```bash
