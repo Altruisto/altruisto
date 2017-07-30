@@ -53,9 +53,9 @@ function addListeners(activated){
     });
 
     if(activated){
-        document.getElementById("AltruistoTopBarButtonGrey").addEventListener("click", function(){ 
-            deactivateAffiliate(); 
-        });
+        setInterval(function(){
+            document.getElementById("AltruistoTopBar").style="display: none;";
+        }, 6000);
     }
 }
 
@@ -68,7 +68,7 @@ function getContent(activated){
     let content;
 
     if(activated){
-        content = 'Congratulations - you\'re now raising money for charities with this website. <a href=# id=AltruistoTopBarButtonGrey>Stop raising money</a>';
+        content = 'You\'re now raising money for charities with this website. <p id="AltruistoSmallText">This windows will be automatically closed in 5 seconds</p>';
     }
     else {
         content = 'Start raising money for charities with this website by clicking here: <a href=https://altruisto.com/confirm?url=' + location.href + ' id=AltruistoTopBarButton>Start raising money</a>';    

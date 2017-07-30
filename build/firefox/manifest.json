@@ -3,7 +3,7 @@
 
   "name": "Altruisto.com",
   "description": "Raise money for the World's most effective charities through your everyday online shoppings with no extra costs.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "options_ui": {
     "page": "pages/options.html"
   },
