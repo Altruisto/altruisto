@@ -47,8 +47,6 @@ function updateActivatedAffiliates(data) {
             newData = new Array(data);
         }
 
-        chrome.storage.local.set({'activatedAffiliates': newData}, function (){
-            chrome.storage.local.get('activatedAffiliates');
-        });
+        chrome.storage.local.set({'activatedAffiliates': newData});
     });
 }
