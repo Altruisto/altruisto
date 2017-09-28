@@ -1,125 +1,126 @@
 #AltruistoTopBarButton,
 #AltruistoTopBarButtonGrey,
 #AltruistoTopBarCTA {
-    display: inline-block;
-    text-align: center;
-    font-family: Helvetica, Arial, Verdana, sans-serif!important;
+  display: inline-block;
+  text-align: center;
+  font-family: Helvetica, Arial, Verdana, sans-serif !important;
 }
 
 #AltruistoTopBar {
-    width: 350px!important;
-    height: 120px!important;
-    border: 1px solid #e0e0e0;
-    background-color: #fff!important;
-    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, .3);
-    position: fixed;
-    top: 35px;
-    right: 35px;
-    z-index: 99999999999999999;
-    box-sizing: border-box;
-    font-family: Helvetica, Arial, Verdana, sans-serif!important;
-    text-align: center!important;
-    line-height: 1.4285;
-    font-size: 14px;
-    color: #959595!important;
-    animation: altruisto-slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 normal both;
+  width: 350px !important;
+  height: 120px !important;
+  border: 1px solid #e0e0e0;
+  background-color: #fff !important;
+  box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 35px;
+  right: 35px;
+  z-index: 99999999999999999;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, Verdana, sans-serif !important;
+  text-align: center !important;
+  line-height: 1.4285;
+  font-size: 14px;
+  color: #959595 !important;
+  animation: altruisto-slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 normal both;
 }
 
-#AltruistoTopBarLogoLink{
-    float: left!important;
-
+#AltruistoTopBarLogoLink {
+  float: left !important;
 }
 
 #AltruistoTopBarLogo {
-    max-width: 20px;
-    margin: 8px;
-    float: left
+  max-width: 20px;
+  margin: 8px;
+  float: left;
 }
 
 #AltruistoTopBarIcon {
-    float: right;
-    margin: 10px 10px;
-    cursor: pointer;
-    max-width: 10px
+  float: right;
+  margin: 10px;
+  cursor: pointer;
+  max-width: 10px;
 }
 
 #AltruistoTopBarWelcome {
-    font-size: 12px;
-    width: 30%;
-    float: left;
-    margin: 9px 0 0
+  font-size: 12px;
+  width: 30%;
+  float: left;
+  margin: 9px 0 0;
 }
 
 #AltruistoTopBarCTA {
-    font-weight: 700;
-    margin: 7px 0;
-    font-family: Helvetica, Arial, Verdana, sans-serif!important;
-    width: 240px;
-    margin-top: 20px;
+  font-weight: 700;
+  margin: 7px 0;
+  font-family: Helvetica, Arial, Verdana, sans-serif !important;
+  width: 240px;
+  margin-top: 20px;
 }
 
 #AltruistoTopBarButton {
-    border: 1px solid #4CAF50;
-    background: #4CAF50;
-    color: #fff;
-    border-radius: 0;
-    padding: 6px 12px;
-    text-decoration: none;
-    font-weight: 700;
-    line-height: 1.4285;
-    font-family: Helvetica, Arial, Verdana, sans-serif!important;
-    text-transform: uppercase;
+  border: 1px solid #4caf50;
+  background: #4caf50;
+  color: #fff;
+  border-radius: 0;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.4285;
+  font-family: Helvetica, Arial, Verdana, sans-serif !important;
+  text-transform: uppercase;
 }
 
 #AltruistoTopBarButton:hover {
-    text-decoration: underline;
-    background-color: #439a46
+  text-decoration: underline;
+  background-color: #439a46;
 }
 
 #AltruistoTopBarButtonGrey {
-    border: 1px solid #e0e1e2;
-    background: #e0e1e2;
-    color: #fff;
-    border-radius: 0;
-    padding: 6px 12px;
-    text-decoration: none;
-    font-weight: 700;
-    line-height: 1.4285;
-    font-family: Helvetica, Arial, Verdana, sans-serif!important
+  border: 1px solid #e0e1e2;
+  background: #e0e1e2;
+  color: #fff;
+  border-radius: 0;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.4285;
+  font-family: Helvetica, Arial, Verdana, sans-serif !important;
 }
 
 #AltruistoTopBarButtonGrey:hover {
-    text-decoration: underline;
-    background-color: #cacbcd
+  text-decoration: underline;
+  background-color: #cacbcd;
 }
 
 #AltruistoSmallText {
-    font-weight: 300px;
-    font-size: 12px;
+  font-weight: 300px;
+  font-size: 12px;
 }
-
 
 @-webkit-keyframes altruisto-slide-in-right {
   0% {
     -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+    transform: translateX(1000px);
     opacity: 0;
   }
+
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
+
 @keyframes altruisto-slide-in-right {
   0% {
     -webkit-transform: translateX(1000px);
-            transform: translateX(1000px);
+    transform: translateX(1000px);
     opacity: 0;
   }
+
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }

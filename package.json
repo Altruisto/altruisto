@@ -4,6 +4,7 @@
   "description": "Browser extension that allows users to raise money for charities through online shoppings with no extra costs",
   "main": "index.js",
   "scripts": {
+    "lint:css": "stylelint '**/*.css'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
@@ -22,6 +23,8 @@
     "css-loader": "^0.28.4",
     "mustache-loader": "^1.0.0",
     "string-replace-loader": "^1.3.0",
+    "stylelint": "^8.1.1",
+    "stylelint-config-standard": "^17.0.0",
     "webpack": "^3.2.0"
   }
 }
