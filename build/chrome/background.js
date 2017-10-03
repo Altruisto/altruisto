@@ -182,7 +182,7 @@ function onInstalled() {
 
         //open welcome page for new installs
         if(details.reason == "install"){
-            chrome.tabs.create({url: "https://altruisto.com/welcome.html"});
+            chrome.tabs.create({url: "https://altruisto.com/welcome/"});
         }
     });
 }
@@ -270,9 +270,7 @@ function updateActivatedAffiliates(data) {
             newData = new Array(data);
         }
 
-        chrome.storage.local.set({'activatedAffiliates': newData}, function (){
-            chrome.storage.local.get('activatedAffiliates');
-        });
+        chrome.storage.local.set({'activatedAffiliates': newData});
     });
 }
 

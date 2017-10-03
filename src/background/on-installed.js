@@ -12,7 +12,7 @@ export function onInstalled() {
 
         //open welcome page for new installs
         if(details.reason == "install"){
-            chrome.tabs.create({url: "https://altruisto.com/welcome.html"});
+            chrome.tabs.create({url: "https://altruisto.com/welcome/"});
         }
     });
 }

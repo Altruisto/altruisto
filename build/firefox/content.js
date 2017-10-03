@@ -191,9 +191,11 @@ function hideTopbar(){
     //moveWebsite('-50px');
 
     browser.storage.local.get({closedWebsites: []}, function(items) {
-        updatedClosedWebsites = items.closedWebsites;
-        updatedClosedWebsites.push(DOMAIN);
-        browser.storage.local.set({'closedWebsites': updatedClosedWebsites});
+        if(items.closedWebsites.indexOf(DOMAIN) == -1){
+            updatedClosedWebsites = items.closedWebsites;
+            updatedClosedWebsites.push(DOMAIN);
+            browser.storage.local.set({'closedWebsites': updatedClosedWebsites});
+        }
     });
 }
 
@@ -209,7 +211,7 @@ function addListeners(activated){
 
     if(activated){
         setInterval(function(){
-            document.getElementById("AltruistoTopBar").style="display: none;";
+            hideTopbar();
         }, 6000);
     }
 }
