@@ -10,14 +10,15 @@ function updateTopbar(activated) {
     let innerHTML = getInnerHTML(activated);
     let topbarElement = document.getElementById('Altruisto');
     topbarElement.innerHTML = innerHTML;
-} 
+}
 
 /**
  * Deactivate getting commission from current webpage.
  *
- * This is accomplished by sending request to background.js. Background.js deletes all cookies from the domain of current page and removes the domain from locally stored list of activated websites. 
+ * This is accomplished by sending request to background.js. Background.js deletes all cookies from the domain of current page and removes the domain from locally stored list of activated websites.
  *
  */
+// eslint-disable-next-line no-unused-vars
 function deactivateAffiliate() {
     chrome.runtime.sendMessage({domain: DOMAIN}, function(response) {
         if(response.status === true){
@@ -50,8 +51,8 @@ function hideTopbar(){
  * @param {boolean} activated Topbar's activation status.
  */
 function addListeners(activated){
-    document.getElementById("AltruistoTopBarIcon").addEventListener("click", function(){ 
-        hideTopbar(); 
+    document.getElementById("AltruistoTopBarIcon").addEventListener("click", function(){
+        hideTopbar();
     });
 
     if(activated){
@@ -73,7 +74,7 @@ function getContent(activated){
         content = 'You\'re now raising money for charities with this website. <p id="AltruistoSmallText">This windows will be automatically closed in 5 seconds</p>';
     }
     else {
-        content = 'Start raising money for charities with this website by clicking here: <a href=https://altruisto.com/confirm?url=' + location.href + ' id=AltruistoTopBarButton>Start raising money</a>';    
+        content = 'Start raising money for charities with this website by clicking here: <a href=https://altruisto.com/confirm?url=' + location.href + ' id=AltruistoTopBarButton>Start raising money</a>';
     }
 
     return content;
@@ -100,9 +101,9 @@ function getInnerHTML(activated) {
  *
  * @param {boolean} activated Topbar's activation status.
  */
-function renderTopbar(activated){
+function renderTopbar(activated) {
     let style = require('./topbar.css').toString();
-    let styleElement = document.createElement('style'); 
+    let styleElement = document.createElement('style');
     styleElement.innerHTML = style;
 
     let innerHTML = getInnerHTML(activated);
@@ -112,7 +113,7 @@ function renderTopbar(activated){
     topbarElement.innerHTML = innerHTML;
 
     //moveWebsite('50px');
-    
+
     document.documentElement.prepend(styleElement);
     document.documentElement.prepend(topbarElement);
 
@@ -132,7 +133,7 @@ function isAlreadyActivated(activatedAffiliates){
         for(let i = 0; i < activatedAffiliates.length; i++){
             //if current page is in our list of already activated pages
             if(activatedAffiliates[i].domain == DOMAIN){
-                //if page was activated not longer than 7 days ago 
+                //if page was activated not longer than 7 days ago
                 let activationEndTimestamp = activatedAffiliates[i].timestamp + 1000*60*60*24*7;
                 let currentTimestamp = Date.now();
                 if(activationEndTimestamp > currentTimestamp ){
@@ -145,8 +146,8 @@ function isAlreadyActivated(activatedAffiliates){
 
 export default function () {
     chrome.storage.local.get({
-            activatedAffiliates: [], 
-            closedWebsites: [], 
+            activatedAffiliates: [],
+            closedWebsites: [],
             disabledWebsites: [],
             partners: []
         }, function(items) {
@@ -155,8 +156,8 @@ export default function () {
             if(items.partners.indexOf(DOMAIN) != -1){
 
                 //if current domain is not on disabled or closed websites list
-                if(items.closedWebsites.indexOf(DOMAIN) == -1 
-                && items.disabledWebsites.indexOf(DOMAIN) == -1){                   
+                if(items.closedWebsites.indexOf(DOMAIN) == -1
+                && items.disabledWebsites.indexOf(DOMAIN) == -1){
                     let activated = false;
                     if(isAlreadyActivated(items.activatedAffiliates)){
                         activated = true;
@@ -166,7 +167,7 @@ export default function () {
                 }
 
             }
-        
+
         });
 
 }
