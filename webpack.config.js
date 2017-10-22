@@ -53,16 +53,16 @@ module.exports = [
         },
         plugins: [
             new CopyWebpackPlugin([
-                { from: PATHS.src + '/manifest.json', 
+                { from: PATHS.src + '/manifest.json',
                   transform: function(content, path){
-                      let newContent = content.toString(); 
+                      let newContent = content.toString();
                       newContent = newContent.replace('Altruisto.com Chrome Extension', 'Altruisto.com');
                       newContent = newContent.replace(/\"options_page\"\:\s\"(.*)\"/i, '"options_ui": {\n    "page": "$1"\n  }');
                       newContent = newContent.replace('"web_accessible_resources":', '"applications": {\n    "gecko": {\n      "id": "altruisto@altruisto.com"\n    }\n  },\n  "web_accessible_resources":');
                       return newContent;
                   } },
                 { from: PATHS.src + '/assets', to: PATHS.build + '/firefox/assets' },
-                { from: PATHS.src + '/pages', to: PATHS.build + '/firefox/pages', 
+                { from: PATHS.src + '/pages', to: PATHS.build + '/firefox/pages',
                   transform: function(content, path){
                       let newContent = content.toString();
                       newContent = newContent.replace(/chrome\./g, 'browser.');
