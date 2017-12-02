@@ -71,10 +71,10 @@ function getContent(activated){
     let content;
 
     if(activated){
-        content = 'You\'re now raising money for charities with this website. <p id="AltruistoSmallText">This windows will be automatically closed in 5 seconds</p>';
+        content = chrome.i18n.getMessage('topbarActivatedInfo') + '<p id="AltruistoSmallText">' + chrome.i18n.getMessage('topbarActivatedClose') + '</p>';
     }
     else {
-        content = 'Start raising money for charities with this website by clicking here: <a href=https://altruisto.com/confirm?url=' + location.href + ' id=AltruistoTopBarButton>Start raising money</a>';
+        content = chrome.i18n.getMessage('topbarActivateInfo') + '<a href=https://altruisto.com/confirm?url=' + location.href + '&lang=' + chrome.i18n.getUILanguage() + ' id=AltruistoTopBarButton>' + chrome.i18n.getMessage('topbarActivateButton') + '</a>';
     }
 
     return content;

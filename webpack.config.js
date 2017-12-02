@@ -24,6 +24,7 @@ module.exports = [
                 { from: PATHS.src + '/manifest.json' },
                 { from: PATHS.src + '/assets', to: PATHS.build + '/chrome/assets' },
                 { from: PATHS.src + '/pages', to: PATHS.build + '/chrome/pages' },
+                { from: PATHS.src + '/_locales', to: PATHS.build + '/chrome/_locales' },
             ], {
                 copyUnmodified: true
             })
@@ -64,6 +65,7 @@ module.exports = [
                       return newContent;
                   } },
                 { from: PATHS.src + '/assets', to: PATHS.build + '/firefox/assets' },
+                { from: PATHS.src + '/_locales', to: PATHS.build + '/firefox/_locales' },
                 { from: PATHS.src + '/pages', to: PATHS.build + '/firefox/pages',
                   transform: function(content){
                       let newContent = content.toString();
