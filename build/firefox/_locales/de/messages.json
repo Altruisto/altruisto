@@ -12,36 +12,36 @@
         "message": "Spenden für wohltätige Zwecke sammeln"
     },
     "topbarActivatedInfo": {
-        "message": "You are now collecting money for charities with this website. "
+        "message": "Sie sind nun dabei, mit dieser Webseite Spenden für Wohltätigkeitsorganisationen zu sammeln."
     },
     "topbarActivatedClose": {
-        "message": "This windows will be automatically closed in 5 seconds"
+        "message": "Dieses Fenster wird in 5 Sekunden automatisch geschlossen."
     },
     "optionsTitle": {
-        "message": "Altruisto.com extension options"
+        "message": "Altruisto.com Erweiterung-Einstellungen"
     },
     "optionsComingSoon": {
-        "message": "Coming soon!"
+        "message": "Demnächst!"
     },
     "optionsTopbarTitle": {
-        "message": "Inform me when I have an opportunity to raise money for charities from my purchase"
+        "message": "Bitte informieren Sie mich, wenn ich durch meinen Einkauf die Gelegenheit bekomme, Spenden für wohltätige Organisationen zu sammeln."
     },
     "optionsTopbarDescription": {
-        "message": "Anytime you visit a website of one of our partners you will see a bar at the top of a page giving you an opportunity to raise money for charities just by clicking one button. If you click on that button will be asked to confirm that you want to support altruisto through your purchases on the site you're viewing. After that, usually between 1-6% of your purchase will be donated to charities we support."
+        "message": "Jedes Mal bei einem Besuch einer unserer Partner-Webseiten sehen Sie am oberen Bildschirmrand einen Balken. Mit nur einem Klick auf den Balken bekommen Sie die Möglichkeit, für Wohltätigkeitsorganisationen Spenden zu sammeln. Bei einem Klick werden Sie zunächst darum gebeten, Ihre Unterstützung für Altruisto – durch Ihren Einkauf auf der von Ihnen besuchten Webseite – zu bestätigen. Im Anschluss wird dann typischerweise 1-6% des Einkaufspreises an die von uns unterstützten Organisationen gespendet."
     },
     "optionsSuggestionsTitle": {
-        "message": "Show me suggestions while I am browsing the internet"
+        "message": "Vorschläge anzeigen, während ich im Internet surfe."
     },
     "optionsSuggestionsDescription": {
-        "message": "This option allows you to see a small box containing promotions, coupons, and products that may interest you based on the content of the page that you are viewing. It appears from time to time on the bottom right corner of your browser. Anytime you decide to buy a suggested product, one of the World's most effective charities receives a portion of a profit from the sale (the price for you doesn't change). We strive to make it as fast and unintrusive as possible."
+        "message": "Diese Option erlaubt es Ihnen, ein Kästchen mit Werbung, Kupons und Produkten zu sehen, die laut den Inhalten der von Ihnen besuchten Webseite von Interesse sein könnten. Das Kästchen erscheint von Zeit zu Zeit in der unteren rechten Ecke Ihres Browsers. Jedes mal, wenn Sie sich zum Kauf eines vorgeschlagenen Produkts entscheiden, erhält eine der weltweit effektivsten Wohltätigkeitsorganisationen einen Teil des Gewinns aus dem Verkauf ohne, dass sich der Preis für Sie ändert. Wir bemühen uns, dies so schnell und unaufdringlich wie möglich zu machen."
     },
     "optionsSearchTitle": {
-        "message": "Highlight partner shops in search results"
+        "message": "Markierung von Partner-Geschäften in den Suchergebnissen."
     },
     "optionsSearchDescription": {
-        "message": "When you use a search engine like Google, Bing, or DuckDuckGo, links leading to one of our partners' websites will be highlighted so you can immediately know which websites you can raise money with."
+        "message": "Bei der Benutzung einer Suchmaschine wie Google, Bing oder DuckDuckGo werden Links zu den Webseiten unserer Partner markiert. Sie wissen so unmittelbar, auf welchen Webseiten Sie Spenden sammeln können."
     },
     "optionsThankYou": {
-        "message": "By the way - thanks for being awesome and using our extension :) Cheers! "
+        "message": ""
     }
 }

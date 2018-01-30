@@ -1,0 +1,47 @@
+{
+    "name": {
+        "message": "Altruisto.com"
+    },
+    "description": {
+        "message": "Angarie dinheiro para as instituições de caridade mais eficazes do mundo através das suas compras diárias online sem qualquer custo adicional."
+    },
+    "topbarActivateInfo": {
+        "message": "Comece a angariar dinheiro para instituições de caridade com este site, clicando aqui: "
+    },
+    "topbarActivateButton": {
+        "message": "Comece a angariar dinheiro"
+    },
+    "topbarActivatedInfo": {
+        "message": "A partir de agora estará a angariar dinheiro para instituições de caridade através deste site. "
+    },
+    "topbarActivatedClose": {
+        "message": "Esta janela será automaticamente encerrada dentro de 5 segundos"
+    },
+    "optionsTitle": {
+        "message": "Configurações da extensão Altruisto.com"
+    },
+    "optionsComingSoon": {
+        "message": "A lançar brevemente!"
+    },
+    "optionsTopbarTitle": {
+        "message": "Informem-me quando eu tiver oportunidade de angariar dinheiro para instituições de caridade durante a minha compra"
+    },
+    "optionsTopbarDescription": {
+        "message": "Sempre que visitar o site de um dos nossos parceiros verá, ao cimo de uma página, uma barra que lhe permitirá angariar dinheiro para instituições de caridade pelo simples clicar de um botão. Se clicar nesse botão, ser-lhe-á pedido que confirme que deseja apoiar a Altruisto através das suas compras no site que está a visualizar. Depois disso, geralmente 1 a 6% do valor da sua compra será doado para instituições de caridade que nós apoiamos."
+    },
+    "optionsSuggestionsTitle": {
+        "message": "Façam-me sugestões enquanto eu navego na Internet"
+    },
+    "optionsSuggestionsDescription": {
+        "message": "Esta opção permite-lhe ver uma pequena caixa com promoções, cupões e produtos que pensamos poderão interessar-lhe com base no conteúdo da página que está a visualizar. Aparece de tempos a tempos no canto inferior direito do seu navegador. Sempre que decidir comprar um produto sugerido, uma das instituições de caridade mais eficazes do mundo receberá uma parte do lucro da venda (o preço não se altera para si). Tentamos fazer isto da forma mais rápida e discreta possível."
+    },
+    "optionsSearchTitle": {
+        "message": "Destaquem lojas parceiras em resultados de pesquisa"
+    },
+    "optionsSearchDescription": {
+        "message": "Quando usar um motor de busca como o Google, o Bing ou o DuckDuckGo, serão realçados links para o site de um dos nossos parceiros, para que possa saber de imediato com que sites pode angariar dinheiro."
+    },
+    "optionsThankYou": {
+        "message": ""
+    }
+}

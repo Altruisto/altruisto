@@ -110,6 +110,10 @@ function renderTopbar(activated) {
 
     let topbarElement = document.createElement('div');
     topbarElement.id = 'Altruisto';
+    //arabic should be displayed from the right to the left
+    if (chrome.i18n.getUILanguage() == 'ar') {
+        topbarElement.dir = 'rtl';
+    }
     topbarElement.innerHTML = innerHTML;
 
     //moveWebsite('50px');

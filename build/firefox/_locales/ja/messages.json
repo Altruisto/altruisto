@@ -1,0 +1,47 @@
+{
+    "name": {
+        "message": "Altruisto.com"
+    },
+    "description": {
+        "message": "毎日のオンライン・ショッピングを通じて、別料金を払うことなく世界中の最も効果的なチャリティのために資金集め"
+    },
+    "topbarActivateInfo": {
+        "message": "ここをクリックしてこのウェブサイトでチャリティのための資金集めを開始 "
+    },
+    "topbarActivateButton": {
+        "message": "チャリティのための資金集め開始"
+    },
+    "topbarActivatedInfo": {
+        "message": "あなたは今からこのウェブサイトでチャリティのための資金集めを開始します "
+    },
+    "topbarActivatedClose": {
+        "message": "このウィンドウは5秒後に自動的に閉じます"
+    },
+    "optionsTitle": {
+        "message": "Altruisto.comの拡張機能設定"
+    },
+    "optionsComingSoon": {
+        "message": "まもなく登場！"
+    },
+    "optionsTopbarTitle": {
+        "message": "買い物中にチャリティのために資金集めをする機会があれば教えてください"
+    },
+    "optionsTopbarDescription": {
+        "message": "私たちのパートナーのウェブページにアクセスすると、ページの上方にバーがあり、一つのボタンをクリックするだけでチャリティのための資金集めをすることが可能になります。そのボタンをクリックすると、今閲覧しているサイトで買い物することによってAltruisto をサポートする意思があるかどうか確認するよう求められます。確認されると、通常買い物代金の1-６％が私たちがサポートするチャリティに寄付されます。"
+    },
+    "optionsSuggestionsTitle": {
+        "message": "私がインターネット上で情報を閲覧している間にサジェスチョンを見せてください"
+    },
+    "optionsSuggestionsDescription": {
+        "message": "このオプションを選択すると、あなたが興味を持ちそうなプロモーション、クーポン、そして商品を含む小さなボックスがブラウザーの右下のコーナーに時々現れます。サジェストされた商品をあなたが購入すると、世界で最も効果的なチャリティ団体が販売による利益の一部を受け取るのです（あなたが払う商品の価格は変わりません）。このポップアップはできるだけ早く、押しつけがましくならないようにしています "
+    },
+    "optionsSearchTitle": {
+        "message": "検索結果の中でパートナーショップをハイライトして下さい"
+    },
+    "optionsSearchDescription": {
+        "message": "Google, Bing, または DuckDuckGo等の添削エンジンを使う時、資金集めができるのがどのウェブページかすぐにわかるように、私たちのパートナーのウェブページへ繋がるリンクがハイライトされます。"
+    },
+    "optionsThankYou": {
+        "message": ""
+    }
+}

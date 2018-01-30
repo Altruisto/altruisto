@@ -1,0 +1,47 @@
+{
+    "name": {
+        "message": "Altruisto.com"
+    },
+    "description": {
+        "message": "Recaudar fondos para las entidades de caridad más eficaces del mundo a través de sus compras en línea de todos los días sin costos adicionales."
+    },
+    "topbarActivateInfo": {
+        "message": "Comenzar a recaudar dinero para entidades de caridad con este sitio web haciendo clic aquí: "
+    },
+    "topbarActivateButton": {
+        "message": "Comenzar a recaudar dinero"
+    },
+    "topbarActivatedInfo": {
+        "message": "Usted ahora recauda dinero para entidades de caridad con este sitio web. "
+    },
+    "topbarActivatedClose": {
+        "message": "Esta ventana se cerrará automáticamente en cinco segundos"
+    },
+    "optionsTitle": {
+        "message": "Valores de la extensión Altruisto.com"
+    },
+    "optionsComingSoon": {
+        "message": "¡En breve!"
+    },
+    "optionsTopbarTitle": {
+        "message": "Deseo que me informe cuando tengo la oportunidad de recaudar dinero para entidades de caridad con mi compra"
+    },
+    "optionsTopbarDescription": {
+        "message": "En cualquier momento que visita a una de nuestras entidades asociadas, verá una barra al principio de la página que le brindará la oportunidad de recaudar fondos para entidades de caridad con solamente hacer clic en un botón. Si usted hace clic en dicho botón, se le pedirá que confirme que usted desea apoyar a Altruisto a través de sus compras en el sitio que visita. Más adelante, aproximadamente entre un uno y un seis por ciento de su compra se donará a las entidades que apoyamos."
+    },
+    "optionsSuggestionsTitle": {
+        "message": "Muéstreme sugerencias mientras navego por Internet"
+    },
+    "optionsSuggestionsDescription": {
+        "message": "Esta opción le permite ver una pequeña caja que contiene promociones, cupones y productos que podrían interesarle según el contenido de la página que visita. Aparece de vez en cuando en la esquina inferior derecha de su navegador. En cualquier momento en que decida comprar un producto sugerido, una de las entidades de caridad más eficaces del mundo recibe una parte de las ganancias de la venta (el precio no cambia para usted). Tratamos de hacer que sea lo más rápido y menos intrusivo posible."
+    },
+    "optionsSearchTitle": {
+        "message": "Destacar las tiendas asociadas en los resultados de la búsqueda"
+    },
+    "optionsSearchDescription": {
+        "message": "Cuando usted usa una función de búsqueda como Google, Bing, o DuckDuckGo, los enlaces que llevan a los sitios web de nuestras entidades asociadas aparecerán destacadas para que usted sepa inmediatamente con qué sitios web puede recaudar dinero."
+    },
+    "optionsThankYou": {
+        "message": ""
+    }
+}

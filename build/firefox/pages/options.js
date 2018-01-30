@@ -5,13 +5,22 @@ function replace_i18n(obj, tag) {
 
   if(msg != tag) {
     obj.innerHTML = msg;
+    //arabic should be displayed from the right to the left
+    if(browser.i18n.getUILanguage() == 'ar') {
+      obj.dir = 'rtl';
+      //fix sliders position
+      var sliders = document.getElementsByClassName('col-25');
+      for(var i = 0; i < sliders.length; i++) {
+        sliders[i].style.textAlign = 'left';
+      }
+    }
   }
 }
 
 function localizeHtmlPage() {
   // Localize everything else by replacing all __MSG_***__ tags
   var page = document.getElementsByTagName('html');
-
+  
   for (var j = 0; j < page.length; j++) {
       var obj = page[j];
       var tag = obj.innerHTML.toString();
@@ -21,6 +30,7 @@ function localizeHtmlPage() {
 }
 
 function save_options() {
+  console.log('test')
   var addSuggestionBox = document.getElementById('add_suggestion_box').checked;
   var addTopBar = document.getElementById('add_top_bar').checked;
   
@@ -49,11 +59,12 @@ function restore_options() {
     document.getElementById('add_top_bar').checked = items.addTopBar;
   });
 }
-document.addEventListener('DOMContentLoaded', restore_options);
 
+localizeHtmlPage();
+
+document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('add_suggestion_box').addEventListener('click',
     save_options);
 document.getElementById('add_top_bar').addEventListener('click',
     save_options);
 
-localizeHtmlPage();
