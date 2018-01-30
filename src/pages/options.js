@@ -30,7 +30,6 @@ function localizeHtmlPage() {
 }
 
 function save_options() {
-  console.log('test')
   var addSuggestionBox = document.getElementById('add_suggestion_box').checked;
   var addTopBar = document.getElementById('add_top_bar').checked;
   
