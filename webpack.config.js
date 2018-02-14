@@ -8,6 +8,7 @@ const PATHS = {
 };
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ZipPlugin = require('zip-webpack-plugin')
 
 module.exports = [
     {
@@ -27,6 +28,9 @@ module.exports = [
                 { from: PATHS.src + '/_locales', to: PATHS.build + '/chrome/_locales' },
             ], {
                 copyUnmodified: true
+            }),
+            new ZipPlugin({
+                filename: 'chrome.zip'
             })
         ],
         module: {
@@ -72,7 +76,10 @@ module.exports = [
                       newContent = newContent.replace(/chrome\./g, 'browser.');
                       return newContent;
                 } },
-            ])
+            ]),
+            new ZipPlugin({
+                filename: 'firefox.zip'
+            })
         ],
         module: {
             rules: [

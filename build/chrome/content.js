@@ -98,8 +98,8 @@ function extractDomain(url) {
     //find & remove subdomains
     var parts = domain.split('.');
     if(parts.length > 2){
-        //co.uk exception        
-        if(parts.indexOf('co') !== -1 && parts.indexOf('uk') !== -1){
+        //co.* and com.* exceptions (eg. example.com.au)        
+        if(parts.indexOf('co') !== -1 || parts.indexOf('com')){
             domain = parts.slice(-3).join('.');
         }
         else {
