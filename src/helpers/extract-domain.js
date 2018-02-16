@@ -28,7 +28,7 @@ export function extractDomain(url) {
     var parts = domain.split('.');
     if(parts.length > 2){
         //co.* and com.* exceptions (eg. example.com.au)        
-        if(parts.indexOf('co') !== -1 || parts.indexOf('com')){
+        if(domain.indexOf('.co.') !== -1 || domain.indexOf('.com.') !== -1){
             domain = parts.slice(-3).join('.');
         }
         else {
