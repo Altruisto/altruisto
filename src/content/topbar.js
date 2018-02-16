@@ -54,12 +54,6 @@ function addListeners(activated){
     document.getElementById("AltruistoTopBarIcon").addEventListener("click", function(){
         hideTopbar();
     });
-
-    if(activated){
-        setInterval(function(){
-            hideTopbar();
-        }, 6000);
-    }
 }
 
 /**
@@ -120,6 +114,12 @@ function renderTopbar(activated) {
 
     document.documentElement.prepend(styleElement);
     document.documentElement.prepend(topbarElement);
+
+    if(activated){
+        setInterval(function(){
+            hideTopbar();
+        }, 6000);
+    }
 
     addListeners(activated);
 }
