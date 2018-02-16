@@ -148,6 +148,27 @@ function isAlreadyActivated(activatedAffiliates){
     }
 }
 
+/**
+ * Check if the user is on a checkout page of one of our biggest partners.
+ */
+function isCheckoutPage() {
+    if(DOMAIN == 'booking.com' && location.href.indexOf('book.html') !== -1) {
+        return true;
+    }
+    else if(DOMAIN == 'etsy.com' && location.href.indexOf('/cart/') !== -1) {
+        return true;
+    }
+    else if(DOMAIN == 'aliexpress.com' && location.href.indexOf('/confirm_order.htm') !== -1) {
+        return true;
+    }
+    else if(DOMAIN == 'barnesandnoble.com' && location.href.indexOf('/checkout/') !== -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 export default function () {
     chrome.storage.local.get({
             activatedAffiliates: [],
@@ -162,6 +183,17 @@ export default function () {
                 //if current domain is not on disabled or closed websites list
                 if(items.closedWebsites.indexOf(DOMAIN) == -1
                 && items.disabledWebsites.indexOf(DOMAIN) == -1){
+                    let activated = false;
+                    if(isAlreadyActivated(items.activatedAffiliates)){
+                        activated = true;
+                    }
+
+                    renderTopbar(activated);
+                }
+
+                //if user is on checkout page - show
+                if(items.disabledWebsites.indexOf(DOMAIN) == -1
+                && isCheckoutPage(location.href)){
                     let activated = false;
                     if(isAlreadyActivated(items.activatedAffiliates)){
                         activated = true;
