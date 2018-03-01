@@ -67,8 +67,11 @@ function getContent(activated){
     if(activated){
         content = chrome.i18n.getMessage('topbarActivatedInfo') + '<p id="AltruistoSmallText">' + chrome.i18n.getMessage('topbarActivatedClose') + '</p>';
     }
-    else {
+    else if(DOMAIN.indexOf('ebay') !== -1) {
         content = chrome.i18n.getMessage('topbarActivateInfo') + '<a href=https://altruisto.com/confirm?url=' + location.href + '&lang=' + chrome.i18n.getUILanguage() + ' id=AltruistoTopBarButton>' + chrome.i18n.getMessage('topbarActivateButton') + '</a>';
+    }
+    else {
+        content = chrome.i18n.getMessage('topbarActivateInfo') + '<a href=https://altruisto.com/redirect?url=' + location.href + '&lang=' + chrome.i18n.getUILanguage() + ' id=AltruistoTopBarButton>' + chrome.i18n.getMessage('topbarActivateButton') + '</a>';
     }
 
     return content;
