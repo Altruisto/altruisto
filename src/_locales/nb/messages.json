@@ -1,0 +1,47 @@
+{
+    "name": {
+        "message": "Altruisto.com"
+    },
+    "description": {
+        "message": "Samle inn penger til verdens mest effektive bistandsorganisasjoner når du handler på nett - helt uten ekstra kostnader!"
+    },
+    "topbarActivateInfo": {
+        "message": "Begynn å samle inn penger til veldedighet på denne siden ved å klikke her: "
+    },
+    "topbarActivateButton": {
+        "message": "Begynn å samle inn penger!"
+    },
+    "topbarActivatedInfo": {
+        "message": "Nå samler du inn penger til veldedighet på denne siden. "
+    },
+    "topbarActivatedClose": {
+        "message": "Dette vinduet vil bli lukket automatisk i løpet av 5 sekunder."
+    },
+    "optionsTitle": {
+        "message": "Altruisto.com utvidelsesinnstillinger"
+    },
+    "optionsComingSoon": {
+        "message": "Kommer snart!"
+    },
+    "optionsTopbarTitle": {
+        "message": "Si fra hvis jeg har mulighet til å samle inn penger til veldedighet når jeg kjøper noe"
+    },
+    "optionsTopbarDescription": {
+        "message": "Hver gang du besøker nettsiden til en av våre partnere vil du se et banner øverst på siden. Banneret gir deg mulighet til å samle inn penger til veldedighet bare ved å klikke på en knapp. Hvis du trykker på knappen blir du bedt om å bekrefte at du vil støtte Altruisto hvis du kjøper noe på den aktuelle siden. Etter det vil 1-6% av pengene du bruker på nettsiden bli donert til veldedighet."
+    },
+    "optionsSuggestionsTitle": {
+        "message": "Gi meg forslag når jeg surfer på nettet"
+    },
+    "optionsSuggestionsDescription": {
+        "message": "Her kan du velge å se en liten boks med reklame, kuponger og produkter som vi tror kan være interessante for deg. Boksen vil av og til dukke opp nederst til høyre i browseren din. Hver gang du velger å kjøpe et av de foreslåtte produktene vil en av verdens mest effektive veldedighetsorganisasjoner få en del av profitten fra salget (prisen endres selvsagt ikke for deg!). Vi gjør det vi kan for at tjenesten skal bli så lite påtrengende som mulig."
+    },
+    "optionsSearchTitle": {
+        "message": "Fremhev våre partneres butikker i søkeresultater"
+    },
+    "optionsSearchDescription": {
+        "message": "Når du bruker søkemotorer som Google, Bing eller DuckDuckGo vil lenker til våre partneres nettsider bli fremhevet. Slik kan du enkelt se hvilke nettsider du kan samle inn penger på."
+    },
+    "optionsThankYou": {
+        "message": ""
+    }
+}
