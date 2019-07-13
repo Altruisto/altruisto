@@ -14,7 +14,7 @@ function updateActivatedAffiliates(data) {
     return
   }
 
-  browser.storage.local.get("activatedAffiliates", function(items) {
+  browser.storage.local.get("activatedAffiliates").then(items => {
     if (items.activatedAffiliates != null) {
       newData = items.activatedAffiliates
 

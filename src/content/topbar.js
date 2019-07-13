@@ -12,8 +12,8 @@ function hideTopbar() {
 
   document.getElementById("AltruistoTopBar").style.display = "none"
 
-  browser.storage.local.get({ closedWebsites: [] }, function(items) {
-    if (items.closedWebsites.indexOf(DOMAIN) == -1) {
+  browser.storage.local.get({ closedWebsites: [] }).then(items => {
+    if (items.closedWebsites.indexOf(DOMAIN) === -1) {
       updatedClosedWebsites = items.closedWebsites
       updatedClosedWebsites.push(DOMAIN)
       browser.storage.local.set({ closedWebsites: updatedClosedWebsites })
@@ -27,9 +27,7 @@ function hideTopbar() {
 function addListeners() {
   document
     .getElementById("AltruistoTopBarIcon")
-    .addEventListener("click", function() {
-      hideTopbar()
-    })
+    .addEventListener("click", hideTopbar)
 }
 
 /**
@@ -113,9 +111,7 @@ function renderTopbar(activated) {
   document.documentElement.prepend(topbarElement)
 
   if (activated) {
-    setInterval(function() {
-      hideTopbar()
-    }, 6000)
+    setTimeout(hideTopbar, 6000)
   }
 
   addListeners(activated)
@@ -169,26 +165,36 @@ function isCheckoutPage() {
 }
 
 export default function() {
-  browser.storage.local.get(
-    {
+  browser.storage.local
+    .get({
       activatedAffiliates: [],
       closedWebsites: [],
       disabledWebsites: [],
       partners: []
-    },
-    function(items) {
+    })
+    .then(items => {
+      console.log("items", items)
+
       //if current domain is one of our partners
-      if (items.partners.indexOf(DOMAIN) != -1) {
+      if (items.partners.indexOf(DOMAIN) !== -1) {
+        console.log("is in partners")
+        console.log(
+          " items.closedWebsites.indexOf(DOMAIN) == -1 && items.disabledWebsites.indexOf(DOMAIN) == -1",
+          items.closedWebsites.indexOf(DOMAIN) == -1 &&
+            items.disabledWebsites.indexOf(DOMAIN) == -1
+        )
         //if current domain is not on disabled or closed websites list
         if (
           items.closedWebsites.indexOf(DOMAIN) == -1 &&
           items.disabledWebsites.indexOf(DOMAIN) == -1
         ) {
+          console.log("not closed, not disabled")
           let activated = false
           if (isAlreadyActivated(items.activatedAffiliates)) {
             activated = true
           }
 
+          console.log("activated", activated)
           renderTopbar(activated)
         }
 
@@ -205,6 +211,5 @@ export default function() {
           renderTopbar(activated)
         }
       }
-    }
-  )
+    })
 }

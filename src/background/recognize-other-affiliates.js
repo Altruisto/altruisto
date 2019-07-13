@@ -41,7 +41,7 @@ function isAffiliateRedirectLink(domain) {
     "linksynergy.com"
   ]
 
-  return trackedDomains.indexOf(domain) === -1
+  return trackedDomains.includes(domain)
 }
 
 /**
@@ -51,9 +51,9 @@ function isAffiliateRedirectLink(domain) {
  */
 function disableAffiliate(domain) {
   var updatedDisabledWebsites = []
-  browser.storage.local.get({ disabledWebsites: [] }, function(items) {
+  browser.storage.local.get({ disabledWebsites: [] }).then(items => {
     updatedDisabledWebsites = items.disabledWebsites
-    if (items.disabledWebsites.indexOf(domain) == -1) {
+    if (items.disabledWebsites.indexOf(domain) === -1) {
       updatedDisabledWebsites.push(domain)
       browser.storage.local.set({ disabledWebsites: updatedDisabledWebsites })
     }

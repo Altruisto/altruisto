@@ -3,17 +3,8 @@ import displayTopbar from "./content/topbar.js"
 
 /* Load settings and act accordingly */
 
-browser.storage.sync.get(
-  {
+browser.storage.sync
+  .get({
     addTopBar: true
-  },
-  function(items) {
-    /*if(items.addSuggestionBox){
-        suggestionBox();
-    }*/
-
-    if (items.addTopBar) {
-      displayTopbar()
-    }
-  }
-)
+  })
+  .then(items => items && displayTopbar())
