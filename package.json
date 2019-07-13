@@ -4,6 +4,7 @@
   "description": "Browser extension that allows users to raise money for charities through online shoppings with no extra costs",
   "main": "index.js",
   "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "build": "webpack"
   },
   "repository": {
@@ -20,6 +21,7 @@
     "copy-webpack-plugin": "5.0.3",
     "css-loader": "3.0.0",
     "mustache-loader": "1.4.3",
+    "prettier": "1.18.2",
     "string-replace-loader": "2.2.0",
     "webpack": "4.35.3",
     "webpack-cli": "3.3.5",
