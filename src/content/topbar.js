@@ -1,31 +1,8 @@
+import * as browser from "webextension-polyfill"
 import { ASSETS_PATHS } from "../helpers/assets-paths.js"
 import { extractDomain } from "../helpers/extract-domain.js"
 
 const DOMAIN = extractDomain(location.href)
-
-/**
- * Change topbar's inner HTML.
- */
-function updateTopbar(activated) {
-  let innerHTML = getInnerHTML(activated)
-  let topbarElement = document.getElementById("Altruisto")
-  topbarElement.innerHTML = innerHTML
-}
-
-/**
- * Deactivate getting commission from current webpage.
- *
- * This is accomplished by sending request to background.js. Background.js deletes all cookies from the domain of current page and removes the domain from locally stored list of activated websites.
- *
- */
-// eslint-disable-next-line no-unused-vars
-function deactivateAffiliate() {
-  chrome.runtime.sendMessage({ domain: DOMAIN }, function(response) {
-    if (response.status === true) {
-      updateTopbar(false)
-    }
-  })
-}
 
 /**
  * Set topbar's display property to none and save to storage.local the information that on this website the topbar should not be (temporarily) displayed.
@@ -34,23 +11,20 @@ function hideTopbar() {
   let updatedClosedWebsites = []
 
   document.getElementById("AltruistoTopBar").style.display = "none"
-  //moveWebsite('-50px');
 
-  chrome.storage.local.get({ closedWebsites: [] }, function(items) {
+  browser.storage.local.get({ closedWebsites: [] }, function(items) {
     if (items.closedWebsites.indexOf(DOMAIN) == -1) {
       updatedClosedWebsites = items.closedWebsites
       updatedClosedWebsites.push(DOMAIN)
-      chrome.storage.local.set({ closedWebsites: updatedClosedWebsites })
+      browser.storage.local.set({ closedWebsites: updatedClosedWebsites })
     }
   })
 }
 
 /**
  * Add proper event listeners to topbar elements.
- *
- * @param {boolean} activated Topbar's activation status.
  */
-function addListeners(activated) {
+function addListeners() {
   document
     .getElementById("AltruistoTopBarIcon")
     .addEventListener("click", function() {
@@ -68,29 +42,29 @@ function getContent(activated) {
 
   if (activated) {
     content =
-      chrome.i18n.getMessage("topbarActivatedInfo") +
+      browser.i18n.getMessage("topbarActivatedInfo") +
       '<p id="AltruistoSmallText">' +
-      chrome.i18n.getMessage("topbarActivatedClose") +
+      browser.i18n.getMessage("topbarActivatedClose") +
       "</p>"
   } else if (DOMAIN.indexOf("ebay") !== -1) {
     content =
-      chrome.i18n.getMessage("topbarActivateInfo") +
+      browser.i18n.getMessage("topbarActivateInfo") +
       "<a href=https://altruisto.com/confirm?url=" +
       location.href +
       "&lang=" +
-      chrome.i18n.getUILanguage() +
+      browser.i18n.getUILanguage() +
       " id=AltruistoTopBarButton>" +
-      chrome.i18n.getMessage("topbarActivateButton") +
+      browser.i18n.getMessage("topbarActivateButton") +
       "</a>"
   } else {
     content =
-      chrome.i18n.getMessage("topbarActivateInfo") +
+      browser.i18n.getMessage("topbarActivateInfo") +
       "<a href=https://altruisto.com/redirect?url=" +
       location.href +
       "&lang=" +
-      chrome.i18n.getUILanguage() +
+      browser.i18n.getUILanguage() +
       " id=AltruistoTopBarButton>" +
-      chrome.i18n.getMessage("topbarActivateButton") +
+      browser.i18n.getMessage("topbarActivateButton") +
       "</a>"
   }
 
@@ -103,7 +77,7 @@ function getContent(activated) {
  * @param {boolean} activated Topbar's activation status.
  */
 function getInnerHTML(activated) {
-  let template = require("./topbar.html")
+  let template = require("./topbar.html") // eslint-disable-line
   let content = getContent(activated)
   let innerHTML = template({
     ASSETS_PATHS: ASSETS_PATHS,
@@ -119,7 +93,7 @@ function getInnerHTML(activated) {
  * @param {boolean} activated Topbar's activation status.
  */
 function renderTopbar(activated) {
-  let style = require("./topbar.css").toString()
+  let style = require("./topbar.css").toString() // eslint-disable-line
   let styleElement = document.createElement("style")
   styleElement.innerHTML = style
 
@@ -128,7 +102,7 @@ function renderTopbar(activated) {
   let topbarElement = document.createElement("div")
   topbarElement.id = "Altruisto"
   //arabic should be displayed from the right to the left
-  if (chrome.i18n.getUILanguage() == "ar") {
+  if (browser.i18n.getUILanguage() == "ar") {
     topbarElement.dir = "rtl"
   }
   topbarElement.innerHTML = innerHTML
@@ -195,7 +169,7 @@ function isCheckoutPage() {
 }
 
 export default function() {
-  chrome.storage.local.get(
+  browser.storage.local.get(
     {
       activatedAffiliates: [],
       closedWebsites: [],

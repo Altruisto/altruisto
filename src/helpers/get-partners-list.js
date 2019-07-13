@@ -1,3 +1,5 @@
+import * as browser from "webextension-polyfill"
+
 /**
  * Get the list of partner stores' domain and save it locally
  */
@@ -8,8 +10,8 @@ export function getPartnersList() {
     if (xhr.readyState == 4) {
       if (xhr.responseText) {
         var partners = JSON.parse(xhr.responseText)
-        chrome.storage.local.remove(["partners"])
-        chrome.storage.local.set({ partners: partners })
+        browser.storage.local.remove(["partners"])
+        browser.storage.local.set({ partners: partners })
       }
     }
   }
