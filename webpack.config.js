@@ -37,10 +37,7 @@ module.exports = [
             rules: [
                 {
                     test: /\.css$/,
-                    loader: 'css-loader',
-                    options: {
-                        minimize: true
-                    },
+                    loader: 'css-loader'
                 },
                 {
                     test: /\.html$/,
@@ -85,10 +82,7 @@ module.exports = [
             rules: [
                 {
                     test: /\.css$/,
-                    loader: 'css-loader',
-                    options: {
-                        minimize: true
-                    },
+                    loader: 'css-loader'
                 },
                 {
                     test: /\.html$/,
