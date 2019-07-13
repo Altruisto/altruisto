@@ -6,7 +6,8 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,ts}\"",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "NODE_ENV=development webpack --mode=development --watch"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "webextension-polyfill": "0.4.0",
     "webpack": "4.35.3",
     "webpack-cli": "3.3.5",
+    "webpack-extension-reloader": "1.1.0",
     "zip-webpack-plugin": "3.0.0"
   }
 }
