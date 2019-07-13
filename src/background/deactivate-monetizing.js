@@ -11,7 +11,7 @@ function removeAffiliatesCookies(cookie, domain) {
 }
 
 function removeFromActivatedAffiliates(domain) {
-  browser.storage.local.get({ activatedAffiliates: [] }, function(items) {
+  browser.storage.local.get({ activatedAffiliates: [] }).then(items => {
     for (let i = 0; i < items.activatedAffiliates.length; i++) {
       if (items.activatedAffiliates[i].domain == domain) {
         let updatedActivatedAffiliates = items.activatedAffiliates
