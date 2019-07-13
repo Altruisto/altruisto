@@ -1,12 +1,14 @@
-function replace_i18n(obj, tag) {
+import * as browser from "webextension-polyfill"
+
+function replaceIntl(obj, tag) {
   var msg = tag.replace(/__MSG_(\w+)__/g, function(match, v1) {
-    return v1 ? chrome.i18n.getMessage(v1) : ""
+    return v1 ? browser.i18n.getMessage(v1) : ""
   })
 
   if (msg != tag) {
     obj.innerHTML = msg
     //arabic should be displayed from the right to the left
-    if (chrome.i18n.getUILanguage() == "ar") {
+    if (browser.i18n.getUILanguage() == "ar") {
       obj.dir = "rtl"
       //fix sliders position
       var sliders = document.getElementsByClassName("col-25")
@@ -25,15 +27,15 @@ function localizeHtmlPage() {
     var obj = page[j]
     var tag = obj.innerHTML.toString()
 
-    replace_i18n(obj, tag)
+    replaceIntl(obj, tag)
   }
 }
 
-function save_options() {
+function saveOptions() {
   var addSuggestionBox = document.getElementById("add_suggestion_box").checked
   var addTopBar = document.getElementById("add_top_bar").checked
 
-  chrome.storage.sync.set(
+  browser.storage.sync.set(
     {
       addSuggestionBox: addSuggestionBox,
       addTopBar: addTopBar
@@ -52,8 +54,8 @@ function save_options() {
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
-function restore_options() {
-  chrome.storage.sync.get(
+function restoreOptions() {
+  browser.storage.sync.get(
     {
       addSuggestionBox: false,
       addTopBar: true
@@ -68,8 +70,8 @@ function restore_options() {
 
 localizeHtmlPage()
 
-document.addEventListener("DOMContentLoaded", restore_options)
+document.addEventListener("DOMContentLoaded", restoreOptions)
 document
   .getElementById("add_suggestion_box")
-  .addEventListener("click", save_options)
-document.getElementById("add_top_bar").addEventListener("click", save_options)
+  .addEventListener("click", saveOptions)
+document.getElementById("add_top_bar").addEventListener("click", saveOptions)
