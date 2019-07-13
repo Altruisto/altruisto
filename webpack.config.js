@@ -40,7 +40,7 @@ module.exports = (env, argv) => [
             }
           },
           { from: PATHS.src + "/assets", to: PATHS.build + "/chrome/assets" },
-          { from: PATHS.src + "/pages", to: PATHS.build + "/chrome/pages" },
+          { from: PATHS.src + "/options", to: PATHS.build + "/chrome/options" },
           {
             from: PATHS.src + "/_locales",
             to: PATHS.build + "/chrome/_locales"
@@ -114,8 +114,8 @@ module.exports = (env, argv) => [
           to: PATHS.build + "/firefox/_locales"
         },
         {
-          from: PATHS.src + "/pages",
-          to: PATHS.build + "/firefox/pages"
+          from: PATHS.src + "/options",
+          to: PATHS.build + "/firefox/options"
         }
       ]),
       new ExtensionReloader({

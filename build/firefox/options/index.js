@@ -1,4 +1,5 @@
-import * as browser from "webextension-polyfill"
+// quick polyfill
+var browser = browser || chrome //eslint-disable-line
 
 function replaceIntl(obj, tag) {
   var msg = tag.replace(/__MSG_(\w+)__/g, function(match, v1) {
