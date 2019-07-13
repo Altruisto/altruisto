@@ -24,7 +24,7 @@
     "copy-webpack-plugin": "5.0.3",
     "css-loader": "3.0.0",
     "eslint": "6.0.1",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-prettier": "6.0.0",
     "mustache-loader": "1.4.3",
     "prettier": "1.18.2",
     "typescript": "3.5.3",

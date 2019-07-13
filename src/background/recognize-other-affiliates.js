@@ -8,11 +8,7 @@ import { extractDomain } from "../helpers/extract-domain.js"
  */
 function isAltruistoLink(url) {
   var altruistoStamps = ["id=XK9XruzkyUo", "8106588"]
-  if (new RegExp(altruistoStamps.join("|")).test(url)) {
-    return true
-  } else {
-    return false
-  }
+  return new RegExp(altruistoStamps.join("|")).test(url)
 }
 
 /**
@@ -45,11 +41,7 @@ function isAffiliateRedirectLink(domain) {
     "linksynergy.com"
   ]
 
-  if (trackedDomains.indexOf(domain) == -1) {
-    return false
-  } else {
-    return true
-  }
+  return trackedDomains.indexOf(domain) === -1
 }
 
 /**
