@@ -5,10 +5,10 @@
   "description": "__MSG_description__",
   "version": "2.1.7",
   "default_locale": "en",
-  "options_page": "pages/options.html",
+  "options_page": "options/index.html",
   "browser_action": {
     "default_icon": "assets/img/icon128.png",
-    "default_popup": "pages/options.html"
+    "default_popup": "options/index.html"
   },
   "icons": {
     "16": "assets/img/icon16.png",
@@ -34,5 +34,5 @@
     "cookies",
     "alarms"
   ],
-  "web_accessible_resources": ["assets/img/*", "assets/css/*", "pages/*"]
+  "web_accessible_resources": ["assets/img/*", "assets/css/*", "options/*"]
 }

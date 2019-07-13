@@ -8,6 +8,6 @@ export const ASSETS_PATHS = {
     icon16: browser.extension.getURL("assets/img/icon16.png")
   },
   pages: {
-    options: browser.extension.getURL("pages/options.html")
+    options: browser.extension.getURL("options/index.html")
   }
 }
