@@ -10,19 +10,29 @@
     "default_icon": "assets/img/icon128.png",
     "default_popup": "pages/options.html"
   },
-  "icons": { "16": "assets/img/icon16.png",
-             "48": "assets/img/icon48.png",
-            "128": "assets/img/icon128.png" },
+  "icons": {
+    "16": "assets/img/icon16.png",
+    "48": "assets/img/icon48.png",
+    "128": "assets/img/icon128.png"
+  },
   "background": {
-      "scripts": [ "background.js" ]
-   },
-  "content_scripts": [ {
-      "js": [ "content.js" ],
-      "matches": [ "*://*/*" ],
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["*://*/*"],
       "run_at": "document_end"
-   } ],
-  "permissions": [
-    "activeTab", "http://*/*", "https://*/*", "storage", "webRequest", "cookies", "alarms"
+    }
   ],
-  "web_accessible_resources": [ "assets/img/*", "assets/css/*", "pages/*" ]
+  "permissions": [
+    "activeTab",
+    "http://*/*",
+    "https://*/*",
+    "storage",
+    "webRequest",
+    "cookies",
+    "alarms"
+  ],
+  "web_accessible_resources": ["assets/img/*", "assets/css/*", "pages/*"]
 }
