@@ -19,20 +19,31 @@
     "url": "https://github.com/altruisto/altruisto/issues"
   },
   "homepage": "https://altruisto.com",
+  "dependencies": {
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  },
   "devDependencies": {
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4",
     "@typescript-eslint/eslint-plugin": "1.12.0",
     "@typescript-eslint/parser": "1.12.0",
     "copy-webpack-plugin": "5.0.3",
     "css-loader": "3.0.0",
     "eslint": "6.0.1",
     "eslint-config-prettier": "6.0.0",
+    "html-webpack-plugin": "3.2.0",
     "mustache-loader": "1.4.3",
     "prettier": "1.18.2",
+    "source-map-loader": "0.2.4",
+    "ts-loader": "6.0.4",
     "typescript": "3.5.3",
     "webextension-polyfill": "0.4.0",
     "webpack": "4.35.3",
     "webpack-cli": "3.3.5",
+    "webpack-dev-middleware": "3.7.0",
     "webpack-extension-reloader": "1.1.0",
+    "webpack-hot-middleware": "2.25.0",
     "zip-webpack-plugin": "3.0.0"
   }
 }

@@ -35,4 +35,4 @@
     "alarms"
   ],
   "web_accessible_resources": ["assets/img/*", "assets/css/*", "options/*"]
-,"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'" }
+}
