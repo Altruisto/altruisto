@@ -1,6 +1,8 @@
 /* eslint-env node */
+/* eslint @typescript-eslint/no-var-requires: 0 */
 
 const path = require("path")
+const webpack = require("webpack")
 
 const PATHS = {
   src: path.join(__dirname, "src"),
@@ -10,8 +12,48 @@ const PATHS = {
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const ZipPlugin = require("zip-webpack-plugin")
 const ExtensionReloader = require("webpack-extension-reloader")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = (env, argv) => [
+  // first build react app for panel and output it to temporary location: /build/.panel
+  {
+    entry: {
+      index: PATHS.src + "/panel/index.tsx",
+      vendor: ["react", "react-dom"]
+    },
+    output: {
+      path: PATHS.build + "/.panel/",
+      filename: "[name].js"
+    },
+    devtool: "source-map",
+    devServer: {
+      port: 1337,
+      historyApiFallback: true,
+      inline: true
+    },
+    resolve: {
+      extensions: [".ts", ".tsx", ".js", ".json"]
+    },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader"
+        },
+        {
+          enforce: "pre",
+          test: /\.js$/,
+          loader: "source-map-loader"
+        }
+      ]
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: PATHS.src + "/panel/index.html"
+      }),
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  },
   {
     entry: {
       background: PATHS.src + "/background.js",
@@ -44,6 +86,10 @@ module.exports = (env, argv) => [
           {
             from: PATHS.src + "/_locales",
             to: PATHS.build + "/chrome/_locales"
+          },
+          {
+            from: PATHS.build + "/.panel",
+            to: PATHS.build + "/chrome/panel"
           }
         ],
         // for extension reloader we need to inject specific content security policies
@@ -116,6 +162,10 @@ module.exports = (env, argv) => [
         {
           from: PATHS.src + "/options",
           to: PATHS.build + "/firefox/options"
+        },
+        {
+          from: PATHS.build + "/.panel",
+          to: PATHS.build + "/firefox/panel"
         }
       ]),
       new ExtensionReloader({
