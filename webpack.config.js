@@ -12,6 +12,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 const ZipPlugin = require("zip-webpack-plugin")
 const ExtensionReloader = require("webpack-extension-reloader")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const WaitForFilePlugin = require("./webpack/WaitForFilePlugin")
 
 module.exports = (env, argv) => [
@@ -27,6 +29,9 @@ module.exports = (env, argv) => [
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
+    optimization: {
+      minimizer: [new OptimizeCSSAssetsPlugin({})]
+    },
     module: {
       rules: [
         {
@@ -38,12 +43,19 @@ module.exports = (env, argv) => [
           enforce: "pre",
           test: /\.js$/,
           loader: "source-map-loader"
+        },
+        {
+          test: /\.css$|\.scss$/,
+          use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
         }
       ]
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: PATHS.src + "/panel/index.html"
+      }),
+      new MiniCssExtractPlugin({
+        filename: "index.css"
       })
     ]
   },
