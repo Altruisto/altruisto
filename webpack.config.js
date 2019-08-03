@@ -2,7 +2,6 @@
 /* eslint @typescript-eslint/no-var-requires: 0 */
 
 const path = require("path")
-const webpack = require("webpack")
 
 const PATHS = {
   src: path.join(__dirname, "src"),
@@ -13,24 +12,18 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 const ZipPlugin = require("zip-webpack-plugin")
 const ExtensionReloader = require("webpack-extension-reloader")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const WaitForFilePlugin = require("./webpack/WaitForFilePlugin")
 
 module.exports = (env, argv) => [
-  // first build react app for panel and output it to temporary location: /build/.panel
+  // build react app for panel and output it to temporary location: /build/.panel
   {
-    entry: {
-      index: PATHS.src + "/panel/index.tsx",
-      vendor: ["react", "react-dom"]
-    },
+    name: "panel",
+    entry: PATHS.src + "/panel/index.tsx",
     output: {
       path: PATHS.build + "/.panel/",
       filename: "[name].js"
     },
     devtool: "source-map",
-    devServer: {
-      port: 1337,
-      historyApiFallback: true,
-      inline: true
-    },
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
@@ -38,6 +31,7 @@ module.exports = (env, argv) => [
       rules: [
         {
           test: /\.tsx?$/,
+          exclude: /node_modules/,
           loader: "ts-loader"
         },
         {
@@ -50,11 +44,11 @@ module.exports = (env, argv) => [
     plugins: [
       new HtmlWebpackPlugin({
         template: PATHS.src + "/panel/index.html"
-      }),
-      new webpack.HotModuleReplacementPlugin()
+      })
     ]
   },
   {
+    name: "chrome",
     entry: {
       background: PATHS.src + "/background.js",
       content: PATHS.src + "/content.js"
@@ -64,6 +58,7 @@ module.exports = (env, argv) => [
       filename: "[name].js"
     },
     plugins: [
+      new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin(
         [
           {
@@ -120,6 +115,7 @@ module.exports = (env, argv) => [
     }
   },
   {
+    name: "firefox",
     entry: {
       background: PATHS.src + "/background.js",
       content: PATHS.src + "/content.js"
@@ -129,6 +125,7 @@ module.exports = (env, argv) => [
       filename: "[name].js"
     },
     plugins: [
+      new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin([
         {
           from: PATHS.src + "/manifest.json",
