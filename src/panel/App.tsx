@@ -1,14 +1,13 @@
 import React from "react"
 import "./App.scss"
-// import { SnackbarProvider } from "notistack";
-// import { AuthProvider } from "./common/auth";
-// import Main from "./Main";
+import { SnackbarProvider } from "notistack"
+import { AuthProvider } from "./common/auth"
+import Main from "./Main"
 
 const App: React.FC = () => {
   return (
     <div className="app">
-      APP
-      {/* <AuthProvider>
+      <AuthProvider>
         <SnackbarProvider
           maxSnack={1}
           anchorOrigin={{
@@ -18,7 +17,7 @@ const App: React.FC = () => {
         >
           <Main />
         </SnackbarProvider>
-      </AuthProvider> */}
+      </AuthProvider>
     </div>
   )
 }

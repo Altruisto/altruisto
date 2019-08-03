@@ -37,7 +37,10 @@ module.exports = (env, argv) => [
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          loader: "ts-loader"
+          loader: "ts-loader",
+          options: {
+            transpileOnly: argv.prototype
+          }
         },
         {
           enforce: "pre",
@@ -47,7 +50,8 @@ module.exports = (env, argv) => [
         {
           test: /\.css$|\.scss$/,
           use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-        }
+        },
+        { test: /\.(jpe?g|png|gif|svg)$/i, use: "file-loader" }
       ]
     },
     plugins: [

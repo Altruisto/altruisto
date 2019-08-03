@@ -1,0 +1,33 @@
+.share {
+  &__explanation {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__ref-link {
+    font-size: 12px;
+    font-weight: normal;
+    color: #5c6979;
+    cursor: pointer;
+  }
+
+  &__copy-icon {
+    top: 63px !important;
+  }
+
+  &__invited-number {
+    font-size: 16px;
+    color: #3a4c5a;
+    font-weight: bold;
+  }
+
+  &__invited-people {
+    font-size: 12px;
+    color: #9baab8;
+  }
+}
