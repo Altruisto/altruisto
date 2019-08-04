@@ -8,7 +8,7 @@
   "options_page": "options/index.html",
   "browser_action": {
     "default_icon": "assets/img/icon128.png",
-    "default_popup": "options/index.html"
+    "default_popup": "panel/index.html"
   },
   "icons": {
     "16": "assets/img/icon16.png",
@@ -35,4 +35,4 @@
     "alarms"
   ],
   "web_accessible_resources": ["assets/img/*", "assets/css/*", "options/*"]
-,"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'" }
+}
