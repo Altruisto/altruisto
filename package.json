@@ -8,6 +8,7 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "build": "rm -rf build && webpack",
     "build:panel": "rm -rf build/.panel && webpack --config-name panel",
+    "quickbuild": "rm -rf build && webpack --prototype",
     "dev:panel": "webpack-dev-server --config-name panel --mode development --inline --hot --open",
     "dev:chrome": "NODE_ENV=development webpack --config-name chrome --mode development --watch",
     "dev:firefox": "NODE_ENV=development webpack --config-name firefox --mode development --watch",
@@ -35,8 +36,7 @@
     "pure-react-carousel": "1.21.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-swipeable-views": "0.13.3",
-    "react-twitter-embed": "2.0.8"
+    "react-swipeable-views": "0.13.3"
   },
   "devDependencies": {
     "@types/chrome": "0.0.87",

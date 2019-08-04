@@ -1,17 +1,14 @@
-import React from "react";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-  DotGroup,
-  Dot
-} from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
-import { TwitterTweetEmbed } from "react-twitter-embed";
-import "./TwitterCarousel.scss";
+import React from "react"
+import { CarouselProvider, Slider, Slide, Dot } from "pure-react-carousel"
+import "pure-react-carousel/dist/react-carousel.es.css"
+import "./TwitterCarousel.scss"
+import tweet1 from "../../../assets/tweet1.png"
+import tweet2 from "../../../assets/tweet2.png"
+import tweet3 from "../../../assets/tweet3.png"
+import tweet4 from "../../../assets/tweet4.png"
 
+// we load tweets as images instead of embedding them because we don't want to
+// load external resources to a browser extension as it's a security risk
 export const TwitterCarousel: React.FC = () => {
   return (
     <CarouselProvider
@@ -22,51 +19,43 @@ export const TwitterCarousel: React.FC = () => {
     >
       <Slider>
         <Slide index={0}>
-          <div className="tweet">
-            <TwitterTweetEmbed
-              tweetId={"899723513627648001"}
-              options={{
-                cards: "hidden",
-                dnt: true
-                // lang="en" add for multilanguage support
-              }}
-            />
+          <div className="tweet" style={{ height: "201px" }}>
+            <a
+              href="https://twitter.com/sapinker/status/899723513627648001"
+              target="_blank"
+            >
+              <img src={tweet1} />
+            </a>
           </div>
         </Slide>
         <Slide index={1}>
-          <div className="tweet">
-            <TwitterTweetEmbed
-              tweetId={"894597256384577537"}
-              options={{
-                cards: "hidden",
-                dnt: true
-                // lang="en" add for multilanguage support
-              }}
-            />
+          <div className="tweet" style={{ height: "241px" }}>
+            <a
+              href="https://twitter.com/Liv_Boeree/status/894597256384577537"
+              target="_blank"
+            >
+              <img src={tweet2} />
+            </a>
           </div>
         </Slide>
         <Slide index={2}>
-          <div className="tweet">
-            <TwitterTweetEmbed
-              tweetId={"892286979030765568"}
-              options={{
-                cards: "hidden",
-                dnt: true
-                // lang="en" add for multilanguage support
-              }}
-            />
+          <div className="tweet" style={{ height: "239px" }}>
+            <a
+              href="https://twitter.com/PeterSinger/status/892286979030765568"
+              target="_blank"
+            >
+              <img src={tweet3} />
+            </a>
           </div>
         </Slide>
         <Slide index={3}>
-          <div className="tweet">
-            <TwitterTweetEmbed
-              tweetId={"993639143891615744"}
-              options={{
-                cards: "hidden",
-                dnt: true
-                // lang="en" add for multilanguage support
-              }}
-            />
+          <div className="tweet" style={{ height: "239px" }}>
+            <a
+              href="https://twitter.com/clairlemon/status/993639143891615744"
+              target="_blank"
+            >
+              <img src={tweet4} />
+            </a>
           </div>
         </Slide>
       </Slider>
@@ -85,5 +74,5 @@ export const TwitterCarousel: React.FC = () => {
         </Dot>
       </div>
     </CarouselProvider>
-  );
-};
+  )
+}
