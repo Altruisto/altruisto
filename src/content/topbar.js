@@ -173,28 +173,18 @@ export default function() {
       partners: []
     })
     .then(items => {
-      console.log("items", items)
-
       //if current domain is one of our partners
       if (items.partners.indexOf(DOMAIN) !== -1) {
-        console.log("is in partners")
-        console.log(
-          " items.closedWebsites.indexOf(DOMAIN) == -1 && items.disabledWebsites.indexOf(DOMAIN) == -1",
-          items.closedWebsites.indexOf(DOMAIN) == -1 &&
-            items.disabledWebsites.indexOf(DOMAIN) == -1
-        )
         //if current domain is not on disabled or closed websites list
         if (
           items.closedWebsites.indexOf(DOMAIN) == -1 &&
           items.disabledWebsites.indexOf(DOMAIN) == -1
         ) {
-          console.log("not closed, not disabled")
           let activated = false
           if (isAlreadyActivated(items.activatedAffiliates)) {
             activated = true
           }
 
-          console.log("activated", activated)
           renderTopbar(activated)
         }
 
