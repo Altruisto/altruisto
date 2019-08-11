@@ -1,25 +1,25 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
-import { Switch } from "../../ui/Switch";
-import { useSnackbar } from "notistack";
-import { useAuthContext } from "../../../common/auth";
-import "./Settings.scss";
-import { Currency } from "./Currency";
-import { CauseArea } from "./CauseArea";
-import { ChangeEmail } from "./ChangeEmail";
-import { ChangePassword } from "./ChangePassword";
-import axios from "../../../common/api";
+import React, { useState, useEffect, ChangeEvent } from "react"
+import { Switch } from "../../ui/Switch"
+import { useSnackbar } from "notistack"
+import { useAuthContext } from "../../../common/auth"
+import "./Settings.scss"
+import { Currency } from "./Currency"
+import { CauseArea } from "./CauseArea"
+import { ChangeEmail } from "./ChangeEmail"
+import { ChangePassword } from "./ChangePassword"
+import axios from "../../../../helpers/api"
 
 type Props = {
-  onRequestLogin?: () => void;
-};
+  onRequestLogin?: () => void
+}
 
 export const Settings: React.FC<Props> = (props: Props) => {
-  const auth = useAuthContext();
-  const [notifications, setNotifications] = useState(true);
-  const [searchResults, setSearchResults] = useState(true);
-  const [currency, setCurrency] = useState("USD");
-  const [causeArea, setCauseArea] = useState("extreme_poverty");
-  const { enqueueSnackbar } = useSnackbar();
+  const auth = useAuthContext()
+  const [notifications, setNotifications] = useState(true)
+  const [searchResults, setSearchResults] = useState(true)
+  const [currency, setCurrency] = useState("USD")
+  const [causeArea, setCauseArea] = useState("extreme_poverty")
+  const { enqueueSnackbar } = useSnackbar()
 
   // TODO we should defer this call until user swipes to this page for the first time
   useEffect(() => {
@@ -31,11 +31,11 @@ export const Settings: React.FC<Props> = (props: Props) => {
           }
         })
         .then(response => {
-          setCurrency(response.data.currency);
-          setCauseArea(response.data.cause_area);
-        });
+          setCurrency(response.data.currency)
+          setCauseArea(response.data.cause_area)
+        })
     }
-  }, []);
+  }, [])
 
   // TODO: fix patch method so it gets only what it changes
   const updateSettings = settingToUpdate => {
@@ -44,8 +44,8 @@ export const Settings: React.FC<Props> = (props: Props) => {
         email: auth.user.email,
         causeArea,
         currency
-      };
-      const newSettings = { ...currentSettings, ...settingToUpdate };
+      }
+      const newSettings = { ...currentSettings, ...settingToUpdate }
 
       axios
         .patch(
@@ -60,26 +60,26 @@ export const Settings: React.FC<Props> = (props: Props) => {
         )
         .then(response => {
           if (response.status === 200) {
-            settingToUpdate.currency && setCurrency(settingToUpdate.currency);
-            settingToUpdate.causeArea && setCurrency(settingToUpdate.causeArea);
+            settingToUpdate.currency && setCurrency(settingToUpdate.currency)
+            settingToUpdate.causeArea && setCurrency(settingToUpdate.causeArea)
 
             enqueueSnackbar("Your settings have been updated", {
               variant: "success"
-            });
+            })
           }
         })
-        .catch(console.warn);
+        .catch(console.warn)
     } else {
       enqueueSnackbar("You have to be logged in to change this setting.", {
         variant: "error"
-      });
+      })
     }
-  };
+  }
 
   const handleLogout = () => {
-    auth.logout();
-    enqueueSnackbar("You have been logged out.", { variant: "success" });
-  };
+    auth.logout()
+    enqueueSnackbar("You have been logged out.", { variant: "success" })
+  }
 
   return (
     <div className="page">
@@ -156,5 +156,5 @@ export const Settings: React.FC<Props> = (props: Props) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}

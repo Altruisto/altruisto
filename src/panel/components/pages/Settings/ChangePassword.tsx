@@ -1,11 +1,11 @@
-import React from "react";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import colors from "../../../assets/scss/colors.scss";
-import { Loader } from "../../ui/Loader";
-import { useSnackbar } from "notistack";
+import React from "react"
+import { Formik, Field, ErrorMessage, Form } from "formik"
+import colors from "../../../assets/scss/colors.scss"
+import { Loader } from "../../ui/Loader"
+import { useSnackbar } from "notistack"
 
 export const ChangePassword = () => {
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar()
 
   return (
     <div className="settings__option settings__option--vertical m-t-0">
@@ -19,28 +19,28 @@ export const ChangePassword = () => {
         onSubmit={(values, actions) => {
           enqueueSnackbar("Your settings have been updated", {
             variant: "success"
-          });
-          actions.setSubmitting(false);
+          })
+          actions.setSubmitting(false)
         }}
         validate={values => {
           let errors: {
-            password?: string;
-            confirmPassword?: string;
-          } = {};
+            password?: string
+            confirmPassword?: string
+          } = {}
           if (!values.password) {
-            errors.password = "This field is required";
+            errors.password = "This field is required"
           }
           if (values.password !== undefined && values.password.length < 8) {
-            errors.password = "Password must have at least 8 characters";
+            errors.password = "Password must have at least 8 characters"
           }
           if (
             values.confirmPassword !== values.password &&
             values.confirmPassword !== "" &&
             values.password !== ""
           ) {
-            errors.confirmPassword = "Passwords do not match";
+            errors.confirmPassword = "Passwords do not match"
           }
-          return errors;
+          return errors
         }}
         render={({ errors, isSubmitting }) => (
           <Form noValidate>
@@ -84,5 +84,5 @@ export const ChangePassword = () => {
         )}
       />
     </div>
-  );
-};
+  )
+}

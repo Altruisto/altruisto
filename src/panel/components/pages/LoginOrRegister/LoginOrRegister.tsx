@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import Zoom from "@material-ui/core/Zoom";
+import React, { useState } from "react"
+import Zoom from "@material-ui/core/Zoom"
 // import classnames from "classnames";
 
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
-import { ForgotPasswordForm } from "./ForgotPasswordForm";
-import { AnimatedCheckmark } from "../../ui/AnimatedCheckmark";
-import close from "../../../assets/close.png";
-import logo from "../../../assets/logo.svg";
-import "./LoginOrRegister.scss";
+import LoginForm from "./LoginForm"
+import RegisterForm from "./RegisterForm"
+import { ForgotPasswordForm } from "./ForgotPasswordForm"
+import { AnimatedCheckmark } from "../../ui/AnimatedCheckmark"
+import close from "../../../assets/close.png"
+import logo from "../../../assets/logo.svg"
+import "./LoginOrRegister.scss"
 
 interface Props {
-  onClose: () => void;
+  onClose: () => void
 }
 
 enum Views {
@@ -23,13 +23,13 @@ enum Views {
 }
 
 export const LoginOrRegister: React.FC<Props> = (props: Props) => {
-  const [isShowing, setIsShowing] = useState(true);
-  const [activePage, setActivePage] = useState(Views.Register);
+  const [isShowing, setIsShowing] = useState(true)
+  const [activePage, setActivePage] = useState(Views.Register)
 
   const closePage = () => {
-    setIsShowing(false);
-    props.onClose();
-  };
+    setIsShowing(false)
+    props.onClose()
+  }
 
   const getForm = (subpage: Views): JSX.Element => {
     switch (subpage) {
@@ -39,19 +39,19 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
             onForgot={() => setActivePage(Views.ForgotPassword)}
             onSuccesfulLogin={() => closePage()}
           />
-        );
+        )
 
       case Views.Register:
         return (
           <RegisterForm
             onSuccess={() => {
-              setActivePage(Views.RegistrationSuccess);
+              setActivePage(Views.RegistrationSuccess)
               setTimeout(() => {
-                closePage();
-              }, 3000);
+                closePage()
+              }, 3000)
             }}
           />
-        );
+        )
 
       case Views.RegistrationSuccess:
         return (
@@ -63,7 +63,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               </strong>
             </p>
           </>
-        );
+        )
 
       case Views.ForgotPassword:
         return (
@@ -72,7 +72,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               setActivePage(Views.ForgotPasswordSuccess)
             }
           />
-        );
+        )
 
       case Views.ForgotPasswordSuccess:
         return (
@@ -84,9 +84,9 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               </strong>
             </p>
           </>
-        );
+        )
     }
-  };
+  }
 
   const getFooter = (subpage: Views): JSX.Element => {
     switch (subpage) {
@@ -101,7 +101,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               <span className="text-gradient">Sign up now.</span>
             </button>
           </>
-        );
+        )
 
       case Views.Register:
         return (
@@ -114,10 +114,10 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               <span className="text-gradient">Login now.</span>
             </button>
           </>
-        );
+        )
 
       case Views.RegistrationSuccess:
-        return <div />;
+        return <div />
 
       case Views.ForgotPassword:
         return (
@@ -129,12 +129,12 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               <span className="text-gradient">Go back to login form.</span>
             </button>
           </>
-        );
+        )
 
       case Views.ForgotPasswordSuccess:
-        return <div />;
+        return <div />
     }
-  };
+  }
 
   return (
     <Zoom in={isShowing}>
@@ -160,5 +160,5 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
         </div>
       </div>
     </Zoom>
-  );
-};
+  )
+}

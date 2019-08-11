@@ -1,22 +1,22 @@
 /* global chrome */
-import React, { useCallback, useMemo, useState, useContext } from "react";
-import axios from "../common/api";
+import React, { useCallback, useMemo, useState, useContext } from "react"
+import axios from "../../helpers/api"
 
 export type User = {
-  email: string;
-  apiKey: string;
-};
+  email: string
+  apiKey: string
+}
 
 export type Auth = {
-  isLoggedIn: boolean | undefined;
-  user: User | undefined;
-  login: (email: string, password: string) => Promise<User>;
-  logout: () => Promise<void>;
-};
+  isLoggedIn: boolean | undefined
+  user: User | undefined
+  login: (email: string, password: string) => Promise<User>
+  logout: () => Promise<void>
+}
 
 export type AuthProviderProps = {
-  children?: any;
-};
+  children?: any
+}
 
 export const AuthContext: React.Context<Auth> = React.createContext<Auth>({
   isLoggedIn: false,
@@ -27,16 +27,16 @@ export const AuthContext: React.Context<Auth> = React.createContext<Auth>({
   login: () => {
     console.warn(
       "You are using auth context without initial values (login call)"
-    );
-    return new Promise(resolve => resolve(undefined));
+    )
+    return new Promise(resolve => resolve(undefined))
   },
   logout: () => {
     console.warn(
       "You are using auth context without initial values (logout call)"
-    );
-    return new Promise(resolve => resolve());
+    )
+    return new Promise(resolve => resolve())
   }
-});
+})
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({
   children
@@ -45,58 +45,58 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     return new Promise(resolve => {
       if (process.env.NODE_ENV === "production") {
         chrome.storage.sync.get(["user"], function(result) {
-          resolve(result.user);
-        });
+          resolve(result.user)
+        })
       } else {
-        const storedUser = localStorage.getItem("user");
+        const storedUser = localStorage.getItem("user")
         storedUser === null
           ? resolve(undefined)
-          : resolve(JSON.parse(storedUser));
+          : resolve(JSON.parse(storedUser))
       }
-    });
-  };
+    })
+  }
 
   const setStoredUser = (user: User | undefined): Promise<User> => {
     return new Promise(resolve => {
       if (process.env.NODE_ENV === "production") {
         chrome.storage.sync.set({ user }, () => {
-          resolve(user);
+          resolve(user)
           // chrome.storage.sync.get(["apiKey"], function(result) {
           //   console.log("Value currently is " + result.apiKey);
           // });
-        });
+        })
       } else {
-        localStorage.setItem("user", JSON.stringify(user));
-        resolve(user);
+        localStorage.setItem("user", JSON.stringify(user))
+        resolve(user)
       }
-    });
-  };
+    })
+  }
 
   const removeStoredUser = (): Promise<null> => {
     return new Promise(resolve => {
       if (process.env.NODE_ENV === "production") {
         chrome.storage.sync.remove("user", () => {
-          resolve(null);
-        });
+          resolve(null)
+        })
       } else {
-        localStorage.removeItem("user");
-        resolve(null);
+        localStorage.removeItem("user")
+        resolve(null)
       }
-    });
-  };
+    })
+  }
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined);
-  const [user, setUser] = useState<User | undefined>(undefined);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined)
+  const [user, setUser] = useState<User | undefined>(undefined)
 
   if (typeof isLoggedIn === "undefined") {
     getStoredUser().then(storedUser => {
       if (typeof storedUser === "undefined") {
-        setIsLoggedIn(false);
+        setIsLoggedIn(false)
       } else {
-        setIsLoggedIn(true);
-        setUser(storedUser);
+        setIsLoggedIn(true)
+        setUser(storedUser)
       }
-    });
+    })
   }
 
   const login = (email: string, password: string): Promise<User> => {
@@ -115,29 +115,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
             return setStoredUser({
               email,
               apiKey: response.data.apiKey
-            }) as any; // typescript hack
+            }) as any // typescript hack
           } else {
-            reject(new Error("Technical problem. Please try again."));
+            reject(new Error("Technical problem. Please try again."))
           }
         })
         .then(storedUser => {
-          setIsLoggedIn(true);
-          setUser(storedUser);
-          resolve(storedUser);
+          setIsLoggedIn(true)
+          setUser(storedUser)
+          resolve(storedUser)
         })
-        .catch(error => reject(error));
-    });
-  };
+        .catch(error => reject(error))
+    })
+  }
 
   const logout = (): Promise<void> => {
     return removeStoredUser().then(() => {
-      setIsLoggedIn(false);
-      setUser(undefined);
-    });
-  };
+      setIsLoggedIn(false)
+      setUser(undefined)
+    })
+  }
 
-  const memoizedLogin = useCallback(login, []);
-  const memoizedLogout = useCallback(logout, []);
+  const memoizedLogin = useCallback(login, [])
+  const memoizedLogout = useCallback(logout, [])
 
   const memoizedAuth = useMemo(
     () => ({
@@ -147,11 +147,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
       user
     }),
     [user, isLoggedIn, memoizedLogin, memoizedLogout]
-  );
+  )
 
   return (
     <AuthContext.Provider value={memoizedAuth}>{children}</AuthContext.Provider>
-  );
-};
+  )
+}
 
-export const useAuthContext = () => useContext(AuthContext);
+export const useAuthContext = () => useContext(AuthContext)

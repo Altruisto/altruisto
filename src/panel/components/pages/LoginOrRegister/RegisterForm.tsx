@@ -1,61 +1,62 @@
-import React, { useState } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { Alert } from "../../ui/Alert";
-import axios from "../../../common/api";
-import { useAuthContext } from "../../../common/auth";
-import { Loader } from "../../ui/Loader";
+import * as browser from "webextension-polyfill"
+import React, { useState, useRef, useEffect } from "react"
+import { Formik, Field, Form, ErrorMessage } from "formik"
+import Checkbox from "@material-ui/core/Checkbox"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import { Alert } from "../../ui/Alert"
+import axios from "../../../../helpers/api"
+import { useAuthContext } from "../../../common/auth"
+import { Loader } from "../../ui/Loader"
 
 type Props = {
-  onSuccess?: () => void;
-};
+  onSuccess?: () => void
+}
 
 type FormData = {
-  email?: string;
-  confirmEmail?: string;
-  password?: string;
-  acceptTerms?: boolean;
-};
+  email?: string
+  confirmEmail?: string
+  password?: string
+  acceptTerms?: boolean
+}
 
 type ValidationErrors = {
-  email?: string;
-  confirmEmail?: string;
-  password?: string;
-  acceptTerms?: string;
-};
+  email?: string
+  confirmEmail?: string
+  password?: string
+  acceptTerms?: string
+}
 
 type RegistrationData = {
-  username: string;
-  accept_terms: boolean;
-  currency: "USD" | "EUR" | "PLN" | "NOK"; // @TODO
-  password: string;
-  reffered_by?: string;
-  installation_id?: number;
-};
+  username: string
+  accept_terms: boolean
+  currency: "USD" | "EUR" | "PLN" | "NOK" // @TODO
+  password: string
+  referred_by?: string
+  installation_id?: number
+}
 
 type LoginData = {
-  username: string;
-  password: string;
-};
+  username: string
+  password: string
+}
 
 const validate = (values: FormData) => {
-  let errors: ValidationErrors = {};
+  let errors: ValidationErrors = {}
   if (!values.email) {
-    errors.email = "This field is required";
+    errors.email = "This field is required"
   }
 
-  const regexp = /\S+@\S+\.\S+/;
+  const regexp = /\S+@\S+\.\S+/
   if (!regexp.test(String(values.email).toLowerCase())) {
-    errors.email = "Provided email address is not valid";
+    errors.email = "Provided email address is not valid"
   }
 
   if (!values.password) {
-    errors.password = "This field is required";
+    errors.password = "This field is required"
   }
 
   if (values.password !== undefined && values.password.length < 8) {
-    errors.password = "Password must have at least 8 characters";
+    errors.password = "Password must have at least 8 characters"
   }
 
   if (
@@ -63,19 +64,20 @@ const validate = (values: FormData) => {
     values.confirmEmail !== "" &&
     values.email !== ""
   ) {
-    errors.confirmEmail = "Emails do not match";
+    errors.confirmEmail = "Emails do not match"
   }
 
   if (!values.acceptTerms) {
-    errors.acceptTerms = "This field is required";
+    errors.acceptTerms = "This field is required"
   }
 
-  return errors;
-};
+  return errors
+}
 
 const RegisterForm: React.FC<Props> = (props: Props) => {
-  const [failureMessage, setFailureMessage] = useState("");
-  const auth = useAuthContext();
+  const [failureMessage, setFailureMessage] = useState("")
+  const installationData = useRef(null)
+  const auth = useAuthContext()
 
   return (
     <>
@@ -89,27 +91,42 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
           password: "",
           acceptTerms: false
         }}
-        onSubmit={(values, actions) => {
-          const registrationData: RegistrationData = {
+        onSubmit={async (values, actions) => {
+          if (!installationData.current) {
+            const fromStorage = await browser.storage.local.get([
+              "refferedBy",
+              "installationId"
+            ])
+
+            installationData.current = fromStorage
+          }
+
+          let registrationData: RegistrationData = {
             username: values.email,
             accept_terms: values.acceptTerms,
             currency: "USD",
             password: values.password
-            // @TODO - get this from localStoage / cookies
-            // "referred_by": "123",
-            // "installation_id": "123"
-          };
+          }
+
+          if (installationData && installationData.current) {
+            installationData.current.refferedBy &&
+              (registrationData.referred_by =
+                installationData.current.refferedBy)
+            installationData.current.installationId &&
+              (registrationData.installation_id =
+                installationData.current.installationId)
+          }
 
           axios
             .post<RegistrationData>("/register", registrationData)
             .then(response => {
               if (Number(response.status) === 201) {
-                return auth.login(values.email, values.password) as any; // typescript hack, not sure how to do it properly
+                return auth.login(values.email, values.password) as any // typescript hack, not sure how to do it properly
               }
             })
             .then(loggedUser => {
               if (loggedUser) {
-                props.onSuccess && props.onSuccess();
+                props.onSuccess && props.onSuccess()
               }
             })
             .catch(error => {
@@ -121,19 +138,19 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
                 Object.entries(error.response.data).forEach(([key, value]) => {
                   key === "username"
                     ? actions.setFieldError("email", String(value))
-                    : actions.setFieldError(String(key), String(value));
-                });
+                    : actions.setFieldError(String(key), String(value))
+                })
               } else {
                 setFailureMessage(
                   `There was a problem with your registration.
                   We were notified about it and will do our best
                   to solve it as quickly as possible.
                   Please do try again later.`
-                );
+                )
               }
-              actions.setSubmitting(false);
-              console.warn(error);
-            });
+              actions.setSubmitting(false)
+              console.warn(error)
+            })
         }}
         validateOnChange={false}
         validate={values => validate(values)}
@@ -192,8 +209,8 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
                 <Checkbox
                   value={values.acceptTerms}
                   onChange={event => {
-                    setFieldTouched("acceptTerms", true);
-                    setFieldValue("acceptTerms", Boolean(event.target.checked));
+                    setFieldTouched("acceptTerms", true)
+                    setFieldValue("acceptTerms", Boolean(event.target.checked))
                   }}
                 />
               }
@@ -231,7 +248,7 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
         )}
       />
     </>
-  );
-};
+  )
+}
 
-export default RegisterForm;
+export default RegisterForm

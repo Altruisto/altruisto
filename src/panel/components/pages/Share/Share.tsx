@@ -1,16 +1,16 @@
-import React from "react";
-import facebook from "../../../assets/facebook.svg";
-import twitter from "../../../assets/twitter.svg";
-import copy from "../../../assets/copy.svg";
-import copyToClipboard from "copy-to-clipboard";
-import { useSnackbar } from "notistack";
-import { TwitterCarousel } from "./TwitterCarousel";
+import React from "react"
+import facebook from "../../../assets/facebook.svg"
+import twitter from "../../../assets/twitter.svg"
+import copy from "../../../assets/copy.svg"
+import copyToClipboard from "copy-to-clipboard"
+import { useSnackbar } from "notistack"
+import { TwitterCarousel } from "./TwitterCarousel"
 
-import "./Share.scss";
+import "./Share.scss"
 
 export const Share: React.FC = () => {
-  const { enqueueSnackbar } = useSnackbar();
-  const refferalsNumber = 0;
+  const { enqueueSnackbar } = useSnackbar()
+  const refferalsNumber = 0
 
   return (
     <div className="page">
@@ -68,11 +68,11 @@ export const Share: React.FC = () => {
               <button
                 className="button-link"
                 onClick={() => {
-                  copyToClipboard("/?ref=aE4tf");
+                  copyToClipboard("/?ref=aE4tf")
                   enqueueSnackbar("Copied to clipboard!", {
                     variant: "info",
                     autoHideDuration: 900
-                  });
+                  })
                 }}
               >
                 <img src={copy} alt="Copy ref link" title="Copy icon" />
@@ -85,12 +85,12 @@ export const Share: React.FC = () => {
               name="ref-link"
               value="/?ref=aE4tf"
               onClick={event => {
-                copyToClipboard("/?ref=aE4tf");
+                copyToClipboard("/?ref=aE4tf")
                 enqueueSnackbar("Copied to clipboard!", {
                   variant: "info",
                   autoHideDuration: 900
-                });
-                event.target.blur();
+                })
+                event.target.blur()
               }}
             />
           </div>
@@ -109,5 +109,5 @@ export const Share: React.FC = () => {
       <h1 className="container">Talking about us:</h1>
       <TwitterCarousel />
     </div>
-  );
-};
+  )
+}

@@ -1,8 +1,8 @@
-import React from "react";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import { SelectInput } from "../../ui/SelectInput";
-import { withStyles } from "@material-ui/core/styles";
+import React from "react"
+import MenuItem from "@material-ui/core/MenuItem"
+import Select from "@material-ui/core/Select"
+import { SelectInput } from "../../ui/SelectInput"
+import { withStyles } from "@material-ui/core/styles"
 
 const CurrencyInput = withStyles(() => ({
   root: {
@@ -12,7 +12,7 @@ const CurrencyInput = withStyles(() => ({
     width: "auto",
     fontSize: 14
   }
-}))(SelectInput);
+}))(SelectInput)
 
 // type Props = {
 //   value?: string | number;
@@ -31,5 +31,5 @@ export const Currency = props => {
         <MenuItem value="PLN">PLN</MenuItem>
       </Select>
     </div>
-  );
-};
+  )
+}

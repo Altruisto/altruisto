@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { withStyles } from "@material-ui/core/styles";
-import { useAuthContext } from "./common/auth";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import SwipeableViews from "react-swipeable-views";
-import { Header } from "./components/Header";
-import Paper from "@material-ui/core/Paper";
-import { SettingsIcon } from "./components/icons/SettingsIcon";
-import { ShareIcon } from "./components/icons/ShareIcon";
-import { WalletIcon } from "./components/icons/WalletIcon";
-import { ProfileIcon } from "./components/icons/ProfileIcon";
-import { LoginOrRegister } from "./components/pages/LoginOrRegister/LoginOrRegister";
-import { Share } from "./components/pages/Share/Share";
-import { Donate } from "./components/pages/Donate/Donate";
-import { Settings } from "./components/pages/Settings/Settings";
+import React, { useState } from "react"
+import { withStyles } from "@material-ui/core/styles"
+import { useAuthContext } from "./common/auth"
+import Tabs from "@material-ui/core/Tabs"
+import Tab from "@material-ui/core/Tab"
+import SwipeableViews from "react-swipeable-views"
+import { Header } from "./components/Header"
+import Paper from "@material-ui/core/Paper"
+import { SettingsIcon } from "./components/icons/SettingsIcon"
+import { ShareIcon } from "./components/icons/ShareIcon"
+import { WalletIcon } from "./components/icons/WalletIcon"
+import { ProfileIcon } from "./components/icons/ProfileIcon"
+import { LoginOrRegister } from "./components/pages/LoginOrRegister/LoginOrRegister"
+import { Share } from "./components/pages/Share/Share"
+import { Donate } from "./components/pages/Donate/Donate"
+import { Settings } from "./components/pages/Settings/Settings"
 
 type Props = {
   classes: {
-    tab: string;
-  };
-};
+    tab: string
+  }
+}
 
 const styles = () => ({
   tab: {
@@ -27,14 +27,14 @@ const styles = () => ({
     "text-transform": "none",
     "font-size": "12px"
   }
-});
+})
 
 const Main: React.FC<Props> = (props: Props) => {
-  const auth = useAuthContext();
-  const [showLoginPopup, setShowLoginPopup] = useState(false);
-  const [activeTab, setActiveTab] = useState(0);
+  const auth = useAuthContext()
+  const [showLoginPopup, setShowLoginPopup] = useState(false)
+  const [activeTab, setActiveTab] = useState(0)
 
-  const { classes } = props;
+  const { classes } = props
 
   return (
     <>
@@ -103,7 +103,7 @@ const Main: React.FC<Props> = (props: Props) => {
         </Tabs>
       </Paper>
     </>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(Main);
+export default withStyles(styles)(Main)

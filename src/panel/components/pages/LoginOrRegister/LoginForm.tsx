@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { Alert } from "../../ui/Alert";
-import { Loader } from "../../ui/Loader";
-import { useAuthContext } from "../../../common/auth";
-import "./LoginForm.scss";
+import React, { useState } from "react"
+import { Formik, Field, Form, ErrorMessage } from "formik"
+import { Alert } from "../../ui/Alert"
+import { Loader } from "../../ui/Loader"
+import { useAuthContext } from "../../../common/auth"
+import "./LoginForm.scss"
 
 type Props = {
-  onForgot?: () => void;
-  onSuccesfulLogin?: () => void;
-};
+  onForgot?: () => void
+  onSuccesfulLogin?: () => void
+}
 
 type ValidationErors = {
-  email?: string;
-  password?: string;
-};
+  email?: string
+  password?: string
+}
 
 const LoginForm: React.FC<Props> = (props: Props) => {
-  const [failureMessage, setFailureMessage] = useState("");
-  const auth = useAuthContext();
+  const [failureMessage, setFailureMessage] = useState("")
+  const auth = useAuthContext()
 
   return (
     <>
@@ -28,7 +28,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
           auth
             .login(values.email, values.password)
             .then(() => {
-              props.onSuccesfulLogin && props.onSuccesfulLogin();
+              props.onSuccesfulLogin && props.onSuccesfulLogin()
             })
             .catch(error => {
               if (
@@ -36,30 +36,30 @@ const LoginForm: React.FC<Props> = (props: Props) => {
                 error.response.data &&
                 error.response.data.message
               ) {
-                setFailureMessage(String(error.response.data.message));
+                setFailureMessage(String(error.response.data.message))
               } else {
-                setFailureMessage("Something went wrong, please try again.");
+                setFailureMessage("Something went wrong, please try again.")
               }
-              console.warn(error);
-              actions.setSubmitting(false);
-            });
+              console.warn(error)
+              actions.setSubmitting(false)
+            })
         }}
         validate={values => {
-          let errors: ValidationErors = {};
+          let errors: ValidationErors = {}
           if (!values.email) {
-            errors.email = "This field is required";
+            errors.email = "This field is required"
           }
 
-          const regexp = /\S+@\S+\.\S+/;
+          const regexp = /\S+@\S+\.\S+/
           if (!regexp.test(String(values.email).toLowerCase())) {
-            errors.email = "Provided email address is not valid";
+            errors.email = "Provided email address is not valid"
           }
 
           if (!values.password) {
-            errors.password = "This field is required";
+            errors.password = "This field is required"
           }
 
-          return errors;
+          return errors
         }}
         render={({ isSubmitting }) => (
           <Form className="login-form" noValidate>
@@ -87,7 +87,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
                   className="button-link login-form__forgot-password"
                   type="button"
                   onClick={() => {
-                    props.onForgot && props.onForgot();
+                    props.onForgot && props.onForgot()
                   }}
                 >
                   Forgot
@@ -111,7 +111,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
         )}
       />
     </>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

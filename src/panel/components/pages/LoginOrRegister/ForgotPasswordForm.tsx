@@ -1,17 +1,17 @@
-import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Loader } from "../../ui/Loader";
-import { useAuthContext } from "../../../common/auth";
-import axios from "../../../common/api";
-import { useSnackbar } from "notistack";
+import React from "react"
+import { Formik, Form, Field, ErrorMessage } from "formik"
+import { Loader } from "../../ui/Loader"
+import { useAuthContext } from "../../../common/auth"
+import axios from "../../../../helpers/api"
+import { useSnackbar } from "notistack"
 
 type Props = {
-  onSuccessfulPasswordReset?: () => void;
-};
+  onSuccessfulPasswordReset?: () => void
+}
 
 export const ForgotPasswordForm: React.FC<Props> = props => {
-  const auth = useAuthContext();
-  const { enqueueSnackbar } = useSnackbar();
+  const auth = useAuthContext()
+  const { enqueueSnackbar } = useSnackbar()
   return (
     <div>
       <p>
@@ -27,7 +27,7 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
             })
             .then(() => {
               props.onSuccessfulPasswordReset &&
-                props.onSuccessfulPasswordReset();
+                props.onSuccessfulPasswordReset()
             })
             .catch(error => {
               enqueueSnackbar(
@@ -35,23 +35,23 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
                 {
                   variant: "error"
                 }
-              );
-              actions.setSubmitting(false);
-              console.warn(error);
-            });
+              )
+              actions.setSubmitting(false)
+              console.warn(error)
+            })
         }}
         validate={values => {
           let errors: {
-            email?: string;
-          } = {};
+            email?: string
+          } = {}
           if (!values.email) {
-            errors.email = "This field is required";
+            errors.email = "This field is required"
           }
-          const regexp = /\S+@\S+\.\S+/;
+          const regexp = /\S+@\S+\.\S+/
           if (!regexp.test(String(values.email).toLowerCase())) {
-            errors.email = "Provided email address is not valid";
+            errors.email = "Provided email address is not valid"
           }
-          return errors;
+          return errors
         }}
         render={({ errors, values, isSubmitting }) => (
           <Form noValidate>
@@ -73,5 +73,5 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
         )}
       />
     </div>
-  );
-};
+  )
+}

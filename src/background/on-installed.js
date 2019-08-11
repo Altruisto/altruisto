@@ -1,8 +1,9 @@
 import * as browser from "webextension-polyfill"
 import { getPartnersList } from "../helpers/get-partners-list.js"
+import axios from "../helpers/api"
 
 export function onInstalled() {
-  browser.runtime.onInstalled.addListener(function(details) {
+  browser.runtime.onInstalled.addListener(async function(details) {
     //add alarms - these are used sort of like cron jobs here
     browser.alarms.create("clearClosedWebsites", { periodInMinutes: 60 }) //every 60 min redisplay topbar on the websites that users closed it
     browser.alarms.create("clearDisabledWebsites", { periodInMinutes: 1440 }) //every 24h redisplay topbar on websites that user visited through other affiliate's link
@@ -13,6 +14,21 @@ export function onInstalled() {
 
     //open welcome page for new installs
     if (details.reason == "install") {
+      const refCookie = await browser.cookies.get({
+        url: "https://altruisto.com",
+        name: "r"
+      })
+      const installationId = await axios
+        .post("/installations", {
+          ref: refCookie ? refCookie.value : ""
+        })
+        .then(response => response.data.installation_id)
+
+      browser.storage.local.set({
+        refferedBy: refCookie ? refCookie.value : "",
+        installationId
+      })
+
       browser.tabs.create({ url: "https://altruisto.com/welcome/" })
     }
   })
