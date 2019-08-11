@@ -1,13 +1,13 @@
-import React from "react";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import colors from "../../../assets/scss/colors.scss";
-import { Loader } from "../../ui/Loader";
-import { useAuthContext } from "../../../common/auth";
-import { useSnackbar } from "notistack";
+import React from "react"
+import { Formik, Field, ErrorMessage, Form } from "formik"
+import colors from "../../../assets/scss/colors.scss"
+import { Loader } from "../../ui/Loader"
+import { useAuthContext } from "../../../common/auth"
+import { useSnackbar } from "notistack"
 
 export const ChangeEmail = () => {
-  const auth = useAuthContext();
-  const { enqueueSnackbar } = useSnackbar();
+  const auth = useAuthContext()
+  const { enqueueSnackbar } = useSnackbar()
 
   return (
     <div className="settings__option settings__option--vertical">
@@ -20,21 +20,21 @@ export const ChangeEmail = () => {
         onSubmit={(values, actions) => {
           enqueueSnackbar("Your settings have been updated", {
             variant: "success"
-          });
-          actions.setSubmitting(false);
+          })
+          actions.setSubmitting(false)
         }}
         validate={values => {
           let errors: {
-            email?: string;
-          } = {};
+            email?: string
+          } = {}
           if (!values.email) {
-            errors.email = "This field is required";
+            errors.email = "This field is required"
           }
-          const regexp = /\S+@\S+\.\S+/;
+          const regexp = /\S+@\S+\.\S+/
           if (!regexp.test(String(values.email).toLowerCase())) {
-            errors.email = "Provided email address is not valid";
+            errors.email = "Provided email address is not valid"
           }
-          return errors;
+          return errors
         }}
         render={({ errors, values, isSubmitting }) => (
           <Form noValidate>
@@ -70,5 +70,5 @@ export const ChangeEmail = () => {
         )}
       />
     </div>
-  );
-};
+  )
+}

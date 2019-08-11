@@ -1,14 +1,14 @@
-import React from "react";
-import "./Header.scss";
-import logo from "../assets/logo.svg";
+import React from "react"
+import "./Header.scss"
+import logo from "../assets/logo.svg"
 
 interface User {
-  email: string;
+  email: string
 }
 
 interface Props {
-  user?: User;
-  onLoginOrRegisterClick: () => void;
+  user?: User
+  onLoginOrRegisterClick: () => void
 }
 
 export const Header: React.FC<Props> = (props: Props) => {
@@ -34,5 +34,5 @@ export const Header: React.FC<Props> = (props: Props) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}

@@ -2,12 +2,18 @@ import React from "react"
 import "./Switch.scss"
 
 type Props = {
-  on: boolean;
+  on: boolean
 }
 
-export const Switch: React.FC<Props & React.HTMLAttributes<HTMLButtonElement>> = (props) => {
-  const { on, className = '', ...buttonProps } = props
-  const buttonClassName = [className, 'switch__button', on ? 'switch__button--on' : 'switch__button--off'].join(' ')
+export const Switch: React.FC<
+  Props & React.HTMLAttributes<HTMLButtonElement>
+> = props => {
+  const { on, className = "", ...buttonProps } = props
+  const buttonClassName = [
+    className,
+    "switch__button",
+    on ? "switch__button--on" : "switch__button--off"
+  ].join(" ")
 
   return (
     <div className="switch">
@@ -26,5 +32,5 @@ export const Switch: React.FC<Props & React.HTMLAttributes<HTMLButtonElement>> =
         {...buttonProps}
       />
     </div>
-    ) 
-} 
+  )
+}

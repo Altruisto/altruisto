@@ -1,12 +1,12 @@
-import React, { CSSProperties } from "react";
-import "./Loader.scss";
+import React, { CSSProperties } from "react"
+import "./Loader.scss"
 
 type Props = {
-  color?: string;
-  speed?: number; // to be implemented
-  size?: number;
-  style?: CSSProperties;
-};
+  color?: string
+  speed?: number // to be implemented
+  size?: number
+  style?: CSSProperties
+}
 
 export const Loader: React.FC<Props> = props => {
   const style: CSSProperties = {
@@ -15,7 +15,7 @@ export const Loader: React.FC<Props> = props => {
     width: props.size ? `${props.size}px` : undefined,
     borderBottom: "2px solid transparent",
     ...props.style
-  };
+  }
   // if (props.color) {
   //   style.border = `2px solid ${props.color}`;
   // }
@@ -27,5 +27,5 @@ export const Loader: React.FC<Props> = props => {
     <div className="ball-clip-rotate">
       <div style={style} />
     </div>
-  );
-};
+  )
+}

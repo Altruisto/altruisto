@@ -1,8 +1,8 @@
-import React from "react";
-import "./IconBox.scss";
+import React from "react"
+import "./IconBox.scss"
 
 interface Props {
-  icon: React.ReactElement;
+  icon: React.ReactElement
 }
 
 const IconBox: React.FC<Props> = props => {
@@ -11,7 +11,7 @@ const IconBox: React.FC<Props> = props => {
       <div className="iconbox__icon">{props.icon}</div>
       <div className="iconbox__content">{props.children}</div>
     </div>
-  );
-};
+  )
+}
 
-export default IconBox;
+export default IconBox

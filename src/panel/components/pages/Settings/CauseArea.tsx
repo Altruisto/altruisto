@@ -1,7 +1,7 @@
-import React from "react";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import { SelectInput } from "../../ui/SelectInput";
+import React from "react"
+import MenuItem from "@material-ui/core/MenuItem"
+import Select from "@material-ui/core/Select"
+import { SelectInput } from "../../ui/SelectInput"
 export const CauseArea = props => {
   return (
     <div className="settings__option settings__option--vertical">
@@ -13,5 +13,5 @@ export const CauseArea = props => {
         <MenuItem value="animals_welfare">Animals Suffering Reduction</MenuItem>
       </Select>
     </div>
-  );
-};
+  )
+}

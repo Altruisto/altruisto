@@ -1,7 +1,7 @@
-import React, { useMemo } from "react";
-import IconBox from "../../ui/IconBox";
-import { WalletIcon } from "../../icons/WalletIcon";
-import transformUsdToBeingsSaved from "../../../common/utils/transform-usd-to-beings-saved";
+import React, { useMemo } from "react"
+import IconBox from "../../ui/IconBox"
+import { WalletIcon } from "../../icons/WalletIcon"
+import transformUsdToBeingsSaved from "../../../common/utils/transform-usd-to-beings-saved"
 
 enum Views {
   PartnerNotActivated,
@@ -12,27 +12,27 @@ enum Views {
 export const Donate: React.FC = () => {
   const getRandomImpactHighlight = () => {
     function asLiterals<T extends string>(arr: T[]): T[] {
-      return arr;
+      return arr
     }
-    const charities = asLiterals(["AMF", "SCI"]);
-    const randomItem = Math.floor(Math.random() * charities.length);
+    const charities = asLiterals(["AMF", "SCI"])
+    const randomItem = Math.floor(Math.random() * charities.length)
     const beingsSaved = transformUsdToBeingsSaved(
       100 * 0.03,
       charities[randomItem]
-    );
+    )
 
     switch (charities[randomItem]) {
       case "AMF":
         return `protect ${beingsSaved} ${
           beingsSaved === 1 ? "person" : "people"
-        } from malaria`;
+        } from malaria`
 
       case "SCI":
-        return `${beingsSaved} children get cured from parasites`;
+        return `${beingsSaved} children get cured from parasites`
     }
-  };
+  }
 
-  const memoizedImpactHighlight = useMemo(() => getRandomImpactHighlight(), []);
+  const memoizedImpactHighlight = useMemo(() => getRandomImpactHighlight(), [])
 
   return (
     <div className="page">
@@ -68,5 +68,5 @@ export const Donate: React.FC = () => {
         <strong>{memoizedImpactHighlight}</strong>
       </IconBox>
     </div>
-  );
-};
+  )
+}

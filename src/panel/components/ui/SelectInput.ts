@@ -1,5 +1,5 @@
-import InputBase from "@material-ui/core/InputBase";
-import { withStyles } from "@material-ui/core/styles";
+import InputBase from "@material-ui/core/InputBase"
+import { withStyles } from "@material-ui/core/styles"
 
 export const SelectInput = withStyles(theme => ({
   root: {
@@ -20,4 +20,4 @@ export const SelectInput = withStyles(theme => ({
       backgroundColor: "#fff"
     }
   }
-}))(InputBase);
+}))(InputBase)
