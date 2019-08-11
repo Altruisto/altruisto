@@ -67,7 +67,8 @@ module.exports = (env, argv) => [
     name: "chrome",
     entry: {
       background: PATHS.src + "/background.js",
-      content: PATHS.src + "/content.js"
+      content: PATHS.src + "/content.js",
+      google: PATHS.src + "/search_results/google.js"
     },
     output: {
       path: PATHS.build + "/chrome/",
@@ -134,7 +135,8 @@ module.exports = (env, argv) => [
     name: "firefox",
     entry: {
       background: PATHS.src + "/background.js",
-      content: PATHS.src + "/content.js"
+      content: PATHS.src + "/content.js",
+      google: PATHS.src + "/search_results/google.js"
     },
     output: {
       path: PATHS.build + "/firefox/",

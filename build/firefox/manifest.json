@@ -25,6 +25,25 @@
       "js": ["content.js"],
       "matches": ["*://*/*"],
       "run_at": "document_end"
+    },
+    {
+      "matches": ["*://*/*"],
+      "include_globs": [
+        "*://google.??",
+        "*://google.??/*",
+        "*://google.???",
+        "*://google.???/*",
+        "*://google.??.??",
+        "*://google.??.??/*",
+        "*://www.google.??",
+        "*://www.google.??/*",
+        "*://www.google.???",
+        "*://www.google.???/*",
+        "*://www.google.??.??",
+        "*://www.google.??.??/*"
+      ],
+      "js": ["google.js"],
+      "run_at": "document_end"
     }
   ],
   "permissions": [

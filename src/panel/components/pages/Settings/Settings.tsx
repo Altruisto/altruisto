@@ -1,3 +1,4 @@
+import * as browser from "webextension-polyfill"
 import React, { useState, useEffect, ChangeEvent } from "react"
 import { Switch } from "../../ui/Switch"
 import { useSnackbar } from "notistack"
@@ -21,7 +22,7 @@ export const Settings: React.FC<Props> = (props: Props) => {
   const [causeArea, setCauseArea] = useState("extreme_poverty")
   const { enqueueSnackbar } = useSnackbar()
 
-  // TODO we should defer this call until user swipes to this page for the first time
+  // TODO: we should defer this call until user swipes to this page for the first time
   useEffect(() => {
     if (auth.user && auth.user.apiKey) {
       axios
@@ -35,9 +36,19 @@ export const Settings: React.FC<Props> = (props: Props) => {
           setCauseArea(response.data.cause_area)
         })
     }
+
+    browser.storage.sync
+      .get({
+        showNotifications: true,
+        highlightSearchResults: true
+      })
+      .then(settings => {
+        setNotifications(settings.showNotifications)
+        setSearchResults(settings.highlightSearchResults)
+      })
   }, [])
 
-  // TODO: fix patch method so it gets only what it changes
+  // TODO: fix patch method in backend so it gets only what it changes
   const updateSettings = settingToUpdate => {
     if (auth.user && auth.user.apiKey) {
       const currentSettings = {
@@ -92,7 +103,12 @@ export const Settings: React.FC<Props> = (props: Props) => {
             <span className="settings__label">Notifications</span>
             <Switch
               on={notifications}
-              onClick={() => setNotifications(v => !v)}
+              onClick={() =>
+                setNotifications(v => {
+                  browser.storage.sync.set({ showNotifications: !v })
+                  return !v
+                })
+              }
             />
           </div>
           <p className="settings__description">
@@ -107,7 +123,12 @@ export const Settings: React.FC<Props> = (props: Props) => {
             </span>
             <Switch
               on={searchResults}
-              onClick={() => setSearchResults(v => !v)}
+              onClick={() =>
+                setSearchResults(v => {
+                  browser.storage.sync.set({ highlightSearchResults: !v })
+                  return !v
+                })
+              }
             />
           </div>
         </div>
