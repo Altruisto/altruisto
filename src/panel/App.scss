@@ -248,6 +248,12 @@ a {
   justify-content: center !important;
 }
 
+.col-6 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+}
+
 // helpers
 $spaceamounts: (0, 5, 10, 20, 30);
 $sides: (top, bottom, left, right);
