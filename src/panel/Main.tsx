@@ -14,6 +14,7 @@ import { LoginOrRegister } from "./components/pages/LoginOrRegister/LoginOrRegis
 import { Share } from "./components/pages/Share/Share"
 import { Donate } from "./components/pages/Donate/Donate"
 import { Settings } from "./components/pages/Settings/Settings"
+import { YourHelp } from "./components/pages/YourHelp/YourHelp"
 
 type Props = {
   classes: {
@@ -62,7 +63,10 @@ const Main: React.FC<Props> = (props: Props) => {
         >
           <Share />
           <Donate />
-          <div>Your Help</div>
+          <YourHelp
+            onRequestLogin={() => setShowLoginPopup(true)}
+            isActive={activeTab === 2}
+          />
           <Settings onRequestLogin={() => setShowLoginPopup(true)} />
         </SwipeableViews>
       </div>
