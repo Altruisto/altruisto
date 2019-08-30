@@ -33,7 +33,7 @@ const styles = () => ({
 const Main: React.FC<Props> = (props: Props) => {
   const auth = useAuthContext()
   const [showLoginPopup, setShowLoginPopup] = useState(false)
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeTab, setActiveTab] = useState(1)
 
   const { classes } = props
 

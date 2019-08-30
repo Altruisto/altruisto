@@ -29,7 +29,10 @@ export function onInstalled() {
 
       browser.storage.local.set({
         refferedBy: refCookie ? refCookie.value : "",
-        installationId,
+        installationId
+      })
+
+      browser.storage.sync.set({
         ref
       })
 
