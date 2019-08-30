@@ -18,15 +18,19 @@ export function onInstalled() {
         url: "https://altruisto.com",
         name: "r"
       })
-      const installationId = await axios
+      const { installationId, ref } = await axios
         .post("/installations", {
-          ref: refCookie ? refCookie.value : ""
+          referredBy: refCookie ? refCookie.value : ""
         })
-        .then(response => response.data.installation_id)
+        .then(response => ({
+          installationId: response.data.installation_id,
+          ref: response.data.ref
+        }))
 
       browser.storage.local.set({
         refferedBy: refCookie ? refCookie.value : "",
-        installationId
+        installationId,
+        ref
       })
 
       browser.tabs.create({ url: "https://altruisto.com/welcome/" })
