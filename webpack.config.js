@@ -121,12 +121,20 @@ module.exports = (env, argv) => [
     module: {
       rules: [
         {
-          test: /\.css$/,
-          loader: "css-loader"
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          loader: "ts-loader",
+          options: {
+            transpileOnly: argv.prototype
+          }
         },
         {
-          test: /\.html$/,
-          loader: "mustache-loader?minify"
+          test: /\.css$|\.scss$/,
+          use: ["css-loader", "sass-loader"]
+        },
+        {
+          test: /\.hbs$/,
+          loader: "handlebars-loader"
         }
       ]
     }
@@ -193,12 +201,20 @@ module.exports = (env, argv) => [
     module: {
       rules: [
         {
-          test: /\.css$/,
-          loader: "css-loader"
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          loader: "ts-loader",
+          options: {
+            transpileOnly: argv.prototype
+          }
         },
         {
-          test: /\.html$/,
-          loader: "mustache-loader?minify"
+          test: /\.css$|\.scss$/,
+          use: ["css-loader", "sass-loader"]
+        },
+        {
+          test: /\.hbs$/,
+          loader: "handlebars-loader"
         }
       ]
     }
