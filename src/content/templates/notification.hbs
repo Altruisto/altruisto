@@ -1,0 +1,21 @@
+<div class="altruisto-notification">
+  <button class="altruisto-notification__close">
+    <img src="{{ ASSETS_PATHS.icons.close }}" srcset="{{ ASSETS_PATHS.icons.close }},
+             {{ ASSETS_PATHS.icons.close2x }} 2x,
+             {{ ASSETS_PATHS.icons.close3x }} 3x" alt="close icon" title="close icon" />
+  </button>
+  <div class="altruisto-notification__logo">
+    <img src="{{ ASSETS_PATHS.icons.logo }}" alt="Altruisto.com logo" title="Altruisto.com logo" />
+  </div>
+  <div class="altruisto-notification__content">
+    <div class="altruisto-notification__text">
+      {{ text }}
+    </div>
+    {{#if primaryButtonLabel}}
+    <div class="altruisto-notification__button-wrapper">
+      <a href="{{ primaryButtonDestination }}" class="altruisto-notification__button">
+        <span class="altruisto-notification__button-text">{{ primaryButtonLabel }}</span></a>
+    </div>
+    {{/if}}
+  </div>
+</div>

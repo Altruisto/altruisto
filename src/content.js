@@ -1,7 +1,13 @@
 import * as browser from "webextension-polyfill"
-import displayTopbar from "./content/topbar.js"
+// import displayTopbar from "./content/topbar.js"
 
-/* Load settings and act accordingly */
+import { notification } from "./content/templates/notification.ts"
+
+notification({
+  text:
+    "Start raising money for charities with this website by clicking here: ",
+  primaryButtonLabel: "Activate donation"
+})
 
 browser.storage.sync
   .get({
