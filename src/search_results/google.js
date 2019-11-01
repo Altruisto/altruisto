@@ -1,9 +1,13 @@
 import * as browser from "webextension-polyfill"
-import { extractDomain } from "../helpers/extract-domain"
-import { ASSETS_PATHS } from "../helpers/assets-paths"
+import {
+  extractDomain
+} from "../helpers/extract-domain"
+import {
+  ASSETS_PATHS
+} from "../helpers/assets-paths"
 
 const SEARCH_RESULT_QUERY = ".g"
-const RESULT_URL_QUERY = "cite"
+const RESULT_URL_QUERY = "a:first-of-type"
 const RESULT_HEADER_QUERY = ".r"
 
 const highlightSearchResult = (result, domain) => {
@@ -23,12 +27,14 @@ const highlightSearchResult = (result, domain) => {
   header.prepend(highlight)
 }
 
-browser.storage.sync.get({ highlightSearchResults: true }).then(settings => {
+browser.storage.sync.get({
+  highlightSearchResults: true
+}).then(settings => {
   if (settings.highlightSearchResults) {
     browser.storage.local.get("partners").then(storage => {
       const results = document.querySelectorAll(SEARCH_RESULT_QUERY)
       results.forEach(result => {
-        const url = result.querySelector(RESULT_URL_QUERY).innerText
+        const url = result.querySelector(RESULT_URL_QUERY).href
         const domain = extractDomain(url)
         if (storage.partners.indexOf(domain) !== -1) {
           highlightSearchResult(result, domain)
