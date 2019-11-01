@@ -10,6 +10,7 @@ type NotificationOptions = {
   primaryButtonDestination?: string
   secondaryButtonLabel?: string
   secondaryButtoDestination?: string
+  onClose?: () => void
 }
 
 export const notification = (options: NotificationOptions) => {
@@ -22,6 +23,7 @@ export const notification = (options: NotificationOptions) => {
   )
   closeButton.addEventListener("click", () => {
     notificationElement.classList.remove("altruisto-notification--in")
+    options.onClose && options.onClose()
   })
 
   document.documentElement.prepend(styleElement)
