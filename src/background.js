@@ -1,14 +1,21 @@
-import { onInstalled } from "./background/on-installed.js"
+import {
+  onInstalled
+} from "./background/on-installed.js"
+import {
+  onAlarm
+} from "./background/on-alarm.js"
+import {
+  activateMonetizing
+} from "./background/activate-monetizing.js"
+import {
+  deactivateMonetizing
+} from "./background/deactivate-monetizing.js"
+import {
+  recognizeOtherAffiliates
+} from "./background/recognize-other-affiliates.js"
+
 onInstalled()
-
-import { onAlarm } from "./background/on-alarm.js"
 onAlarm()
-
-import { activateMonetizing } from "./background/activate-monetizing.js"
 activateMonetizing()
-
-import { deactivateMonetizing } from "./background/deactivate-monetizing.js"
 deactivateMonetizing()
-
-import { recognizeOtherAffiliates } from "./background/recognize-other-affiliates.js"
 recognizeOtherAffiliates()
