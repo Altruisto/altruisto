@@ -1,13 +1,28 @@
 import * as browser from "webextension-polyfill"
-import { getPartnersList } from "../helpers/get-partners-list.js"
+import {
+  getPartnersList
+} from "../helpers/get-partners-list.js"
 import axios from "../helpers/api"
+import {
+  formatDate
+} from "../helpers/format-date.ts"
 
 export function onInstalled() {
-  browser.runtime.onInstalled.addListener(async function(details) {
+  browser.runtime.onInstalled.addListener(async function (details) {
     //add alarms - these are used sort of like cron jobs here
-    browser.alarms.create("clearClosedWebsites", { periodInMinutes: 60 }) //every 60 min redisplay topbar on the websites that users closed it
-    browser.alarms.create("clearDisabledWebsites", { periodInMinutes: 1440 }) //every 24h redisplay topbar on websites that user visited through other affiliate's link
-    browser.alarms.create("getPartnersList", { periodInMinutes: 1440 }) // every 24h update partners list from api
+    browser.alarms.create("clearClosedWebsites", {
+      periodInMinutes: 60
+    }) //every 60 min redisplay topbar on the websites that users closed it
+    browser.alarms.create("clearDisabledWebsites", {
+      periodInMinutes: 1440
+    }) //every 24h redisplay topbar on websites that user visited through other affiliate's link
+    browser.alarms.create("getPartnersList", {
+      periodInMinutes: 1440
+    }) // every 6h fetch public notifications
+    browser.alarms.create("getPublicNotificationsAndShowFirst", {
+      // periodInMinutes: 360
+      periodInMinutes: 1
+    }) // every 24h update partners list from api
 
     //get list of partner shops from api
     getPartnersList()
@@ -18,7 +33,10 @@ export function onInstalled() {
         url: "https://altruisto.com",
         name: "r"
       })
-      const { installationId, ref } = await axios
+      const {
+        installationId,
+        ref
+      } = await axios
         .post("/installations", {
           referredBy: refCookie ? refCookie.value : ""
         })
@@ -26,6 +44,12 @@ export function onInstalled() {
           installationId: response.data.installation_id,
           ref: response.data.ref
         }))
+        .catch(console.warn)
+
+      const publicNotifications = {
+        lastUpdateAt: formatDate(new Date()),
+        notificationsToShow: []
+      }
 
       browser.storage.local.set({
         refferedBy: refCookie ? refCookie.value : "",
@@ -33,10 +57,13 @@ export function onInstalled() {
       })
 
       browser.storage.sync.set({
-        ref
+        ref,
+        publicNotifications
       })
 
-      browser.tabs.create({ url: "https://altruisto.com/welcome/" })
+      browser.tabs.create({
+        url: "https://altruisto.com/welcome/"
+      })
     }
   })
 }
