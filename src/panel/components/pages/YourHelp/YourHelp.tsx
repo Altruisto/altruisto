@@ -47,7 +47,7 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
     <div className="page">
       <div className="container fill-height">
         <div className="justify-center fill-height">
-          {auth.isLoggedIn ? (
+          {auth.user ? (
             <>
               {moneyRaised === 0 ? (
                 <>

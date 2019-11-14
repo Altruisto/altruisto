@@ -1,4 +1,4 @@
-/* global chrome */
+import * as browser from "webextension-polyfill"
 import React, { useCallback, useMemo, useState, useContext } from "react"
 import axios from "../../helpers/api"
 
@@ -8,7 +8,6 @@ export type User = {
 }
 
 export type Auth = {
-  isLoggedIn: boolean | undefined
   user: User | undefined
   login: (email: string, password: string) => Promise<User>
   logout: () => Promise<void>
@@ -19,7 +18,6 @@ export type AuthProviderProps = {
 }
 
 export const AuthContext: React.Context<Auth> = React.createContext<Auth>({
-  isLoggedIn: false,
   user: {
     email: "",
     apiKey: ""
@@ -42,96 +40,70 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
   children
 }: AuthProviderProps) => {
   const getStoredUser = (): Promise<User | undefined> => {
-    return new Promise(resolve => {
-      if (process.env.NODE_ENV === "production") {
-        chrome.storage.sync.get(["user"], function(result) {
-          resolve(result.user)
-        })
-      } else {
-        const storedUser = localStorage.getItem("user")
+    if (process.env.NODE_ENV === "production") {
+      return browser.storage.sync
+        .get(["user"])
+        .then((result: { user: User | undefined }) => result.user)
+    } else {
+      const storedUser = localStorage.getItem("user")
+      return new Promise(resolve => {
         storedUser === null
           ? resolve(undefined)
           : resolve(JSON.parse(storedUser))
-      }
-    })
+      })
+    }
   }
 
   const setStoredUser = (user: User | undefined): Promise<User> => {
-    return new Promise(resolve => {
-      if (process.env.NODE_ENV === "production") {
-        chrome.storage.sync.set({ user }, () => {
-          resolve(user)
-          // chrome.storage.sync.get(["apiKey"], function(result) {
-          //   console.log("Value currently is " + result.apiKey);
-          // });
-        })
-      } else {
-        localStorage.setItem("user", JSON.stringify(user))
-        resolve(user)
-      }
-    })
+    if (process.env.NODE_ENV === "production") {
+      return browser.storage.sync.set({ user }).then(() => user)
+    } else {
+      localStorage.setItem("user", JSON.stringify(user))
+      return new Promise(resolve => resolve(user))
+    }
   }
 
   const removeStoredUser = (): Promise<null> => {
-    return new Promise(resolve => {
-      if (process.env.NODE_ENV === "production") {
-        chrome.storage.sync.remove("user", () => {
-          resolve(null)
-        })
-      } else {
-        localStorage.removeItem("user")
-        resolve(null)
-      }
-    })
+    if (process.env.NODE_ENV === "production") {
+      return browser.storage.sync.remove("user")
+    } else {
+      localStorage.removeItem("user")
+      return new Promise(resolve => resolve(null))
+    }
   }
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | undefined>(undefined)
   const [user, setUser] = useState<User | undefined>(undefined)
 
-  if (typeof isLoggedIn === "undefined") {
-    getStoredUser().then(storedUser => {
-      if (typeof storedUser === "undefined") {
-        setIsLoggedIn(false)
-      } else {
-        setIsLoggedIn(true)
-        setUser(storedUser)
-      }
-    })
+  if (typeof user === "undefined") {
+    getStoredUser().then(storedUser => setUser(storedUser))
   }
 
-  const login = (email: string, password: string): Promise<User> => {
-    return new Promise((resolve, reject) => {
-      axios
-        .post("/login", {
-          username: email,
-          password
-        })
-        .then(response => {
-          if (
-            response.status &&
-            Number(response.status) === 200 &&
-            response.data.apiKey
-          ) {
-            return setStoredUser({
-              email,
-              apiKey: response.data.apiKey
-            }) as any // typescript hack
-          } else {
-            reject(new Error("Technical problem. Please try again."))
-          }
-        })
-        .then(storedUser => {
-          setIsLoggedIn(true)
-          setUser(storedUser)
-          resolve(storedUser)
-        })
-        .catch(error => reject(error))
-    })
-  }
+  const login = (email: string, password: string): Promise<User> =>
+    axios
+      .post("/login", {
+        username: email,
+        password
+      })
+      .then(response => {
+        if (
+          response.status &&
+          Number(response.status) === 200 &&
+          response.data.apiKey
+        ) {
+          return setStoredUser({
+            email,
+            apiKey: response.data.apiKey
+          }) as any // typescript hack
+        }
+      })
+      .then(storedUser => {
+        setUser(storedUser)
+        return storedUser
+      })
+      .catch(console.warn)
 
   const logout = (): Promise<void> => {
     return removeStoredUser().then(() => {
-      setIsLoggedIn(false)
       setUser(undefined)
     })
   }
@@ -143,10 +115,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     () => ({
       login: memoizedLogin,
       logout: memoizedLogout,
-      isLoggedIn,
       user
     }),
-    [user, isLoggedIn, memoizedLogin, memoizedLogout]
+    [user, memoizedLogin, memoizedLogout]
   )
 
   return (

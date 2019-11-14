@@ -1,7 +1,6 @@
 import React from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import { Loader } from "../../ui/Loader"
-import { useAuthContext } from "../../../common/auth"
 import axios from "../../../../helpers/api"
 import { useSnackbar } from "notistack"
 
@@ -10,7 +9,6 @@ type Props = {
 }
 
 export const ForgotPasswordForm: React.FC<Props> = props => {
-  const auth = useAuthContext()
   const { enqueueSnackbar } = useSnackbar()
   return (
     <div>
