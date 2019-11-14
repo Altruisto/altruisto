@@ -132,7 +132,7 @@ export const Settings: React.FC<Props> = (props: Props) => {
             />
           </div>
         </div>
-        {auth.isLoggedIn ? (
+        {auth.user ? (
           <div className="m-t-20">
             <Currency
               value={currency}

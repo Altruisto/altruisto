@@ -44,7 +44,7 @@ const Main: React.FC<Props> = (props: Props) => {
       ) : null}
 
       <Header
-        user={auth.isLoggedIn ? auth.user : undefined}
+        user={auth.user}
         onLoginOrRegisterClick={() => setShowLoginPopup(true)}
       />
       <div className="app__content-wrapper">
