@@ -59,7 +59,6 @@ const Main: React.FC<Props> = (props: Props) => {
           slideStyle={{
             display: "flex"
           }}
-          // onChangeIndex={this.handleChangeIndex}
         >
           <Share />
           <Donate />

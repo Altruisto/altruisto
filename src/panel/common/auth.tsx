@@ -1,11 +1,7 @@
 import * as browser from "webextension-polyfill"
 import React, { useCallback, useMemo, useState, useContext } from "react"
 import axios from "../../helpers/api"
-
-export type User = {
-  email: string
-  apiKey: string
-}
+import { User } from "../../types/types.ts"
 
 export type Auth = {
   user: User | undefined

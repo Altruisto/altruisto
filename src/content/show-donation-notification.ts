@@ -31,7 +31,7 @@ const isCheckoutPage = (location: string) => {
   )
 }
 
-export const donations = () => {
+export const showDonationNotification = () => {
   browser.storage.local
     .get({
       activatedAffiliates: [],

@@ -9,7 +9,7 @@ import {
 
 export function onInstalled() {
   browser.runtime.onInstalled.addListener(async function (details) {
-    //add alarms - these are used sort of like cron jobs here
+    // alarms are used sort of like cron jobs here
     browser.alarms.create("clearClosedWebsites", {
       periodInMinutes: 60
     }) //every 60 min redisplay topbar on the websites that users closed it
@@ -18,11 +18,13 @@ export function onInstalled() {
     }) //every 24h redisplay topbar on websites that user visited through other affiliate's link
     browser.alarms.create("getPartnersList", {
       periodInMinutes: 1440
-    }) // every 6h fetch public notifications
+    })
     browser.alarms.create("getPublicNotificationsAndShowFirst", {
-      // periodInMinutes: 360
-      periodInMinutes: 1
-    }) // every 24h update partners list from api
+      periodInMinutes: 60
+    })
+    browser.alarms.create("getPrivateNotificationsAndShowFirst", {
+      periodInMinutes: 60
+    })
 
     //get list of partner shops from api
     getPartnersList()
@@ -51,6 +53,8 @@ export function onInstalled() {
         notificationsToShow: []
       }
 
+      const privateNotifications = []
+
       browser.storage.local.set({
         refferedBy: refCookie ? refCookie.value : "",
         installationId
@@ -58,7 +62,8 @@ export function onInstalled() {
 
       browser.storage.sync.set({
         ref,
-        publicNotifications
+        publicNotifications,
+        privateNotifications
       })
 
       browser.tabs.create({
