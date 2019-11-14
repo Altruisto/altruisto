@@ -1,9 +1,9 @@
 import {
-  donations
-} from "./content/donations.ts"
+  showDonationNotification
+} from "./content/show-donation-notification.ts"
 import {
-  publicNotifications
-} from "./content/publicNotifications.ts"
+  showBackgroundNotification
+} from "./content/show-background-notification.ts"
 
-donations()
-publicNotifications()
+showDonationNotification()
+showBackgroundNotification()

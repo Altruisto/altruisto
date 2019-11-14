@@ -20,6 +20,11 @@ export type PublicNotifications = {
   notificationsToShow: Array<Notification>
 }
 
+export type PrivateNotification = {
+  id: string
+  content: Notification
+}
+
 export type ShowNotificationMessage = {
   action: "showNotification"
   payload: Notification
@@ -28,3 +33,8 @@ export type ShowNotificationMessage = {
 export type Message = ShowNotificationMessage
 
 export type MessageResponse = "success" | "failure"
+
+export type User = {
+  email: string
+  apiKey: string
+}

@@ -65,8 +65,10 @@ export function onAlarm() {
             }
           }).then(response => {
             response.data.forEach(notification => {
-              if (updatedNotificationsToShow.every(v => v !== notification.content) && isValidJSON(notification.content))
+              if (updatedNotificationsToShow.every(v => v !== notification.content) &&
+                isValidJSON(notification.content)) {
                 updatedNotificationsToShow.push(notification.content)
+              }
             })
           })
 
@@ -78,6 +80,70 @@ export function onAlarm() {
               }
             })
           })
+        })
+        break
+
+      case 'getPrivateNotificationsAndShowFirst':
+        browser.storage.sync.get({
+          user: null,
+          privateNotifications: []
+        }).then(result => {
+          if (result.user) {
+            const updatedPrivateNotifications = [...result.privateNotifications]
+            const notificationToShow = updatedPrivateNotifications[0]
+
+
+            const sendNotificationMessage = browser.tabs.query({
+              active: true,
+              lastFocusedWindow: true
+            }).then(tabs => {
+              if (tabs.length !== 0 && notificationToShow) {
+                return browser.tabs.sendMessage(tabs[0].id, {
+                  action: "showNotification",
+                  payload: JSON.parse(notificationToShow.content)
+                })
+              }
+            }).then(response => {
+              if (response === 'success') {
+                return axios.patch(`/user/notifications/${notificationToShow.id}`, {
+                    "status": "seen"
+                  }, {
+                    headers: {
+                      "X-AUTH-TOKEN": result.user.apiKey
+                    }
+                  })
+                  .then(() => {
+                    updatedPrivateNotifications.shift()
+                  })
+                  .catch(e => console.warn("UNABLE TO MARK NOTIFICATION AS SEEN", e))
+
+              } else {
+                console.warn('UNABLE TO DISPLAY PRIVATE NOTIFICATION')
+              }
+            })
+
+            const getNewNotifications = axios.get('user/notifications?status=unseen', {
+              headers: {
+                "X-AUTH-TOKEN": result.user.apiKey
+              }
+            }).then(response => {
+              response.data.forEach(notification => {
+                if (updatedPrivateNotifications.every(v => v.id !== notification.id) &&
+                  isValidJSON(notification.content)) {
+                  updatedPrivateNotifications.push({
+                    id: notification.id,
+                    content: notification.content
+                  })
+                }
+              })
+            })
+
+            Promise.all([sendNotificationMessage, getNewNotifications].map(p => p.catch(() => undefined))).then(() => {
+              browser.storage.sync.set({
+                privateNotifications: updatedPrivateNotifications
+              })
+            })
+          }
         })
         break
     }
