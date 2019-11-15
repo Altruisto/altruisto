@@ -6,7 +6,7 @@ export const IMPACT_COST_IN_USD = {
   GD: 21.13 // one week of financial help for a family in extreme poverty
 }
 
-type ImpactSpreadingResult = {
+export type ImpactSpreadingResult = {
   [K in keyof typeof IMPACT_COST_IN_USD]: number
 }
 
