@@ -1,4 +1,6 @@
 .login-form {
+  width: 100%;
+
   &__forgot-password {
     height: 14px;
     color: #ff2e27;
@@ -11,8 +13,9 @@
   }
 
   &__checkbox {
+
     // specific to material-ui
-    & > span:first-of-type {
+    &>span:first-of-type {
       position: absolute;
     }
   }
