@@ -26,13 +26,18 @@ type ValidationErrors = {
   acceptTerms?: string
 }
 
+type InstallationData = {
+  installationId: string
+  refferedBy: string
+}
+
 type RegistrationData = {
   username: string
   accept_terms: boolean
   currency: "USD" | "EUR" | "PLN" | "NOK" // @TODO
   password: string
   referred_by?: string
-  installation_id?: number
+  installation_id?: string
 }
 
 type LoginData = {
@@ -76,7 +81,7 @@ const validate = (values: FormData) => {
 
 const RegisterForm: React.FC<Props> = (props: Props) => {
   const [failureMessage, setFailureMessage] = useState("")
-  const installationData = useRef(null)
+  const installationData = useRef<InstallationData>(null)
   const auth = useAuthContext()
 
   return (
@@ -93,12 +98,15 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
         }}
         onSubmit={async (values, actions) => {
           if (!installationData.current) {
-            const fromStorage = await browser.storage.local.get([
-              "refferedBy",
+            const fromLocal = await browser.storage.local.get([
               "installationId"
             ])
+            const fromSync = await browser.storage.sync.get(["refferedBy"])
 
-            installationData.current = fromStorage
+            installationData.current = {
+              installationId: fromLocal.installationId,
+              refferedBy: fromSync.refferedBy
+            }
           }
 
           let registrationData: RegistrationData = {
