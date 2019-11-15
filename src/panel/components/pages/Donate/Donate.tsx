@@ -58,7 +58,6 @@ export const Donate: React.FC = () => {
 
     Promise.all([getCurrentTab, getLocalStorage, getTracker]).then(
       ([tabs, items, tracker]) => {
-        console.log(tabs, items, tracker)
         if (tabs.length !== 0) {
           const domain = extractDomain((tabs[0] && tabs[0].url) || "")
           setCurrentWebsite({

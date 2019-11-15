@@ -117,7 +117,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
           )
         return storedUser
       })
-      .catch(console.warn)
 
   const logout = (): Promise<void> => {
     return removeStoredUserAndSettings().then(() => {
