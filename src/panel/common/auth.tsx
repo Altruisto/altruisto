@@ -59,11 +59,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     }
   }
 
-  const removeStoredUser = (): Promise<null> => {
+  const removeStoredUserAndSettings = (): Promise<any> => {
     if (process.env.NODE_ENV === "production") {
-      return browser.storage.sync.remove("user")
+      return Promise.all([
+        browser.storage.sync.remove("user"),
+        browser.storage.sync.remove("userSettings")
+      ])
     } else {
       localStorage.removeItem("user")
+      localStorage.removeItem("userSettings")
       return new Promise(resolve => resolve(null))
     }
   }
@@ -89,17 +93,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
           return setStoredUser({
             email,
             apiKey: response.data.apiKey
-          }) as any // typescript hack
+          })
         }
       })
-      .then(storedUser => {
+      .then((storedUser: User) => {
         setUser(storedUser)
+        return storedUser
+      })
+      .then((storedUser: User) => {
+        axios
+          .get("/user", {
+            headers: {
+              "X-AUTH-TOKEN": storedUser.apiKey
+            }
+          })
+          .then(response =>
+            browser.storage.sync.set({
+              userSettings: {
+                causeArea: response.data.cause_area,
+                currency: response.data.currency
+              }
+            })
+          )
         return storedUser
       })
       .catch(console.warn)
 
   const logout = (): Promise<void> => {
-    return removeStoredUser().then(() => {
+    return removeStoredUserAndSettings().then(() => {
       setUser(undefined)
     })
   }

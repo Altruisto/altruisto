@@ -56,12 +56,12 @@ export function onInstalled() {
       const privateNotifications = []
 
       browser.storage.local.set({
-        refferedBy: refCookie ? refCookie.value : "",
         installationId
       })
 
       browser.storage.sync.set({
         ref,
+        refferedBy: refCookie ? refCookie.value : "",
         publicNotifications,
         privateNotifications
       })

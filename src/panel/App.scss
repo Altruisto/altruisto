@@ -78,6 +78,12 @@ html {
   font-size: 14px;
   cursor: pointer;
   position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   &--disabled {
     cursor: not-allowed;

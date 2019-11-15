@@ -25,16 +25,10 @@ export const Settings: React.FC<Props> = (props: Props) => {
   // TODO: we should defer this call until user swipes to this page for the first time
   useEffect(() => {
     if (auth.user && auth.user.apiKey) {
-      axios
-        .get("/user", {
-          headers: {
-            "X-AUTH-TOKEN": auth.user.apiKey
-          }
-        })
-        .then(response => {
-          setCurrency(response.data.currency)
-          setCauseArea(response.data.cause_area)
-        })
+      browser.storage.sync.get({ userSettings: null }).then(items => {
+        setCauseArea(items.userSettings.causeArea)
+        setCurrency(items.userSettings.currency)
+      })
     }
 
     browser.storage.sync
@@ -58,6 +52,14 @@ export const Settings: React.FC<Props> = (props: Props) => {
       }
       const newSettings = { ...currentSettings, ...settingToUpdate }
 
+      settingToUpdate.currency && setCurrency(settingToUpdate.currency)
+      settingToUpdate.causeArea && setCauseArea(settingToUpdate.causeArea)
+
+      enqueueSnackbar("Your settings have been updated", {
+        variant: "success"
+      })
+
+      // possible race conditions when user starts changing back and fourth very quickly
       axios
         .patch(
           "/user",
@@ -71,11 +73,11 @@ export const Settings: React.FC<Props> = (props: Props) => {
         )
         .then(response => {
           if (response.status === 200) {
-            settingToUpdate.currency && setCurrency(settingToUpdate.currency)
-            settingToUpdate.causeArea && setCurrency(settingToUpdate.causeArea)
-
-            enqueueSnackbar("Your settings have been updated", {
-              variant: "success"
+            browser.storage.sync.set({
+              userSettings: {
+                causeArea: newSettings.causeArea,
+                currency: newSettings.currency
+              }
             })
           }
         })

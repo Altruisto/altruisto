@@ -1,23 +1,21 @@
 import * as browser from "webextension-polyfill"
-import React, { useMemo, useState } from "react"
+import React, { useMemo, useState, useEffect } from "react"
 import IconBox from "../../ui/IconBox"
 import { WalletIcon } from "../../icons/WalletIcon"
 import transformUsdToBeingsSaved from "../../../common/utils/transform-usd-to-beings-saved"
 import { extractDomain } from "../../../../helpers/extract-domain.js"
-import { StorageData } from "../../../../types/types"
 import { isAlreadyActivated } from "../../../../helpers/is-already-activated"
-import { AnimatedCheckmark } from "../../ui/AnimatedCheckmark"
+import { getTracker } from "../../../../helpers/get-tracker"
+import { PartnerAlreadyActivated } from "./PartnerAlreadyActivated"
+import { NotAPartner } from "./NotAPartner"
+import { ActivatePartner } from "./ActivatePartner"
 
 type CurrentWebsite = {
   domain: string
+  url: string
   isPartner: boolean
   isAlreadyActivated: boolean
 }
-
-const classesToString = (classes: { [k: string]: boolean }) =>
-  Object.keys(classes)
-    .filter(key => classes[key])
-    .join(" ")
 
 const getRandomImpactHighlight = () => {
   function asLiterals<T extends string>(arr: T[]): T[] {
@@ -46,22 +44,37 @@ export const Donate: React.FC = () => {
   const [currentWebsite, setCurrentWebsite] = useState<CurrentWebsite | null>(
     null
   )
-  const getCurrentTab = browser.tabs.query({
-    active: true,
-    lastFocusedWindow: true
-  })
-  const getLocalStorage = browser.storage.local.get({
-    activatedAffiliates: [],
-    partners: []
-  })
-  Promise.all([getCurrentTab, getLocalStorage]).then(([tabs, items]) => {
-    const domain = extractDomain(tabs[0].url)
-    setCurrentWebsite({
-      domain,
-      isPartner: items.partners.includes(domain),
-      isAlreadyActivated: isAlreadyActivated(items.activatedAffiliates, domain)
+  const [linkTracker, setLinkTracker] = useState("")
+
+  useEffect(() => {
+    const getCurrentTab = browser.tabs.query({
+      active: true,
+      lastFocusedWindow: true
     })
-  })
+    const getLocalStorage = browser.storage.local.get({
+      activatedAffiliates: [],
+      partners: []
+    })
+
+    Promise.all([getCurrentTab, getLocalStorage, getTracker]).then(
+      ([tabs, items, tracker]) => {
+        console.log(tabs, items, tracker)
+        if (tabs.length !== 0) {
+          const domain = extractDomain((tabs[0] && tabs[0].url) || "")
+          setCurrentWebsite({
+            domain,
+            url: tabs[0].url,
+            isPartner: items.partners.includes(domain),
+            isAlreadyActivated: isAlreadyActivated(
+              items.activatedAffiliates,
+              domain
+            )
+          })
+        }
+        setLinkTracker(tracker)
+      }
+    )
+  }, [])
 
   if (currentWebsite === null) {
     return (
@@ -80,49 +93,15 @@ export const Donate: React.FC = () => {
         </div>
         <div className="justify-center fill-height">
           {currentWebsite.isPartner && currentWebsite.isAlreadyActivated ? (
-            <div className="col-12 justify-center items-center text-center">
-              <AnimatedCheckmark />
-              <span className="text-accent p-t-10">
-                The donation for {currentWebsite.domain} is active! When you buy
-                something charities will get donations!
-              </span>
-            </div>
+            <PartnerAlreadyActivated domain={currentWebsite.domain} />
+          ) : currentWebsite.isPartner ? (
+            <ActivatePartner
+              domain={currentWebsite.domain}
+              url={currentWebsite.url}
+              tracker={linkTracker}
+            />
           ) : (
-            <>
-              <button
-                className={classesToString({
-                  button: true,
-                  "m-b-20": true,
-                  "button--disabled": !currentWebsite.isPartner
-                })}
-                disabled={!currentWebsite.isPartner}
-              >
-                Activate donation for:
-                <br />
-                {currentWebsite.domain}
-              </button>
-              <div className="d-flex justify-space-between">
-                {currentWebsite.isPartner ? (
-                  <span>
-                    This site is our{" "}
-                    <strong className="text-accent">partner!</strong>
-                  </span>
-                ) : (
-                  <span>
-                    This site is not our <strong>partner!</strong>
-                  </span>
-                )}
-
-                <a
-                  href="https://altruisto.com/partners"
-                  className="uppercase-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View All
-                </a>
-              </div>
-            </>
+            <NotAPartner domain={currentWebsite.domain} />
           )}
         </div>
       </div>
