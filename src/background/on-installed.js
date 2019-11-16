@@ -31,39 +31,39 @@ export function onInstalled() {
 
     //open welcome page for new installs
     if (details.reason == "install") {
-      const refCookie = await browser.cookies.get({
+      const getRefCookie = browser.cookies.get({
         url: "https://altruisto.com",
         name: "r"
       })
-      const {
-        installationId,
-        ref
-      } = await axios
-        .post("/installations", {
-          referredBy: refCookie ? refCookie.value : ""
-        })
-        .then(response => ({
-          installationId: response.data.installation_id,
-          ref: response.data.ref
-        }))
-        .catch(console.warn)
 
-      const publicNotifications = {
-        lastUpdateAt: formatDate(new Date()),
-        notificationsToShow: []
-      }
+      getRefCookie.then(refCookie => {
+        let installationId = ''
+        let ref = ''
+        const publicNotifications = {
+          lastUpdateAt: formatDate(new Date()),
+          notificationsToShow: []
+        }
+        const privateNotifications = []
 
-      const privateNotifications = []
+        axios
+          .post("/installations", {
+            referredBy: refCookie ? refCookie.value : ""
+          }).then(response => {
+            installationId = response.data.installation_id
+            ref = response.data.ref
+          }).catch(() => {})
+          .finally(() => {
+            browser.storage.local.set({
+              installationId
+            })
 
-      browser.storage.local.set({
-        installationId
-      })
-
-      browser.storage.sync.set({
-        ref,
-        refferedBy: refCookie ? refCookie.value : "",
-        publicNotifications,
-        privateNotifications
+            browser.storage.sync.set({
+              ref,
+              refferedBy: refCookie ? refCookie.value : "",
+              publicNotifications,
+              privateNotifications
+            })
+          })
       })
 
       browser.tabs.create({

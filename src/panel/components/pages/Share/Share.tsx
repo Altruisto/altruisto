@@ -16,7 +16,7 @@ export const Share: React.FC = () => {
   useEffect(() => {
     if (ref === null) {
       browser.storage.sync
-        .get({ ref: "1337" })
+        .get({ ref: null })
         .then(storage => setRef(storage.ref))
     }
   }, [])
@@ -71,38 +71,40 @@ export const Share: React.FC = () => {
               </button>
             </a>
           </div>
-          <div className="field m-t-10">
-            <h1 className="m-b-20">Your referral link:</h1>
-            <span className="field__appendix share__copy-icon">
-              <button
-                className="button-link"
-                onClick={() => {
+          {ref ? (
+            <div className="field m-t-10">
+              <h1 className="m-b-20">Your referral link:</h1>
+              <span className="field__appendix share__copy-icon">
+                <button
+                  className="button-link"
+                  onClick={() => {
+                    copyToClipboard(`https://altruisto.com/?ref=${ref}`)
+                    enqueueSnackbar("Copied to clipboard!", {
+                      variant: "info",
+                      autoHideDuration: 900
+                    })
+                  }}
+                >
+                  <img src={copy} alt="Copy ref link" title="Copy icon" />
+                </button>
+              </span>
+              <input
+                className="field__input share__ref-link"
+                type="text"
+                id="ref-link"
+                name="ref-link"
+                value={`https://altruisto.com/?ref=${ref}`}
+                onClick={event => {
                   copyToClipboard(`https://altruisto.com/?ref=${ref}`)
                   enqueueSnackbar("Copied to clipboard!", {
                     variant: "info",
                     autoHideDuration: 900
                   })
+                  event.target.blur()
                 }}
-              >
-                <img src={copy} alt="Copy ref link" title="Copy icon" />
-              </button>
-            </span>
-            <input
-              className="field__input share__ref-link"
-              type="text"
-              id="ref-link"
-              name="ref-link"
-              value={`https://altruisto.com/?ref=${ref}`}
-              onClick={event => {
-                copyToClipboard(`https://altruisto.com/?ref=${ref}`)
-                enqueueSnackbar("Copied to clipboard!", {
-                  variant: "info",
-                  autoHideDuration: 900
-                })
-                event.target.blur()
-              }}
-            />
-          </div>
+              />
+            </div>
+          ) : null}
           <div className="m-t-30">
             {refferalsNumber ? (
               <>
