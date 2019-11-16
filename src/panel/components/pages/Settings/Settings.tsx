@@ -81,7 +81,14 @@ export const Settings: React.FC<Props> = (props: Props) => {
             })
           }
         })
-        .catch(console.warn)
+        .catch(() => {
+          enqueueSnackbar(
+            "Something went wrong, we have been notified about it. Please try again in a moment.",
+            {
+              variant: "error"
+            }
+          )
+        })
     } else {
       enqueueSnackbar("You have to be logged in to change this setting.", {
         variant: "error"
