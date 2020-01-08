@@ -32,4 +32,6 @@ export const notification = (options: NotificationOptions) => {
     () => notificationElement.classList.add("altruisto-notification--in"),
     0
   )
+
+  return notificationElement
 }

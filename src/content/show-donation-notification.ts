@@ -41,8 +41,10 @@ export const showDonationNotification = () => {
     partners: []
   }) as Promise<StorageData>
 
+  let notificationElement = null as HTMLElement | null
+
   Promise.all([getStorageData, getTracker]).then(([items, tracker]) => {
-    const showNotification = () => {
+    const showNotification = () =>
       isAlreadyActivated(items.activatedAffiliates, domain)
         ? notification({
             text:
@@ -57,22 +59,42 @@ export const showDonationNotification = () => {
             }&lang=${browser.i18n.getUILanguage()}&tracker=${tracker}`,
             onClose: saveAsClosed
           })
-    }
 
     if (items.partners.includes(domain)) {
       if (
         !items.closedWebsites.includes(domain) &&
         !items.disabledWebsites.includes(domain)
       ) {
-        showNotification()
+        notificationElement = showNotification()
       }
 
       if (
         items.closedWebsites.includes(domain) &&
         isCheckoutPage(location.href)
       ) {
-        showNotification()
+        notificationElement = showNotification()
       }
+    }
+  })
+
+  // TODO: show notification with confirmation of activated donation in other tabs (second if condition)
+  // The problem is that it also displays it in the main tab before reloading, so it looks weird.
+  browser.storage.onChanged.addListener(changes => {
+    if (
+      changes.closedWebsites &&
+      changes.closedWebsites.newValue.includes(domain) &&
+      notificationElement
+    ) {
+      notificationElement.classList.remove("altruisto-notification--in")
+    } else if (
+      changes.activatedAffiliates &&
+      changes.activatedAffiliates.newValue.find(
+        (activated: { domain: string; timestamp: number }) =>
+          activated.domain === domain
+      ) &&
+      notificationElement
+    ) {
+      notificationElement!.classList.remove("altruisto-notification--in")
     }
   })
 }
