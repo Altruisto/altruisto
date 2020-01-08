@@ -11,7 +11,7 @@ import "./Share.scss"
 
 export const Share: React.FC = () => {
   const { enqueueSnackbar } = useSnackbar()
-  const refferalsNumber = 0
+  const referralsNumber = 0
   const [ref, setRef] = useState(null)
   useEffect(() => {
     if (ref === null) {
@@ -71,7 +71,8 @@ export const Share: React.FC = () => {
               </button>
             </a>
           </div>
-          {ref ? (
+          {// TODO: why is ref empty after register?
+          ref ? (
             <div className="field m-t-10">
               <h1 className="m-b-20">Your referral link:</h1>
               <span className="field__appendix share__copy-icon">
@@ -100,15 +101,16 @@ export const Share: React.FC = () => {
                     variant: "info",
                     autoHideDuration: 900
                   })
-                  event.target.blur()
+                  const input = event.target as HTMLInputElement
+                  input.blur()
                 }}
               />
             </div>
           ) : null}
           <div className="m-t-30">
-            {refferalsNumber ? (
+            {referralsNumber ? (
               <>
-                <div className="share__invited-number">{refferalsNumber} </div>
+                <div className="share__invited-number">{referralsNumber} </div>
                 <div className="share__invited-people">
                   people joined thanks to you
                 </div>
