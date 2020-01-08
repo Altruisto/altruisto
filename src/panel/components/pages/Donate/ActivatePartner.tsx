@@ -11,7 +11,7 @@ export const ActivatePartner = (props: Props) => (
   <>
     <a
       className="button m-b-20"
-      href={`${BASE_URL}/?url=${props.url}&tracker=${props.tracker}`}
+      href={`${BASE_URL}/redirect?url=${props.url}&tracker=${props.tracker}`}
       target="_blank"
       rel="noreferrer noopener"
     >
