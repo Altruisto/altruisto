@@ -1,6 +1,5 @@
 import * as browser from "webextension-polyfill"
 import { extractDomain } from "../helpers/extract-domain.js"
-import { BASE_URL } from "../helpers/api.js"
 import { notification } from "./templates/notification.ts"
 import { StorageData } from "../types/types.js"
 import { isAlreadyActivated } from "../helpers/is-already-activated.ts"

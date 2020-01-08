@@ -9,10 +9,8 @@
     "build": "rm -rf build && webpack",
     "build:panel": "rm -rf build/.panel && webpack --config-name panel",
     "quickbuild": "rm -rf build && webpack --prototype",
-    "dev:panel": "webpack-dev-server --config-name panel --mode development --inline --hot --open",
-    "dev:chrome": "NODE_ENV=development webpack --config-name chrome --mode development --watch",
-    "dev:firefox": "NODE_ENV=development webpack --config-name firefox --mode development --watch",
-    "dev": "npm-run-all --parallel dev:chrome dev:firefox",
+    "quickbuild:staging": "rm -rf build && webpack --prototype --define BASE_URL='\"https://altruisto-backend-staging.herokuapp.com\"'",
+    "quickbuild:production": "rm -rf build && webpack --prototype --define BASE_URL='\"https://api.altruisto.com\"'",
     "prototype:panel": "webpack-dev-server --config-name panel --mode development --prototype --inline --hot --open"
   },
   "repository": {

@@ -1,5 +1,4 @@
 import React from "react"
-import { BASE_URL } from "../../../../helpers/api.js"
 
 type Props = {
   domain: string

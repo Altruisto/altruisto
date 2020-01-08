@@ -1,7 +1,4 @@
 import * as browser from "webextension-polyfill"
-import {
-  BASE_URL
-} from "../helpers/api.js"
 
 /**
  * Get the list of partner stores' domain and save it locally
@@ -10,7 +7,7 @@ import {
 export function getPartnersList() {
   var xhr = new XMLHttpRequest()
   xhr.open("GET", `${BASE_URL}/partners`)
-  xhr.onreadystatechange = function () {
+  xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       if (xhr.responseText) {
         var partners = JSON.parse(xhr.responseText)

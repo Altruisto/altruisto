@@ -8,6 +8,7 @@ const PATHS = {
   build: path.join(__dirname, "build")
 }
 
+const webpack = require("webpack")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const ZipPlugin = require("zip-webpack-plugin")
 const ExtensionReloader = require("webpack-extension-reloader")
@@ -55,6 +56,9 @@ module.exports = (env, argv) => [
       ]
     },
     plugins: [
+      new webpack.DefinePlugin({
+        BASE_URL: JSON.stringify("https://api.altruisto.localhost:8001")
+      }),
       new HtmlWebpackPlugin({
         template: PATHS.src + "/panel/index.html"
       }),
@@ -75,6 +79,9 @@ module.exports = (env, argv) => [
       filename: "[name].js"
     },
     plugins: [
+      new webpack.DefinePlugin({
+        BASE_URL: JSON.stringify("https://api.altruisto.localhost:8001")
+      }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin(
         [
@@ -151,6 +158,9 @@ module.exports = (env, argv) => [
       filename: "[name].js"
     },
     plugins: [
+      new webpack.DefinePlugin({
+        BASE_URL: JSON.stringify("https://api.altruisto.localhost:8001")
+      }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin([
         {
