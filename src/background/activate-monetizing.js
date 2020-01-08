@@ -1,5 +1,10 @@
 import * as browser from "webextension-polyfill"
-import { extractDomain } from "../helpers/extract-domain.js"
+import {
+  extractDomain
+} from "../helpers/extract-domain.js"
+import {
+  BASE_URL
+} from "../helpers/api.js"
 
 /**
  * Save an affiliate's domain to the locally stored list of websites that the user has activated AKA started raising money from them
@@ -35,7 +40,9 @@ function updateActivatedAffiliates(data) {
       newData = new Array(data)
     }
 
-    browser.storage.local.set({ activatedAffiliates: newData })
+    browser.storage.local.set({
+      activatedAffiliates: newData
+    })
   })
 }
 
@@ -45,14 +52,19 @@ function updateActivatedAffiliates(data) {
 
 export function activateMonetizing() {
   browser.webRequest.onBeforeRequest.addListener(
-    function(details) {
+    function (details) {
       //byc moze onCompleteRedirect - zalezy ktorym latwiej znalezc od pierwszego do ostatniego redirecta
       var redirectUrlParts = details.url.split("?url="),
         redirectDomain = extractDomain(redirectUrlParts[1])
 
-      var data = { domain: redirectDomain, timestamp: details.timeStamp }
+      var data = {
+        domain: redirectDomain,
+        timestamp: details.timeStamp
+      }
       updateActivatedAffiliates(data)
-    },
-    { urls: ["https://altruisto.com/redirect*"], types: ["main_frame"] }
+    }, {
+      urls: [`${BASE_URL}/redirect*`],
+      types: ["main_frame"]
+    }
   )
 }
