@@ -119,11 +119,9 @@ module.exports = (env, argv) => [
           }
         ],
         // for extension reloader we need to inject specific content security policies
-        argv.mode === "production" ?
-        {
+        argv.mode === "production" ? {
           copyUnmodified: true
-        } :
-        {}
+        } : {}
       ),
       new ExtensionReloader({
         port: 9000
