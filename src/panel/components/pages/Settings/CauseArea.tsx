@@ -10,7 +10,7 @@ export const CauseArea = props => {
         <MenuItem value="extreme_poverty">
           Extreme Poverty &amp; Global Health
         </MenuItem>
-        <MenuItem value="animals">Animals Suffering Reduction</MenuItem>
+        <MenuItem value="animals">Reduction of Animal Suffering</MenuItem>
       </Select>
     </div>
   )
