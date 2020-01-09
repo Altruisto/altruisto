@@ -34,8 +34,7 @@ module.exports = (env, argv) => [
       minimizer: [new OptimizeCSSAssetsPlugin({})]
     },
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -52,12 +51,15 @@ module.exports = (env, argv) => [
           test: /\.css$|\.scss$/,
           use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
         },
-        { test: /\.(jpe?g|png|gif|svg)$/i, use: "file-loader" }
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          use: "file-loader"
+        }
       ]
     },
     plugins: [
       new webpack.DefinePlugin({
-        BASE_URL: JSON.stringify("https://api.altruisto.localhost:8001")
+        BASE_URL: JSON.stringify("http://api.altruisto.localhost:8001")
       }),
       new HtmlWebpackPlugin({
         template: PATHS.src + "/panel/index.html"
@@ -80,12 +82,11 @@ module.exports = (env, argv) => [
     },
     plugins: [
       new webpack.DefinePlugin({
-        BASE_URL: JSON.stringify("https://api.altruisto.localhost:8001")
+        BASE_URL: JSON.stringify("http://api.altruisto.localhost:8001")
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin(
-        [
-          {
+        [{
             from: PATHS.src + "/manifest.json",
             transform: content => {
               // for extension reloader we need to inject specific content security policies
@@ -100,8 +101,14 @@ module.exports = (env, argv) => [
               return content
             }
           },
-          { from: PATHS.src + "/assets", to: PATHS.build + "/chrome/assets" },
-          { from: PATHS.src + "/options", to: PATHS.build + "/chrome/options" },
+          {
+            from: PATHS.src + "/assets",
+            to: PATHS.build + "/chrome/assets"
+          },
+          {
+            from: PATHS.src + "/options",
+            to: PATHS.build + "/chrome/options"
+          },
           {
             from: PATHS.src + "/_locales",
             to: PATHS.build + "/chrome/_locales"
@@ -112,11 +119,11 @@ module.exports = (env, argv) => [
           }
         ],
         // for extension reloader we need to inject specific content security policies
-        argv.mode === "production"
-          ? {
-              copyUnmodified: true
-            }
-          : {}
+        argv.mode === "production" ?
+        {
+          copyUnmodified: true
+        } :
+        {}
       ),
       new ExtensionReloader({
         port: 9000
@@ -126,8 +133,7 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -159,13 +165,12 @@ module.exports = (env, argv) => [
     },
     plugins: [
       new webpack.DefinePlugin({
-        BASE_URL: JSON.stringify("https://api.altruisto.localhost:8001")
+        BASE_URL: JSON.stringify("http://api.altruisto.localhost:8001")
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
-      new CopyWebpackPlugin([
-        {
+      new CopyWebpackPlugin([{
           from: PATHS.src + "/manifest.json",
-          transform: function(content) {
+          transform: function (content) {
             let newContent = content.toString()
             newContent = newContent.replace(
               "Altruisto.com Chrome Extension",
@@ -187,7 +192,10 @@ module.exports = (env, argv) => [
             return newContent
           }
         },
-        { from: PATHS.src + "/assets", to: PATHS.build + "/firefox/assets" },
+        {
+          from: PATHS.src + "/assets",
+          to: PATHS.build + "/firefox/assets"
+        },
         {
           from: PATHS.src + "/_locales",
           to: PATHS.build + "/firefox/_locales"
@@ -209,8 +217,7 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
