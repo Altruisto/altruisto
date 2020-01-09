@@ -40,41 +40,45 @@ export const showDonationNotification = () => {
     partners: []
   }) as Promise<StorageData>
 
+  const getSettings = browser.storage.sync.get({ showNotifications: true })
+
   let notificationElement = null as HTMLElement | null
 
-  Promise.all([getStorageData, getTracker]).then(([items, tracker]) => {
-    const showNotification = () =>
-      isAlreadyActivated(items.activatedAffiliates, domain)
-        ? notification({
-            text:
-              "You are now collecting money for charities with this website."
-          })
-        : notification({
-            text:
-              "Start raising money for charities with this website by clicking here: ",
-            primaryButtonLabel: "Activate donation",
-            primaryButtonDestination: `${BASE_URL}/redirect?url=${
-              location.href
-            }&lang=${browser.i18n.getUILanguage()}&tracker=${tracker}`,
-            onClose: saveAsClosed
-          })
+  Promise.all([getStorageData, getTracker, getSettings]).then(
+    ([items, tracker, settings]) => {
+      const showNotification = () =>
+        isAlreadyActivated(items.activatedAffiliates, domain)
+          ? notification({
+              text:
+                "You are now collecting money for charities with this website."
+            })
+          : notification({
+              text:
+                "Start raising money for charities with this website by clicking here: ",
+              primaryButtonLabel: "Activate donation",
+              primaryButtonDestination: `${BASE_URL}/redirect?url=${
+                location.href
+              }&lang=${browser.i18n.getUILanguage()}&tracker=${tracker}`,
+              onClose: saveAsClosed
+            })
 
-    if (items.partners.includes(domain)) {
-      if (
-        !items.closedWebsites.includes(domain) &&
-        !items.disabledWebsites.includes(domain)
-      ) {
-        notificationElement = showNotification()
-      }
+      if (settings.showNotifications && items.partners.includes(domain)) {
+        if (
+          !items.closedWebsites.includes(domain) &&
+          !items.disabledWebsites.includes(domain)
+        ) {
+          notificationElement = showNotification()
+        }
 
-      if (
-        items.closedWebsites.includes(domain) &&
-        isCheckoutPage(location.href)
-      ) {
-        notificationElement = showNotification()
+        if (
+          items.closedWebsites.includes(domain) &&
+          isCheckoutPage(location.href)
+        ) {
+          notificationElement = showNotification()
+        }
       }
     }
-  })
+  )
 
   // TODO: show notification with confirmation of activated donation in other tabs (second if condition)
   // The problem is that it also displays it in the main tab before reloading, so it looks weird.
