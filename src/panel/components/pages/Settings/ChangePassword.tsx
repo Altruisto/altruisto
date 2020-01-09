@@ -3,9 +3,12 @@ import { Formik, Field, ErrorMessage, Form } from "formik"
 import colors from "../../../assets/scss/colors.scss"
 import { Loader } from "../../ui/Loader"
 import { useSnackbar } from "notistack"
+import axios from "../../../../helpers/api"
+import { useAuthContext } from "../../../common/auth"
 
 export const ChangePassword = () => {
   const { enqueueSnackbar } = useSnackbar()
+  const auth = useAuthContext()
 
   return (
     <div className="settings__option settings__option--vertical m-t-0">
@@ -13,39 +16,72 @@ export const ChangePassword = () => {
       <Formik
         enableReinitialize={true}
         initialValues={{
-          password: "",
-          confirmPassword: ""
+          newPassword: "",
+          currentPassword: ""
         }}
         onSubmit={(values, actions) => {
-          enqueueSnackbar("Your settings have been updated", {
-            variant: "success"
-          })
-          actions.setSubmitting(false)
+          axios
+            .put(
+              "/user/password",
+              {
+                ...values
+              },
+              {
+                headers: {
+                  "X-AUTH-TOKEN": auth.user.apiKey
+                }
+              }
+            )
+            .then(() => {
+              enqueueSnackbar("Your settings have been updated", {
+                variant: "success"
+              })
+              actions.setSubmitting(false)
+            })
+            .catch(() => {
+              enqueueSnackbar(
+                "Something went wrong, we have been notified about it. Please try again in a moment.",
+                {
+                  variant: "error"
+                }
+              )
+            })
         }}
         validate={values => {
           let errors: {
-            password?: string
-            confirmPassword?: string
+            currentPassword?: string
+            newPassword?: string
           } = {}
-          if (!values.password) {
-            errors.password = "This field is required"
-          }
-          if (values.password !== undefined && values.password.length < 8) {
-            errors.password = "Password must have at least 8 characters"
+          if (!values.currentPassword) {
+            errors.currentPassword = "This field is required"
           }
           if (
-            values.confirmPassword !== values.password &&
-            values.confirmPassword !== "" &&
-            values.password !== ""
+            values.currentPassword !== undefined &&
+            values.currentPassword.length < 8
           ) {
-            errors.confirmPassword = "Passwords do not match"
+            errors.currentPassword = "Password must have at least 8 characters"
           }
+          if (!values.newPassword) {
+            errors.newPassword = "This field is required"
+          }
+          if (
+            values.newPassword !== undefined &&
+            values.newPassword.length < 8
+          ) {
+            errors.newPassword = "Password must have at least 8 characters"
+          }
+
           return errors
         }}
         render={({ errors, isSubmitting }) => (
           <Form noValidate>
             <div className="field">
-              <Field type="password" name="password" className="field__input" />
+              <Field
+                type="password"
+                name="currentPassword"
+                className="field__input"
+                placeholder="Current password"
+              />
               <div className="field__error-message">
                 <ErrorMessage name="password" component="span" />
               </div>
@@ -73,8 +109,9 @@ export const ChangePassword = () => {
               </div>
               <Field
                 type="password"
-                name="confirmPassword"
+                name="newPassword"
                 className="field__input"
+                placeholder="New password"
               />
               <div className="field__error-message">
                 <ErrorMessage name="confirmPassword" component="span" />
