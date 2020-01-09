@@ -95,7 +95,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
           <>
             Don't have an account?&nbsp;
             <button
-              className="button-link"
+              className="login-or-register__link button-link"
               onClick={() => setActivePage(Views.Register)}
             >
               <span className="text-gradient">Sign up now.</span>
@@ -108,7 +108,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
           <>
             Already have an account?&nbsp;
             <button
-              className="button-link"
+              className="login-or-register__link button-link"
               onClick={() => setActivePage(Views.Login)}
             >
               <span className="text-gradient">Login now.</span>
@@ -123,7 +123,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
         return (
           <>
             <button
-              className="button-link"
+              className="login-or-register__link button-link"
               onClick={() => setActivePage(Views.Login)}
             >
               <span className="text-gradient">Go back to login form.</span>
