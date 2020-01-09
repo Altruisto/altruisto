@@ -29,7 +29,7 @@ export function extractDomain(url) {
     if (
       domain.indexOf(".co.") !== -1 ||
       domain.indexOf(".com.") !== -1 ||
-      domain.indexOf(".org.")
+      domain.indexOf(".org.") !== -1
     ) {
       domain = parts.slice(-3).join(".")
     } else {
