@@ -10,7 +10,9 @@ type NotificationOptions = {
   primaryButtonDestination?: string
   secondaryButtonLabel?: string
   secondaryButtoDestination?: string
+  autoclose?: boolean
   onClose?: () => void
+  onAutoclose?: () => void
 }
 
 export const notification = (options: NotificationOptions) => {
@@ -32,6 +34,12 @@ export const notification = (options: NotificationOptions) => {
     () => notificationElement.classList.add("altruisto-notification--in"),
     0
   )
+  if (options.autoclose) {
+    setTimeout(() => {
+      notificationElement.classList.remove("altruisto-notification--in")
+      options.onAutoclose && options.onAutoclose()
+    }, 3500)
+  }
 
   return notificationElement
 }
