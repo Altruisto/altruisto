@@ -52,6 +52,7 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
   const auth = useAuthContext()
   const { enqueueSnackbar } = useSnackbar()
   const [help, setHelp] = useState<Help | null>(null)
+  const [error, setError] = useState<Boolean | string>(null)
 
   useEffect(() => {
     if (auth.user) {
@@ -73,11 +74,8 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
           })
         })
         .catch(() => {
-          enqueueSnackbar(
-            "Something went wrong, we have been notified about it. Please try again in a moment.",
-            {
-              variant: "error"
-            }
+          setError(
+            "We couldn't get the data about yout impact. Please try again in a moment."
           )
         })
     }
@@ -109,6 +107,7 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
       <div className="page">
         <div className="container fill-height">
           <div className="justify-center fill-height text-center">
+            {error}
             <Loader color={"red"} size={42} />
           </div>
         </div>
