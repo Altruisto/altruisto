@@ -50,7 +50,10 @@ export const showDonationNotification = () => {
         isAlreadyActivated(items.activatedAffiliates, domain)
           ? notification({
               text:
-                "You are now collecting money for charities with this website."
+                "You are now collecting money for charities with this website.",
+              autoclose: true,
+              onAutoclose: saveAsClosed,
+              onClose: saveAsClosed
             })
           : notification({
               text:
