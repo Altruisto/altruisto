@@ -17,6 +17,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const WaitForFilePlugin = require("./webpack/WaitForFilePlugin")
 
+const localhost = "http://api.altruisto.localhost:8002"
+
 module.exports = (env, argv) => [
   // build react app for panel and output it to temporary location: /build/.panel
   {
@@ -59,7 +61,7 @@ module.exports = (env, argv) => [
     },
     plugins: [
       new webpack.DefinePlugin({
-        BASE_URL: JSON.stringify("http://api.altruisto.localhost:8001")
+        BASE_URL: JSON.stringify(localhost)
       }),
       new HtmlWebpackPlugin({
         template: PATHS.src + "/panel/index.html"
@@ -82,7 +84,7 @@ module.exports = (env, argv) => [
     },
     plugins: [
       new webpack.DefinePlugin({
-        BASE_URL: JSON.stringify("http://api.altruisto.localhost:8001")
+        BASE_URL: JSON.stringify(localhost)
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin(
@@ -163,7 +165,7 @@ module.exports = (env, argv) => [
     },
     plugins: [
       new webpack.DefinePlugin({
-        BASE_URL: JSON.stringify("http://api.altruisto.localhost:8001")
+        BASE_URL: JSON.stringify(localhost)
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin([{
