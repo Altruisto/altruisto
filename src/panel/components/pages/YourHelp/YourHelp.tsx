@@ -1,58 +1,34 @@
+import * as browser from "webextension-polyfill"
 import React, { useEffect, useState } from "react"
-import LinearProgress from "@material-ui/core/LinearProgress"
-import { withStyles } from "@material-ui/core/styles"
 import { useAuthContext } from "../../../common/auth"
-import Tile from "../../ui/Tile"
-import transformUsdToBeingsSaved, {
-  IMPACT_COST_IN_USD,
+import {
   spreadUSDBetweenAllForMaxImpact,
   ImpactSpreadingResult
 } from "../../../common/utils/transform-usd-to-beings-saved"
-import mosquito from "../../../assets/mosquito.svg"
-import medicine from "../../../assets/medicine.svg"
-import family from "../../../assets/family.svg"
+
 import axios from "../../../../helpers/api"
 import { Loader } from "../../ui/Loader"
-import { useSnackbar } from "notistack"
+import { ExtremePoverty } from "./ExtremePoverty"
+import { Animals } from "./Animals"
 
 type Props = {
   onRequestLogin: () => void
   isActive: boolean
 }
 
-type Help = {
+export type Help = {
   moneyRaised: number
   impact: ImpactSpreadingResult
   moneyLeft: number
-}
-
-const StyledLinearProgress = withStyles({
-  determinate: {
-    backgroundColor: "lightgrey",
-    height: 6,
-    borderRadius: 4
-  }
-})(LinearProgress)
-
-const ProgressBar = props => {
-  const [timedValue, setTimedValue] = useState(0)
-  const { value, ...rest } = props
-  useEffect(() => {
-    setTimeout(() => {
-      setTimedValue(value)
-    }, 300)
-  }, [])
-
-  return <StyledLinearProgress value={timedValue} {...rest} />
 }
 
 // TODO: put the correct url for "FIND OUT WHY" link
 // TODO: make currency used based on user's settings
 export const YourHelp: React.FC<Props> = (props: Props) => {
   const auth = useAuthContext()
-  const { enqueueSnackbar } = useSnackbar()
   const [help, setHelp] = useState<Help | null>(null)
   const [error, setError] = useState<Boolean | string>(null)
+  const [causeArea, setCauseArea] = useState<String | null>(null)
 
   useEffect(() => {
     if (auth.user) {
@@ -63,7 +39,7 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
           }
         })
         .then(response => {
-          const moneyRaised = Number(response.data.money_raised)
+          const moneyRaised = Number(response.data.money_raised / 100)
           const [impact, moneyLeft] = spreadUSDBetweenAllForMaxImpact(
             moneyRaised
           )
@@ -78,6 +54,10 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
             "We couldn't get the data about yout impact. Please try again in a moment."
           )
         })
+
+      browser.storage.sync.get({ userSettings: null }).then(items => {
+        setCauseArea(items.userSettings.causeArea)
+      })
     }
   }, [])
 
@@ -107,7 +87,9 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
       <div className="page">
         <div className="container fill-height">
           <div className="justify-center fill-height text-center">
-            {error}
+            <span className="m-b-10">
+              {error ? error : "Calculating your impact..."}
+            </span>
             <Loader color={"red"} size={42} />
           </div>
         </div>
@@ -145,110 +127,31 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
               </a>
             </>
           ) : (
-            <div className="fill-height">
-              <div className="col-6">
-                <div className="page__title m-b-0">
-                  <h1>Your help:</h1>
-                </div>
-                {help.impact["SCI"] ? (
-                  <Tile
-                    title={String(help.impact["SCI"])}
-                    icon={
-                      <img
-                        src={medicine}
-                        style={{
-                          maxHeight: "24px",
-                          maxWidth: "24px",
-                          minHeight: "24px",
-                          minWidth: "24px"
-                        }}
-                      />
-                    }
-                    className="m-b-20"
-                  >
-                    children <strong>cured from parasites</strong>
-                  </Tile>
-                ) : (
-                  <>
-                    <strong>You are so close to helping first person!</strong>
-                    <br />
-                    <span>
-                      Collect another $
-                      {Math.round(
-                        (IMPACT_COST_IN_USD["SCI"] - help.moneyLeft) * 100
-                      ) / 100}{" "}
-                      to help cure first child from parasites
-                    </span>
-                    {props.isActive ? (
-                      <ProgressBar
-                        color="secondary"
-                        variant="determinate"
-                        value={Math.round(
-                          (help.moneyLeft / IMPACT_COST_IN_USD["SCI"]) * 100
-                        )}
-                        className="m-t-10"
-                      />
-                    ) : null}
-                  </>
-                )}
-
-                {help.impact["AMF"] ? (
-                  <Tile
-                    title={String(help.impact["AMF"])}
-                    icon={
-                      <img
-                        src={mosquito}
-                        style={{
-                          maxHeight: "24px",
-                          maxWidth: "24px",
-                          minHeight: "24px",
-                          minWidth: "24px"
-                        }}
-                      />
-                    }
-                    className="m-b-20"
-                  >
-                    people <strong>protected from malaria</strong>
-                  </Tile>
-                ) : null}
-
-                {help.impact["GD"] ? (
-                  <Tile
-                    title={String(help.impact["GD"])}
-                    icon={
-                      <img
-                        src={family}
-                        style={{
-                          maxHeight: "24px",
-                          maxWidth: "24px",
-                          minHeight: "24px",
-                          minWidth: "24px"
-                        }}
-                      />
-                    }
-                    className="m-b-20"
-                  >
-                    weeks of aid for 1 family living{" "}
-                    <strong>in extreme poverty</strong>
-                  </Tile>
-                ) : null}
-              </div>
-              <div className="col-6">
-                <h1>
-                  You have collected:{" "}
-                  <span className="text-gradient">${help.moneyRaised}</span>
-                </h1>
-                <p>Some puchases take up to several weeks to be processed </p>
-                <a
-                  href="https://altruisto.com/purchase-processing"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="button-link uppercase-link m-b-20"
-                >
-                  FIND OUT WHY
-                </a>
-              </div>
-            </div>
+            (() => {
+              switch (causeArea) {
+                case "extreme_poverty":
+                  return (
+                    <ExtremePoverty
+                      {...{ ...help, isActive: props.isActive }}
+                    />
+                  )
+                case "animals":
+                  return (
+                    <Animals
+                      {...{
+                        moneyRaised: help.moneyRaised,
+                        isActive: props.isActive
+                      }}
+                    />
+                  )
+                default:
+                  return (
+                    <ExtremePoverty
+                      {...{ ...help, isActive: props.isActive }}
+                    />
+                  )
+              }
+            })()
           )}
         </div>
       </div>
