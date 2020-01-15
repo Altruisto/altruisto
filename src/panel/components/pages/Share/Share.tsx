@@ -60,7 +60,7 @@ export const Share: React.FC = () => {
               </button>
             </a>
             <a
-              href={`https://twitter.com/home?status=Install%20an%20extension%20and%20when%20you%20buy%20stuff%20online,%20people%20in%20extreme%20poverty%20will%20get%20medicines,%20bed nets,%20or%20money%20https://altruisto.com?ref=${ref}source=twittter_share`}
+              href={`https://twitter.com/intent/tweet?url=https%3A%2F%2Faltruisto.com%2F%3Fref%3D12345&text=Install%20an%20extension%20and%20when%20you%20buy%20stuff%20online%2C%20people%20in%20extreme%20poverty%20will%20get%20medicines%2C%20bed%20nets%2C%20or%20money%20https%3A%2F%2Faltruisto.com%2F%3Fref%3D${ref}&source=twitter_share`}
               target="_blank"
               rel="noreferrer noopener"
               className="text-no-decoration"
