@@ -6,18 +6,36 @@ import copy from "../../../assets/copy.svg"
 import copyToClipboard from "copy-to-clipboard"
 import { useSnackbar } from "notistack"
 import { TwitterCarousel } from "./TwitterCarousel"
+import { useAuthContext } from "../../../common/auth"
+import axios from "../../../../helpers/api.js"
 
 import "./Share.scss"
 
 export const Share: React.FC = () => {
   const { enqueueSnackbar } = useSnackbar()
-  const referralsNumber = 0
+  const [referralsNumber, setReferralsNumber] = useState(null)
   const [ref, setRef] = useState(null)
+  const auth = useAuthContext()
+
   useEffect(() => {
     if (ref === null) {
       browser.storage.sync
         .get({ ref: null })
         .then(storage => setRef(storage.ref))
+    }
+
+    if (referralsNumber === null) {
+      const getReferralsNumber = auth.user
+        ? axios.get("/user", { headers: { "X-AUTH-TOKEN": auth.user.apiKey } })
+        : browser.storage.local
+            .get({ installationId: null })
+            .then(storage => storage.installationId)
+            .then(installationId =>
+              axios.get(`/installations/${installationId}`)
+            )
+      getReferralsNumber.then(response => {
+        setReferralsNumber(response.data.referrals_count)
+      })
     }
   }, [])
 
@@ -107,19 +125,17 @@ export const Share: React.FC = () => {
               />
             </div>
           ) : null}
-          <div className="m-t-30">
-            {referralsNumber ? (
-              <>
-                <div className="share__invited-number">{referralsNumber} </div>
-                <div className="share__invited-people">
-                  people joined thanks to you
-                </div>
-              </>
-            ) : null}
-          </div>
+          {referralsNumber !== null ? (
+            <div className="m-t-20 m-b-10 ">
+              <div className="share__invited-number">{referralsNumber} </div>
+              <div className="share__invited-people">
+                people joined thanks to you
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
-      <h1 className="container">Talking about us:</h1>
+      <h1 className="container m-t-30">Talking about us:</h1>
       <TwitterCarousel />
     </div>
   )
