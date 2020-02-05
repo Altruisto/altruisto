@@ -1,7 +1,8 @@
-type charity = "AMF" | "SCI"
+type Charity = "AMF" | "SCI"
+type MoneyLeft = number
 
 export const IMPACT_COST_IN_USD = {
-  SCI: 1.19, // one child cured
+  SCI: 1.19, // one child cured from parasites
   AMF: 2.43, // one person protected from malaria
   GD: 21.13 // one week of financial help for a family in extreme poverty
 }
@@ -12,7 +13,7 @@ export type ImpactSpreadingResult = {
 
 export const spreadUSDBetweenAllForMaxImpact = (
   money: number
-): [ImpactSpreadingResult, number] => {
+): [ImpactSpreadingResult, MoneyLeft] => {
   let moneyLeft = money
   const cheapestImpact = IMPACT_COST_IN_USD.SCI
   // Object.values(IMPACT_COST_IN_USD).sort((a,b) => a - b)[0]
@@ -21,6 +22,7 @@ export const spreadUSDBetweenAllForMaxImpact = (
     AMF: 0,
     GD: 0
   }
+
   const buy = (charity: keyof typeof IMPACT_COST_IN_USD): void => {
     moneyLeft -= IMPACT_COST_IN_USD[charity]
     result[charity] += 1
@@ -43,10 +45,10 @@ export const spreadUSDBetweenAllForMaxImpact = (
   return [result, moneyLeft]
 }
 
-function transformUSDToBeingsSaves(
+export const transformUSDToBeingsSaves = (
   moneyInUSD: number,
-  charity: charity
-): number {
+  charity: Charity
+): number => {
   const rawImpact = moneyInUSD / IMPACT_COST_IN_USD[charity]
   return rawImpact <= 1 ? 1 : Math.round(rawImpact)
 }
