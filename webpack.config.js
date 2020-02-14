@@ -74,13 +74,16 @@ module.exports = (env, argv) => [
   {
     name: "chrome",
     entry: {
-      background: PATHS.src + "/background.js",
+      background: PATHS.src + "/background.ts",
       content: PATHS.src + "/content.js",
       google: PATHS.src + "/search_results/google.js"
     },
     output: {
       path: PATHS.build + "/chrome/",
       filename: "[name].js"
+    },
+    resolve: {
+      extensions: ['.ts', '.js', '.json']
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -155,13 +158,16 @@ module.exports = (env, argv) => [
   {
     name: "firefox",
     entry: {
-      background: PATHS.src + "/background.js",
+      background: PATHS.src + "/background.ts",
       content: PATHS.src + "/content.js",
       google: PATHS.src + "/search_results/google.js"
     },
     output: {
       path: PATHS.build + "/firefox/",
       filename: "[name].js"
+    },
+    resolve: {
+      extensions: ['.ts', '.js', '.json']
     },
     plugins: [
       new webpack.DefinePlugin({

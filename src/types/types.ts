@@ -1,5 +1,5 @@
 export type StorageData = {
-  activatedAffiliates: Array<ActivatedAffiliate>
+  activatedAffiliates: ActivatedAffiliate[]
   closedWebsites: string[]
   disabledWebsites: string[]
   partners: string[]
@@ -15,14 +15,15 @@ export type Notification = {
   secondaryButtoDestination?: string
 }
 
+type StringifiedNotification = string
 export type PublicNotifications = {
-  lastUpdatedAt: string
-  notificationsToShow: Array<Notification>
+  lastUpdated: string
+  notificationsQueue: StringifiedNotification[]
 }
 
 export type PrivateNotification = {
   id: string
-  content: Notification
+  content: StringifiedNotification
 }
 
 export type ShowNotificationMessage = {
