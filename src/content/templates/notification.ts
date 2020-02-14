@@ -1,8 +1,8 @@
 import template from "./notification.hbs"
 import styles from "./notification.scss"
 import fonts from "../../assets/css/fonts.css"
-import { fromHtml } from "../../helpers/from-html.ts"
-import { ASSETS_PATHS } from "../../helpers/assets-paths.js"
+import { fromHtml } from "../../helpers/from-html"
+import { ASSETS_PATHS } from "../../helpers/assets-paths"
 
 type NotificationOptions = {
   text: string
@@ -19,14 +19,17 @@ export const notification = (options: NotificationOptions) => {
   let styleElement = document.createElement("style")
   styleElement.innerHTML = `${styles.toString()}${fonts.toString()}`
 
-  const notificationElement = fromHtml(template({ ...options, ASSETS_PATHS }))
+  const notificationElement = fromHtml(
+    template({ ...options, ASSETS_PATHS })
+  ) as HTMLDivElement
   const closeButton = notificationElement.querySelector(
     ".altruisto-notification__close"
   )
-  closeButton.addEventListener("click", () => {
-    notificationElement.classList.remove("altruisto-notification--in")
-    options.onClose && options.onClose()
-  })
+  closeButton &&
+    closeButton.addEventListener("click", () => {
+      notificationElement.classList.remove("altruisto-notification--in")
+      options.onClose && options.onClose()
+    })
 
   document.documentElement.prepend(styleElement)
   document.documentElement.prepend(notificationElement)

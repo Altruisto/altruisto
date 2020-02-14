@@ -75,7 +75,7 @@ module.exports = (env, argv) => [
     name: "chrome",
     entry: {
       background: PATHS.src + "/background.ts",
-      content: PATHS.src + "/content.js",
+      content: PATHS.src + "/content.ts",
       google: PATHS.src + "/search_results/google.js"
     },
     output: {
@@ -159,7 +159,7 @@ module.exports = (env, argv) => [
     name: "firefox",
     entry: {
       background: PATHS.src + "/background.ts",
-      content: PATHS.src + "/content.js",
+      content: PATHS.src + "/content.ts",
       google: PATHS.src + "/search_results/google.js"
     },
     output: {
