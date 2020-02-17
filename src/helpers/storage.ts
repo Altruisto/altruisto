@@ -109,15 +109,20 @@ const createStorage = <
       | ((
           current: SA extends "local" ? LocalStorage : SyncStorage
         ) => SA extends "local" ? Partial<LocalStorage> : Partial<SyncStorage>)
+      | ((
+          current: SA extends "local" ? LocalStorage : SyncStorage
+        ) => Promise<SA extends "local" ? Partial<LocalStorage> : Partial<SyncStorage>>)
       | (SA extends "local" ? Partial<LocalStorage> : Partial<SyncStorage>)
+      | Promise<SA extends "local" ? Partial<LocalStorage> : Partial<SyncStorage>>
   ) => {
     if (typeof update === "function") {
       get(storageArea).then(current => {
-        const newValues = update(current as SA extends "local" ? LocalStorage : SyncStorage)
-        set(storageArea, newValues)
+        Promise.resolve(update(current as SA extends "local" ? LocalStorage : SyncStorage)).then(
+          newValues => set(storageArea, newValues)
+        )
       })
     } else {
-      browser.storage[storageArea].set(update)
+      Promise.resolve(update).then(newValues => browser.storage[storageArea].set(newValues))
     }
   }
 
