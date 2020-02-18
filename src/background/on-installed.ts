@@ -1,7 +1,7 @@
 import { browser } from "webextension-polyfill-ts"
 import { getPartnersList } from "../helpers/get-partners-list"
 import axios from "../helpers/api"
-import { formatDate } from "../helpers/format-date"
+import { storage } from "../helpers/storage"
 
 const setUpAlarms = () => {
   browser.alarms.create("clearClosedWebsites", {
@@ -36,11 +36,6 @@ const logInstallationAndSetUpStorage = () => {
     let installationId = ""
     let ref = ""
     const referredBy = refCookie ? refCookie.value : ""
-    const publicNotifications = {
-      lastUpdated: formatDate(new Date()),
-      notificationsQueue: []
-    }
-    const privateNotifications: string[] = []
 
     axios
       .post("/installations", {
@@ -52,16 +47,8 @@ const logInstallationAndSetUpStorage = () => {
       })
       .catch(() => {})
       .finally(() => {
-        browser.storage.local.set({
-          installationId
-        })
-
-        browser.storage.sync.set({
-          ref,
-          referredBy,
-          publicNotifications,
-          privateNotifications
-        })
+        storage.set("local", { installationId })
+        storage.set("sync", { ref, referredBy })
       })
   })
 }

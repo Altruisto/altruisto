@@ -1,28 +1,7 @@
 import { browser } from "webextension-polyfill-ts"
 import { extractDomain } from "../helpers/extract-domain"
 import { addOrUpdate } from "../helpers/add-or-update"
-import { ActivatedAffiliate } from "../types/types"
-
-const updateActivatedAffiliates = (activatedAffiliate: ActivatedAffiliate) => {
-  browser.storage.local.get("activatedAffiliates").then(value => {
-    const result = value as { activatedAffiliates: ActivatedAffiliate[] }
-    let updatedStorageData: ActivatedAffiliate[] = []
-
-    if (result.activatedAffiliates === null) {
-      updatedStorageData = [activatedAffiliate]
-    } else {
-      updatedStorageData = addOrUpdate<ActivatedAffiliate>(
-        result.activatedAffiliates,
-        activatedAffiliate,
-        "timestamp"
-      )
-    }
-
-    browser.storage.local.set({
-      activatedAffiliates: updatedStorageData
-    })
-  })
-}
+import { storage } from "../helpers/storage"
 
 // We recognize when partner is activated by monitoring
 // requests to api.altruisto.com/redirect?url=partnersDomain.com
@@ -38,7 +17,13 @@ export const monitorActivatedPartners = () => {
           timestamp: request.timeStamp
         }
 
-        updateActivatedAffiliates(activatedAffiliate)
+        storage.set("local", current => ({
+          activatedAffiliates: addOrUpdate(
+            current.activatedAffiliates,
+            activatedAffiliate,
+            "domain"
+          )
+        }))
       }
     },
     {

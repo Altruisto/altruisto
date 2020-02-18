@@ -4,18 +4,15 @@ import { notification } from "./templates/notification"
 import { StorageData } from "../types/types.js"
 import { isAlreadyActivated } from "../helpers/is-already-activated"
 import { getTracker } from "../helpers/get-tracker"
+import { storage } from "../helpers/storage"
+import { addIfNotIncluded } from "../helpers/add-if-not-included"
 
 const currentDomain = extractDomain(location.href)
 
-const saveAsClosed = () => {
-  browser.storage.local.get({ closedWebsites: [] }).then(value => {
-    const result = value as { closedWebsites: string[] }
-    if (!result.closedWebsites.includes(currentDomain)) {
-      const updatedClosedWebsites = [...result.closedWebsites].push(currentDomain)
-      browser.storage.local.set({ closedWebsites: updatedClosedWebsites })
-    }
-  })
-}
+const saveAsClosed = () =>
+  storage.set("local", current => ({
+    closedWebsites: addIfNotIncluded(current.closedWebsites, currentDomain)
+  }))
 
 const isCheckoutPage = (location: string) => {
   const checkoutPages = {
@@ -31,20 +28,18 @@ const isCheckoutPage = (location: string) => {
 }
 
 export const showDonationNotification = () => {
-  const getStorageData = browser.storage.local.get({
-    activatedAffiliates: [],
-    closedWebsites: [],
-    disabledWebsites: [],
-    partners: []
-  }) as Promise<StorageData>
+  const getWebsitesData = storage.get("local", [
+    "activatedAffiliates",
+    "closedWebsites",
+    "disabledWebsites",
+    "partners"
+  ])
 
-  const getSettings = browser.storage.sync.get({ showNotifications: true }) as Promise<{
-    showNotifications: boolean
-  }>
+  const getSettings = storage.get("sync", "showNotifications")
 
   let notificationElement: HTMLElement | null = null
 
-  Promise.all([getStorageData, getTracker, getSettings]).then(([items, tracker, settings]) => {
+  Promise.all([getWebsitesData, getTracker, getSettings]).then(([items, tracker, settings]) => {
     const showNotification = () =>
       isAlreadyActivated(items.activatedAffiliates, currentDomain)
         ? notification({

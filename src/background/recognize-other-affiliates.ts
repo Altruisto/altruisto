@@ -1,5 +1,7 @@
 import { browser } from "webextension-polyfill-ts"
 import { extractDomain } from "../helpers/extract-domain"
+import { storage } from "../helpers/storage"
+import { addIfNotIncluded } from "../helpers/add-if-not-included"
 
 const isAltruistoLink = (url: string) => {
   const altruistoStamps = ["id=XK9XruzkyUo", "8106588"] // @TODO: move to .env or webpack
@@ -35,12 +37,9 @@ const isOtherAffiliateLink = (domain: string) => {
 }
 
 const disablePartner = (domain: string) =>
-  browser.storage.local.get({ disabledWebsites: [] }).then(value => {
-    if (!value.disabledWebsites.includes(domain)) {
-      let updatedDisabledWebsites = [...value.disabledWebsites].push(domain)
-      browser.storage.local.set({ disabledWebsites: updatedDisabledWebsites })
-    }
-  })
+  storage.set("local", current => ({
+    disabledWebsites: addIfNotIncluded(current.disabledWebsites, domain)
+  }))
 
 // if user is redirected through other affiliate's link, we disable ability
 // to activate donation (affiliate networks' requirement)
