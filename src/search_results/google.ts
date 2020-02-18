@@ -1,19 +1,13 @@
-import * as browser from "webextension-polyfill"
-import {
-  extractDomain
-} from "../helpers/extract-domain"
-import {
-  ASSETS_PATHS
-} from "../helpers/assets-paths"
-import {
-  getTracker
-} from "../helpers/get-tracker.ts"
+import { extractDomain } from "../helpers/extract-domain"
+import { ASSETS_PATHS } from "../helpers/assets-paths"
+import { getTracker } from "../helpers/get-tracker"
+import { storage } from "../helpers/storage"
 
 const SEARCH_RESULT_QUERY = ".g"
 const RESULT_URL_QUERY = "a:first-of-type"
 const RESULT_HEADER_QUERY = ".r"
 
-const highlightSearchResult = (result, url, tracker) => {
+const highlightSearchResult = (result: Element, url: string, tracker: string) => {
   const header = result.querySelector(RESULT_HEADER_QUERY)
   const highlight = document.createElement("div")
   // TODO: fix scaling image with css
@@ -27,27 +21,20 @@ const highlightSearchResult = (result, url, tracker) => {
       font-weight: bold;"><strong>Click here</strong> to giveaway portion of your purchases to charities (for free!)</span>
     </a>
   `
-  header.prepend(highlight)
+  header && header.prepend(highlight)
 }
 
-browser.storage.sync.get({
-  highlightSearchResults: true
-}).then(settings => {
-  if (settings.highlightSearchResults) {
-    browser.storage.local.get("partners").then(storage => {
+storage.get("sync", "highlightSearchResults").then(({ highlightSearchResults }) => {
+  if (highlightSearchResults) {
+    storage.get("local", "partners").then(({ partners }) => {
       const results = document.querySelectorAll(SEARCH_RESULT_QUERY)
       results.forEach(result => {
-        const url = result.querySelector(RESULT_URL_QUERY).href
+        const url = result.querySelector<HTMLAnchorElement>(RESULT_URL_QUERY)!.href
         const domain = extractDomain(url)
-        if (storage.partners.indexOf(domain) !== -1) {
+        if (partners.includes(domain)) {
           getTracker.then(tracker => highlightSearchResult(result, url, tracker))
         }
       })
     })
   }
 })
-
-// get search result domains
-// forEach - is in partners list?
-// if so add button/link to altruisto.com/gateways/__DOMAIN__
-// "click here to give 2-6% of your purchases to charities"

@@ -36,7 +36,8 @@ module.exports = (env, argv) => [
       minimizer: [new OptimizeCSSAssetsPlugin({})]
     },
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -76,14 +77,14 @@ module.exports = (env, argv) => [
     entry: {
       background: PATHS.src + "/background.ts",
       content: PATHS.src + "/content.ts",
-      google: PATHS.src + "/search_results/google.js"
+      google: PATHS.src + "/search_results/google.ts"
     },
     output: {
       path: PATHS.build + "/chrome/",
       filename: "[name].js"
     },
     resolve: {
-      extensions: ['.ts', '.js', '.json']
+      extensions: [".ts", ".js", ".json"]
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -91,7 +92,8 @@ module.exports = (env, argv) => [
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin(
-        [{
+        [
+          {
             from: PATHS.src + "/manifest.json",
             transform: content => {
               // for extension reloader we need to inject specific content security policies
@@ -124,9 +126,11 @@ module.exports = (env, argv) => [
           }
         ],
         // for extension reloader we need to inject specific content security policies
-        argv.mode === "production" ? {
-          copyUnmodified: true
-        } : {}
+        argv.mode === "production"
+          ? {
+              copyUnmodified: true
+            }
+          : {}
       ),
       new ExtensionReloader({
         port: 9000
@@ -136,7 +140,8 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -160,28 +165,26 @@ module.exports = (env, argv) => [
     entry: {
       background: PATHS.src + "/background.ts",
       content: PATHS.src + "/content.ts",
-      google: PATHS.src + "/search_results/google.js"
+      google: PATHS.src + "/search_results/google.ts"
     },
     output: {
       path: PATHS.build + "/firefox/",
       filename: "[name].js"
     },
     resolve: {
-      extensions: ['.ts', '.js', '.json']
+      extensions: [".ts", ".js", ".json"]
     },
     plugins: [
       new webpack.DefinePlugin({
         BASE_URL: JSON.stringify(localhost)
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
-      new CopyWebpackPlugin([{
+      new CopyWebpackPlugin([
+        {
           from: PATHS.src + "/manifest.json",
-          transform: function (content) {
+          transform: function(content) {
             let newContent = content.toString()
-            newContent = newContent.replace(
-              "Altruisto.com Chrome Extension",
-              "Altruisto.com"
-            )
+            newContent = newContent.replace("Altruisto.com Chrome Extension", "Altruisto.com")
             newContent = newContent.replace(
               /"options_page":\s"(.*)"/i,
               '"options_ui": {\n    "page": "$1"\n  }'
@@ -223,7 +226,8 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
