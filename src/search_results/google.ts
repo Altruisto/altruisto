@@ -5,10 +5,8 @@ import { storage } from "../helpers/storage"
 
 const SEARCH_RESULT_QUERY = ".g"
 const RESULT_URL_QUERY = "a:first-of-type"
-const RESULT_HEADER_QUERY = ".r"
 
 const highlightSearchResult = (result: Element, url: string, tracker: string) => {
-  const header = result.querySelector(RESULT_HEADER_QUERY)
   const highlight = document.createElement("div")
   // TODO: fix scaling image with css
   highlight.innerHTML = `
@@ -21,17 +19,19 @@ const highlightSearchResult = (result: Element, url: string, tracker: string) =>
       font-weight: bold;"><strong>Click here</strong> to giveaway portion of your purchases to charities (for free!)</span>
     </a>
   `
-  header && header.prepend(highlight)
+  result.prepend(highlight)
 }
 
 storage.get("sync", "highlightSearchResults").then(({ highlightSearchResults }) => {
   if (highlightSearchResults) {
     storage.get("local", "partners").then(({ partners }) => {
       const results = document.querySelectorAll(SEARCH_RESULT_QUERY)
+      console.log(partners)
       results.forEach(result => {
         const url = result.querySelector<HTMLAnchorElement>(RESULT_URL_QUERY)!.href
         const domain = extractDomain(url)
         if (partners.includes(domain)) {
+          console.log("test")
           getTracker.then(tracker => highlightSearchResult(result, url, tracker))
         }
       })
