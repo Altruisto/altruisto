@@ -130,8 +130,9 @@ const createStorage = <
     }
   }
 
-  set("local", localStorageSchema)
-  set("sync", syncStorageSchema)
+  // initialize with default only these values, which are not already in storage
+  set("local", current => ({ ...localStorageSchema, ...current }))
+  set("sync", current => ({ ...syncStorageSchema, ...current }))
 
   return {
     get,
