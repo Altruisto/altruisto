@@ -1,4 +1,5 @@
 import { browser } from "webextension-polyfill-ts"
+import { CauseArea, Currency } from "../types/types"
 
 export type LocalStorageSchema = {
   activatedAffiliates: ActivatedAffiliate[]
@@ -39,8 +40,8 @@ export type User = {
 }
 
 export type UserSettings = {
-  causeArea: "extreme_poverty" | "animals"
-  currency: "USD" | "EUR"
+  causeArea: CauseArea
+  currency: Currency
 }
 
 const localStorageSchema: LocalStorageSchema = {
