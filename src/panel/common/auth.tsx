@@ -1,10 +1,10 @@
-import * as browser from "webextension-polyfill"
 import React, { useCallback, useMemo, useState, useContext } from "react"
 import axios from "../../helpers/api"
-import { User } from "../../types/types.ts"
+import { User, storage } from "../../helpers/storage"
+import { CauseArea, Currency } from "../../types/types"
 
 export type Auth = {
-  user: User | undefined
+  user: User | null
   login: (email: string, password: string) => Promise<User>
   logout: () => Promise<void>
 }
@@ -13,116 +13,87 @@ export type AuthProviderProps = {
   children?: any
 }
 
+type PostLoginResponse = {
+  apiKey: string
+}
+
+type GetUserResponse = {
+  id: number
+  username: string
+  email: string
+  api_key: string
+  cause_area: CauseArea
+  money_raised: number
+  currency: Currency
+  created_at: string
+  updated_at: string
+  registration_source: string
+  referrals_count: number
+}
+
 export const AuthContext: React.Context<Auth> = React.createContext<Auth>({
   user: {
     email: "",
     apiKey: ""
   },
   login: () => {
-    console.warn(
-      "You are using auth context without initial values (login call)"
-    )
+    console.warn("You are using auth context without initial values (login call)")
     return new Promise(resolve => resolve(undefined))
   },
   logout: () => {
-    console.warn(
-      "You are using auth context without initial values (logout call)"
-    )
+    console.warn("You are using auth context without initial values (logout call)")
     return new Promise(resolve => resolve())
   }
 })
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({
-  children
-}: AuthProviderProps) => {
-  const getStoredUser = (): Promise<User | undefined> => {
-    if (process.env.NODE_ENV === "production") {
-      return browser.storage.sync
-        .get(["user"])
-        .then((result: { user: User | undefined }) => result.user)
-    } else {
-      const storedUser = localStorage.getItem("user")
-      return new Promise(resolve => {
-        storedUser === null
-          ? resolve(undefined)
-          : resolve(JSON.parse(storedUser))
-      })
-    }
-  }
-
-  const setStoredUser = (user: User | undefined): Promise<User> => {
-    if (process.env.NODE_ENV === "production") {
-      return browser.storage.sync.set({ user }).then(() => user)
-    } else {
-      localStorage.setItem("user", JSON.stringify(user))
-      return new Promise(resolve => resolve(user))
-    }
-  }
-
-  const removeStoredUserAndSettings = (): Promise<any> => {
-    if (process.env.NODE_ENV === "production") {
-      return Promise.all([
-        browser.storage.sync.remove("user"),
-        browser.storage.sync.remove("userSettings")
-      ])
-    } else {
-      localStorage.removeItem("user")
-      localStorage.removeItem("userSettings")
-      return new Promise(resolve => resolve(null))
-    }
-  }
-
-  const [user, setUser] = useState<User | undefined>(undefined)
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }: AuthProviderProps) => {
+  const [user, setUser] = useState<User | null>(null)
 
   if (typeof user === "undefined") {
-    getStoredUser().then(storedUser => setUser(storedUser))
+    storage.get("sync", "user").then(result => setUser(result.user))
   }
 
   const login = (email: string, password: string): Promise<User> =>
     axios
-      .post("/login", {
+      .post<PostLoginResponse>("/login", {
         username: email,
         password
       })
       .then(response => {
-        if (
-          response.status &&
-          Number(response.status) === 200 &&
-          response.data.apiKey
-        ) {
-          return setStoredUser({
+        if (response.status && Number(response.status) === 200 && response.data.apiKey) {
+          const user = {
             email,
             apiKey: response.data.apiKey
-          })
+          }
+          return storage.set("sync", { user }).then(() => user)
+        } else {
+          throw new Error("login() - server did not respond with status 200")
         }
       })
-      .then((storedUser: User) => {
-        setUser(storedUser)
-        return storedUser
+      .then(user => {
+        setUser(user)
+        return user
       })
-      .then((storedUser: User) => {
+      .then(user => {
         axios
-          .get("/user", {
+          .get<GetUserResponse>("/user", {
             headers: {
-              "X-AUTH-TOKEN": storedUser.apiKey
+              "X-AUTH-TOKEN": user.apiKey
             }
           })
           .then(response =>
-            browser.storage.sync.set({
+            storage.set("sync", {
               userSettings: {
                 causeArea: response.data.cause_area,
                 currency: response.data.currency
               }
             })
           )
-        return storedUser
+        return user
       })
 
-  const logout = (): Promise<void> => {
-    return removeStoredUserAndSettings().then(() => {
-      setUser(undefined)
-    })
-  }
+  const logout = (): Promise<void> =>
+    storage.set("sync", { user: null, userSettings: null }).then(() => setUser(null))
 
   const memoizedLogin = useCallback(login, [])
   const memoizedLogout = useCallback(logout, [])
@@ -136,9 +107,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     [user, memoizedLogin, memoizedLogout]
   )
 
-  return (
-    <AuthContext.Provider value={memoizedAuth}>{children}</AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={memoizedAuth}>{children}</AuthContext.Provider>
 }
 
 export const useAuthContext = () => useContext(AuthContext)
