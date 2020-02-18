@@ -1,5 +1,5 @@
-import { browser } from "webextension-polyfill-ts"
 import axios from "../helpers/api"
+import { storage } from "./storage"
 
 type GetPartnersResponse = Array<{
   name: string
@@ -12,9 +12,8 @@ type GetPartnersResponse = Array<{
 }>
 
 export const getPartnersList = () =>
-  axios.get<GetPartnersResponse>("/partners").then(response => {
-    browser.storage.local.remove(["partners"])
-    browser.storage.local.set({
+  axios.get<GetPartnersResponse>("/partners").then(response =>
+    storage.set("local", {
       partners: response.data.map(partner => partner.domain)
     })
-  })
+  )
