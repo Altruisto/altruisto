@@ -17,7 +17,7 @@ export type SyncStorageSchema = {
   showNotifications: boolean
   highlightSearchResults: boolean
   user: User | null
-  userSettings: UserSettings | null
+  userSettings: UserSettings
 }
 
 export type ActivatedAffiliate = { domain: string; timestamp: number }
@@ -62,7 +62,10 @@ const syncStorageSchema: SyncStorageSchema = {
   showNotifications: true, // TODO: -> extensionSettings.showNotifications
   highlightSearchResults: true, // TODO: -> extensionSettings.highlightSearchResults
   user: null,
-  userSettings: null
+  userSettings: {
+    causeArea: "extreme_poverty",
+    currency: "USD"
+  }
 }
 
 const createStorage = <
