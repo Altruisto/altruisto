@@ -1,5 +1,6 @@
 import { browser } from "webextension-polyfill-ts"
 import { CauseArea, Currency } from "../types/types"
+import { pick } from "./pick"
 
 export type LocalStorageSchema = {
   activatedAffiliates: ActivatedAffiliate[]
@@ -130,13 +131,31 @@ const createStorage = <
     }
   }
 
+  // TODO: fix typing
+  const reset = <
+    SA extends "local" | "sync",
+    K extends SA extends "local"
+      ? LocalStorageKey | LocalStorageKey[]
+      : SyncStorageKey | SyncStorageKey[]
+  >(
+    storageArea: SA,
+    keys: K
+  ) => {
+    const defaultValues =
+      storageArea === "local"
+        ? pick(localStorageSchema, keys as any)
+        : pick(syncStorageSchema, keys as any)
+    return set(storageArea, defaultValues as any)
+  }
+
   // initialize with default only these values, which are not already in storage
   set("local", current => ({ ...localStorageSchema, ...current }))
   set("sync", current => ({ ...syncStorageSchema, ...current }))
 
   return {
     get,
-    set
+    set,
+    reset
   }
 }
 

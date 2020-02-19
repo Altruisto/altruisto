@@ -1,4 +1,3 @@
-import * as browser from "webextension-polyfill"
 import React, { useState, useRef, useEffect } from "react"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import Checkbox from "@material-ui/core/Checkbox"
@@ -7,6 +6,8 @@ import { Alert } from "../../ui/Alert"
 import axios from "../../../../helpers/api"
 import { useAuthContext } from "../../../common/auth"
 import { Loader } from "../../ui/Loader"
+import { storage } from "../../../../helpers/storage"
+import { Currency } from "../../../../types/types"
 
 type Props = {
   onSuccess?: () => void
@@ -28,21 +29,16 @@ type ValidationErrors = {
 
 type InstallationData = {
   installationId: string
-  refferedBy: string
+  referredBy: string
 }
 
 type RegistrationData = {
   username: string
   accept_terms: boolean
-  currency: "USD" | "EUR" | "PLN" | "NOK" // @TODO
+  currency: Currency
   password: string
   referred_by?: string
   installation_id?: string
-}
-
-type LoginData = {
-  username: string
-  password: string
 }
 
 const validate = (values: FormData) => {
@@ -64,11 +60,7 @@ const validate = (values: FormData) => {
     errors.password = "Password must have at least 8 characters"
   }
 
-  if (
-    values.confirmEmail !== values.email &&
-    values.confirmEmail !== "" &&
-    values.email !== ""
-  ) {
+  if (values.confirmEmail !== values.email && values.confirmEmail !== "" && values.email !== "") {
     errors.confirmEmail = "Emails do not match"
   }
 
@@ -81,14 +73,12 @@ const validate = (values: FormData) => {
 
 const RegisterForm: React.FC<Props> = (props: Props) => {
   const [failureMessage, setFailureMessage] = useState("")
-  const installationData = useRef<InstallationData>(null)
+  const installationData = useRef<InstallationData | null>(null)
   const auth = useAuthContext()
 
   return (
     <>
-      {failureMessage && (
-        <Alert message={failureMessage} className="m-b-20 m-t-20" />
-      )}
+      {failureMessage && <Alert message={failureMessage} className="m-b-20 m-t-20" />}
       <Formik
         initialValues={{
           email: "",
@@ -96,17 +86,17 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
           password: "",
           acceptTerms: false
         }}
-        onSubmit={async (values, actions) => {
+        onSubmit={(values, actions) => {
           if (!installationData.current) {
-            const fromLocal = await browser.storage.local.get([
-              "installationId"
-            ])
-            const fromSync = await browser.storage.sync.get(["refferedBy"])
+            const fromLocal = storage.get("local", "installationId")
+            const fromSync = storage.get("sync", "referredBy")
 
-            installationData.current = {
-              installationId: fromLocal.installationId,
-              refferedBy: fromSync.refferedBy
-            }
+            Promise.all([fromLocal, fromSync]).then(([{ installationId }, { referredBy }]) => {
+              installationData.current = {
+                installationId,
+                referredBy
+              }
+            })
           }
 
           let registrationData: RegistrationData = {
@@ -117,19 +107,21 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
           }
 
           if (installationData && installationData.current) {
-            installationData.current.refferedBy &&
-              (registrationData.referred_by =
-                installationData.current.refferedBy)
+            installationData.current.referredBy &&
+              (registrationData.referred_by = installationData.current.referredBy)
             installationData.current.installationId &&
-              (registrationData.installation_id =
-                installationData.current.installationId)
+              (registrationData.installation_id = installationData.current.installationId)
           }
 
           axios
-            .post<RegistrationData>("/register", registrationData)
+            .post("/register", registrationData)
             .then(response => {
               if (Number(response.status) === 201) {
-                return auth.login(values.email, values.password) as any // typescript hack, not sure how to do it properly
+                return auth.login(values.email, values.password)
+              } else {
+                throw new Error(
+                  "Registration: the server did not responded with expected status code (201)"
+                )
               }
             })
             .then(loggedUser => {
@@ -223,10 +215,7 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
                 />
               }
               label={
-                <label
-                  htmlFor="acceptTerms"
-                  className="field__label login-form__checkbox-label"
-                >
+                <label htmlFor="acceptTerms" className="field__label login-form__checkbox-label">
                   I accept the{" "}
                   <a
                     href="https://altruisto.com/terms-of-service.html"

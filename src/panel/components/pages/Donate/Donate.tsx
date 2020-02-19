@@ -1,4 +1,4 @@
-import * as browser from "webextension-polyfill"
+import { browser } from "webextension-polyfill-ts"
 import React, { useMemo, useState, useEffect } from "react"
 import IconBox from "../../ui/IconBox"
 import { WalletIcon } from "../../icons/WalletIcon"
@@ -9,6 +9,7 @@ import { getTracker } from "../../../../helpers/get-tracker"
 import { PartnerAlreadyActivated } from "./PartnerAlreadyActivated"
 import { NotAPartner } from "./NotAPartner"
 import { ActivatePartner } from "./ActivatePartner"
+import { storage } from "../../../../helpers/storage"
 
 type CurrentWebsite = {
   domain: string
@@ -44,17 +45,16 @@ export const Donate: React.FC = () => {
       active: true,
       lastFocusedWindow: true
     })
-    const getLocalStorage = browser.storage.local.get({
-      activatedAffiliates: [],
-      partners: []
-    })
 
-    Promise.all([getCurrentTab, getLocalStorage, getTracker]).then(([tabs, items, tracker]) => {
+    const getDataOnPartners = storage.get("local", ["activatedAffiliates", "partners"])
+
+    Promise.all([getCurrentTab, getDataOnPartners, getTracker]).then(([tabs, items, tracker]) => {
       if (tabs.length !== 0) {
-        const domain = extractDomain((tabs[0] && tabs[0].url) || "")
+        const url = (tabs[0] && tabs[0].url) || ""
+        const domain = extractDomain(url)
         setCurrentWebsite({
           domain,
-          url: tabs[0].url,
+          url,
           isPartner: items.partners.includes(domain),
           isAlreadyActivated: isAlreadyActivated(items.activatedAffiliates, domain)
         })

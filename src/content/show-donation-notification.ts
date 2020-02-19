@@ -1,7 +1,6 @@
 import { browser } from "webextension-polyfill-ts"
 import { extractDomain } from "../helpers/extract-domain"
 import { notification } from "./templates/notification"
-import { StorageData } from "../types/types.js"
 import { isAlreadyActivated } from "../helpers/is-already-activated"
 import { getTracker } from "../helpers/get-tracker"
 import { storage } from "../helpers/storage"

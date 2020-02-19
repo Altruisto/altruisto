@@ -1,4 +1,4 @@
-import { ActivatedAffiliate } from "../types/types"
+import { ActivatedAffiliate } from "./storage"
 
 export const isAlreadyActivated = (
   activatedAffiliates: Array<ActivatedAffiliate>,

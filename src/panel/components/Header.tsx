@@ -7,7 +7,7 @@ interface User {
 }
 
 interface Props {
-  user?: User
+  user: User | null
   onLoginOrRegisterClick: () => void
 }
 
@@ -24,10 +24,7 @@ export const Header: React.FC<Props> = (props: Props) => {
           </div>
         ) : (
           <div>
-            <button
-              className="button-link uppercase-link"
-              onClick={props.onLoginOrRegisterClick}
-            >
+            <button className="button-link uppercase-link" onClick={props.onLoginOrRegisterClick}>
               LOGIN OR REGISTER
             </button>
           </div>

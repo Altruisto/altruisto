@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import Zoom from "@material-ui/core/Zoom"
-// import classnames from "classnames";
 
 import LoginForm from "./LoginForm"
 import RegisterForm from "./RegisterForm"
@@ -58,9 +57,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
           <>
             <AnimatedCheckmark />
             <p className="text-success text-center m-t-20">
-              <strong>
-                You have been successfully registered and logged in. Thank you!
-              </strong>
+              <strong>You have been successfully registered and logged in. Thank you!</strong>
             </p>
           </>
         )
@@ -68,9 +65,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
       case Views.ForgotPassword:
         return (
           <ForgotPasswordForm
-            onSuccessfulPasswordReset={() =>
-              setActivePage(Views.ForgotPasswordSuccess)
-            }
+            onSuccessfulPasswordReset={() => setActivePage(Views.ForgotPasswordSuccess)}
           />
         )
 
@@ -79,9 +74,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
           <>
             <AnimatedCheckmark />
             <p className="text-success text-center m-t-20">
-              <strong>
-                We've sent you an email with a link to reset your password.
-              </strong>
+              <strong>We've sent you an email with a link to reset your password.</strong>
             </p>
           </>
         )
@@ -143,20 +136,9 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
           <img src={close} alt="close" title="close" />
         </button>
         <div className="login-or-register__content container">
-          <img
-            className="login-or-register__logo"
-            src={logo}
-            alt="Logo"
-            title="Logo"
-          />
-          {/* <div className="login-or-register__title">
-            <h1>Help others</h1>
-            <h1 className="text-gradient">with just one click!</h1>
-          </div> */}
+          <img className="login-or-register__logo" src={logo} alt="Logo" title="Logo" />
           <div className="login-or-register__form">{getForm(activePage)}</div>
-          <div className="login-or-register__footer">
-            {getFooter(activePage)}
-          </div>
+          <div className="login-or-register__footer">{getFooter(activePage)}</div>
         </div>
       </div>
     </Zoom>

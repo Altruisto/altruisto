@@ -17,7 +17,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const WaitForFilePlugin = require("./webpack/WaitForFilePlugin")
 
-const localhost = "http://api.altruisto.localhost:8002"
+const localhost = "http://api.altruisto.localhost:8001"
 
 module.exports = (env, argv) => [
   // build react app for panel and output it to temporary location: /build/.panel

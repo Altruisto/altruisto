@@ -39,14 +39,9 @@ const Main: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      {showLoginPopup ? (
-        <LoginOrRegister onClose={() => setShowLoginPopup(false)} />
-      ) : null}
+      {showLoginPopup ? <LoginOrRegister onClose={() => setShowLoginPopup(false)} /> : null}
 
-      <Header
-        user={auth.user}
-        onLoginOrRegisterClick={() => setShowLoginPopup(true)}
-      />
+      <Header user={auth.user} onLoginOrRegisterClick={() => setShowLoginPopup(true)} />
       <div className="app__content-wrapper">
         <SwipeableViews
           // axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -62,47 +57,22 @@ const Main: React.FC<Props> = (props: Props) => {
         >
           <Share />
           <Donate />
-          <YourHelp
-            onRequestLogin={() => setShowLoginPopup(true)}
-            isActive={activeTab === 2}
-          />
+          <YourHelp onRequestLogin={() => setShowLoginPopup(true)} isActive={activeTab === 2} />
           <Settings onRequestLogin={() => setShowLoginPopup(true)} />
         </SwipeableViews>
       </div>
       <Paper square elevation={0}>
         <Tabs
           value={activeTab}
-          onChange={(event: React.ChangeEvent<{}>, value: number) =>
-            setActiveTab(value)
-          }
+          onChange={(event: React.ChangeEvent<{}>, value: number) => setActiveTab(value)}
           indicatorColor="none"
           variant="fullWidth"
           textColor="secondary"
         >
-          <Tab
-            className={classes.tab}
-            icon={<ShareIcon />}
-            label="Share"
-            disableRipple
-          />
-          <Tab
-            className={classes.tab}
-            icon={<WalletIcon />}
-            label="Donate"
-            disableRipple
-          />
-          <Tab
-            className={classes.tab}
-            icon={<ProfileIcon />}
-            label="Your help"
-            disableRipple
-          />
-          <Tab
-            className={classes.tab}
-            icon={<SettingsIcon />}
-            label="Settings"
-            disableRipple
-          />
+          <Tab className={classes.tab} icon={<ShareIcon />} label="Share" disableRipple />
+          <Tab className={classes.tab} icon={<WalletIcon />} label="Donate" disableRipple />
+          <Tab className={classes.tab} icon={<ProfileIcon />} label="Your help" disableRipple />
+          <Tab className={classes.tab} icon={<SettingsIcon />} label="Settings" disableRipple />
         </Tabs>
       </Paper>
     </>

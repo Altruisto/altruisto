@@ -1,5 +1,4 @@
-import * as browser from "webextension-polyfill"
-import React, { useState, useEffect, ChangeEvent } from "react"
+import React, { useState, useEffect } from "react"
 import { Switch } from "../../ui/Switch"
 import { useSnackbar } from "notistack"
 import { useAuthContext } from "../../../common/auth"
@@ -9,6 +8,8 @@ import { CauseArea } from "./CauseArea"
 import { ChangeEmail } from "./ChangeEmail"
 import { ChangePassword } from "./ChangePassword"
 import axios from "../../../../helpers/api"
+import { storage } from "../../../../helpers/storage"
+import { Currency as CurrencyType, CauseArea as CauseAreaType } from "../../../../types/types"
 
 type Props = {
   onRequestLogin?: () => void
@@ -16,34 +17,34 @@ type Props = {
 
 export const Settings: React.FC<Props> = (props: Props) => {
   const auth = useAuthContext()
+  const { enqueueSnackbar } = useSnackbar()
   const [notifications, setNotifications] = useState(true)
   const [searchResults, setSearchResults] = useState(true)
-  const [currency, setCurrency] = useState("USD")
-  const [causeArea, setCauseArea] = useState("extreme_poverty")
-  const { enqueueSnackbar } = useSnackbar()
+  const [currency, setCurrency] = useState<CurrencyType>("USD")
+  const [causeArea, setCauseArea] = useState<CauseAreaType>("extreme_poverty")
 
   // TODO: we should defer this call until user swipes to this page for the first time
   useEffect(() => {
     if (auth.user && auth.user.apiKey) {
-      browser.storage.sync.get({ userSettings: null }).then(items => {
-        setCauseArea(items.userSettings.causeArea)
-        setCurrency(items.userSettings.currency)
+      storage.get("sync", "userSettings").then(({ userSettings }) => {
+        setCauseArea(userSettings.causeArea)
+        setCurrency(userSettings.currency)
       })
     }
 
-    browser.storage.sync
-      .get({
-        showNotifications: true,
-        highlightSearchResults: true
-      })
-      .then(settings => {
-        setNotifications(settings.showNotifications)
-        setSearchResults(settings.highlightSearchResults)
+    storage
+      .get("sync", ["showNotifications", "highlightSearchResults"])
+      .then(({ showNotifications, highlightSearchResults }) => {
+        setNotifications(showNotifications)
+        setSearchResults(highlightSearchResults)
       })
   }, [])
 
   // TODO: fix patch method in backend so it gets only what it changes
-  const updateSettings = settingToUpdate => {
+  const updateSettings = (settingToUpdate: {
+    currency?: CurrencyType
+    causeArea?: CauseAreaType
+  }) => {
     if (auth.user && auth.user.apiKey) {
       const currentSettings = {
         email: auth.user.email,
@@ -54,10 +55,6 @@ export const Settings: React.FC<Props> = (props: Props) => {
 
       settingToUpdate.currency && setCurrency(settingToUpdate.currency)
       settingToUpdate.causeArea && setCauseArea(settingToUpdate.causeArea)
-
-      enqueueSnackbar("Your settings have been updated", {
-        variant: "success"
-      })
 
       // possible race conditions when user starts changing back and fourth very quickly
       axios
@@ -73,7 +70,11 @@ export const Settings: React.FC<Props> = (props: Props) => {
         )
         .then(response => {
           if (response.status === 200) {
-            browser.storage.sync.set({
+            enqueueSnackbar("Your settings have been updated", {
+              variant: "success"
+            })
+
+            storage.set("sync", {
               userSettings: {
                 causeArea: newSettings.causeArea,
                 currency: newSettings.currency
@@ -114,27 +115,24 @@ export const Settings: React.FC<Props> = (props: Props) => {
               on={notifications}
               onClick={() =>
                 setNotifications(v => {
-                  browser.storage.sync.set({ showNotifications: !v })
+                  storage.set("sync", { showNotifications: !v })
                   return !v
                 })
               }
             />
           </div>
           <p className="settings__description">
-            Show me a notification when I visit one of Altruisto's partners'
-            shop and have an opportunity to raise money for charities with my
-            purchases
+            Show me a notification when I visit one of Altruisto's partners' shop and have an
+            opportunity to raise money for charities with my purchases
           </p>
 
           <div className="settings__option m-t-20">
-            <span className="settings__label">
-              Highlight partners in search results
-            </span>
+            <span className="settings__label">Highlight partners in search results</span>
             <Switch
               on={searchResults}
               onClick={() =>
                 setSearchResults(v => {
-                  browser.storage.sync.set({ highlightSearchResults: !v })
+                  storage.set("sync", { highlightSearchResults: !v })
                   return !v
                 })
               }
@@ -145,24 +143,17 @@ export const Settings: React.FC<Props> = (props: Props) => {
           <div className="m-t-20">
             <Currency
               value={currency}
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                updateSettings({ currency: event.target.value })
-              }
+              onChange={event => updateSettings({ currency: event.target.value as CurrencyType })}
             />
             <CauseArea
               value={causeArea}
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                updateSettings({ causeArea: event.target.value })
-              }
+              onChange={event => updateSettings({ causeArea: event.target.value as CauseAreaType })}
             />
             <ChangeEmail />
             <ChangePassword />
 
             <div className="settings__option">
-              <button
-                className="button-link uppercase-link m-b-20"
-                onClick={handleLogout}
-              >
+              <button className="button-link uppercase-link m-b-20" onClick={handleLogout}>
                 LOG OUT
               </button>
             </div>
@@ -170,14 +161,11 @@ export const Settings: React.FC<Props> = (props: Props) => {
         ) : (
           <div className="settings__info-for-unlogged">
             <p>
-              By default the help from unlogged users goes to: Against Malaria
-              Foundation, Schistosomiasis Control Initiative, and Give Directly.
+              By default the help from unlogged users goes to: Against Malaria Foundation,
+              Schistosomiasis Control Initiative, and Give Directly.
             </p>
             <p>
-              <button
-                className="button-link p-l-0"
-                onClick={props.onRequestLogin}
-              >
+              <button className="button-link p-l-0" onClick={props.onRequestLogin}>
                 <span className="text-gradient">Sign up</span>
               </button>{" "}
               to choose different charities.

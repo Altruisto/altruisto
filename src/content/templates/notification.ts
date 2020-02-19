@@ -19,12 +19,8 @@ export const notification = (options: NotificationOptions) => {
   let styleElement = document.createElement("style")
   styleElement.innerHTML = `${styles.toString()}${fonts.toString()}`
 
-  const notificationElement = fromHtml(
-    template({ ...options, ASSETS_PATHS })
-  ) as HTMLDivElement
-  const closeButton = notificationElement.querySelector(
-    ".altruisto-notification__close"
-  )
+  const notificationElement = fromHtml(template({ ...options, ASSETS_PATHS })) as HTMLDivElement
+  const closeButton = notificationElement.querySelector(".altruisto-notification__close")
   closeButton &&
     closeButton.addEventListener("click", () => {
       notificationElement.classList.remove("altruisto-notification--in")
@@ -33,10 +29,7 @@ export const notification = (options: NotificationOptions) => {
 
   document.documentElement.prepend(styleElement)
   document.documentElement.prepend(notificationElement)
-  setTimeout(
-    () => notificationElement.classList.add("altruisto-notification--in"),
-    0
-  )
+  setTimeout(() => notificationElement.classList.add("altruisto-notification--in"), 0)
   if (options.autoclose) {
     setTimeout(() => {
       notificationElement.classList.remove("altruisto-notification--in")

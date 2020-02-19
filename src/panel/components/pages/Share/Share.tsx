@@ -1,4 +1,3 @@
-import * as browser from "webextension-polyfill"
 import React, { useEffect, useState } from "react"
 import facebook from "../../../assets/facebook.svg"
 import twitter from "../../../assets/twitter.svg"
@@ -10,25 +9,26 @@ import { useAuthContext } from "../../../common/auth"
 import axios from "../../../../helpers/api"
 
 import "./Share.scss"
+import { storage } from "../../../../helpers/storage"
 
 export const Share: React.FC = () => {
   const { enqueueSnackbar } = useSnackbar()
-  const [referralsNumber, setReferralsNumber] = useState(null)
-  const [ref, setRef] = useState(null)
+  const [referralsNumber, setReferralsNumber] = useState<number | null>(null)
+  const [ref, setRef] = useState<string | null>(null)
   const auth = useAuthContext()
 
   useEffect(() => {
     if (ref === null) {
-      browser.storage.sync.get({ ref: null }).then(storage => setRef(storage.ref))
+      storage.get("sync", "ref").then(fromSync => setRef(fromSync.ref))
     }
 
     if (referralsNumber === null) {
+      // TODO: add typings for axios response
       const getReferralsNumber = auth.user
         ? axios.get("/user", { headers: { "X-AUTH-TOKEN": auth.user.apiKey } })
-        : browser.storage.local
-            .get({ installationId: null })
-            .then(storage => storage.installationId)
-            .then(installationId => axios.get(`/installations/${installationId}`))
+        : storage
+            .get("local", "installationId")
+            .then(({ installationId }) => axios.get(`/installations/${installationId}`))
 
       getReferralsNumber.then(response => {
         setReferralsNumber(response.data.referrals_count)

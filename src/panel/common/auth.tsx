@@ -93,7 +93,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }: AuthProv
       })
 
   const logout = (): Promise<void> =>
-    storage.set("sync", { user: null, userSettings: null }).then(() => setUser(null))
+    storage.reset("sync", ["userSettings", "user"]).then(() => setUser(null))
 
   const memoizedLogin = useCallback(login, [])
   const memoizedLogout = useCallback(logout, [])
