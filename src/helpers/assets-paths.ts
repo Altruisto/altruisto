@@ -1,4 +1,4 @@
-import * as browser from "webextension-polyfill"
+import { browser } from "webextension-polyfill-ts"
 
 export const ASSETS_PATHS = {
   icons: {
@@ -15,3 +15,5 @@ export const ASSETS_PATHS = {
     options: browser.extension.getURL("options/index.html")
   }
 }
+
+export type AssetsPaths = typeof ASSETS_PATHS

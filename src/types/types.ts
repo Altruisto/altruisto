@@ -1,28 +1,9 @@
-export type StorageData = {
-  activatedAffiliates: Array<ActivatedAffiliate>
-  closedWebsites: string[]
-  disabledWebsites: string[]
-  partners: string[]
-}
-
-export type ActivatedAffiliate = { domain: string; timestamp: number }
-
 export type Notification = {
   text: string
   primaryButtonLabel?: string
   primaryButtonDestination?: string
   secondaryButtonLabel?: string
   secondaryButtoDestination?: string
-}
-
-export type PublicNotifications = {
-  lastUpdatedAt: string
-  notificationsToShow: Array<Notification>
-}
-
-export type PrivateNotification = {
-  id: string
-  content: Notification
 }
 
 export type ShowNotificationMessage = {
@@ -34,7 +15,6 @@ export type Message = ShowNotificationMessage
 
 export type MessageResponse = "success" | "failure"
 
-export type User = {
-  email: string
-  apiKey: string
-}
+export type CauseArea = "extreme_poverty" | "animals"
+
+export type Currency = "USD" | "PLN" | "EUR" | "GBP" | "NOK"

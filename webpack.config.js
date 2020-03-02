@@ -17,7 +17,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const WaitForFilePlugin = require("./webpack/WaitForFilePlugin")
 
-const localhost = "http://api.altruisto.localhost:8002"
+const localhost = "http://api.altruisto.localhost:8001"
 
 module.exports = (env, argv) => [
   // build react app for panel and output it to temporary location: /build/.panel
@@ -36,7 +36,8 @@ module.exports = (env, argv) => [
       minimizer: [new OptimizeCSSAssetsPlugin({})]
     },
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -74,13 +75,16 @@ module.exports = (env, argv) => [
   {
     name: "chrome",
     entry: {
-      background: PATHS.src + "/background.js",
-      content: PATHS.src + "/content.js",
-      google: PATHS.src + "/search_results/google.js"
+      background: PATHS.src + "/background.ts",
+      content: PATHS.src + "/content.ts",
+      google: PATHS.src + "/search_results/google.ts"
     },
     output: {
       path: PATHS.build + "/chrome/",
       filename: "[name].js"
+    },
+    resolve: {
+      extensions: [".ts", ".js", ".json"]
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -88,7 +92,8 @@ module.exports = (env, argv) => [
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin(
-        [{
+        [
+          {
             from: PATHS.src + "/manifest.json",
             transform: content => {
               // for extension reloader we need to inject specific content security policies
@@ -121,9 +126,11 @@ module.exports = (env, argv) => [
           }
         ],
         // for extension reloader we need to inject specific content security policies
-        argv.mode === "production" ? {
-          copyUnmodified: true
-        } : {}
+        argv.mode === "production"
+          ? {
+              copyUnmodified: true
+            }
+          : {}
       ),
       new ExtensionReloader({
         port: 9000
@@ -133,7 +140,8 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -155,27 +163,28 @@ module.exports = (env, argv) => [
   {
     name: "firefox",
     entry: {
-      background: PATHS.src + "/background.js",
-      content: PATHS.src + "/content.js",
-      google: PATHS.src + "/search_results/google.js"
+      background: PATHS.src + "/background.ts",
+      content: PATHS.src + "/content.ts",
+      google: PATHS.src + "/search_results/google.ts"
     },
     output: {
       path: PATHS.build + "/firefox/",
       filename: "[name].js"
+    },
+    resolve: {
+      extensions: [".ts", ".js", ".json"]
     },
     plugins: [
       new webpack.DefinePlugin({
         BASE_URL: JSON.stringify(localhost)
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
-      new CopyWebpackPlugin([{
+      new CopyWebpackPlugin([
+        {
           from: PATHS.src + "/manifest.json",
-          transform: function (content) {
+          transform: function(content) {
             let newContent = content.toString()
-            newContent = newContent.replace(
-              "Altruisto.com Chrome Extension",
-              "Altruisto.com"
-            )
+            newContent = newContent.replace("Altruisto.com Chrome Extension", "Altruisto.com")
             newContent = newContent.replace(
               /"options_page":\s"(.*)"/i,
               '"options_ui": {\n    "page": "$1"\n  }'
@@ -217,7 +226,8 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",

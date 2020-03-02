@@ -1,16 +1,11 @@
-import * as browser from "webextension-polyfill"
+import { storage } from "./storage"
 
-export const getTracker = browser.storage.sync
-  .get({
-    user: null,
-    userSettings: { causeArea: "extreme_poverty", currency: "USD" },
-    ref: "",
-    refferedBy: ""
-  })
-  .then(items => {
-    let ref = items.ref
-    if (!items.user) {
+export const getTracker = storage
+  .get("sync", ["user", "userSettings", "ref", "referredBy"])
+  .then(result => {
+    let ref = result.ref
+    if (!result.user) {
       ref = "" // when user is not logged in we do not track
     }
-    return `${ref}-${items.userSettings.causeArea}-${items.refferedBy}`
-  }) as Promise<string>
+    return `${ref}-${result.userSettings.causeArea}-${result.referredBy}`
+  })

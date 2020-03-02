@@ -1,14 +1,15 @@
-import * as browser from "webextension-polyfill"
+import { browser } from "webextension-polyfill-ts"
 import React, { useMemo, useState, useEffect } from "react"
 import IconBox from "../../ui/IconBox"
 import { WalletIcon } from "../../icons/WalletIcon"
 import transformUsdToBeingsSaved from "../../../common/utils/transform-usd-to-beings-saved"
-import { extractDomain } from "../../../../helpers/extract-domain.js"
+import { extractDomain } from "../../../../helpers/extract-domain"
 import { isAlreadyActivated } from "../../../../helpers/is-already-activated"
 import { getTracker } from "../../../../helpers/get-tracker"
 import { PartnerAlreadyActivated } from "./PartnerAlreadyActivated"
 import { NotAPartner } from "./NotAPartner"
 import { ActivatePartner } from "./ActivatePartner"
+import { storage } from "../../../../helpers/storage"
 
 type CurrentWebsite = {
   domain: string
@@ -23,16 +24,11 @@ const getRandomImpactHighlight = () => {
   }
   const charities = asLiterals(["AMF", "SCI"])
   const randomItem = Math.floor(Math.random() * charities.length)
-  const beingsSaved = transformUsdToBeingsSaved(
-    100 * 0.03,
-    charities[randomItem]
-  )
+  const beingsSaved = transformUsdToBeingsSaved(100 * 0.03, charities[randomItem])
 
   switch (charities[randomItem]) {
     case "AMF":
-      return `protect ${beingsSaved} ${
-        beingsSaved === 1 ? "person" : "people"
-      } from malaria`
+      return `protect ${beingsSaved} ${beingsSaved === 1 ? "person" : "people"} from malaria`
 
     case "SCI":
       return `${beingsSaved} children get cured from parasites`
@@ -41,9 +37,7 @@ const getRandomImpactHighlight = () => {
 
 export const Donate: React.FC = () => {
   const memoizedImpactHighlight = useMemo(() => getRandomImpactHighlight(), [])
-  const [currentWebsite, setCurrentWebsite] = useState<CurrentWebsite | null>(
-    null
-  )
+  const [currentWebsite, setCurrentWebsite] = useState<CurrentWebsite | null>(null)
   const [linkTracker, setLinkTracker] = useState("")
 
   useEffect(() => {
@@ -51,28 +45,22 @@ export const Donate: React.FC = () => {
       active: true,
       lastFocusedWindow: true
     })
-    const getLocalStorage = browser.storage.local.get({
-      activatedAffiliates: [],
-      partners: []
-    })
 
-    Promise.all([getCurrentTab, getLocalStorage, getTracker]).then(
-      ([tabs, items, tracker]) => {
-        if (tabs.length !== 0) {
-          const domain = extractDomain((tabs[0] && tabs[0].url) || "")
-          setCurrentWebsite({
-            domain,
-            url: tabs[0].url,
-            isPartner: items.partners.includes(domain),
-            isAlreadyActivated: isAlreadyActivated(
-              items.activatedAffiliates,
-              domain
-            )
-          })
-        }
-        setLinkTracker(tracker)
+    const getDataOnPartners = storage.get("local", ["activatedAffiliates", "partners"])
+
+    Promise.all([getCurrentTab, getDataOnPartners, getTracker]).then(([tabs, items, tracker]) => {
+      if (tabs.length !== 0) {
+        const url = (tabs[0] && tabs[0].url) || ""
+        const domain = extractDomain(url)
+        setCurrentWebsite({
+          domain,
+          url,
+          isPartner: items.partners.includes(domain),
+          isAlreadyActivated: isAlreadyActivated(items.activatedAffiliates, domain)
+        })
       }
-    )
+      setLinkTracker(tracker)
+    })
   }, [])
 
   if (currentWebsite === null) {

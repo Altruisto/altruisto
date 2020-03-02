@@ -28,7 +28,7 @@ export const ChangePassword = () => {
               },
               {
                 headers: {
-                  "X-AUTH-TOKEN": auth.user.apiKey
+                  "X-AUTH-TOKEN": auth.user && auth.user.apiKey
                 }
               }
             )
@@ -55,19 +55,13 @@ export const ChangePassword = () => {
           if (!values.currentPassword) {
             errors.currentPassword = "This field is required"
           }
-          if (
-            values.currentPassword !== undefined &&
-            values.currentPassword.length < 8
-          ) {
+          if (values.currentPassword !== undefined && values.currentPassword.length < 8) {
             errors.currentPassword = "Password must have at least 8 characters"
           }
           if (!values.newPassword) {
             errors.newPassword = "This field is required"
           }
-          if (
-            values.newPassword !== undefined &&
-            values.newPassword.length < 8
-          ) {
+          if (values.newPassword !== undefined && values.newPassword.length < 8) {
             errors.newPassword = "Password must have at least 8 characters"
           }
 
@@ -91,7 +85,7 @@ export const ChangePassword = () => {
               <div className="field__appendix">
                 <button
                   className="button-link field__inside-button"
-                  disabled={Boolean(errors.password || errors.confirmPassword)}
+                  disabled={Boolean(errors.currentPassword || errors.newPassword)}
                   type="submit"
                 >
                   {isSubmitting ? (
