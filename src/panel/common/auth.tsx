@@ -65,6 +65,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }: AuthProv
             email,
             apiKey: response.data.apiKey
           }
+          // should update ref and refferedBy!!!!!
           return storage.set("sync", { user }).then(() => user)
         } else {
           throw new Error("login() - server did not respond with status 200")

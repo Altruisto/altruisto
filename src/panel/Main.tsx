@@ -55,7 +55,7 @@ const Main: React.FC<Props> = (props: Props) => {
             display: "flex"
           }}
         >
-          <Share />
+          <Share isActive={activeTab === 0} />
           <Donate />
           <YourHelp onRequestLogin={() => setShowLoginPopup(true)} isActive={activeTab === 2} />
           <Settings onRequestLogin={() => setShowLoginPopup(true)} />

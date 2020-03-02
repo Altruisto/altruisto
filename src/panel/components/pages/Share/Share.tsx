@@ -11,7 +11,11 @@ import axios from "../../../../helpers/api"
 import "./Share.scss"
 import { storage } from "../../../../helpers/storage"
 
-export const Share: React.FC = () => {
+type Props = {
+  isActive: boolean
+}
+
+export const Share: React.FC<Props> = ({ isActive }) => {
   const { enqueueSnackbar } = useSnackbar()
   const [referralsNumber, setReferralsNumber] = useState<number | null>(null)
   const [ref, setRef] = useState<string | null>(null)
@@ -22,7 +26,7 @@ export const Share: React.FC = () => {
       storage.get("sync", "ref").then(fromSync => setRef(fromSync.ref))
     }
 
-    if (referralsNumber === null) {
+    if (isActive && referralsNumber === null) {
       // TODO: add typings for axios response
       const getReferralsNumber = auth.user
         ? axios.get("/user", { headers: { "X-AUTH-TOKEN": auth.user.apiKey } })
@@ -34,7 +38,7 @@ export const Share: React.FC = () => {
         setReferralsNumber(response.data.referrals_count)
       })
     }
-  }, [])
+  }, [isActive, referralsNumber, ref])
 
   return (
     <div className="page">
