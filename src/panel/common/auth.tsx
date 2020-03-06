@@ -49,7 +49,7 @@ export const AuthContext: React.Context<Auth> = React.createContext<Auth>({
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null)
 
-  if (typeof user === "undefined") {
+  if (!user) {
     storage.get("sync", "user").then(result => setUser(result.user))
   }
 
