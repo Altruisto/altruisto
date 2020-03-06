@@ -1,0 +1,14 @@
+@keyframes move-arrow-path {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 4px, 0);
+  }
+}
+
+
+.arrow-path-animate {
+  animation: move-arrow-path .6s ease-in-out 0s alternate infinite both;
+}

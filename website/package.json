@@ -1,0 +1,51 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --config \"nodemon.json\"/",
+    "build:custom": "webpack",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build": "next build && next export && tsc --project tsconfig.server.json && webpack",
+    "start": "cross-env NODE_ENV=production node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.19.2",
+    "cookie-parser": "^1.4.4",
+    "cross-env": "^7.0.1",
+    "express": "^4.17.1",
+    "express-useragent": "^1.0.13",
+    "next": "^9.2.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@types/express": "^4.17.3",
+    "@types/node": "^13.7.7",
+    "@types/react": "^16.9.23",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "bootstrap": "^4.4.1",
+    "css-loader": "^3.4.2",
+    "extract-loader": "^5.0.0",
+    "file-loader": "^5.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.4.1",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
+    "popper.js": "^1.16.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.2",
+    "slick-carousel": "^1.8.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3",
+    "webpack-cli": "^3.3.11"
+  }
+}

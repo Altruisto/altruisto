@@ -1,0 +1,25 @@
+$primary: #f50057 !default;
+$gradient: linear-gradient(136deg, #e70f74, #ff2525) !default;
+$dark-grey: #f6f7fb;
+$darker-grey: #9baab8;
+$theme-colors: ("primary": $primary);
+
+$main-font-color: #3a4c5a !default;
+$text-muted: $darker-grey !default;
+$body-color: $main-font-color;
+$headings-color: $main-font-color !default;
+$headings-font-weight: normal !default;
+$link-color: #333 !default;
+
+$navbar-height: 5.25rem;
+$navbar-desktop-link-color: $link-color;
+
+$font-family-sans-serif: "PTSans",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+"Noto Sans",
+sans-serif !default;

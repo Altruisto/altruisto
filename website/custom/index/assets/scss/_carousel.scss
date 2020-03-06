@@ -1,0 +1,76 @@
+.indicators {
+  margin-bottom: -35px;
+
+  &__item {
+    background-color: $darker-grey !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    border: 0 !important;
+    opacity: 0.5;
+
+    &.active {
+      opacity: 1;
+      width: 30px !important;
+      height: 10px !important;
+      border-radius: 5px !important;
+      border: 0 !important;
+      background-image: $gradient;
+      transition: opacity 0.6s ease;
+    }
+  }
+}
+
+.tweets-carousel {
+  &__item {
+    padding: 0 15px;
+    position: relative;
+
+    & .twitter-tweet {
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        opacity: 0.5;
+        z-index: 2;
+        transition: background-color 100ms linear;
+      }
+    }
+  }
+}
+
+.slick-active {
+  & .tweets-carousel__item .twitter-tweet {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+
+  &>li {
+    list-style: none;
+    margin-right: 10px;
+
+    &>button {
+      @extend .indicators__item;
+      color: transparent;
+      font-size: 0;
+      line-height: 0;
+      padding: 0;
+    }
+
+    &.slick-active {
+      &>button {
+        @extend .indicators__item.active;
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { browser } from "webextension-polyfill-ts"
 import { getPartnersList } from "../helpers/get-partners-list"
 import axios from "../helpers/api"
 import { storage } from "../helpers/storage"
+import { REFERRED_BY_COOKIE_NAME } from "../../../shared/globals"
 
 const setUpAlarms = () => {
   browser.alarms.create("clearClosedWebsites", {
@@ -29,7 +30,7 @@ const openWelcomePage = () =>
 const logInstallationAndSetUpStorage = () => {
   const getRefCookie = browser.cookies.get({
     url: "https://altruisto.com",
-    name: "r"
+    name: REFERRED_BY_COOKIE_NAME
   })
 
   getRefCookie.then(refCookie => {

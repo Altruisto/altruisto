@@ -1,0 +1,58 @@
+.button {
+  width: 100%;
+  height: 56px;
+  border-radius: 6px;
+  background: $gradient;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &--white {
+    background: white;
+    color: $primary;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+.install-button {
+  width: 100%;
+
+  @include breakpoint('md') {
+    max-width: 230px;
+  }
+}

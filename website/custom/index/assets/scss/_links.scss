@@ -1,0 +1,13 @@
+.link {
+  &--small {
+    font-size: 14px;
+    line-height: 1.71;
+    font-weight: normal;
+    color: $text-muted;
+    text-decoration: underline;
+
+    &:hover {
+      color: $body-color;
+    }
+  }
+}

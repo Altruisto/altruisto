@@ -1,0 +1,36 @@
+.explain-box {
+  background-color: $white;
+  border-radius: 6px;
+  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  min-height: 332px;
+
+  &__number {
+    font-size: 30px;
+    line-height: normal;
+    margin-bottom: 70px;
+  }
+
+  &__title {
+    margin-bottom: 25px;
+  }
+
+  @include breakpoint('md') {
+    &__number {
+      font-size: 32px;
+    }
+  }
+
+  @include breakpoint('lg') {
+    padding: 40px;
+    min-height: 416px;
+
+    &__number {
+      margin-bottom: 92px;
+    }
+
+    &__title {
+      margin-bottom: 32px;
+    }
+  }
+}
