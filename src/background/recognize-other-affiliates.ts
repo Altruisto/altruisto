@@ -4,7 +4,7 @@ import { storage } from "../helpers/storage"
 import { addIfNotIncluded } from "../helpers/add-if-not-included"
 
 const isAltruistoLink = (url: string) => {
-  const altruistoStamps = ["id=XK9XruzkyUo", "8106588"] // @TODO: move to .env or webpack
+  const altruistoStamps = ["id=XK9XruzkyUo", "8106588"]
   return new RegExp(altruistoStamps.join("|")).test(url)
 }
 
@@ -52,7 +52,7 @@ export function recognizeOtherAffiliates() {
       const toDomain = extractDomain(details.redirectUrl)
 
       if (isOtherAffiliateLink(fromDomain) || isOtherAffiliateLink(toDomain)) {
-        if (!isAltruistoLink(details.url) || !isAltruistoLink(details.redirectUrl)) {
+        if (!isAltruistoLink(details.url) && !isAltruistoLink(details.redirectUrl)) {
           tabsIdsToDisablePartners.add(details.tabId)
         }
       }
