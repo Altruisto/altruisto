@@ -78,7 +78,7 @@ export const Share: React.FC<Props> = ({ isActive }) => {
               </button>
             </a>
             <a
-              href={`https://twitter.com/intent/tweet?url=https%3A%2F%2Faltruisto.com%2F%3Fref%3D12345&text=Install%20an%20extension%20and%20when%20you%20buy%20stuff%20online%2C%20people%20in%20extreme%20poverty%20will%20get%20medicines%2C%20bed%20nets%2C%20or%20money%20https%3A%2F%2Faltruisto.com%2F%3Fref%3D${ref}&source=twitter_share`}
+              href={`https://twitter.com/intent/tweet?url=https%3A%2F%2Faltruisto.com%2F%3Fref%3D${ref}%26source=twitter_share&text=Install%20an%20extension%20and%20when%20you%20buy%20stuff%20online%2C%20people%20in%20extreme%20poverty%20will%20get%20medicines%2C%20bed%20nets%2C%20or%20money%20`}
               target="_blank"
               rel="noreferrer noopener"
               className="text-no-decoration"
