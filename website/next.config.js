@@ -9,6 +9,9 @@ module.exports = withSass({
       '/privacy-policy': {
         page: '/privacy-policy'
       },
+      '/waiting': {
+        page: '/waiting'
+      },
     }
   }
 })
