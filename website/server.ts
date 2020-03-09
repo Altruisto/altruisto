@@ -2,20 +2,16 @@ import express from "express"
 import next from "next"
 import useragent from "express-useragent"
 import cookieParser from "cookie-parser"
-import axios from "axios"
 import querystring from "querystring"
 import { readFileSync } from "fs"
 import { CUSTOM_PAGES_OUTPUT_DIRECTORY, NEXT_PAGES_OUTPUT_DIRECTORY_NAME } from "./settings"
 import { getCtaDestination } from "./utils/get-cta-destination"
 import { REFERRED_BY_COOKIE_NAME } from "../shared/globals"
 import { GetPartnersResponse } from "../shared/types/api"
+import { api, apiUrl } from "./utils/apiUrl"
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== "production"
-const apiUrl = dev ? "http://api.altruisto.localhost:8001" : "https://api.altruisto.com"
-const api = axios.create({
-  baseURL: apiUrl
-})
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
