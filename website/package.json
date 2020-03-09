@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --config \"nodemon.json\"/",
-    "build:custom": "webpack",
+    "build:custom": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack",
     "build:server": "tsc --project tsconfig.server.json",
-    "build": "next build && next export && tsc --project tsconfig.server.json && webpack",
+    "build": "next build && next export && tsc --project tsconfig.server.json && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack",
     "start": "cross-env NODE_ENV=production node dist/server.js"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
     "cookie-parser": "^1.4.4",
     "cross-env": "^7.0.1",
@@ -45,6 +46,7 @@
     "sass-loader": "^8.0.2",
     "slick-carousel": "^1.8.1",
     "ts-node": "^8.6.2",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.8.3",
     "webpack-cli": "^3.3.11"
   }

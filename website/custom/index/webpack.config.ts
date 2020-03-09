@@ -6,8 +6,8 @@ import { CUSTOM_PAGES_ASSETS_DIRECTORY, CUSTOM_PAGES_OUTPUT_DIRECTORY } from "..
 
 const config: webpack.Configuration = {
   entry: [
-    path.join(__dirname, "assets/scripts/index.js"),
-    path.join(__dirname, "assets/scss/index.scss")
+    path.join(__dirname, "assets/index.js"),
+    path.join(__dirname, "../../assets/scss/index.scss")
   ],
   output: {
     path: CUSTOM_PAGES_ASSETS_DIRECTORY,
