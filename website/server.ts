@@ -8,7 +8,7 @@ import { CUSTOM_PAGES_OUTPUT_DIRECTORY, NEXT_PAGES_OUTPUT_DIRECTORY_NAME } from 
 import { getCtaDestination } from "./utils/get-cta-destination"
 import { REFERRED_BY_COOKIE_NAME } from "../shared/globals"
 import { GetPartnersResponse } from "../shared/types/api"
-import { api, apiUrl } from "./utils/apiUrl"
+import { api, apiUrl } from "./utils/api-url"
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== "production"
@@ -59,6 +59,10 @@ server.get("/confirm", (req, res) => {
 // nextjs app
 app.prepare().then(() => {
   server.all("*", (req, res) => {
+    // trail ending slashes, eg. altruisto.com/partners/ should render altruisto.com/partners
+    if (req.path.substr(-1) === "/" && req.path.length > 1) {
+      return app.render(req, res, req.path.slice(0, -1), req.query)
+    }
     return handle(req, res)
   })
 

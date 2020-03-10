@@ -1,6 +1,6 @@
 import { NextPage } from "next"
 import { MinimalLayout } from "../../components/layouts/MinimalLayout"
-import { api } from "../../utils/apiUrl"
+import { api } from "../../utils/api-url"
 
 type Props = {
   success: boolean

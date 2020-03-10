@@ -2,9 +2,10 @@ $primary: #f50057 !default;
 $gradient: linear-gradient(136deg, #e70f74, #ff2525) !default;
 $dark-grey: #f6f7fb;
 $darker-grey: #9baab8;
+$darkest-grey: #3a4c5a;
 $theme-colors: ("primary": $primary);
 
-$main-font-color: #3a4c5a !default;
+$main-font-color: $darkest-grey !default;
 $text-muted: $darker-grey !default;
 $body-color: $main-font-color;
 $headings-color: $main-font-color !default;

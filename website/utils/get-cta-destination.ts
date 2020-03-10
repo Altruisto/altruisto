@@ -4,10 +4,10 @@ export const getCtaDestination = (ua: useragent.Details) => {
     case ua.isMobile && ua.browser === "Firefox":
       return "https://addons.mozilla.org/firefox/addon/altruisto-com/"
     case ua.isMobile:
-      return "/not-supported"
+      return "/waiting"
     case ua.browser === "Firefox":
       return "https://addons.mozilla.org/firefox/addon/altruisto-com/"
     default:
-      return "/not-supported"
+      return "/waiting"
   }
 }
