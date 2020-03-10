@@ -1,0 +1,47 @@
+{
+    "name": {
+        "message": "Altruisto.com"
+    },
+    "description": {
+        "message": "通过您日常的网上购物来为全球最有效的慈善机构筹款，同时无需多付分毫。"
+    },
+    "topbarActivateInfo": {
+        "message": "请点击此处，通过本网站为慈善机构筹款："
+    },
+    "topbarActivateButton": {
+        "message": "开始筹款"
+    },
+    "topbarActivatedInfo": {
+        "message": "您现在正通过本网站为慈善机构筹款。"
+    },
+    "topbarActivatedClose": {
+        "message": "本窗口将在5秒后自动关闭"
+    },
+    "optionsTitle": {
+        "message": "Altruisto.com扩展程序设置"
+    },
+    "optionsComingSoon": {
+        "message": "即将推出！"
+    },
+    "optionsTopbarTitle": {
+        "message": "当我在购物期间有机会为慈善机构筹款时，请通知我"
+    },
+    "optionsTopbarDescription": {
+        "message": "每当您浏览我们其中一家合作伙伴的网站时，您都将看到页面顶部的一个功能条，让您有机会通过点击功能条上的一个按钮来为慈善机构筹款。点击该按钮后，系统将要求您确认，您是否希望通过在该网站上购物来支持Altruisto。此后，您的购物金额的1-6%将捐赠给我们支持的慈善机构。"
+    },
+    "optionsSuggestionsTitle": {
+        "message": "在我浏览互联网时显示建议"
+    },
+    "optionsSuggestionsDescription": {
+        "message": "此选项让您可以在一个信息小窗口中看到与您正在查看的页面内容有关的、您可能感兴趣的促销信息、优惠券和产品。它会不时出现在浏览器的右下角。每当您决定购买为您建议的产品时，全球最有效的慈善机构之一将获得销售利润的一部分（您需支付的产品价格不变）。我们努力使这一过程尽可能快速且友好。"
+    },
+    "optionsSearchTitle": {
+        "message": "在搜索结果中突出显示合作伙伴商店"
+    },
+    "optionsSearchDescription": {
+        "message": "当您使用谷歌、必应或DuckDuckGo等搜索引擎时，该搜索引擎将突出显示我们的合作伙伴的网站链接，以便您立即知晓您可以在哪些网站上为慈善机构筹款。"
+    },
+    "optionsThankYou": {
+        "message": ""
+    }
+}

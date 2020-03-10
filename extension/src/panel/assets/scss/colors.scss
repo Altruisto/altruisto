@@ -1,0 +1,11 @@
+$gradient: linear-gradient(136deg, #e70f74, #ff2525);
+$primary: #f50057;
+$accent: #27ae60;
+$success: $accent;
+
+:export {
+  gradient: $gradient;
+  primary: $primary;
+  accent: $accent;
+  success: $success;
+}

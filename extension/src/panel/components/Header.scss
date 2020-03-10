@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    &__login {
+        text-align: right;
+        align-self: center;
+    }
+
+    &__user-info {
+        text-align: right;
+    }
+}

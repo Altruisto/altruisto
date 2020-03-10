@@ -1,0 +1,95 @@
+// more readable than standard bootstrap display utilities
+// TODO: loop through all combinations
+
+.lg-and-up {
+  display: none;
+
+  @include breakpoint("lg") {
+    display: flex;
+  }
+}
+
+.md-and-up {
+  display: none;
+
+  @include breakpoint("md") {
+    display: flex;
+  }
+}
+
+.up-to-md {
+  @include breakpoint("lg") {
+    display: none;
+  }
+}
+
+.up-to-sm {
+  @include breakpoint("md") {
+    display: none;
+  }
+}
+
+.mt-lg-100 {
+  @include breakpoint("lg") {
+    margin-top: 100px !important;
+  }
+}
+
+.with-overlay {
+  &>* {
+    z-index: 3;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $darkest-grey;
+    opacity: 0.8;
+    z-index: 2;
+  }
+}
+
+.at-bottom {
+  position: absolute !important;
+  bottom: 0 !important;
+}
+
+.column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded-box {
+  width: 100%;
+  border-radius: 6px;
+  background-color: $dark-grey;
+  padding: 16px 50px;
+}
+
+.text-gradient {
+  background-image: $gradient;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold;
+}
+
+.grey-box {
+  background: $dark-grey;
+
+  @include breakpoint('md') {
+    border-radius: 12px;
+  }
+}
+
+.fill-height {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}

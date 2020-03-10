@@ -1,0 +1,17 @@
+@mixin breakpoint($size) {
+  @media (min-width: map-get($grid-breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin recursive-selector($selector, $depth, $operator: '') {
+  $accumulator: '';
+
+  @for $i from 1 through $depth {
+    $accumulator: $accumulator + " "+ $operator +" "+ $selector;
+
+    #{ $accumulator } {
+      @content;
+    }
+  }
+}

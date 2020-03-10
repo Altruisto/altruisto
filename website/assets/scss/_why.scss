@@ -1,0 +1,119 @@
+.why {
+  &__container {
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      background: #f8f9fa;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 15%, rgba(248, 249, 250, 1) 100%);
+      z-index: 1;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    &>.row>* {
+      z-index: 2;
+    }
+  }
+
+  &__image {
+    box-shadow: -20px 40px 40px 0 rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  &__button-wrapper {
+    margin-top: -32px;
+    margin-right: 18px;
+    margin-left: 18px;
+  }
+
+  &__button {
+    height: 64px;
+    min-height: 64px;
+    max-height: 64px;
+  }
+
+  &__statistic {
+    margin-top: 40px;
+    font-size: 46px;
+    line-height: normal;
+    font-weight: bold;
+  }
+
+  &__caption {
+    line-height: 1.88;
+  }
+
+  @include breakpoint('md') {
+    &__container {
+      &:after {
+        background: #f8f9fa;
+        top: -20%;
+        top: calc(-80px);
+        margin-top: 0;
+        left: 50%;
+        margin-left: map-get($container-max-widths, 'md') / -2;
+        height: 140%;
+        height: calc(100% + 160px);
+        width: map-get($container-max-widths, 'md');
+        border-radius: 12px;
+      }
+    }
+
+    &__image-wrapper {
+      display: inline-flex;
+    }
+
+    &__button-wrapper {
+      margin-top: -64px;
+      margin-right: 0;
+      margin-left: -254px;
+      align-self: flex-end;
+      display: inline-flex;
+    }
+
+    &__button {
+      width: 254px;
+      border-bottom-right-radius: 12px;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 0;
+
+      &:after {
+        border-bottom-right-radius: 12px;
+      }
+    }
+
+    &__statistics-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  @include breakpoint('lg') {
+    &__container {
+      &:after {
+        width: map-get($container-max-widths, 'lg');
+        margin-left: map-get($container-max-widths, 'lg') / -2;
+      }
+    }
+  }
+
+  @include breakpoint('xl') {
+    &__container {
+      &:after {
+        width: map-get($container-max-widths, 'xl');
+        margin-left: map-get($container-max-widths, 'xl') / -2;
+      }
+    }
+
+    &__statistics-wrapper {
+      padding-left: 30px;
+    }
+  }
+}

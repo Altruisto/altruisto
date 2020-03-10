@@ -1,0 +1,305 @@
+@import "./assets/scss/colors.scss";
+
+// prevent horizontal "jump" when vertical scroll appears
+// https://gist.github.com/javierlopezdeancos/1331b868f20f064afe7c
+html {
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "PT Sans", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  color: #5c6979;
+  background-color: white;
+}
+
+span {
+  font-family: "PT Sans";
+}
+
+.app {
+  text-align: center;
+  width: 320px;
+  height: 600px;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  &__content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 438px; // TODO: fix this magic number. It's 600px - header - footer.
+    display: flex;
+  }
+}
+
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.text-emphasized {
+  color: #3a4c5b;
+}
+
+.text-muted {
+  color: #aaaaaa;
+}
+
+.text-gradient {
+  background-image: $gradient;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-accent {
+  color: $accent;
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-no-decoration {
+  text-decoration: none;
+}
+
+.button {
+  width: 100%;
+  height: 56px;
+  border-radius: 6px;
+  background: $gradient;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+.share-button {
+  height: 30px;
+  width: 120px;
+  border-radius: 4px;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  &--facebook {
+    background-color: #3b5998;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  &--twitter {
+    background-color: #55acee;
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+.button-link {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &:disabled {
+    color: lightgray;
+    cursor: not-allowed;
+  }
+}
+
+.uppercase-link {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaaaaa;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.field {
+  position: relative;
+
+  &__label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #5c6979;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border-radius: 6px;
+    border: solid 2px #f6f7fb;
+    background-color: #ffffff;
+    padding: 13px 10px;
+  }
+
+  &__appendix {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+  }
+
+  &__label+&__appendix {
+    top: 40px;
+  }
+
+  &__appendix~&__input {
+    padding-right: 60px;
+  }
+
+  &__error-message {
+    min-height: 22px;
+    line-height: 18px;
+    color: $primary;
+    font-size: 10px;
+  }
+
+  &__inside-button {
+    color: $primary;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  input::placeholder {
+    color: #aaaaaa;
+    font-size: 12px;
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+h1 {
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  margin: 10px 0;
+}
+
+a {
+  color: $primary;
+}
+
+.page {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  // height: 100%;
+
+  &__title {
+    margin-bottom: 25px;
+  }
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.fill-height {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-space-between {
+  justify-content: space-between !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.col-12 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.col-6 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+}
+
+// helpers
+$spaceamounts: (0, 5, 10, 20, 30);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}

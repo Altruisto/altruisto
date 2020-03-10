@@ -1,0 +1,79 @@
+@import "../../assets/scss/colors.scss";
+
+@-webkit-keyframes checkmark {
+  0% {
+    stroke-dashoffset: 50px;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-ms-keyframes checkmark {
+  0% {
+    stroke-dashoffset: 50px;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 50px;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes checkmark-circle {
+  0% {
+    stroke-dashoffset: 240px;
+  }
+
+  100% {
+    stroke-dashoffset: 480px;
+  }
+}
+
+@-ms-keyframes checkmark-circle {
+  0% {
+    stroke-dashoffset: 240px;
+  }
+
+  100% {
+    stroke-dashoffset: 480px;
+  }
+}
+
+@keyframes checkmark-circle {
+  0% {
+    stroke-dashoffset: 240px;
+  }
+
+  100% {
+    stroke-dashoffset: 480px;
+  }
+}
+
+.animated-checkmark svg g {
+  stroke: $success;
+}
+
+.animated-checkmark svg path {
+  -webkit-animation: checkmark 0.25s ease-in-out 0.7s backwards;
+  animation: checkmark 0.25s ease-in-out 0.7s backwards;
+  stroke-dasharray: 50px, 50px;
+  stroke-dashoffset: 0px;
+}
+
+.animated-checkmark svg circle {
+  -webkit-animation: checkmark-circle 0.6s ease-in-out backwards;
+  animation: checkmark-circle 0.6s ease-in-out backwards;
+  stroke-dasharray: 240px, 240px;
+  stroke-dashoffset: 480px;
+}

@@ -1,0 +1,27 @@
+.login-form {
+  width: 100%;
+
+  &__forgot-password {
+    height: 14px;
+    color: #ff2e27;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  &__button {
+    margin-top: 20px;
+  }
+
+  &__checkbox {
+
+    // specific to material-ui
+    &>span:first-of-type {
+      position: absolute;
+    }
+  }
+
+  &__checkbox-label {
+    margin-left: 50px;
+    margin-bottom: 0;
+  }
+}

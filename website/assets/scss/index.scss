@@ -1,0 +1,345 @@
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~slick-carousel/slick/slick.scss";
+
+@import "mixins";
+@import "utilities";
+@import "buttons";
+@import "links";
+@import "explain-box";
+@import "carousel";
+@import "why";
+@import "footer";
+@import "covers";
+@import "partners";
+@import "animations";
+
+html {
+  scroll-behavior: smooth;
+}
+
+hr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.menu {
+  background-color: $white;
+  align-items: center;
+  border-bottom-width: 2px;
+  border-bottom-color: $dark-grey;
+  border-bottom-style: solid;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 68px; // TODO: fix this "magical" number, problem with rem vs px
+  }
+
+  &__logo {
+    height: 33px;
+  }
+
+  &__toggler {
+    border: none;
+  }
+
+  &__item {
+    padding: 10px 0;
+  }
+
+  &__link {
+    color: $main-font-color;
+    font-size: 20px;
+
+    &:hover,
+    &:visited {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+
+  &__cta {
+    display: none;
+  }
+
+  &__items-wrapper {
+    padding: 20px 0;
+  }
+
+  @include breakpoint("lg") {
+    &__top {
+      width: initial;
+    }
+
+    &__brand {
+      // to make it look more center-aligned
+      padding-top: 0;
+      margin-top: -5px;
+    }
+
+    &__collapse {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__link {
+      font-size: 14px;
+      line-height: 2.29;
+    }
+
+    &__cta {
+      display: flex;
+      height: 48px;
+      max-width: 185px;
+    }
+
+    &__items-wrapper {
+      padding: 0;
+      width: 100%;
+      max-width: 540px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @include breakpoint("xl") {
+    &__items-wrapper {
+      max-width: 580px;
+    }
+  }
+}
+
+.hero-poster {
+  color: $white;
+  height: 100vh;
+  font-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  // fix for horizontal mobile
+  @media (orientation: landscape) and (max-width: map-get($grid-breakpoints, lg)) {
+    padding-top: 65px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    color: $white;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: normal;
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.38;
+    margin-bottom: 30px;
+  }
+
+  &__install {
+    margin-bottom: 20px;
+  }
+
+  &__link {
+    color: $white;
+    text-decoration: underline;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  @include breakpoint("md") {
+    &__title {
+      font-size: 45px;
+    }
+
+    &__description {
+      font-size: 18px;
+    }
+  }
+
+  @include breakpoint("lg") {
+    &__title {
+      font-size: 60px;
+    }
+
+    &__description {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+section {
+  &:before {
+    display: block;
+    content: " ";
+    margin-top: -84px;
+    height: 84px;
+    visibility: hidden;
+  }
+}
+
+.section {
+  // adjust for navbar when scrolling to section
+  padding-top: 60px;
+  padding-bottom: 40px;
+
+  &--dark {
+    background-color: $dark-grey;
+  }
+
+  &__title {
+    margin-bottom: 48px;
+  }
+
+  @include breakpoint("lg") {
+    padding-top: 80px;
+
+    &__title {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+#no-extra-costs {
+  background: linear-gradient(180deg,
+      rgba(251, 251, 251, 1) 90%,
+      rgba(255, 255, 255, 1) 100%);
+  height: 400px;
+  margin-top: -220px;
+  padding-top: 270px;
+  margin-bottom: 50px;
+}
+
+.no-costs-info {
+  background-image: $gradient;
+  color: $white;
+  padding: 45px 15px;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+
+  @include breakpoint("md") {
+    border-radius: 12px;
+    font-size: 30px;
+    margin-bottom: 60px;
+  }
+}
+
+.partners {
+  &__item {
+    min-height: 120px;
+  }
+
+  @include breakpoint("md") {
+    margin-top: -40px;
+  }
+}
+
+#ebay {
+  max-height: 80px;
+}
+
+#booking {
+  max-height: 145px;
+  margin: -40px auto;
+}
+
+#microsoft {
+  max-height: 160px;
+  margin: -20px auto 0;
+}
+
+#aliexpress {
+  max-height: 60px;
+}
+
+#bn {
+  max-height: 34px;
+  margin: 30px auto;
+}
+
+@include breakpoint("md") {
+  #ebay {
+    margin-top: 32px;
+  }
+
+  #booking {
+    margin-top: 8px;
+  }
+
+  #microsoft {
+    margin-top: 53px;
+  }
+
+  #aliexpress {
+    margin-top: 5px;
+  }
+
+  #bn {
+    margin-top: 20px;
+  }
+
+  #etsy {
+    margin-top: -2px;
+  }
+}
+
+#faq {
+  padding-top: 60px;
+
+  @include breakpoint("md") {
+    padding-top: 80px;
+  }
+
+  @include breakpoint("lg") {
+    padding-top: 132px;
+  }
+}
+
+.question {
+  text-decoration: underline;
+  text-decoration-color: #d8d8d8;
+  font-size: 20px;
+}
+
+.answer {
+  color: $darker-grey;
+}
+
+.logo {
+  max-height: 40px;
+}
+
+.small-container {
+  @include breakpoint("lg") {
+    max-width: 700px;
+    min-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.full-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
