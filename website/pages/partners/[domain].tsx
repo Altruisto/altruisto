@@ -67,7 +67,7 @@ const Partner: NextPage<Props> = ({ name, domain, logoUrl, donation, error }) =>
                 href={`${apiUrl}/redirect?url=https://${domain}&tracker=-${selectedCauseArea.value}-detailsPage`}
                 className="button partners__button mt-3"
               >
-                Go to {name} and start helping
+                Go to {domain} and start helping
               </a>
             </div>
             <div className="mt-5 pt-3">
