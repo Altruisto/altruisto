@@ -12,6 +12,9 @@ module.exports = withSass({
       '/waiting': {
         page: '/waiting'
       },
+      '/welcome': {
+        page: '/welcome'
+      },
     }
   }
 })
