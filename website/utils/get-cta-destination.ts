@@ -7,6 +7,9 @@ export const getCtaDestination = (ua: useragent.Details) => {
       return "/waiting"
     case ua.browser === "Firefox":
       return "https://addons.mozilla.org/firefox/addon/altruisto-com/"
+    case ua.browser === "Chrome":
+    case ua.browser === "Opera":
+      return "https://chrome.google.com/webstore/detail/djennkbadhfcmhlbejdidgmdgnacbcmi"
     default:
       return "/waiting"
   }
