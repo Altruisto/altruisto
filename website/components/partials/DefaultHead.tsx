@@ -21,7 +21,7 @@ export const DefaultHead = props => (
       content="Install an extension and when you buy something online,
 people in extreme poverty will get medicines, bed nets, or financial aid."
     />
-    <meta property="og:image" content="http://altruisto.com/img/fb-cover6.png" />
+    <meta property="og:image" content="https://altruisto.com/images/social-media-cover.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@altruistocom" />
@@ -31,7 +31,7 @@ people in extreme poverty will get medicines, bed nets, or financial aid."
       name="twitter:description"
       content="Install an extension and when you buy something online, people in extreme poverty will get medicines, bed nets, or financial aid."
     />
-    <meta name="twitter:image" content="http://altruisto.com/img/fb-cover6.png" />
+    <meta name="twitter:image" content="https://altruisto.com/images/social-media-cover.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link

@@ -26,6 +26,7 @@
     "react": "^16.13.0",
     "react-device-detect": "^1.11.14",
     "react-dom": "^16.13.0",
+    "react-ga": "^2.7.0",
     "react-select": "^3.0.8"
   },
   "devDependencies": {
