@@ -25,7 +25,7 @@ const ConfirmEmail: NextPage<Props> = ({ success }) => (
 ConfirmEmail.getInitialProps = ({ query }) => {
   return api
     .post("/email-verification", {
-      email_verification_token: query.email_verification_token
+      email_verification_token: query["email-verification-token"]
     })
     .then(() => ({ success: true }))
     .catch(() => ({ success: false }))
