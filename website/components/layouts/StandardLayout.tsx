@@ -4,14 +4,16 @@ import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { getCtaDestination } from "../../utils/get-cta-destination"
 import { useEffect, useState } from "react"
+import { useGoogleAnalytics } from "../../utils/use-google-analytics"
 
 type Props = {
   noCta?: boolean
 }
 
 export const StandardLayout: React.FC<Props> = ({ children, noCta = false }) => {
-  const [cta, setCta] = useState("#")
+  useGoogleAnalytics()
 
+  const [cta, setCta] = useState("#")
   useEffect(() => {
     setCta(getCtaDestination(useragent.parse(window.navigator.userAgent)))
   }, [])
