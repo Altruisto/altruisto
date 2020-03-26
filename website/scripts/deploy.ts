@@ -1,6 +1,8 @@
 // Heroku doesn't support monorepos with shared code.
 // Beceuase of that we deploy from different repo - "homepage", not "altruisto"
 // This script automatically creates a deploy branch in that repo
+import fs from "fs"
+import path from "path"
 import ncp from "ncp"
 import replace from "replace-in-file"
 import simpleGit from "simple-git/promise"
@@ -51,12 +53,30 @@ const deploy = async () => {
       await git.addRemote("homepage", "git@github.com:Altruisto/homepage.git")
       console.log(">> deploy: remote 'homepage' added")
     }
-    console.log(`>> deploy: pushing new branch to the repo`)
-    shellExec(`cd .. && git subtree push --prefix=website homepage ${branch} && cd website`)
-      .then(x => {
-        console.log(`>> deploy: branch pushed`)
-      })
-      .catch(console.log)
+    console.log(`>> deploy: pushing new branch to the homepage repo`)
+    await shellExec(`cd .. && git subtree push --prefix=website homepage ${branch}`)
+    console.log(`>> deploy: branch pushed`)
+
+    const localHomepageRepo = path.join(__dirname, "../../../", "homepage")
+
+    if (!fs.existsSync(localHomepageRepo)) {
+      console.log(
+        ">> deploy: the local homepage repo doesn't exist, pulling from git@github.com:Altruisto/homepage.git"
+      )
+
+      await git.clone("git@github.com:Altruisto/homepage.git", localHomepageRepo)
+      console.log(">> deploy: homepage repo pulled")
+    }
+
+    console.log(`>> deploy: reseting branch with master so it can be easily merged`)
+    const hpGit = simpleGit(localHomepageRepo)
+    await hpGit.checkout("master")
+    await hpGit.pull()
+    await hpGit.checkout(branch)
+    await hpGit.reset(["master", "--soft"])
+    await hpGit.commit(branch)
+    await hpGit.push("origin", branch, { "--force": true })
+    console.log(">> deploy: updated branch pushed to the homepage repo")
   })
 }
 
