@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express"
 import next from "next"
+import compression from "compression"
 import useragent from "express-useragent"
 import cookieParser from "cookie-parser"
 import querystring from "querystring"
@@ -41,7 +42,7 @@ server.use(cookieParser())
 server.use(saveRefCookie)
 server.use(requireHTTPS)
 
-server.use(express.static("public"))
+server.use(express.static("public", { maxAge: "30 days" }))
 server.use(express.static(CUSTOM_PAGES_OUTPUT_DIRECTORY))
 server.use(express.static(NEXT_PAGES_OUTPUT_DIRECTORY_NAME))
 
