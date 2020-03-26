@@ -38,6 +38,7 @@ const requireHTTPS = (req: Request, res: Response, next: NextFunction) => {
   next()
 }
 
+server.use(compression())
 server.use(cookieParser())
 server.use(saveRefCookie)
 server.use(requireHTTPS)
