@@ -10,6 +10,3 @@ It's a browser extension that allows users to raise money for charities through 
 <a href="https://addons.mozilla.org/en-US/firefox/addon/altruisto-com/" target="_blank"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_128x128.png" width="48" height="48"></a>
 
 Install altruisto from <a href="https://chrome.google.com/webstore/detail/djennkbadhfcmhlbejdidgmdgnacbcmi" target="_blank">Chrome Webstore</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/altruisto-com/" target="_blank">Mozilla Addons</a>
-
-<h1>Project structure</h1>
-You can find 
