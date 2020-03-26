@@ -86,17 +86,15 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
           password: "",
           acceptTerms: false
         }}
-        onSubmit={(values, actions) => {
+        onSubmit={async (values, actions) => {
           if (!installationData.current) {
-            const fromLocal = storage.get("local", "installationId")
-            const fromSync = storage.get("sync", "referredBy")
+            const fromLocal = await storage.get("local", "installationId")
+            const fromSync = await storage.get("sync", "referredBy")
 
-            Promise.all([fromLocal, fromSync]).then(([{ installationId }, { referredBy }]) => {
-              installationData.current = {
-                installationId,
-                referredBy
-              }
-            })
+            installationData.current = {
+              installationId: fromLocal.installationId,
+              referredBy: fromSync.referredBy
+            }
           }
 
           let registrationData: RegistrationData = {

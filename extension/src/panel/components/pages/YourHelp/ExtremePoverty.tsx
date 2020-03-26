@@ -43,8 +43,7 @@ export const ExtremePoverty: React.FC<Props> = ({
           <strong>You are so close to helping first person!</strong>
           <br />
           <span>
-            Collect another $
-            {Math.round((IMPACT_COST_IN_USD["SCI"] - moneyLeft) * 100) / 100} to
+            Collect another ${Math.round((IMPACT_COST_IN_USD["SCI"] - moneyLeft) * 100) / 100} to
             help cure first child from parasites
           </span>
           {isActive ? (
@@ -100,10 +99,9 @@ export const ExtremePoverty: React.FC<Props> = ({
     </div>
     <div className="col-6">
       <h1>
-        You have collected:{" "}
-        <span className="text-gradient">${moneyRaised}</span>
+        You have collected: <span className="text-gradient">${moneyRaised}</span>
       </h1>
-      <p>Some puchases take up to several weeks to be processed </p>
+      <p>Some purchases take up to several weeks to be processed </p>
       <a
         href="https://altruisto.com/purchase-processing"
         target="_blank"

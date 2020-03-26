@@ -26,12 +26,10 @@ storage.get("sync", "highlightSearchResults").then(({ highlightSearchResults }) 
   if (highlightSearchResults) {
     storage.get("local", "partners").then(({ partners }) => {
       const results = document.querySelectorAll(SEARCH_RESULT_QUERY)
-      console.log(partners)
       results.forEach(result => {
         const url = result.querySelector<HTMLAnchorElement>(RESULT_URL_QUERY)!.href
         const domain = extractDomain(url)
         if (partners.includes(domain)) {
-          console.log("test")
           getTracker.then(tracker => highlightSearchResult(result, url, tracker))
         }
       })
