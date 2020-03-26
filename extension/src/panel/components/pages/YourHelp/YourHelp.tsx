@@ -103,7 +103,9 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
               <a href="https://altruisto.com/partners" target="_blank" rel="noreferrer noopener">
                 <button className="button m-b-20">See our partner shops</button>
               </a>
-              <p className="text-center">Some puchases take up to several weeks to be processed </p>
+              <p className="text-center">
+                Some purchases take up to several weeks to be processed{" "}
+              </p>
               <a
                 href="https://altruisto.com/purchase-processing"
                 target="_blank"
