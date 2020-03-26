@@ -1,4 +1,4 @@
-<p align="center"><img src="https://altruisto.com/img/logo-go.jpg" alt="Altruisto logo"></p>
+<p align="center"><img src="https://altruisto.com/images/logo.svg" alt="Altruisto logo" height="33"></p>
 
 <h1>What is altruisto?</h1>
 
@@ -6,31 +6,10 @@ It's a browser extension that allows users to raise money for charities through 
 
 <h1>Install</h1>
 
-<a href="https://chrome.google.com/webstore/detail/altruistocom-chrome-exten/jneoemaenmeibociafkflgjkjaopbggc" target="_blank"><img src="https://altruisto.com/img/chrome_128x128.png" alt="Chrome logo" height="48" width="48"></a>
+<a href="https://chrome.google.com/webstore/detail/djennkbadhfcmhlbejdidgmdgnacbcmi" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/jfk/512/chrome-512.png" alt="Chrome logo" height="48" width="48"></a>
 <a href="https://addons.mozilla.org/en-US/firefox/addon/altruisto-com/" target="_blank"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_128x128.png" width="48" height="48"></a>
 
-Install altruisto from <a href="https://chrome.google.com/webstore/detail/altruistocom-chrome-exten/jneoemaenmeibociafkflgjkjaopbggc" target="_blank">Chrome Webstore</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/altruisto-com/" target="_blank">Mozilla Addons</a>
+Install altruisto from <a href="https://chrome.google.com/webstore/detail/djennkbadhfcmhlbejdidgmdgnacbcmi" target="_blank">Chrome Webstore</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/altruisto-com/" target="_blank">Mozilla Addons</a>
 
-<h1>Quick start</h1>
-
-1. Clone the repository
-
-```bash
-$ git clone https://github.com/Altruisto/altruisto.git
-```
-
-2. Navigate to project directory and install node packages
-
-```bash
-$ cd altruisto
-$ npm install -d
-```
-
-3. Start hacking 
-
-Edit the files in ./src directory
-
-4. Run build
-```bash
-$ npm run build
-```
+<h1>Project structure</h1>
+You can find 
