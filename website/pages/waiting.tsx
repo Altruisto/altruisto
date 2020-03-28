@@ -7,7 +7,7 @@ const Waiting = () => (
     <div className="container pt-4">
       <div className="row">
         <div
-          className="col-12 col-md-6"
+          className="col-12 col-md-6 order-2 order-md-1"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -23,7 +23,7 @@ const Waiting = () => (
           />
         </div>
         <div
-          className="col-12 col-md-6"
+          className="col-12 col-md-6 order-1 order-md-2"
           style={{
             display: "flex",
             flexDirection: "column",
