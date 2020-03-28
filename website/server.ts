@@ -38,10 +38,20 @@ const requireHTTPS = (req: Request, res: Response, next: NextFunction) => {
   next()
 }
 
+const wwwRedirect = (req: Request, res: Response, next: NextFunction) => {
+  if (req.headers.host.slice(0, 4) === "www.") {
+    const newHost = req.headers.host.slice(4)
+    return res.redirect(301, req.protocol + "://" + newHost + req.originalUrl)
+  }
+  next()
+}
+
 server.use(compression())
 server.use(cookieParser())
 server.use(saveRefCookie)
+server.set("trust proxy", true)
 server.use(requireHTTPS)
+server.use(wwwRedirect)
 
 server.use(express.static("public", { maxAge: "30 days" }))
 server.use(express.static(CUSTOM_PAGES_OUTPUT_DIRECTORY))
