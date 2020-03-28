@@ -74,6 +74,9 @@ server.get("/confirm", (req, res) => {
 server.get("/confirm.html", (req, res) => {
   res.redirect(`/email-subscriber-confirm`)
 })
+server.get("/thankyou.html", (req, res) => {
+  res.redirect(`/email-subscriber-thankyou`)
+})
 
 // nextjs app
 app.prepare().then(() => {
