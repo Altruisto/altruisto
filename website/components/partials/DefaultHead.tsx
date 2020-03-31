@@ -100,9 +100,9 @@ people in extreme poverty will get medicines, bed nets, or financial aid."
         "telephone": "",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Unit 4e Enterprise Court",
-          "addressLocality": "Wath-upon-Dearne",
-          "postalCode": "",
+          "streetAddress": "Unit 4e Enterprise Court, Farfield Park",
+          "addressLocality": "Rotherham",
+          "postalCode": "S63 5DB",
           "addressCountry": "GB"
         },
         "geo": {
