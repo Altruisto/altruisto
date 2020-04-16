@@ -1,6 +1,11 @@
 const withSass = require('@zeit/next-sass')
+const withPWA = require('next-pwa')
 
-module.exports = withSass({
+
+module.exports = withPWA(withSass({
+  pwa: {
+    dest: 'public',
+  },
   exportPathMap: async function () {
     return {
       '/terms-of-service': {
@@ -17,4 +22,4 @@ module.exports = withSass({
       },
     }
   }
-})
+}));

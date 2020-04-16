@@ -8,7 +8,7 @@
     "build:custom": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack",
     "build:server": "tsc --project tsconfig.server.json",
     "build": "next build && next export && tsc --project tsconfig.server.json && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack",
-    "start": "cross-env NODE_ENV=production node dist/server.js",
+    "start": "cross-env NODE_ENV=production node dist/website/server.js",
     "deploy": "ts-node --project tsconfig.server.json scripts/deploy.ts"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-useragent": "^1.0.13",
     "next": "^9.3.2",
+    "next-pwa": "^2.3.3",
     "react": "^16.13.0",
     "react-device-detect": "^1.11.14",
     "react-dom": "^16.13.0",
