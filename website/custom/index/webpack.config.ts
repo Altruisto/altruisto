@@ -58,6 +58,11 @@ const config: webpack.Configuration = {
       filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "index.html"),
       template: path.join(__dirname, "index.html"),
       minify: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "covid.html"),
+      template: path.join(__dirname, "covid.html"),
+      minify: true
     })
   ]
 }
