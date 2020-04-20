@@ -1,0 +1,16 @@
+{
+    "name": "PWA App",
+    "short_name": "App",
+    "icons": [
+        {
+            "src": "/images/icon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "orientation": "portrait"
+}

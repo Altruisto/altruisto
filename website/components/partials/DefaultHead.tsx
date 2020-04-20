@@ -3,7 +3,7 @@ import Head from "next/head"
 export const DefaultHead = props => (
   <Head>
     <title key="title">altruisto.com - Do good while shopping online</title>
-
+    <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
     <meta
