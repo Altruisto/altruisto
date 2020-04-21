@@ -28,7 +28,7 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/",
+    "start_url": "/partners",
     "theme_color": "#e70f74",
     "background_color": "#ffffff",
     "display": "standalone",
