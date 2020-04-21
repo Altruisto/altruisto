@@ -1,0 +1,36 @@
+{
+    "name": "Altruisto",
+    "short_name": "Altruisto",
+    "icons": [
+        {
+            "src": "/images/icons/icon96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icons/icon128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icons/icon144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icons/icon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icons/icon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "theme_color": "#e70f74",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait"
+}
