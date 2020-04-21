@@ -15,6 +15,7 @@ type Props = {
 
 const Partner: NextPage<Props> = ({ name, domain, logoUrl, donation, error }) => {
   const causeAreaOptions = [
+    { value: "covid", label: "Fight the coronavirus pandemic" },
     { value: "extreme_poverty", label: "People in extreme poverty" },
     { value: "animals", label: "Reduce animal suffering" }
   ]

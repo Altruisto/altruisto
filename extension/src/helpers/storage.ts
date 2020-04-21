@@ -64,7 +64,7 @@ const syncStorageSchema: SyncStorageSchema = {
   highlightSearchResults: true, // TODO: -> extensionSettings.highlightSearchResults
   user: null,
   userSettings: {
-    causeArea: "extreme_poverty",
+    causeArea: "covid",
     currency: "USD"
   }
 }
@@ -122,9 +122,9 @@ const createStorage = <
   ) => {
     if (typeof update === "function") {
       return get(storageArea).then(current =>
-        Promise.resolve(update(current as SA extends "local" ? LocalStorage : SyncStorage)).then(
-          newValues => browser.storage[storageArea].set(newValues)
-        )
+        Promise.resolve(
+          update(current as SA extends "local" ? LocalStorage : SyncStorage)
+        ).then(newValues => browser.storage[storageArea].set(newValues))
       )
     } else {
       return Promise.resolve(update).then(newValues => browser.storage[storageArea].set(newValues))

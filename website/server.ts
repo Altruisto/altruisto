@@ -57,16 +57,7 @@ server.use(express.static("public", { maxAge: "30 days" }))
 server.use(express.static(CUSTOM_PAGES_OUTPUT_DIRECTORY))
 server.use(express.static(NEXT_PAGES_OUTPUT_DIRECTORY_NAME))
 
-server.get("/", (req, res) => {
-  const ua = useragent.parse(req.header("user-agent"))
-  res.send(
-    readFileSync("custom-generated-pages/index/index.html")
-      .toString("utf8")
-      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
-  )
-})
-
-server.get("/covid", async (req, res) => {
+server.get("/", async (req, res) => {
   const ua = useragent.parse(req.header("user-agent"))
   try {
     const covidApiResponse = await api.get("https://covidapi.info/api/v1/global")
@@ -91,6 +82,15 @@ server.get("/covid", async (req, res) => {
       .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 2 million")
       .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 200,000")
   }
+})
+
+server.get("/extreme-poverty", (req, res) => {
+  const ua = useragent.parse(req.header("user-agent"))
+  res.send(
+    readFileSync("custom-generated-pages/index/extreme-poverty.html")
+      .toString("utf8")
+      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+  )
 })
 
 // backwards compatibility
