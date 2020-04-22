@@ -4,7 +4,11 @@ export const DefaultHead = props => (
   <Head>
     <title key="title">altruisto.com - Do good while shopping online</title>
     
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="/assets/manifest.json" />
+
+    {/* generated with https://github.com/arthurbergmz/webpack-pwa-manifest  */}
+    <meta name="apple-mobile-web-app-title" content="Altruisto"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="theme-color" content="#e70f74"/><link rel="apple-touch-icon" sizes="1024x1024" href="/assets/pwa/ios/icon_1024x1024.png"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/pwa/ios/icon_180x180.png"/><link rel="apple-touch-icon" sizes="167x167" href="/assets/pwa/ios/icon_167x167.png"/><link rel="apple-touch-icon" sizes="152x152" href="/assets/pwa/ios/icon_152x152.png"/><link rel="apple-touch-icon" sizes="120x120" href="/assets/pwa/ios/icon_120x120.png"/><link rel="manifest" href="/assets/manifest.json" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
     <meta
