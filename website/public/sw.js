@@ -1,3 +1,5 @@
+// https://googlechrome.github.io/samples/service-worker/custom-offline-page/
+
 /*
 Copyright 2015, 2019 Google Inc. All Rights Reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +21,6 @@ const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 
 self.addEventListener('install', (event) => {
-    console.log("🚀🚀 service worker installed")
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
     // Setting {cache: 'reload'} in the new request will ensure that the response
