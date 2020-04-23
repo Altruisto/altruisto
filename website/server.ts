@@ -26,17 +26,17 @@ const saveRefCookie = (req: Request, res: Response, next: NextFunction) => {
   }
   next()
 }
-// const requireHTTPS = (req: Request, res: Response, next: NextFunction) => {
-//   // The 'x-forwarded-proto' check is for Heroku
-//   if (
-//     !req.secure &&
-//     req.get("x-forwarded-proto") !== "https" &&
-//     process.env.NODE_ENV !== "development"
-//   ) {
-//     return res.redirect("https://" + req.get("host") + req.url)
-//   }
-//   next()
-// }
+const requireHTTPS = (req: Request, res: Response, next: NextFunction) => {
+  // The 'x-forwarded-proto' check is for Heroku
+  if (
+    !req.secure &&
+    req.get("x-forwarded-proto") !== "https" &&
+    process.env.NODE_ENV !== "development"
+  ) {
+    return res.redirect("https://" + req.get("host") + req.url)
+  }
+  next()
+}
 
 const wwwRedirect = (req: Request, res: Response, next: NextFunction) => {
   if (req.headers.host.slice(0, 4) === "www.") {
@@ -50,7 +50,7 @@ server.use(compression())
 server.use(cookieParser())
 server.use(saveRefCookie)
 server.set("trust proxy", true)
-// server.use(requireHTTPS)
+server.use(requireHTTPS)
 server.use(wwwRedirect)
 
 server.use(express.static("public", { maxAge: "30 days" }))
