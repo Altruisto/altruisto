@@ -7,7 +7,7 @@
     "dev": "nodemon --config \"nodemon.json\"/",
     "build:custom": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack && babel custom/index/sw.js --out-file public/sw.js --presets=@babel/preset-env",
     "build:server": "tsc --project tsconfig.server.json",
-    "build": "next build && next export && tsc --project tsconfig.server.json && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack",
+    "build": "next build && next export && tsc --project tsconfig.server.json && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack && babel custom/index/sw.js --out-file public/sw.js --presets=@babel/preset-env",
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "start:local": "cross-env NODE_ENV=production node dist/website/server.js",
     "deploy": "ts-node --project tsconfig.server.json scripts/deploy.ts"
