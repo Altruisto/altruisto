@@ -2,5 +2,5 @@
   "watch": ["."],
   "ext": "ts",
   "ignore": ["dist", "pages", "out", "public", "custom-generated-pages"],
-  "exec": "NODE_ENV=development ts-node --project tsconfig.server.json server.ts"
+  "exec": "cross-env NODE_ENV=development ts-node --project tsconfig.server.json server.ts"
 }
