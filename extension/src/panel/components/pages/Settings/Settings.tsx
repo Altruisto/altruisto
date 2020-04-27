@@ -21,7 +21,7 @@ export const Settings: React.FC<Props> = (props: Props) => {
   const [notifications, setNotifications] = useState(true)
   const [searchResults, setSearchResults] = useState(true)
   const [currency, setCurrency] = useState<CurrencyType>("USD")
-  const [causeArea, setCauseArea] = useState<CauseAreaType>("extreme_poverty")
+  const [causeArea, setCauseArea] = useState<CauseAreaType>("covid")
 
   // TODO: we should defer this call until user swipes to this page for the first time
   useEffect(() => {

@@ -5,7 +5,7 @@ type Props = { moneyRaised: number; isActive: boolean }
 
 const MILESTONES = [1, 10, 25, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
-export const Animals: React.FC<Props> = ({ moneyRaised, isActive }: Props) => {
+export const Covid: React.FC<Props> = ({ moneyRaised, isActive }: Props) => {
   const currentMilestone = MILESTONES.find(v => v > moneyRaised) || 1
   return (
     <div className="fill-height">

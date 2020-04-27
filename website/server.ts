@@ -57,10 +57,37 @@ server.use(express.static("public", { maxAge: "30 days" }))
 server.use(express.static(CUSTOM_PAGES_OUTPUT_DIRECTORY))
 server.use(express.static(NEXT_PAGES_OUTPUT_DIRECTORY_NAME))
 
-server.get("/", (req, res) => {
+server.get("/", async (req, res) => {
+  const ua = useragent.parse(req.header("user-agent"))
+  try {
+    const covidApiResponse = await api.get("https://covidapi.info/api/v1/global")
+    const covidStatistics = covidApiResponse.data.result
+    res.send(
+      readFileSync("custom-generated-pages/index/covid.html")
+        .toString("utf8")
+        .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+        .replace(
+          /\{\{\{CONFIRMED_COVID_CASES\}\}\}/g,
+          new Intl.NumberFormat().format(covidStatistics.confirmed)
+        )
+        .replace(
+          /\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g,
+          new Intl.NumberFormat().format(covidStatistics.deaths)
+        )
+    )
+  } catch (e) {
+    readFileSync("custom-generated-pages/index/covid.html")
+      .toString("utf8")
+      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+      .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 2 million")
+      .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 200,000")
+  }
+})
+
+server.get("/extreme-poverty", (req, res) => {
   const ua = useragent.parse(req.header("user-agent"))
   res.send(
-    readFileSync("custom-generated-pages/index/index.html")
+    readFileSync("custom-generated-pages/index/extreme-poverty.html")
       .toString("utf8")
       .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
   )
