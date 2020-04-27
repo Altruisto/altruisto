@@ -4,7 +4,6 @@ export const DefaultHead = () => (
   <Head>
     <title key="title">altruisto.com - Do good while shopping online</title>
 
-
     {/* generated with https://github.com/arthurbergmz/webpack-pwa-manifest  */}
     <link rel="manifest" href="/assets/manifest.json" />
     <meta name="apple-mobile-web-app-title" content="Altruisto" />
@@ -120,7 +119,7 @@ people in extreme poverty will get medicines, bed nets, or financial aid."
           "https://twitter.com/AltruistoCom"
         ]
       }
-    `,
+    `
       }}
     ></script>
     <script
@@ -148,7 +147,7 @@ people in extreme poverty will get medicines, bed nets, or financial aid."
           "ratingCount": "7"
         }
       }
-    `,
+    `
       }}
     ></script>
     <script
@@ -176,7 +175,7 @@ people in extreme poverty will get medicines, bed nets, or financial aid."
           "longitude": -1.325666
         } 
       }
-    `,
+    `
       }}
     ></script>
   </Head>

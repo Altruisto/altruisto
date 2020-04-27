@@ -3,14 +3,16 @@ import "bootstrap"
 import "slick-carousel"
 import "./bcswipe"
 import "./handleA2HS"
-;(function ($) {
+
+;
+(function ($) {
   // Closes responsive menu when a scroll trigger link is clicked
   $(".js-scroll-trigger").click(function () {
     $(".navbar-collapse").collapse("hide")
   })
 
   $(".carousel").bcSwipe({
-    threshold: 50,
+    threshold: 50
   })
 
   $(".tweets-carousel").slick({
@@ -28,8 +30,8 @@ import "./handleA2HS"
           arrows: false,
           centerMode: true,
           centerPadding: "40px",
-          slidesToShow: 3,
-        },
+          slidesToShow: 3
+        }
       },
       {
         breakpoint: 768,
@@ -37,10 +39,10 @@ import "./handleA2HS"
           arrows: false,
           centerMode: true,
           centerPadding: "40px",
-          slidesToShow: 1,
-        },
-      },
-    ],
+          slidesToShow: 1
+        }
+      }
+    ]
   })
 })(jQuery)
 
