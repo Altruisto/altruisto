@@ -3,7 +3,7 @@
 
   "name": "__MSG_name__",
   "description": "__MSG_description__",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "default_locale": "en",
   "options_page": "options/index.html",
   "browser_action": {

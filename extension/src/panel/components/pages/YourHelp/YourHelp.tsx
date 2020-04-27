@@ -11,6 +11,7 @@ import { ExtremePoverty } from "./ExtremePoverty"
 import { Animals } from "./Animals"
 import { storage } from "../../../../helpers/storage"
 import { CauseArea } from "../../../../types/types"
+import { Covid } from "./Covid"
 
 type Props = {
   onRequestLogin: () => void
@@ -123,6 +124,15 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
                 case "animals":
                   return (
                     <Animals
+                      {...{
+                        moneyRaised: help.moneyRaised,
+                        isActive: props.isActive
+                      }}
+                    />
+                  )
+                case "covid":
+                  return (
+                    <Covid
                       {...{
                         moneyRaised: help.moneyRaised,
                         isActive: props.isActive
