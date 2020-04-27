@@ -1,8 +1,72 @@
 import Head from "next/head"
 
-export const DefaultHead = props => (
+export const DefaultHead = () => (
   <Head>
     <title key="title">altruisto.com - Do good while shopping online</title>
+
+    {/* generated with https://github.com/arthurbergmz/webpack-pwa-manifest  */}
+    <link rel="manifest" href="/assets/manifest.json" />
+    <meta name="apple-mobile-web-app-title" content="Altruisto" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#e70f74" />
+    <link rel="apple-touch-icon" sizes="1024x1024" href="/assets/pwa/ios/icon_1024x1024.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/pwa/ios/icon_180x180.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/assets/pwa/ios/icon_167x167.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/pwa/ios/icon_152x152.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/pwa/ios/icon_120x120.png" />
+
+    {/* generated with https://appsco.pe/developer/splash-screens */}
+    <link
+      href="/assets/pwa/ios/splashscreens/iphone5_splash.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/iphone6_splash.png"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/iphoneplus_splash.png"
+      media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/iphonex_splash.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/iphonexr_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/iphonexsmax_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/ipad_splash.png"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/ipadpro1_splash.png"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/ipadpro3_splash.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/assets/pwa/ios/splashscreens/ipadpro2_splash.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />

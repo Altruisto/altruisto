@@ -2,6 +2,7 @@ import jQuery from "jquery"
 import "bootstrap"
 import "slick-carousel"
 import "./bcswipe"
+import "./handleA2HS"
 
 ;
 (function ($) {
@@ -22,7 +23,8 @@ import "./bcswipe"
     slidesToShow: 3,
     speed: 700,
     dots: true,
-    responsive: [{
+    responsive: [
+      {
         breakpoint: 1024,
         settings: {
           arrows: false,
@@ -43,3 +45,7 @@ import "./bcswipe"
     ]
   })
 })(jQuery)
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js")
+}
