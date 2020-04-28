@@ -1,6 +1,6 @@
 {
   "name": "Altruisto.com",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "description": "Browser extension that allows users to raise money for charities through online shoppings with no extra costs",
   "main": "index.js",
   "scripts": {
