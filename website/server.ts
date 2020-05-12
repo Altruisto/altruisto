@@ -79,8 +79,8 @@ server.get("/", async (req, res) => {
     readFileSync("custom-generated-pages/index/covid.html")
       .toString("utf8")
       .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
-      .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 2 million")
-      .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 200,000")
+      .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 4 million")
+      .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 250,000")
   }
 })
 
@@ -91,6 +91,33 @@ server.get("/extreme-poverty", (req, res) => {
       .toString("utf8")
       .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
   )
+})
+
+server.get("/gearbest", async (req, res) => {
+  const ua = useragent.parse(req.header("user-agent"))
+  try {
+    const covidApiResponse = await api.get("https://covidapi.info/api/v1/global")
+    const covidStatistics = covidApiResponse.data.result
+    res.send(
+      readFileSync("custom-generated-pages/index/gearbest.html")
+        .toString("utf8")
+        .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+        .replace(
+          /\{\{\{CONFIRMED_COVID_CASES\}\}\}/g,
+          new Intl.NumberFormat().format(covidStatistics.confirmed)
+        )
+        .replace(
+          /\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g,
+          new Intl.NumberFormat().format(covidStatistics.deaths)
+        )
+    )
+  } catch (e) {
+    readFileSync("custom-generated-pages/index/gearbest.html")
+      .toString("utf8")
+      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+      .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 4 million")
+      .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 250,000")
+  }
 })
 
 // backwards compatibility
