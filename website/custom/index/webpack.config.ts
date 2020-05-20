@@ -68,6 +68,11 @@ const config: webpack.Configuration = {
       filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "gearbest.html"),
       template: path.join(__dirname, "gearbest.html"),
       minify: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "axatravel.html"),
+      template: path.join(__dirname, "axatravel.html"),
+      minify: true
     })
   ]
 }
