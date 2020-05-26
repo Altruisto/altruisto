@@ -12,10 +12,12 @@ const logPageView = () => {
 
 export const useGoogleAnalytics = () => {
   useEffect(() => {
-    if (!(window as any).GA_INITIALIZED) {
-      initGA()
-      ;(window as any).GA_INITIALIZED! = true
+    if (process.env.NODE_ENV === "production") {
+      if (!(window as any).GA_INITIALIZED) {
+        initGA()
+        ;(window as any).GA_INITIALIZED! = true
+      }
+      logPageView()
     }
-    logPageView()
   }, [])
 }
