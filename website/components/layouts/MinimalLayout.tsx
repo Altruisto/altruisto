@@ -1,8 +1,8 @@
 import { DefaultHead } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
-import { useGoogleAnalytics } from "../../utils/use-google-analytics"
-import { useServiceWorker } from "../../utils/useServiceWorker"
+import { useGoogleAnalytics } from "../../hooks/use-google-analytics"
+import { useServiceWorker } from "../../hooks/use-service-worker"
 
 export const MinimalLayout: React.FC = ({ children }) => {
   useGoogleAnalytics()
