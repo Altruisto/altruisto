@@ -4,8 +4,8 @@ import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { getCtaDestination } from "../../utils/get-cta-destination"
 import { useEffect, useState } from "react"
-import { useGoogleAnalytics } from "../../utils/use-google-analytics"
-import { useServiceWorker } from "../../utils/useServiceWorker"
+import { useGoogleAnalytics } from "../../hooks/use-google-analytics"
+import { useServiceWorker } from "../../hooks/use-service-worker"
 
 type Props = {
   noCta?: boolean
