@@ -1,5 +1,4 @@
 import { DefaultHead } from "../components/partials/DefaultHead"
-import "../assets/scss/index.scss"
 
 const Waiting = () => (
   <>

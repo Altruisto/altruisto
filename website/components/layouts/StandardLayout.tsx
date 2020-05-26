@@ -1,7 +1,6 @@
 import useragent from "express-useragent"
 import { DefaultHead } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
-import "../../assets/scss/index.scss"
 import { getCtaDestination } from "../../utils/get-cta-destination"
 import { useEffect, useState } from "react"
 import { useGoogleAnalytics } from "../../hooks/use-google-analytics"

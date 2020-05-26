@@ -1,39 +1,46 @@
-export const Footer: React.FC = () => (
+type Props = {
+  noLogo?: boolean
+  noLinks?: boolean
+}
+
+const FooterLogo = () => (
+  <div className="col-md-6 d-flex align-items-center">
+    <img src="/images/logo.svg" alt="Altruisto logo" title="Altruisto" className="footer__logo" />
+  </div>
+)
+const FooterLinks = () => (
+  <div className="col-md-6 d-flex align-items-center">
+    <div className="footer__links">
+      <a href="/partners" target="_blank" className="footer__link">
+        List of partners shops
+      </a>
+      <a href="/privacy-policy" target="_blank" className="footer__link">
+        Privacy policy
+      </a>
+      <a href="/terms-of-service" target="_blank" className="footer__link">
+        Terms of service
+      </a>
+      <a
+        href="https://github.com/Altruisto/altruisto"
+        target="_blank"
+        className="footer__link"
+        rel="noreferrer noopener"
+      >
+        Github
+      </a>
+      <a href="/contact" target="_blank" className="footer__link">
+        Contact us
+      </a>
+    </div>
+  </div>
+)
+
+export const Footer: React.FC<Props> = ({ noLogo = false, noLinks = false }) => (
   <footer className="footer">
     <div className="container">
       <div className="row">
-        <div className="col-md-6 d-flex align-items-center">
-          <img
-            src="/images/logo.svg"
-            alt="Altruisto logo"
-            title="Altruisto"
-            className="footer__logo"
-          />
-        </div>
-        <div className="col-md-6 d-flex align-items-center">
-          <div className="footer__links">
-            <a href="/partners" target="_blank" className="footer__link">
-              List of partners shops
-            </a>
-            <a href="/privacy-policy" target="_blank" className="footer__link">
-              Privacy policy
-            </a>
-            <a href="/terms-of-service" target="_blank" className="footer__link">
-              Terms of service
-            </a>
-            <a
-              href="https://github.com/Altruisto/altruisto"
-              target="_blank"
-              className="footer__link"
-              rel="noreferrer noopener"
-            >
-              Github
-            </a>
-            <a href="/contact" target="_blank" className="footer__link">
-              Contact us
-            </a>
-          </div>
-        </div>
+        {noLogo ? null : <FooterLogo />}
+        {noLinks ? null : <FooterLinks />}
       </div>
 
       <hr className="footer__separator" />

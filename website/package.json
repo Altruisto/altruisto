@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.10.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
     "compression": "^1.7.4",
@@ -23,12 +24,16 @@
     "cross-env": "^7.0.1",
     "express": "^4.17.1",
     "express-useragent": "^1.0.13",
+    "formik": "^2.1.4",
+    "loaders.css": "^0.1.2",
     "next": "^9.4.2",
     "react": "^16.13.0",
     "react-device-detect": "^1.11.14",
     "react-dom": "^16.13.0",
     "react-ga": "^2.7.0",
-    "react-select": "^3.0.8"
+    "react-select": "^3.0.8",
+    "sass": "^1.26.5",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
@@ -54,7 +59,6 @@
     "popper.js": "^1.16.1",
     "postcss-loader": "^3.0.0",
     "replace-in-file": "^5.0.2",
-    "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "shell-exec": "^1.0.2",
     "simple-git": "^1.131.0",
