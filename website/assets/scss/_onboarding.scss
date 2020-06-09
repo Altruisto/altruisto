@@ -50,6 +50,16 @@
     justify-content: center;
     cursor: default;
   }
+  &__button--redirect {
+    border:0;
+    &:hover {
+      opacity:0.8;
+    }
+    &:focus {
+      outline:none;
+      box-shadow:none;
+    }
+  }
   &__dots-list {
     list-style-type: none;
     display: flex;
