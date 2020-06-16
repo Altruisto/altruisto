@@ -8,11 +8,14 @@ import { REFERRED_BY_COOKIE_NAME } from "../../../shared/globals"
 import { api } from "utils/api-url"
 import { useState, useEffect } from "react"
 import { Alert } from "components/ui/Alert"
+import { useAuth } from "hooks/use-auth"
 
 const referredBy = getCookie(REFERRED_BY_COOKIE_NAME)
 
 const RegisterForm = () => {
   const [failureMessage, setFailureMessage] = useState("")
+  const [submitting, setSubmitting] = useState(false)
+  const auth = useAuth()
 
   return (
     <>
@@ -25,6 +28,8 @@ const RegisterForm = () => {
           acceptTerms: false
         }}
         onSubmit={async (values, actions) => {
+          setSubmitting(true)
+
           const registrationData = {
             username: values.email,
             accept_terms: values.acceptTerms,
@@ -36,21 +41,21 @@ const RegisterForm = () => {
             .post("/register", registrationData)
             .then(response => {
               if (Number(response.status) === 201) {
-                console.log("login")
-                // return login(values.email, values.password)
+                return auth.login(values.email, values.password)
               } else {
                 throw new Error(
                   "Registration: the server did not responded with expected status code (201)"
                 )
               }
             })
-            // .then(loggedUser => {
-            //   if (loggedUser) {
-            //     console.log(
-            //       "redirect to home of webapp (whatever it's going to be, probably some onboarding)"
-            //     )
-            //   }
-            // })
+            .then(loggedUser => {
+              if (loggedUser) {
+                console.log(
+                  "redirect to home of webapp (whatever it's going to be, probably some onboarding)"
+                )
+                console.log(loggedUser)
+              }
+            })
             .catch(error => {
               if (
                 error.response &&
@@ -70,7 +75,7 @@ const RegisterForm = () => {
               Please do try again later.`
                 )
               }
-              actions.setSubmitting(false)
+              setSubmitting(false)
             })
         }}
         validationSchema={Yup.object({
@@ -176,7 +181,7 @@ const RegisterForm = () => {
             </div>
 
             <button type="submit" className="button" style={{ marginTop: 16 }}>
-              {isSubmitting ? <Loader /> : "Register"}
+              {submitting ? <Loader /> : "Register"}
             </button>
           </Form>
         )}

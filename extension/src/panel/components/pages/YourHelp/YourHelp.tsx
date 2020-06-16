@@ -10,8 +10,8 @@ import { Loader } from "../../ui/Loader"
 import { ExtremePoverty } from "./ExtremePoverty"
 import { Animals } from "./Animals"
 import { storage } from "../../../../helpers/storage"
-import { CauseArea } from "../../../../types/types"
 import { Covid } from "./Covid"
+import { CauseArea } from "../../../../../../shared/types/user"
 
 type Props = {
   onRequestLogin: () => void

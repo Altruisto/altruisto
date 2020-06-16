@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo, useState, useContext } from "react"
+import React, { useCallback, useMemo, useState, useContext, ReactNode } from "react"
 import axios from "../../helpers/api"
 import { User, storage } from "../../helpers/storage"
-import { CauseArea, Currency } from "../../types/types"
+import { PostLoginResponse, GetUserResponse } from "../../../../shared/types/api"
 
 export type Auth = {
   user: User | null
@@ -10,25 +10,7 @@ export type Auth = {
 }
 
 export type AuthProviderProps = {
-  children?: any
-}
-
-type PostLoginResponse = {
-  apiKey: string
-}
-
-type GetUserResponse = {
-  id: number
-  username: string
-  email: string
-  api_key: string
-  cause_area: CauseArea
-  money_raised: number
-  currency: Currency
-  created_at: string
-  updated_at: string
-  registration_source: string
-  referrals_count: number
+  children?: ReactNode
 }
 
 export const AuthContext: React.Context<Auth> = React.createContext<Auth>({

@@ -14,7 +14,3 @@ export type ShowNotificationMessage = {
 export type Message = ShowNotificationMessage
 
 export type MessageResponse = "success" | "failure"
-
-export type CauseArea = "extreme_poverty" | "animals" | "covid"
-
-export type Currency = "USD" | "PLN" | "EUR" | "GBP" | "NOK"
