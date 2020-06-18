@@ -4,4 +4,16 @@
     height: 70px;
     margin-bottom: 45px;
   }
+
+  &__header {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__user-info {
+    text-align: right;
+    font-size: 11px;
+  }
 }
