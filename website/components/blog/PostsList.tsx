@@ -11,9 +11,9 @@ const PostsList: React.FC<Props> = ({ title, posts }) => {
     return (
         <>
             <h2>{title}</h2>
-            <ul className="blog-posts-list">
-                {posts.map(post => <PostPreview key={post.id} {...post} />)}
-            </ul>
+            <main className="row">
+                {posts.map((post, index) => <PostPreview key={post.id} index={index} {...post} />)}
+            </main>
         </>
     )
 }

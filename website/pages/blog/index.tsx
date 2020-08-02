@@ -1,10 +1,11 @@
 import React from "react";
 import Prismic from "prismic-javascript"
-import PrismicApi, {getBlogMeta, getBlogPostTypes, getBlogTags} from "../../utils/prismic-api";
-import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
-import PostsList from "../../components/blog/PostsList"
-import { Post } from "../../components/blog/PostPreview"
-import Categories from "../../components/blog/Categories"
+import PrismicApi, {getBlogMeta, getBlogPostTypes, getBlogTags} from "utils/prismic-api";
+import { WithSmallCoverLayout } from "components/layouts/WithSmallCoverLayout"
+import PostsList from "components/blog/PostsList"
+import { Post } from "components/blog/PostPreview"
+import Categories from "components/blog/Categories"
+import InstallButton from "components/InstallButton";
 
 interface BlogMainPage {
     title: string
@@ -19,7 +20,6 @@ interface Props {
 
 const BlogList: React.FC<Props> = ({ mainPage, posts, tags }) => {
     const { title, supportText } = mainPage
-    console.log(tags);
     
     return (
         <WithSmallCoverLayout
@@ -32,18 +32,19 @@ const BlogList: React.FC<Props> = ({ mainPage, posts, tags }) => {
             backgroundImage="url(/images/blog-background.png)"
         >
             <div className="row">
+                <div className="col-sm-3 ml-auto order-sm-12">
+                    <Categories
+                        tags={tags}
+                    />
+                </div>
                 <div className="col-sm-8">
                     <PostsList
                         title="Latest Posts"
                         posts={posts}
                     />
                 </div>
-                <div className="col-sm-3 ml-auto">
-                    <Categories
-                        tags={tags}
-                    />
-                </div>
             </div>
+            <InstallButton/>
         </WithSmallCoverLayout>
     )
 }

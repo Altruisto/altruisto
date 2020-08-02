@@ -1,9 +1,10 @@
 import React from "react";
 import ErrorPage from 'next/error'
-import { RichText } from "prismic-reactjs"
 import Prismic from "prismic-javascript"
-import PrismicApi from "../../../utils/prismic-api";
-import { WithFullCoverLayout } from "../../../components/layouts/WithFullCoverLayout"
+import PrismicApi from "utils/prismic-api";
+import { StandardLayout } from "components/layouts/StandardLayout"
+import InstallButton from "components/InstallButton";
+import RenderSlices from "components/blog/RenderSlices";
  
 
 interface Props {
@@ -13,19 +14,28 @@ interface Props {
     }
 }
 
-const BlogList: React.FC<Props> = ({ error, post }) => {
+const BlogPost: React.FC<Props> = ({ error, post }) => {
     if (error) {
         return <ErrorPage statusCode={error.statusCode} />
     }
 
-    console.log(post);
-    
-
     return (
-        <WithFullCoverLayout
-            backgroundImage="url(/images/blog-background.png)"
-        >
-        </WithFullCoverLayout>
+        <StandardLayout>
+            <div className="container blog__post-wrapper pt-4 fill-height">
+                <main className="row">
+                    <article>
+                        <div className="col-md-8 mx-auto">
+                            <header></header>
+                        </div>
+                        <RenderSlices allSlices={post.data.body}/>
+                        <div className="col-md-8 mx-auto">
+                            <footer></footer>
+                        </div>
+                    </article>
+                </main>
+            </div>
+            <InstallButton/>
+        </StandardLayout>
     )
 }
 
@@ -52,4 +62,4 @@ export async function getServerSideProps({ params }) {
     }
 }
 
-export default BlogList;
+export default BlogPost;
