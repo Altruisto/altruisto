@@ -4,7 +4,7 @@ export default ({ slice }) => {
     const switchEmbedSizeToCssClass = useCallback(
         iFrameHtml => iFrameHtml
             .replace(/width.*?" /g, "")
-            .replace(/height.*?" /g, "class=\"blog__post-embed\" "),
+            .replace(/height.*?" /g, "class=\"embed-responsive-item\" "),
         []
     );
 
@@ -14,6 +14,9 @@ export default ({ slice }) => {
     )
     
     return (
-        <p dangerouslySetInnerHTML={{ __html: embedHTML }} />
+        <div
+            className="my-5 embed-responsive embed-responsive-16by9 blog-rounded"
+            dangerouslySetInnerHTML={{ __html: embedHTML }}
+        />
     )
 }

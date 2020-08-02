@@ -23,7 +23,7 @@ const BlogPost: React.FC<Props> = ({ error, post }) => {
         <StandardLayout>
             <div className="container blog__post-wrapper pt-4 fill-height">
                 <main className="row">
-                    <article>
+                    <article id={post.uid}>
                         <div className="col-md-8 mx-auto">
                             <header></header>
                         </div>

@@ -1,5 +1,9 @@
 .blog{
 
+  &-rounded {
+    border-radius: .5rem !important;
+  }
+
   &__post-preview-title {
     cursor:pointer;
   }
@@ -8,7 +12,7 @@
 
     &__center {
       display: flex;
-      justify-content: center
+      justify-content: center;
     }
 
     &__left {
@@ -23,7 +27,7 @@
   }
 
   &__post-wrapper {
-    margin-top: 5.25rem;
+    margin-top: $navbar-height;
   }
 
   &__post-article {
@@ -38,37 +42,7 @@
     }
   }
 
-  &__post-embed {
-    width: -webkit-fill-available;
-
-
-  }
-
-  @include breakpoint("sm") {
-    &__post-embed {
-      width: 540px;
-      height: 300px;
-    }
-  }
-
-  @include breakpoint("md") {
-    &__post-embed {
-      width: 720px;
-      height: 405px;
-    }
-  }
-
-  @include breakpoint("lg") {
-    &__post-embed {
-      width: 960px;
-      height: 540px;
-    }
-  }
-
-  @include breakpoint("xl") {
-    &__post-embed {
-      width: 1140px;
-      height: 640px;
-    }
+  &__quote {
+    font-size: 36px;
   }
 }

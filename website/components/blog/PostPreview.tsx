@@ -36,9 +36,12 @@ const PostPreview: React.FC<Post> = props => {
     const { title, main_image, teaser } = data
 
     const mainTag = tags[0] || 'miscellaneous'
-    return <article className={index < 2 ? "col-md-12" : "col-md-6"}>
+    return <article
+        id={uid}
+        className={index < 2 ? "col-md-12" : "col-md-6"}
+    >
         {main_image && main_image.url && <div
-            className="cover cover--small my-4 rounded"
+            className="cover cover--small my-4 blog-rounded"
             style={{ backgroundImage: `url(${data.main_image.url})` }}
         />}
         {tags.map(tag => <span className="font-weight-bold small mr-4" key={tag}><a href={`blog/${tag}`}>{tag}</a></span>)}

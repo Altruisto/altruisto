@@ -14,7 +14,7 @@ export default ({ slice }) => {
     return (
         <figure className={imageClassName}>
             <img
-                className="rounded mb-3"
+                className="blog-rounded mb-3"
                 src={image.url}
                 alt={image.alt}
             />
