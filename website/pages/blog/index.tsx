@@ -6,19 +6,28 @@ import PostsList from "components/blog/PostsList"
 import { Post } from "components/blog/PostPreview"
 import Categories from "components/blog/Categories"
 import InstallButton from "components/InstallButton"
+import Pagination from "components/blog/Pagination"
 
 interface BlogMainPage {
     title: string
     supportText: string
 }
 
+interface Pagination {
+    page: number
+    totalPages: number
+    prevPage: string
+    nextPage: string
+}
+
 interface Props {
     mainPage: BlogMainPage
     posts: Array<Post>
-    tags: Array<string>
+    tags: Array<string>,
+    pagination: Pagination
 }
 
-const BlogList: React.FC<Props> = ({ mainPage, posts, tags }) => {
+const BlogList: React.FC<Props> = ({ mainPage, posts, tags, pagination }) => {
     const { title, supportText } = mainPage
     
     return (
@@ -31,6 +40,7 @@ const BlogList: React.FC<Props> = ({ mainPage, posts, tags }) => {
                     </div>
                 </div>
             }
+            withMenu
             backgroundImage="url(/images/blog-background.png)"
         >
             <div className="mt-5 row">
@@ -43,6 +53,11 @@ const BlogList: React.FC<Props> = ({ mainPage, posts, tags }) => {
                     <PostsList
                         title="Latest Posts"
                         posts={posts}
+                    />
+                </div>
+                <div className="col-sm-8">
+                    <Pagination
+                        {...pagination}
                     />
                 </div>
             </div>
@@ -62,12 +77,10 @@ export async function getServerSideProps({ query }) {
         ),
         PrismicApi().query(
             Prismic.Predicates.any('document.type', blogPostTypes),
-            { pageSize : 10, page: query.page || 1 }
+            { pageSize : 2, page: query.page || 1 }
         )
     ])
     
-    
-
     return {
         props: {
             mainPage: {
@@ -75,7 +88,13 @@ export async function getServerSideProps({ query }) {
                 supportText: mainPage.results[0].data['blog-support-text'][0].text
             },
             posts: posts.results,
-            tags: blogPostTags
+            tags: blogPostTags,
+            pagination: {
+                page: posts.page,
+                totalPages: posts.total_pages,
+                prevPage: posts.prev_page,
+                nextPage: posts.next_page
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ interface Props {
     mainPage: BlogMainPage
     posts: Array<Post>
     tags: Array<string>
-    currenTag?: string
+    currentTag?: string
 }
 
 const BlogList: React.FC<Props> = ({ mainPage, posts, tags , currentTag}) => {
@@ -29,6 +29,7 @@ const BlogList: React.FC<Props> = ({ mainPage, posts, tags , currentTag}) => {
                     {supportText ? <p>{supportText}</p> : null}
                 </div>
             }
+            withMenu
             backgroundImage="url(/images/blog-background.png)"
         >
         <div className="mt-5 row">
@@ -65,8 +66,6 @@ export async function getServerSideProps({ query }) {
         )
     ])
     
-    
-
     return {
         props: {
             mainPage: {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="7px" height="12px" viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>page_next@2x</title>
+    <g id="gotowe-designy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blog" transform="translate(-912.000000, -3329.000000)" fill="#969696">
+            <g transform="translate(375.000000, 467.000000)" id="Pagination">
+                <g transform="translate(200.000000, 2850.000000)">
+                    <g id="right" transform="translate(322.000000, 0.000000)">
+                        <polygon id="page_next" points="16.3319838 12 15 13.41 19.3265857 18 15 22.59 16.3319838 24 22 18"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

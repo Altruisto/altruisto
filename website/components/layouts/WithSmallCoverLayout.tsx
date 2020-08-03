@@ -4,6 +4,7 @@ import { ReactNode } from "react"
 type Props = {
   title?: string
   coverContent?: ReactNode
+  withMenu?: boolean
   backgroundImage?: string
   noCta?: boolean
 }
@@ -12,10 +13,14 @@ export const WithSmallCoverLayout: React.FC<Props> = ({
   title = "",
   coverContent = null,
   backgroundImage = "url(/images/default-small-cover.jpg)",
+  withMenu,
   noCta = false,
   children
 }) => (
-  <StandardLayout noCta={noCta}>
+  <StandardLayout
+    withMenu={withMenu}
+    noCta={noCta}
+  >
     <div
       className="cover cover--small with-overlay"
       style={{ backgroundImage }}

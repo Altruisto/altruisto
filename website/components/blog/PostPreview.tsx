@@ -27,19 +27,24 @@ export interface Post {
     data: PostData
     tags: Array<string>
     uid: string
+    id: string
     index: number
 }
 
-const PostPreview: React.FC<Post> = props => {
-    const { data, tags, uid, index } = props
-    const { title, main_image, teaser } = data
+interface Props {
+    post: Post
+    columnsOccupied?: number
+    isLargeTitle?: boolean
+}
 
-    const isLarge = index < 2;
+const PostPreview: React.FC<Props> = ({ post, columnsOccupied = 12, isLargeTitle = true}) => {
+    const { data, tags, uid, index } = post
+    const { title, main_image, teaser } = data
 
     const mainTag = tags[0] || 'miscellaneous'
     return <article
         id={uid}
-        className={isLarge ? "col-md-12" : "col-md-6"}
+        className={`col-md-${columnsOccupied}`}
     >
         {main_image && main_image.url &&
             <Link href={`/blog/${mainTag}/${uid}`}>
@@ -53,7 +58,7 @@ const PostPreview: React.FC<Post> = props => {
         {(title && title[0]) ?
             <Link href={`/blog/${mainTag}/${uid}`}>
                 <header>
-                    {isLarge ? 
+                    {isLargeTitle ? 
                         <h3 className="my-4 blog__post-preview-title">{title[0].text}</h3>
                         : <h5 className="my-4 blog__post-preview-title">{title[0].text}</h5>
                     }

@@ -1,6 +1,8 @@
 import React from "react"
+import { useCta } from "hooks/use-cta"
 
 const InstallButton:React.FC = () => {
+    const cta = useCta()
     return (
         <section id="are-you-ready">
             <div className="grey-box container py-5 px-md-3">
@@ -12,7 +14,7 @@ const InstallButton:React.FC = () => {
                         </h2>
                     </div>
                     <div className="col-md-6 mt-3 mt-md-0 column-center">
-                        <a href="https://chrome.google.com/webstore/detail/djennkbadhfcmhlbejdidgmdgnacbcmi" className="button install-button">Start helping</a>
+                        <a href={cta} className="button install-button">Start helping</a>
                     </div>
                 </div>
             </div>

@@ -1,33 +1,32 @@
 import React from "react"
 import ErrorPage from 'next/error'
 import Prismic from "prismic-javascript"
-import PrismicApi from "utils/prismic-api"
+import PrismicApi, { getBlogMeta, getBlogPostTypes } from "utils/prismic-api"
 import { StandardLayout } from "components/layouts/StandardLayout"
 import InstallButton from "components/InstallButton"
 import RenderSlices from "components/blog/RenderSlices"
 import PostTitle from "components/blog/PostTitle"
 import PostFooter from "components/blog/PostFooter"
+import Recommendation from "components/blog/Recommendation"
  
 
 interface Props {
-    post?: any
+    post?: any,
+    similarPosts: Array<any>
     error?: {
         statusCode: number
     }
 }
 
-const BlogPost: React.FC<Props> = ({ error, post }) => {
+const BlogPost: React.FC<Props> = ({ error, post, similarPosts }) => {
     const title = post && post.data.title[0]
     const mainImage = post && post.data.main_image
     if (error || !title || !mainImage) {
         return <ErrorPage statusCode={error.statusCode} />
-    }    
-
-    console.log(post);
-    
+    }
 
     return (
-        <StandardLayout>
+        <StandardLayout withMenu={true}>
             <div className="container blog__post-wrapper fill-height">
                 <main className="row">
                     <article id={post.uid}>
@@ -49,6 +48,10 @@ const BlogPost: React.FC<Props> = ({ error, post }) => {
                     </article>
                 </main>
             </div>
+            <Recommendation
+                title="Check Also"
+                posts={similarPosts}
+            />
             <InstallButton/>
         </StandardLayout>
     )
@@ -57,7 +60,7 @@ const BlogPost: React.FC<Props> = ({ error, post }) => {
 export async function getServerSideProps({ params }) {
     const { results } = await PrismicApi().query(
         Prismic.Predicates.at('my.blog-post.uid', params.uid)
-    ) 
+    )
 
     const post = results[0]
     if (!post) {
@@ -70,9 +73,22 @@ export async function getServerSideProps({ params }) {
         }
     }
 
+
+    const [ similarPostsQueryData, metaData ] = await Promise.all([
+        PrismicApi().query(
+            Prismic.Predicates.similar(post.id, 3)
+        ),
+        getBlogMeta()
+    ])
+    const blogPostTypes = getBlogPostTypes(metaData)
+    const similarPosts = similarPostsQueryData.results
+        .filter(({ type }) => blogPostTypes.includes(type))
+        .slice(0,3)
+    
     return {
         props: {
-            post
+            post,
+            similarPosts: similarPosts
         }
     }
 }

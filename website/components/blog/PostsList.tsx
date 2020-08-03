@@ -12,7 +12,16 @@ const PostsList: React.FC<Props> = ({ title, posts }) => {
         <>
             <h2>{title}</h2>
             <main className="row">
-                {posts.map((post, index) => <PostPreview key={post.id} index={index} {...post} />)}
+                {posts.map((post, index) => {
+                    const isLarge = index<2
+                    return (
+                        <PostPreview
+                            key={post.id}
+                            columnsOccupied={isLarge ? 12 : 6}
+                            isLargeTitle={isLarge}
+                            post={post}
+                        />
+                )})}
             </main>
         </>
     )
