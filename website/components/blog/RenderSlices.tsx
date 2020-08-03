@@ -1,4 +1,4 @@
-import { Article, Embed, Image, Quote } from "./slices"
+import { Article, Embed, Image, Quote, DoubleColumns } from "./slices"
 
 const RenderSlices = ({ allSlices }) => {
     return (
@@ -11,6 +11,8 @@ const RenderSlices = ({ allSlices }) => {
                     return <div className="col-md-8 mx-auto" key={'slice-'+index} ><Image slice={slice}/></div>
                 case ('quote'):
                     return <div className="col-md-8 mx-auto" key={'slice-'+index} ><Quote slice={slice}/></div>
+                case ('double_columns'):
+                    return <div className="col-md-8 mx-auto container" key={'slice-'+index} ><DoubleColumns slice={slice}/></div>
                 case ('embed'):
                     return <div className="col-md-12" key={'slice-'+index} ><Embed slice={slice}/></div>
                 default:

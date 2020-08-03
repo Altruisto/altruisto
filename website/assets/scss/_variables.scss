@@ -16,6 +16,7 @@ $navbar-height: 5.25rem;
 $navbar-desktop-link-color: $link-color;
 
 $font-family-sans-serif: "PTSans",
+"PT Sans",
 -apple-system,
 BlinkMacSystemFont,
 "Segoe UI",
@@ -24,3 +25,9 @@ Roboto,
 Arial,
 "Noto Sans",
 sans-serif !default;
+
+$font-family-serif: "PT Serif",
+"Palatino Linotype",
+"Book Antiqua",
+Palatino,
+serif !default;

@@ -1,11 +1,30 @@
 .blog{
 
   &-rounded {
-    border-radius: .5rem !important;
+    border-radius: .5rem;
   }
 
   &__post-preview-title {
     cursor:pointer;
+  }
+
+  &__post-title {
+    min-height: 50vh;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    &>h1 {
+      font-size: 48px;
+    }
+
+    &::after {
+      border-radius: .5rem;
+    }
+
+    &__back-button {
+      position: absolute;
+      top: 4rem;
+    }
   }
 
   &__post-image {
@@ -38,7 +57,29 @@
     }
 
     &>p {
+      font-family: $font-family-serif;
       margin-bottom: 2rem;
+    }
+
+    &>ul {
+      list-style: none;
+      padding-inline-start: 1rem;
+      margin-block-start: 1rem;
+
+      & li {
+        font-family: $font-family-serif;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+      }
+      
+      & li::before {
+        content: "\2022";
+        color: $primary;
+        font-weight: bold;
+        display: inline-block; 
+        width: 1rem;
+        margin-left: -1rem;
+      }
     }
   }
 

@@ -9,7 +9,7 @@ export interface Props {
 const Categories: React.FC<Props> = ({tags, currentTag = 'All'}) => {
     return <aside>
         <h2>Categories</h2>
-        <ul className="blog-posts-list mt-4">
+        <ul className="list-unstyled mt-4">
             <li>
                 <Link href={`/blog`}>
                     <a className={`${currentTag === "All" ? "text-gradient" : ""}`}>All</a>

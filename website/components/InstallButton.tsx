@@ -1,4 +1,6 @@
-export default function() {
+import React from "react"
+
+const InstallButton:React.FC = () => {
     return (
         <section id="are-you-ready">
             <div className="grey-box container py-5 px-md-3">
@@ -17,3 +19,5 @@ export default function() {
         </section>
     )
 }
+
+export default InstallButton

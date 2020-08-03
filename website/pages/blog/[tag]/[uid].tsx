@@ -5,6 +5,7 @@ import PrismicApi from "utils/prismic-api";
 import { StandardLayout } from "components/layouts/StandardLayout"
 import InstallButton from "components/InstallButton";
 import RenderSlices from "components/blog/RenderSlices";
+import PostTitle from "components/blog/PostTitle";
  
 
 interface Props {
@@ -15,17 +16,25 @@ interface Props {
 }
 
 const BlogPost: React.FC<Props> = ({ error, post }) => {
-    if (error) {
+    const title = post && post.data.title[0]
+    const mainImage = post && post.data.main_image;
+    if (error || !title || !mainImage) {
         return <ErrorPage statusCode={error.statusCode} />
-    }
+    }    
 
     return (
         <StandardLayout>
-            <div className="container blog__post-wrapper pt-4 fill-height">
+            <div className="container blog__post-wrapper fill-height">
                 <main className="row">
                     <article id={post.uid}>
-                        <div className="col-md-8 mx-auto">
-                            <header></header>
+                        <div className="col-md-12">
+                            <header>
+                                <PostTitle
+                                    title={title}
+                                    mainImage={mainImage}
+                                    tags={post.tags}
+                                />
+                            </header>
                         </div>
                         <RenderSlices allSlices={post.data.body}/>
                         <div className="col-md-8 mx-auto">
