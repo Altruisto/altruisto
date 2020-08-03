@@ -1,11 +1,9 @@
-import useragent from "express-useragent"
 import { DefaultHead } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
-import { getCtaDestination } from "../../utils/get-cta-destination"
-import { useEffect, useState } from "react"
-import { useGoogleAnalytics } from "../../hooks/use-google-analytics"
-import { useServiceWorker } from "../../hooks/use-service-worker"
+import { useGoogleAnalytics } from "hooks/use-google-analytics"
+import { useServiceWorker } from "hooks/use-service-worker"
+import { useCta } from "hooks/use-cta"
 
 type Props = {
   noCta?: boolean
@@ -15,10 +13,7 @@ export const StandardLayout: React.FC<Props> = ({ children, noCta = false }) => 
   useGoogleAnalytics()
   useServiceWorker()
 
-  const [cta, setCta] = useState("#")
-  useEffect(() => {
-    setCta(getCtaDestination(useragent.parse(window.navigator.userAgent)))
-  }, [])
+  const cta = useCta();
 
   return (
     <>

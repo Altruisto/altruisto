@@ -6,7 +6,7 @@ export default ({ slice }) => {
             .replace(/width.*?" /g, "")
             .replace(/height.*?" /g, "class=\"embed-responsive-item\" "),
         []
-    );
+    )
 
     const embedHTML = useMemo(
         () => switchEmbedSizeToCssClass(slice.primary.embed.html),
@@ -15,7 +15,7 @@ export default ({ slice }) => {
     
     return (
         <div
-            className="my-5 embed-responsive embed-responsive-16by9 blog-rounded"
+            className="blog__post-embed embed-responsive embed-responsive-16by9 blog-rounded"
             dangerouslySetInnerHTML={{ __html: embedHTML }}
         />
     )

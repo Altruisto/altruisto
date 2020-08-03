@@ -1,11 +1,12 @@
-import React from "react";
+import React from "react"
 import ErrorPage from 'next/error'
 import Prismic from "prismic-javascript"
-import PrismicApi from "utils/prismic-api";
+import PrismicApi from "utils/prismic-api"
 import { StandardLayout } from "components/layouts/StandardLayout"
-import InstallButton from "components/InstallButton";
-import RenderSlices from "components/blog/RenderSlices";
-import PostTitle from "components/blog/PostTitle";
+import InstallButton from "components/InstallButton"
+import RenderSlices from "components/blog/RenderSlices"
+import PostTitle from "components/blog/PostTitle"
+import PostFooter from "components/blog/PostFooter"
  
 
 interface Props {
@@ -17,10 +18,13 @@ interface Props {
 
 const BlogPost: React.FC<Props> = ({ error, post }) => {
     const title = post && post.data.title[0]
-    const mainImage = post && post.data.main_image;
+    const mainImage = post && post.data.main_image
     if (error || !title || !mainImage) {
         return <ErrorPage statusCode={error.statusCode} />
     }    
+
+    console.log(post);
+    
 
     return (
         <StandardLayout>
@@ -38,7 +42,9 @@ const BlogPost: React.FC<Props> = ({ error, post }) => {
                         </div>
                         <RenderSlices allSlices={post.data.body}/>
                         <div className="col-md-8 mx-auto">
-                            <footer></footer>
+                            <footer>
+                                <PostFooter/>
+                            </footer>
                         </div>
                     </article>
                 </main>
@@ -51,9 +57,9 @@ const BlogPost: React.FC<Props> = ({ error, post }) => {
 export async function getServerSideProps({ params }) {
     const { results } = await PrismicApi().query(
         Prismic.Predicates.at('my.blog-post.uid', params.uid)
-    ); 
+    ) 
 
-    const post = results[0];
+    const post = results[0]
     if (!post) {
         return {
             props: {
@@ -71,4 +77,4 @@ export async function getServerSideProps({ params }) {
     }
 }
 
-export default BlogPost;
+export default BlogPost

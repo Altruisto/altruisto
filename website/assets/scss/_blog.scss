@@ -1,29 +1,34 @@
 .blog{
 
   &-rounded {
-    border-radius: .5rem;
+    border-radius: .5 * $blog-gutter-xs;
   }
 
   &__post-preview-title {
     cursor:pointer;
   }
 
+  &__post-preview-image {
+    cursor:pointer;
+  }
+
   &__post-title {
     min-height: 50vh;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: $blog-gutter-xl;
+    padding-bottom: $blog-gutter-xl;
+    margin-bottom: $blog-gutter-xl;
 
     &>h1 {
       font-size: 48px;
     }
 
     &::after {
-      border-radius: .5rem;
+      border-radius: .5 * $blog-gutter-xs;
     }
 
     &__back-button {
       position: absolute;
-      top: 4rem;
+      top: $blog-gutter-xl - $blog-gutter-xs;
     }
   }
 
@@ -36,12 +41,12 @@
 
     &__left {
       float: left;
-      margin-right: 1.5rem;
+      margin-right: $blog-gutter-sm;
     }
 
     &__right {
       float: right;
-      margin-left: 1.5rem;
+      margin-left: $blog-gutter-sm;
     }
   }
 
@@ -51,25 +56,36 @@
 
   &__post-article {
 
-    &>h3 {
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
+    &>h2,h3 {
+      margin-top: $blog-gutter-xl;
+      margin-bottom: $blog-gutter-sm;
+    }
+
+    &>h4,h5 {
+      margin-top: $blog-gutter-lg;
+      margin-bottom: $blog-gutter-xs;
+    }
+
+    &>h6 {
+      margin-top: $blog-gutter-md;
+      margin-bottom: $blog-gutter-xs;
     }
 
     &>p {
       font-family: $font-family-serif;
-      margin-bottom: 2rem;
+      margin-top: $blog-gutter-md;
+      margin-bottom: 0px;
     }
 
     &>ul {
       list-style: none;
-      padding-inline-start: 1rem;
-      margin-block-start: 1rem;
+      padding-inline-start: $blog-gutter-xs;
+      margin-block-start: $blog-gutter-xs;
 
       & li {
         font-family: $font-family-serif;
-        margin-bottom: 1rem;
-        margin-top: 1rem;
+        margin-bottom: $blog-gutter-xs;
+        margin-top: $blog-gutter-xs;
       }
       
       & li::before {
@@ -77,13 +93,32 @@
         color: $primary;
         font-weight: bold;
         display: inline-block; 
-        width: 1rem;
-        margin-left: -1rem;
+        width: $blog-gutter-xs;
+        margin-left: -$blog-gutter-xs;
       }
     }
   }
 
-  &__quote {
-    font-size: 36px;
+  &__post-quote{
+
+    &-wrapper{
+      clear: both;
+      margin-top: 0px;
+      padding: $blog-gutter-xl 0;
+    }
+
+    &-text{
+      margin: 0px;
+      font-size: 36px;
+    }
+  }
+
+  &__post-double-columns {
+    clear: both;
+    margin-bottom: $blog-gutter-md;
+  }
+
+  &__post-embed {
+    margin: $blog-gutter-xl 0;
   }
 }

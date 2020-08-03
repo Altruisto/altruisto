@@ -9,8 +9,8 @@ export default ({ slice }) => {
     const authorTitle = slice.primary["author_title"][0]
     
     return (
-        <blockquote className="text-center mb-5">
-            <p className="text-gradient font-weight-normal my-5 blog__quote">{quote.text}</p>
+        <blockquote className="text-center blog__post-quote-wrapper">
+            <p className="text-gradient font-weight-normal mb-5 blog__post-quote-text">{quote.text}</p>
             {authorPortrait ?
                 <img className="rounded-circle" src={authorPortrait.url} width="48" height="48" />
                 : null

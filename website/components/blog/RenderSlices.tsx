@@ -1,4 +1,8 @@
-import { Article, Embed, Image, Quote, DoubleColumns } from "./slices"
+import Article from "./slices/Article"
+import Quote from "./slices/Quote"
+import Image from "./slices/Image"
+import Embed from "./slices/Embed"
+import DoubleColumns from "./slices/DoubleColumns"
 
 const RenderSlices = ({ allSlices }) => {
     return (
@@ -16,11 +20,11 @@ const RenderSlices = ({ allSlices }) => {
                 case ('embed'):
                     return <div className="col-md-12" key={'slice-'+index} ><Embed slice={slice}/></div>
                 default:
-                    return null;
+                    return null
                 }
             })}
         </>
     )
-};
+}
 
-  export default RenderSlices;
+  export default RenderSlices
