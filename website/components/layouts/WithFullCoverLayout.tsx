@@ -14,10 +14,7 @@ export const WithFullCoverLayout: React.FC<Props> = ({
   children
 }) => (
   <StandardLayout noCta={noCta}>
-    <div
-      className="hero-poster cover with-overlay"
-      style={{ backgroundImage }}
-    >
+    <div className="hero-poster cover with-overlay" style={{ backgroundImage }}>
       {coverContent}
     </div>
     <div className="container pt-4 fill-height">{children}</div>

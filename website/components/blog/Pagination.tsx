@@ -5,12 +5,11 @@ import ReactPaginate from "react-paginate"
 export interface Pagination {
   page: number
   totalPages: number
-  prevPage: string
-  nextPage: string
 }
 
-const Pagination: React.FC<Pagination> = ({ page, totalPages, prevPage, nextPage }) => {
+const Pagination: React.FC<Pagination> = ({ page = 1, totalPages }) => {
   const router = useRouter()
+  const pathname = router.asPath.match(/[^?]*/m)[0]
 
   const handlePageChange = useCallback(
     ({ selected }) => {
@@ -18,7 +17,7 @@ const Pagination: React.FC<Pagination> = ({ page, totalPages, prevPage, nextPage
 
       if (selectedPage !== page) {
         router.push({
-          pathname: router.pathname,
+          pathname,
           query: { page: selectedPage }
         })
       }
@@ -32,15 +31,19 @@ const Pagination: React.FC<Pagination> = ({ page, totalPages, prevPage, nextPage
         pageCount={totalPages}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
-        initialPage={page || 1}
+        initialPage={page - 1}
+        disableInitialCallback={true}
         onPageChange={handlePageChange}
-        previousLabel="previous"
-        nextLabel="next"
+        previousLabel=""
+        nextLabel=""
         breakLabel="..."
-        breakClassName="break-me"
-        containerClassName="pagination"
-        subContainerClassName="pages pagination"
-        activeClassName="active"
+        containerClassName="blog__pagination pagination"
+        pageClassName="blog__pagination__page"
+        activeLinkClassName="blog__pagination__active"
+        activeClassName="blog__pagination__active"
+        previousLinkClassName="blog__pagination__button blog__pagination__previous rounded"
+        nextLinkClassName="blog__pagination__button blog__pagination__next rounded"
+        disabledClassName="blog__pagination__disabled"
       />
     </div>
   )

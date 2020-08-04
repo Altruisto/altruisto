@@ -7,16 +7,14 @@ const prismicApiUrl =
     ? "https://altruisto.cdn.prismic.io/api/v2"
     : "https://altruisto-beta.cdn.prismic.io/api/v2"
 
-const PrismicApi = (req = null):Client => (
-  Prismic.client(prismicApiUrl, createClientOptions(req))
-)
-  
+const PrismicApi = (req = null): Client => Prismic.client(prismicApiUrl, createClientOptions(req))
+
 const createClientOptions = (req = null, prismicAccessToken = null) => {
   const reqOption = req ? { req } : {}
   const accessTokenOption = prismicAccessToken ? { accessToken: prismicAccessToken } : {}
   return {
     ...reqOption,
-    ...accessTokenOption,
+    ...accessTokenOption
   }
 }
 
@@ -27,20 +25,16 @@ interface BlogMeta {
 
 async function getBlogMeta(): Promise<BlogMeta> {
   const { data } = await axios.get(prismicApiUrl)
-  const { types, tags } = data;
+  const { types, tags } = data
   return { types: Object.values(types), tags }
 }
 
-function getBlogPostTypes({ types }: BlogMeta):Array<string> {
+function getBlogPostTypes({ types }: BlogMeta): Array<string> {
   const blogPostRegexp = /^blog-post/
-  return [ ...types ].filter(type => blogPostRegexp.test(type))
+  return [...types].filter((type) => blogPostRegexp.test(type))
 }
 
-const getBlogTags = ({ tags }: BlogMeta): Array<string> => tags;
+const getBlogTags = ({ tags }: BlogMeta): Array<string> => tags
 
 export default PrismicApi
-export {
-  getBlogMeta,
-  getBlogPostTypes,
-  getBlogTags
-}
+export { getBlogMeta, getBlogPostTypes, getBlogTags }

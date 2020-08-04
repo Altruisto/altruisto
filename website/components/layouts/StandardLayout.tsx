@@ -23,7 +23,7 @@ export const StandardLayout: React.FC<Props> = ({ children, withMenu, noCta = fa
       <nav className="menu navbar navbar-expand-lg navbar-shrink fixed-top" id="mainNav">
         <div className="container">
           {withMenu ? (
-            <Menu/>
+            <Menu />
           ) : (
             <div className="menu__top">
               <a className="menu__brand navbar-brand js-scroll-trigger" href="#page-top">

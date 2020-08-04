@@ -2,7 +2,7 @@ import React from "react"
 import Link from 'next/link'
 
 export interface Text {
-    type: string //TODO: enum
+    type: string 
     text: string
     spans: Array<any>
 }

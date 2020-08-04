@@ -17,18 +17,9 @@ export const WithSmallCoverLayout: React.FC<Props> = ({
   noCta = false,
   children
 }) => (
-  <StandardLayout
-    withMenu={withMenu}
-    noCta={noCta}
-  >
-    <div
-      className="cover cover--small with-overlay"
-      style={{ backgroundImage }}
-    >
-      { coverContent ? 
-        coverContent
-        : <h1>{title}</h1>
-      }
+  <StandardLayout withMenu={withMenu} noCta={noCta}>
+    <div className="cover cover--small with-overlay" style={{ backgroundImage }}>
+      {coverContent ? coverContent : <h1>{title}</h1>}
     </div>
     <div className="container pt-4 fill-height">{children}</div>
   </StandardLayout>

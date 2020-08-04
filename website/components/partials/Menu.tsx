@@ -28,7 +28,6 @@ const Menu: FC = () => {
     { text: "About us", href: "/#about"},
     { text: "Blog", href: "/blog"},
     { text: "FAQ", href: "/#faq"},
-    { text: "Make a difference", href: "/#make-a-difference"}
   ]
   const menuItemHeight = 50
   const menuNavbarPaddings = 2 * 20
@@ -88,7 +87,7 @@ const Menu: FC = () => {
         id="navbarResponsive"
       >
         <ul className="menu__items-wrapper navbar-nav">
-          {menuItems.map(menuItem => <MenuItem {...menuItem}/>)}
+          {menuItems.map(menuItem => <MenuItem key={menuItem.text} {...menuItem}/>)}
         </ul>
       </div>
     </>

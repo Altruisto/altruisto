@@ -6,25 +6,18 @@ import PostsList from "components/blog/PostsList"
 import { Post } from "components/blog/PostPreview"
 import Categories from "components/blog/Categories"
 import InstallButton from "components/InstallButton"
-import Pagination from "components/blog/Pagination"
+import Pagination, { Pagination as PaginationProps } from "components/blog/Pagination"
 
 interface BlogMainPage {
   title: string
   supportText: string
 }
 
-interface Pagination {
-  page: number
-  totalPages: number
-  prevPage: string
-  nextPage: string
-}
-
 interface Props {
   mainPage: BlogMainPage
   posts: Array<Post>
   tags: Array<string>
-  pagination: Pagination
+  pagination: PaginationProps
 }
 
 const BlogList: React.FC<Props> = ({ mainPage, posts, tags, pagination }) => {
@@ -51,7 +44,7 @@ const BlogList: React.FC<Props> = ({ mainPage, posts, tags, pagination }) => {
           <PostsList title="Latest Posts" posts={posts} />
         </div>
         <div className="col-sm-8 order-sm-3">
-          <Pagination {...pagination} />
+          {pagination.totalPages !== 1 ? <Pagination {...pagination} /> : null}
         </div>
       </div>
       <InstallButton />
@@ -67,7 +60,7 @@ export async function getServerSideProps({ query }) {
   const [mainPage, posts] = await Promise.all([
     PrismicApi().query(Prismic.Predicates.at("document.type", "blog-main-page")),
     PrismicApi().query(Prismic.Predicates.any("document.type", blogPostTypes), {
-      pageSize: 2,
+      pageSize: 8,
       page: query.page || 1
     })
   ])
@@ -82,9 +75,7 @@ export async function getServerSideProps({ query }) {
       tags: blogPostTags,
       pagination: {
         page: posts.page,
-        totalPages: posts.total_pages,
-        prevPage: posts.prev_page,
-        nextPage: posts.next_page
+        totalPages: posts.total_pages
       }
     }
   }

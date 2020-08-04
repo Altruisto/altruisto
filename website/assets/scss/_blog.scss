@@ -4,6 +4,68 @@
     border-radius: .5 * $blog-gutter-xs;
   }
 
+  &__pagination {
+    margin: $blog-gutter-md;
+
+    &>li>a {
+      &:focus {
+        outline: 0px;
+      }
+    }
+
+    &__active {
+      cursor: initial;
+      font-size: 1rem;
+      font-weight: bold;
+      color: $primary
+    }
+
+    &__page {
+      cursor:pointer;
+      font-size: .85rem;
+      padding: $blog-gutter-xs/5 $blog-gutter-xs;
+    }
+
+    &__previous {
+      &::before {
+        background: url('/images/page_prev@2x.svg') no-repeat center;
+      }
+    }
+
+    &__next {
+      &::before {
+        background: url('/images/page_next@2x.svg') no-repeat center;
+      }
+    }
+
+    &__button {
+      margin: 0 $blog-gutter-xs;
+      cursor:pointer;
+      display: block;
+      width: 36px;
+      height: 36px;
+      border: 1px solid $darker-grey;
+
+      &::before {
+        display: block;
+        content: "";
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    &__disabled {
+      &>a {
+        cursor:initial;
+        border: 1px solid $dark-grey;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
   &__post-preview-title {
     cursor:pointer;
   }
