@@ -1,28 +1,49 @@
-import React from "react"
-import Link from "next/link"
+import React, { useCallback } from "react"
+import { useRouter } from "next/router"
+import ReactPaginate from "react-paginate"
 
 export interface Pagination {
-    page: number
-    totalPages: number
-    prevPage: string
-    nextPage: string
+  page: number
+  totalPages: number
+  prevPage: string
+  nextPage: string
 }
 
 const Pagination: React.FC<Pagination> = ({ page, totalPages, prevPage, nextPage }) => {
-    const areAllPagesRenderable = totalPages <= 5;
+  const router = useRouter()
 
-    
+  const handlePageChange = useCallback(
+    ({ selected }) => {
+      const selectedPage = selected + 1
 
-    return (
-        <div className="my-4 d-flex justify-content-center">
-            <Link href={`?page=${page-1}`}>
-                <img src="/images/page_prev@2x.svg" width="16" height="16" alt="Facebook share" />
-            </Link>
-            <Link href={`?page=${page+1}`}>
-                <img src="/images/page_next@2x.svg" width="16" height="16" alt="Facebook share" />
-            </Link>
-        </div>
-    )
+      if (selectedPage !== page) {
+        router.push({
+          pathname: router.pathname,
+          query: { page: selectedPage }
+        })
+      }
+    },
+    [router.asPath]
+  )
+
+  return (
+    <div className="my-4 d-flex justify-content-center">
+      <ReactPaginate
+        pageCount={totalPages}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        initialPage={page || 1}
+        onPageChange={handlePageChange}
+        previousLabel="previous"
+        nextLabel="next"
+        breakLabel="..."
+        breakClassName="break-me"
+        containerClassName="pagination"
+        subContainerClassName="pages pagination"
+        activeClassName="active"
+      />
+    </div>
+  )
 }
 
 export default Pagination

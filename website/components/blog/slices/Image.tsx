@@ -12,7 +12,7 @@ export default ({ slice }) => {
     )
     
     return (
-        <figure className={imageClassName}>
+        <figure className={`blog__post-image ${imageClassName}`}>
             <img
                 className="blog-rounded mb-2"
                 src={image.url}
