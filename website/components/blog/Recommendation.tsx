@@ -1,7 +1,7 @@
 import React from "react"
 import PostPreview, { Post } from "./PostPreview"
 
-export interface Props {
+export type Props = {
   title: string
   posts: Array<Post>
 }

@@ -15,7 +15,7 @@ export default ({ slice }) => {
 
   return (
     <div
-      className="blog__post-embed embed-responsive embed-responsive-16by9 blog-rounded"
+      className="blog__post-embed embed-responsive embed-responsive-16by9 blog--rounded"
       dangerouslySetInnerHTML={{ __html: embedHTML }}
     />
   )

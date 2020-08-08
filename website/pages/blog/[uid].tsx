@@ -9,7 +9,7 @@ import PostTitle from "components/blog/PostTitle"
 import PostFooter from "components/blog/PostFooter"
 import Recommendation from "components/blog/Recommendation"
 
-interface Props {
+type Props = {
   post?: any
   similarPosts: Array<any>
   error?: {

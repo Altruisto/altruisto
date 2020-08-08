@@ -8,12 +8,12 @@ import Categories from "components/blog/Categories"
 import InstallButton from "components/InstallButton"
 import Pagination, { Pagination as PaginationProps } from "components/blog/Pagination"
 
-interface BlogMainPage {
+type BlogMainPage = {
   title: string
   supportText: string
 }
 
-interface Props {
+type Props = {
   mainPage: BlogMainPage
   posts: Array<Post>
   tags: Array<string>
@@ -23,7 +23,7 @@ interface Props {
 
 const BlogList: React.FC<Props> = ({ mainPage, posts, tags, currentTag, pagination }) => {
   const { title, supportText } = mainPage
-  const isMoreThanOnePage = pagination.totalPages > 1;
+  const isMoreThanOnePage = pagination.totalPages > 1
   return (
     <WithSmallCoverLayout
       coverContent={

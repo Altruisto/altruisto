@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
 
-interface Props {
+type Props = {
   title: {
     text?: string
   }
@@ -19,7 +19,7 @@ interface Props {
 const PostTitle: React.FC<Props> = ({ title, mainImage, tags }) => {
   return (
     <div
-      className="cover with-overlay blog-rounded blog__post-title"
+      className="cover with-overlay blog--rounded blog__post-title"
       style={{ backgroundImage: `url(${mainImage.url})` }}
     >
       <div className="col-md-8 position-static">

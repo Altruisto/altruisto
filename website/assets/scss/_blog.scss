@@ -1,13 +1,12 @@
-.blog{
-
-  &-rounded {
-    border-radius: .5 * $blog-gutter-xs;
+.blog {
+  &--rounded {
+    border-radius: 0.5 * $blog-gutter-xs;
   }
 
   &__pagination {
     margin: $blog-gutter-md;
 
-    &>li>a {
+    & > li > a {
       &:focus {
         outline: 0px;
       }
@@ -17,30 +16,30 @@
       cursor: initial;
       font-size: 1rem;
       font-weight: bold;
-      color: $primary
+      color: $primary;
     }
 
     &__page {
-      cursor:pointer;
-      font-size: .85rem;
+      cursor: pointer;
+      font-size: 0.85rem;
       padding: $blog-gutter-xs/5 $blog-gutter-xs;
     }
 
     &__previous {
       &::before {
-        background: url('/images/page_prev@2x.svg') no-repeat center;
+        background: url("/images/page_prev@2x.svg") no-repeat center;
       }
     }
 
     &__next {
       &::before {
-        background: url('/images/page_next@2x.svg') no-repeat center;
+        background: url("/images/page_next@2x.svg") no-repeat center;
       }
     }
 
     &__button {
       margin: 0 $blog-gutter-xs;
-      cursor:pointer;
+      cursor: pointer;
       display: block;
       width: 36px;
       height: 36px;
@@ -55,8 +54,8 @@
     }
 
     &__disabled {
-      &>a {
-        cursor:initial;
+      & > a {
+        cursor: initial;
         border: 1px solid $dark-grey;
 
         &::before {
@@ -67,11 +66,11 @@
   }
 
   &__post-preview-title {
-    cursor:pointer;
+    cursor: pointer;
   }
 
   &__post-preview-image {
-    cursor:pointer;
+    cursor: pointer;
   }
 
   &__post-title {
@@ -80,12 +79,12 @@
     padding-bottom: $blog-gutter-xl;
     margin-bottom: $blog-gutter-xl;
 
-    &>h1 {
+    & > h1 {
       font-size: 48px;
     }
 
     &::after {
-      border-radius: .5 * $blog-gutter-xs;
+      border-radius: 0.5 * $blog-gutter-xs;
     }
 
     &__back-button {
@@ -95,8 +94,7 @@
   }
 
   &__post-image {
-
-    &>img {
+    & > img {
       max-width: 100%;
     }
 
@@ -121,29 +119,30 @@
   }
 
   &__post-article {
-
-    &>h2,h3 {
+    & > h2,
+    h3 {
       margin-top: $blog-gutter-xl;
       margin-bottom: $blog-gutter-sm;
     }
 
-    &>h4,h5 {
+    & > h4,
+    h5 {
       margin-top: $blog-gutter-lg;
       margin-bottom: $blog-gutter-xs;
     }
 
-    &>h6 {
+    & > h6 {
       margin-top: $blog-gutter-md;
       margin-bottom: $blog-gutter-xs;
     }
 
-    &>p {
+    & > p {
       font-family: $font-family-serif;
       margin-top: $blog-gutter-md;
       margin-bottom: 0px;
     }
 
-    &>ul {
+    & > ul {
       list-style: none;
       padding-inline-start: $blog-gutter-xs;
       margin-block-start: $blog-gutter-xs;
@@ -153,27 +152,26 @@
         margin-bottom: $blog-gutter-xs;
         margin-top: $blog-gutter-xs;
       }
-      
+
       & li::before {
         content: "\2022";
         color: $primary;
         font-weight: bold;
-        display: inline-block; 
+        display: inline-block;
         width: $blog-gutter-xs;
         margin-left: -$blog-gutter-xs;
       }
     }
   }
 
-  &__post-quote{
-
-    &-wrapper{
+  &__post-quote {
+    &-wrapper {
       clear: both;
       margin-top: 0px;
       padding: $blog-gutter-xl 0;
     }
 
-    &-text{
+    &-text {
       margin: 0px;
       font-size: 36px;
     }

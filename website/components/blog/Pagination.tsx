@@ -2,7 +2,7 @@ import React, { useCallback } from "react"
 import { useRouter } from "next/router"
 import ReactPaginate from "react-paginate"
 
-export interface Pagination {
+export type Pagination = {
   page: number
   totalPages: number
 }
@@ -36,7 +36,7 @@ const Pagination: React.FC<Pagination> = ({ page = 1, totalPages }) => {
         onPageChange={handlePageChange}
         previousLabel=""
         nextLabel=""
-        breakLabel="..."
+        breakLabel="…"
         containerClassName="blog__pagination pagination"
         pageClassName="blog__pagination__page"
         activeLinkClassName="blog__pagination__active"

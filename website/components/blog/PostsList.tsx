@@ -1,18 +1,19 @@
 import React from "react"
 import PostPreview, { Post } from "./PostPreview"
 
-export interface Props {
+export type Props = {
   title: string
   posts: Array<Post>
 }
 
 const PostsList: React.FC<Props> = ({ title, posts }) => {
+  const numberOfLargePosts = 2
   return (
     <>
       <h2>{title}</h2>
       <main className="row">
         {posts.map((post, index) => {
-          const isLarge = index < 2
+          const isLarge = index < numberOfLargePosts
           return (
             <PostPreview
               key={post.id}
