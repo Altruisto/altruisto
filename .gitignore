@@ -3,6 +3,7 @@ build
 .DS_Store
 .vscode
 .next
+.idea
 out
 dist
 website/custom-generated-pages

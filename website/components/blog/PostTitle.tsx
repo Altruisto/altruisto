@@ -38,7 +38,7 @@ const PostTitle: React.FC<Props> = ({ title, mainImage, tags }) => {
         {tags.map((tag) => (
           <span key={tag}>
             <strong>
-              <a href={`/blog/${tag}`} className="mr-4 text-white">
+              <a href={`/blog/category/${tag}`} className="mr-4 text-white">
                 {tag}
               </a>
             </strong>

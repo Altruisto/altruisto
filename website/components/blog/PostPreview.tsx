@@ -38,25 +38,24 @@ interface Props {
 }
 
 const PostPreview: React.FC<Props> = ({ post, columnsOccupied = 12, isLargeTitle = true}) => {
-    const { data, tags, uid, index } = post
+    const { data, tags, uid } = post
     const { title, main_image, teaser } = data
 
-    const mainTag = tags[0] || 'miscellaneous'
     return <article
         id={uid}
         className={`col-md-${columnsOccupied}`}
     >
         {main_image && main_image.url &&
-            <Link href={`/blog/${mainTag}/${uid}`}>
+            <Link href={`/blog/${uid}`}>
                 <div
                     className="blog__post-preview-image cover cover--small my-4 blog-rounded"
                     style={{ backgroundImage: `url(${data.main_image.url})` }}
                 />
             </Link>
         }
-        {tags.map(tag => <span className="font-weight-bold small mr-4" key={tag}><a href={`blog/${tag}`}>{tag}</a></span>)}
+        {tags.map(tag => <span className="font-weight-bold small mr-4" key={tag}><a href={`blog/category/${tag}`}>{tag}</a></span>)}
         {(title && title[0]) ?
-            <Link href={`/blog/${mainTag}/${uid}`}>
+            <Link href={`/blog/${uid}`}>
                 <header>
                     {isLargeTitle ? 
                         <h3 className="my-4 blog__post-preview-title">{title[0].text}</h3>

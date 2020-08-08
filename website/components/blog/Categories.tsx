@@ -18,7 +18,7 @@ const Categories: React.FC<Props> = ({ tags, currentTag = "All" }) => {
         </li>
         {tags.map((tag) => (
           <li key={tag} className="mt-2">
-            <Link href={`/blog/${tag}`}>
+            <Link href={`/blog/category/${tag}`}>
               <a className={`${currentTag === tag ? "text-gradient" : ""}`}>{tag}</a>
             </Link>
           </li>

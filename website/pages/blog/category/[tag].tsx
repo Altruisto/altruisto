@@ -18,10 +18,12 @@ interface Props {
   posts: Array<Post>
   tags: Array<string>
   currentTag?: string
+  pagination: PaginationProps
 }
 
 const BlogList: React.FC<Props> = ({ mainPage, posts, tags, currentTag, pagination }) => {
   const { title, supportText } = mainPage
+  const isMoreThanOnePage = pagination.totalPages > 1;
   return (
     <WithSmallCoverLayout
       coverContent={
@@ -41,7 +43,7 @@ const BlogList: React.FC<Props> = ({ mainPage, posts, tags, currentTag, paginati
           <PostsList title={`Posts about: ${currentTag}`} posts={posts} />
         </div>
         <div className="col-sm-8 order-sm-3">
-          {pagination.totalPages !== 1 ? <Pagination {...pagination} /> : null}
+          {isMoreThanOnePage ? <Pagination {...pagination} /> : null}
         </div>
       </div>
       <InstallButton />
