@@ -8,6 +8,7 @@ import RenderSlices from "components/blog/RenderSlices"
 import PostTitle from "components/blog/PostTitle"
 import PostFooter from "components/blog/PostFooter"
 import Recommendation from "components/blog/Recommendation"
+import CallToActionSection from "components/CallToActionSection"
 
 type Props = {
   post?: any
@@ -44,7 +45,7 @@ const BlogPost: React.FC<Props> = ({ error, post, similarPosts }) => {
         </main>
       </div>
       <Recommendation title="Check Also" posts={similarPosts} />
-      <InstallButton />
+      <CallToActionSection button={<InstallButton />} />
     </StandardLayout>
   )
 }

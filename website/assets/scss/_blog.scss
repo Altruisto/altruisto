@@ -6,17 +6,28 @@
   &__pagination {
     margin: $blog-gutter-md;
 
-    & > li > a {
-      &:focus {
-        outline: 0px;
-      }
-    }
-
-    &__active {
+    &--active {
       cursor: initial;
       font-size: 1rem;
       font-weight: bold;
       color: $primary;
+    }
+
+    &--disabled {
+      & > .blog__pagination-link {
+        cursor: initial;
+        border: 1px solid $dark-grey;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    &-link {
+      &:focus {
+        outline: 0px;
+      }
     }
 
     &__page {
@@ -50,17 +61,6 @@
         content: "";
         width: 34px;
         height: 34px;
-      }
-    }
-
-    &__disabled {
-      & > a {
-        cursor: initial;
-        border: 1px solid $dark-grey;
-
-        &::before {
-          display: none;
-        }
       }
     }
   }

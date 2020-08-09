@@ -39,11 +39,12 @@ const Pagination: React.FC<Pagination> = ({ page = 1, totalPages }) => {
         breakLabel="…"
         containerClassName="blog__pagination pagination"
         pageClassName="blog__pagination__page"
-        activeLinkClassName="blog__pagination__active"
-        activeClassName="blog__pagination__active"
-        previousLinkClassName="blog__pagination__button blog__pagination__previous rounded"
-        nextLinkClassName="blog__pagination__button blog__pagination__next rounded"
-        disabledClassName="blog__pagination__disabled"
+        pageLinkClassName="blog__pagination-link"
+        previousLinkClassName="blog__pagination__button blog__pagination__previous blog__pagination-link rounded"
+        nextLinkClassName="blog__pagination__button blog__pagination__next blog__pagination-link rounded"
+        activeLinkClassName="blog__pagination--active"
+        activeClassName="blog__pagination--active"
+        disabledClassName="blog__pagination--disabled"
       />
     </div>
   )

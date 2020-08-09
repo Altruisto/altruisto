@@ -7,6 +7,7 @@ import { Post } from "components/blog/PostPreview"
 import Categories from "components/blog/Categories"
 import InstallButton from "components/InstallButton"
 import Pagination, { Pagination as PaginationProps } from "components/blog/Pagination"
+import CallToActionSection from "components/CallToActionSection"
 
 type BlogMainPage = {
   title: string
@@ -46,7 +47,7 @@ const BlogList: React.FC<Props> = ({ mainPage, posts, tags, currentTag, paginati
           {isMoreThanOnePage ? <Pagination {...pagination} /> : null}
         </div>
       </div>
-      <InstallButton />
+      <CallToActionSection button={<InstallButton />} />
     </WithSmallCoverLayout>
   )
 }

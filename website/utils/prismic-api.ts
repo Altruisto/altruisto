@@ -18,7 +18,7 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
   }
 }
 
-interface BlogMeta {
+type BlogMeta = {
   types: Array<string>
   tags: Array<string>
 }
