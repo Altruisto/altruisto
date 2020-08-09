@@ -15,6 +15,9 @@ module.exports = withSass({
       '/welcome': {
         page: '/welcome'
       },
+      '/onboarding': {
+        page: '/onboarding'
+      },
     }
   }
 })
