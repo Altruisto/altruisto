@@ -188,5 +188,9 @@
 
   &__post-footer {
     margin: $blog-gutter-xl 0;
+
+    &-author-name {
+      font-size: 0.9rem;
+    }
   }
 }
