@@ -9,6 +9,7 @@ import PostTitle from "components/blog/PostTitle"
 import PostFooter from "components/blog/PostFooter"
 import Recommendation from "components/blog/Recommendation"
 import CallToActionSection from "components/CallToActionSection"
+import getNestedPropertyFromObject from "lodash.get"
 
 type Props = {
   post?: any
@@ -25,6 +26,8 @@ const BlogPost: React.FC<Props> = ({ error, post, similarPosts }) => {
     return <ErrorPage statusCode={error.statusCode} />
   }
 
+  const authorName = getNestedPropertyFromObject(post, "data.author.data.name[0].text", null)
+
   return (
     <StandardLayout withMenu={true}>
       <div className="container blog__post-wrapper fill-height">
@@ -38,7 +41,7 @@ const BlogPost: React.FC<Props> = ({ error, post, similarPosts }) => {
             <RenderSlices allSlices={post.data.body} />
             <div className="col-md-8 mx-auto">
               <footer>
-                <PostFooter />
+                <PostFooter authorName={authorName} />
               </footer>
             </div>
           </article>
@@ -52,7 +55,8 @@ const BlogPost: React.FC<Props> = ({ error, post, similarPosts }) => {
 
 export async function getServerSideProps({ params }) {
   const { results } = await PrismicApi().query(
-    Prismic.Predicates.at("my.blog-post.uid", params.uid)
+    Prismic.Predicates.at("my.blog-post.uid", params.uid),
+    { fetchLinks: "author.name" }
   )
 
   const post = results[0]

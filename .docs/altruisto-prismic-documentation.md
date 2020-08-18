@@ -2,6 +2,30 @@
 
 Documentation to describe ***Custom Types*** used on altruisto blog
 
+## Author
+
+### type
+```js
+    name: 'author'
+    type: Repetable
+```
+Describing author
+
+### Elements
+
+***
+
+#### Name
+
+```js
+    API ID: 'name'
+    Prismic Type: Title
+    required: true
+```
+Name describing author
+
+***
+
 ## Blog Main Page
 
 ### type

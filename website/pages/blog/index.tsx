@@ -8,6 +8,7 @@ import Categories from "components/blog/Categories"
 import InstallButton from "components/InstallButton"
 import Pagination, { Pagination as PaginationProps } from "components/blog/Pagination"
 import CallToActionSection from "components/CallToActionSection"
+import getNestedPropertyFromObject from "lodash.get"
 
 type BlogMainPage = {
   title: string
@@ -69,8 +70,12 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       mainPage: {
-        title: mainPage.results[0].data["blog-title"][0].text,
-        supportText: mainPage.results[0].data["blog-support-text"][0].text
+        title: getNestedPropertyFromObject(mainPage, 'results[0].data["blog-title"][0].text', ""),
+        supportText: getNestedPropertyFromObject(
+          mainPage,
+          'results[0].data["blog-support-text"][0].text',
+          ""
+        )
       },
       posts: posts.results,
       tags: blogPostTags,
