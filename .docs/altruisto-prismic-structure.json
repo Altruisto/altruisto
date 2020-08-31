@@ -1,0 +1,232 @@
+{
+    "blog-post": {
+        "Main" : {
+          "uid" : {
+            "type" : "UID",
+            "config" : {
+              "label" : "slug",
+              "placeholder" : "enter seo friendly uid"
+            }
+          },
+          "author" : {
+            "type" : "Link",
+            "config" : {
+              "select" : "document",
+              "customtypes" : [ "author" ],
+              "label" : "author",
+              "placeholder" : "enter author document"
+            }
+          },
+          "title" : {
+            "type" : "StructuredText",
+            "config" : {
+              "single" : "heading2",
+              "label" : "Title"
+            }
+          },
+          "main_image" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : { },
+              "thumbnails" : [ ],
+              "label" : "main_image"
+            }
+          },
+          "teaser" : {
+            "type" : "StructuredText",
+            "config" : {
+              "multi" : "paragraph, strong, em",
+              "allowTargetBlank" : true,
+              "label" : "teaser",
+              "placeholder" : "Enter preview teaser"
+            }
+          },
+          "body" : {
+            "type" : "Slices",
+            "fieldset" : "Slice zone",
+            "config" : {
+              "labels" : {
+                "article" : [ ],
+                "image" : [ ],
+                "embed" : [ ],
+                "double_columns" : [ ]
+              },
+              "choices" : {
+                "quote" : {
+                  "type" : "Slice",
+                  "fieldset" : "Quote",
+                  "description" : "A short quote with author's portrait",
+                  "icon" : "add_alert",
+                  "non-repeat" : {
+                    "quote" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "single" : "em",
+                        "label" : "Quote",
+                        "placeholder" : "Your quote"
+                      }
+                    },
+                    "name_of_the_author" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "multi" : "paragraph",
+                        "label" : "Name of the author",
+                        "placeholder" : "John Doe"
+                      }
+                    },
+                    "author_title" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "multi" : "paragraph",
+                        "label" : "Author Title",
+                        "placeholder" : "Creativity Master"
+                      }
+                    },
+                    "portrait_author" : {
+                      "type" : "Image",
+                      "config" : {
+                        "constraint" : {
+                          "width" : 700,
+                          "height" : 700
+                        },
+                        "thumbnails" : [ {
+                          "name" : "mobile",
+                          "width" : 350,
+                          "height" : 350
+                        } ],
+                        "label" : "Portrait Author"
+                      }
+                    }
+                  },
+                  "repeat" : { }
+                },
+                "article" : {
+                  "type" : "Slice",
+                  "fieldset" : "Article",
+                  "description" : "Article text",
+                  "icon" : "library_books",
+                  "display" : "list",
+                  "non-repeat" : {
+                    "article" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                        "allowTargetBlank" : true,
+                        "label" : "article"
+                      }
+                    }
+                  },
+                  "repeat" : { }
+                },
+                "image" : {
+                  "type" : "Slice",
+                  "fieldset" : "Image",
+                  "description" : "Custom Image",
+                  "icon" : "camera",
+                  "display" : "list",
+                  "non-repeat" : {
+                    "image" : {
+                      "type" : "Image",
+                      "config" : {
+                        "constraint" : { },
+                        "thumbnails" : [ ],
+                        "label" : "Image"
+                      }
+                    },
+                    "aligment" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "single" : "heading3",
+                        "label" : "aligment",
+                        "placeholder" : "optional alignment: left, right, full-width(default)"
+                      }
+                    },
+                    "title1" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "single" : "heading3, heading4, heading5, heading6",
+                        "label" : "title",
+                        "placeholder" : "optional title"
+                      }
+                    }
+                  },
+                  "repeat" : { }
+                },
+                "embed" : {
+                  "type" : "Slice",
+                  "fieldset" : "Embed",
+                  "description" : "custom embed",
+                  "icon" : "ondemand_video",
+                  "display" : "list",
+                  "non-repeat" : {
+                    "embed" : {
+                      "type" : "Embed",
+                      "config" : {
+                        "label" : "embed"
+                      }
+                    }
+                  },
+                  "repeat" : { }
+                },
+                "double_columns" : {
+                  "type" : "Slice",
+                  "fieldset" : "Double columns",
+                  "description" : "Layout with two columns",
+                  "icon" : "view_column",
+                  "display" : "list",
+                  "non-repeat" : {
+                    "left_column" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "multi" : "paragraph, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, o-list-item",
+                        "label" : "left_column"
+                      }
+                    },
+                    "right_column" : {
+                      "type" : "StructuredText",
+                      "config" : {
+                        "multi" : "paragraph, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                        "label" : "right_column"
+                      }
+                    }
+                  },
+                  "repeat" : { }
+                }
+              }
+            }
+          }
+        }
+      },
+    "blog-main-page": {
+        "Main": {
+            "blog-title": {
+                "type": "StructuredText",
+                "config": {
+                    "single": "heading1",
+                    "label": "Blog-title",
+                    "placeholder": "Blog title"
+                }
+            },
+            "blog-support-text": {
+                "type": "StructuredText",
+                "config": {
+                    "single": "paragraph",
+                    "label": "blog-support-text",
+                    "placeholder": "Paragraph describing blog"
+                }
+            }
+        }
+    },
+    "author": {
+        "Main": {
+            "name": {
+                "type": "StructuredText",
+                "config": {
+                    "single": "heading1",
+                    "label": "author",
+                    "placeholder": "author name"
+                }
+            }
+        }
+    }
+}

@@ -15,7 +15,14 @@ $link-color: #333 !default;
 $navbar-height: 5.25rem;
 $navbar-desktop-link-color: $link-color;
 
+$blog-gutter-xs: 1rem;
+$blog-gutter-sm: 1.5*$blog-gutter-xs;
+$blog-gutter-md: 2*$blog-gutter-xs;
+$blog-gutter-lg: 3*$blog-gutter-xs;
+$blog-gutter-xl: 5*$blog-gutter-xs;
+
 $font-family-sans-serif: "PTSans",
+"PT Sans",
 -apple-system,
 BlinkMacSystemFont,
 "Segoe UI",
@@ -24,3 +31,9 @@ Roboto,
 Arial,
 "Noto Sans",
 sans-serif !default;
+
+$font-family-serif: "PT Serif",
+"Palatino Linotype",
+"Book Antiqua",
+Palatino,
+serif !default;
