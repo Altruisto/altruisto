@@ -1,16 +1,25 @@
-import { DefaultHead } from "../partials/DefaultHead"
+import { DefaultHead, DefaultHead as DefaultHeadProps } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { useGoogleAnalytics } from "../../hooks/use-google-analytics"
 import { useServiceWorker } from "../../hooks/use-service-worker"
 
-export const MinimalLayout: React.FC = ({ children }) => {
+export const MinimalLayout: React.FC<DefaultHeadProps> = ({
+  children,
+  seoMetaTagsProps,
+  ogMetaTagsProps,
+  twitterMetaTagsProps
+}) => {
   useGoogleAnalytics()
   useServiceWorker()
 
   return (
     <>
-      <DefaultHead />
+      <DefaultHead
+        seoMetaTagsProps={seoMetaTagsProps}
+        ogMetaTagsProps={ogMetaTagsProps}
+        twitterMetaTagsProps={twitterMetaTagsProps}
+      />
       <div className="full-page">
         <div className="container pt-4 fill-height">
           <a href="/" className="d-flex justify-content-center">
