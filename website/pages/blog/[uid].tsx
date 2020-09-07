@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorPage from "next/error"
 import Prismic from "prismic-javascript"
-import PrismicApi, { getBlogMeta, getBlogPostTypes } from "utils/prismic-api"
+import PrismicApi, { getBlogMeta, getMetaTagsProps } from "utils/prismic-api"
 import { StandardLayout } from "components/layouts/StandardLayout"
 import InstallButton from "components/InstallButton"
 import RenderSlices from "components/blog/RenderSlices"
@@ -9,17 +9,19 @@ import PostTitle from "components/blog/PostTitle"
 import PostFooter from "components/blog/PostFooter"
 import Recommendation from "components/blog/Recommendation"
 import CallToActionSection from "components/CallToActionSection"
+import { MetaTags } from "components/partials/DefaultHead"
 import getNestedPropertyFromObject from "lodash.get"
 
-type Props = {
+type BlogPost = {
   post?: any
   similarPosts: Array<any>
   error?: {
     statusCode: number
   }
+  metaTagsProps: MetaTags
 }
 
-const BlogPost: React.FC<Props> = ({ error, post, similarPosts }) => {
+const BlogPost: React.FC<BlogPost> = ({ error, post, similarPosts, metaTagsProps }) => {
   const title = post && post.data.title[0]
   const mainImage = post && post.data.main_image
   if (error || !title || !mainImage) {
@@ -29,7 +31,7 @@ const BlogPost: React.FC<Props> = ({ error, post, similarPosts }) => {
   const authorName = getNestedPropertyFromObject(post, "data.author.data.name[0].text", null)
 
   return (
-    <StandardLayout withMenu={true}>
+    <StandardLayout {...metaTagsProps} withMenu={true}>
       <div className="container blog__post-wrapper fill-height">
         <main className="row">
           <article id={post.uid}>
@@ -74,14 +76,14 @@ export async function getServerSideProps({ params }) {
     PrismicApi().query(Prismic.Predicates.similar(post.id, 3)),
     getBlogMeta()
   ])
-  const blogPostTypes = getBlogPostTypes(metaData)
   const similarPosts = similarPostsQueryData.results
-    .filter(({ type }) => blogPostTypes.includes(type))
+    .filter(({ type }) => type === "blog-post")
     .slice(0, 3)
 
   return {
     props: {
       post,
+      metaTagsProps: getMetaTagsProps(post),
       similarPosts: similarPosts
     }
   }

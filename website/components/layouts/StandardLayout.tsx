@@ -1,4 +1,4 @@
-import { DefaultHead, DefaultHead as DefaultHeadProps } from "../partials/DefaultHead"
+import { DefaultHead, MetaTags } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { useGoogleAnalytics } from "hooks/use-google-analytics"
@@ -9,15 +9,15 @@ import Menu from "components/partials/Menu"
 type Props = {
   noCta?: boolean
   withMenu?: boolean
-} & DefaultHeadProps
+} & MetaTags
 
 export const StandardLayout: React.FC<Props> = ({
   children,
   withMenu,
   noCta = false,
-  seoMetaTagsProps,
-  ogMetaTagsProps,
-  twitterMetaTagsProps
+  seoMetaTags,
+  ogMetaTags,
+  twitterMetaTags
 }) => {
   useGoogleAnalytics()
   useServiceWorker()
@@ -27,9 +27,9 @@ export const StandardLayout: React.FC<Props> = ({
   return (
     <>
       <DefaultHead
-        seoMetaTagsProps={seoMetaTagsProps}
-        ogMetaTagsProps={ogMetaTagsProps}
-        twitterMetaTagsProps={twitterMetaTagsProps}
+        seoMetaTags={seoMetaTags}
+        ogMetaTags={ogMetaTags}
+        twitterMetaTags={twitterMetaTags}
       />
       <nav className="menu navbar navbar-expand-lg navbar-shrink fixed-top" id="mainNav">
         <div className="container">

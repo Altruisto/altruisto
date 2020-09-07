@@ -1,14 +1,14 @@
-import { DefaultHead, DefaultHead as DefaultHeadProps } from "../partials/DefaultHead"
+import { DefaultHead, MetaTags } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { useGoogleAnalytics } from "../../hooks/use-google-analytics"
 import { useServiceWorker } from "../../hooks/use-service-worker"
 
-export const MinimalLayout: React.FC<DefaultHeadProps> = ({
+export const MinimalLayout: React.FC<MetaTags> = ({
   children,
-  seoMetaTagsProps,
-  ogMetaTagsProps,
-  twitterMetaTagsProps
+  seoMetaTags,
+  ogMetaTags,
+  twitterMetaTags
 }) => {
   useGoogleAnalytics()
   useServiceWorker()
@@ -16,9 +16,9 @@ export const MinimalLayout: React.FC<DefaultHeadProps> = ({
   return (
     <>
       <DefaultHead
-        seoMetaTagsProps={seoMetaTagsProps}
-        ogMetaTagsProps={ogMetaTagsProps}
-        twitterMetaTagsProps={twitterMetaTagsProps}
+        seoMetaTags={seoMetaTags}
+        ogMetaTags={ogMetaTags}
+        twitterMetaTags={twitterMetaTags}
       />
       <div className="full-page">
         <div className="container pt-4 fill-height">

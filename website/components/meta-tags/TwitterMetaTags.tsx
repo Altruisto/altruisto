@@ -7,6 +7,7 @@ export type TwitterMetaTags = {
   title?: string
   description?: string
   image?: string
+  alt?: string
 }
 
 const TwitterMetaTags: React.FC<TwitterMetaTags> = ({
@@ -15,7 +16,8 @@ const TwitterMetaTags: React.FC<TwitterMetaTags> = ({
   creator = "@altruistocom",
   title = "Fight poverty, illness, deaths, while shopping online",
   description = "Install an extension and when you buy something online, people in extreme poverty will get medicines, bed nets, or financial aid.",
-  image = "https://altruisto.com/images/social-media-cover.png"
+  image = "https://altruisto.com/images/social-media-cover.png",
+  alt
 }) => (
   <>
     {card && <meta name="twitter:card" content={card} />}
@@ -24,6 +26,7 @@ const TwitterMetaTags: React.FC<TwitterMetaTags> = ({
     {title && <meta name="twitter:title" content={title} />}
     {description && <meta name="twitter:description" content={description} />}
     {image && <meta name="twitter:image" content={image} />}
+    {alt && <meta name="twitter:image:alt" content={alt} />}
   </>
 )
 

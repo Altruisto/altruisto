@@ -6,24 +6,24 @@ import TwitterMetaTags, {
   TwitterMetaTags as TwitterMetaTagsProps
 } from "../meta-tags/TwitterMetaTags"
 
-export type DefaultHead = {
-  seoMetaTagsProps?: SeoMetaTagsProps
-  ogMetaTagsProps?: OgMetaTagsProps
-  twitterMetaTagsProps?: TwitterMetaTagsProps
+export type MetaTags = {
+  seoMetaTags?: SeoMetaTagsProps
+  ogMetaTags?: OgMetaTagsProps
+  twitterMetaTags?: TwitterMetaTagsProps
 }
 
-export const DefaultHead: React.FC<DefaultHead> = ({
-  seoMetaTagsProps = {},
-  ogMetaTagsProps = {},
-  twitterMetaTagsProps = {}
+export const DefaultHead: React.FC<MetaTags> = ({
+  seoMetaTags = {},
+  ogMetaTags = {},
+  twitterMetaTags = {}
 }) => (
   <Head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
 
-    <SeoMetaTags {...seoMetaTagsProps} />
-    <OgMetaTags {...ogMetaTagsProps} />
-    <TwitterMetaTags {...twitterMetaTagsProps} />
+    <SeoMetaTags {...seoMetaTags} />
+    <OgMetaTags {...ogMetaTags} />
+    <TwitterMetaTags {...twitterMetaTags} />
     <meta name="apple-mobile-web-app-title" content="Altruisto" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
