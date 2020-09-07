@@ -9,6 +9,11 @@ export enum MetaTagCards {
   Twitter = "twitter_card"
 }
 
+enum PrismicTwitterCards {
+  'Standard Summary Card' = 'summary',
+  'Summary Card with Large Image' = 'summary_large_image'
+}
+
 export type PrismicMetaTag = {
   slice_type: MetaTagCards
   primary: {
@@ -22,7 +27,9 @@ type PrismicDocumentData = {
   meta_tags?: PrismicMetaTag[]
 }
 
-export function getMetaTagsProps(prismicDocument: PrismicDocument<PrismicDocumentData>): MetaTags {
+const _convertPrismicTwitterCard = cardType => PrismicTwitterCards[cardType];
+
+export function getMetaTags(prismicDocument: PrismicDocument<PrismicDocumentData>): MetaTags {
   const prismicMetaTagsData = getNestedPropertyFromObject(prismicDocument, "data.meta_tags", [])
 
   const seoMetaTagsData = getNestedPropertyFromObject(
@@ -55,7 +62,7 @@ export function getMetaTagsProps(prismicDocument: PrismicDocument<PrismicDocumen
   })
 
   const twitterMetaTags = removeUndefinedValuesFromObject({
-    card: twitterMetaTagsData.card_type,
+    card: _convertPrismicTwitterCard(twitterMetaTagsData.card_type),
     site: twitterMetaTagsData.site,
     creator: twitterMetaTagsData.creator,
     title: twitterMetaTagsData.title,

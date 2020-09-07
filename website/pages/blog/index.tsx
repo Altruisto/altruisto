@@ -3,7 +3,7 @@ import Prismic from "prismic-javascript"
 import PrismicApi, {
   getBlogMeta,
   getBlogTags,
-  getMetaTagsProps,
+  getMetaTags,
   getDataFromPostsList,
   BlogPages
 } from "utils/prismic-api"
@@ -27,15 +27,15 @@ type BlogList = {
   posts: Array<Post>
   tags: Array<string>
   pagination: PaginationProps
-  metaTagsProps: MetaTags
+  metaTags: MetaTags
 }
 
-const BlogList: React.FC<BlogList> = ({ mainPage, posts, tags, pagination, metaTagsProps }) => {
+const BlogList: React.FC<BlogList> = ({ mainPage, posts, tags, pagination, metaTags }) => {
   const { title, supportText } = mainPage
 
   return (
     <WithSmallCoverLayout
-      {...metaTagsProps}
+      {...metaTags}
       coverContent={
         <div className="text-left container">
           <div className="py-5 col-sm-8">
@@ -80,7 +80,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       mainPage: getDataFromPostsList(mainPage),
-      metaTagsProps: getMetaTagsProps(mainPage),
+      metaTags: getMetaTags(mainPage),
       posts: posts.results,
       tags: blogPostTags,
       pagination: {

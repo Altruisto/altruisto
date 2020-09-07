@@ -14,7 +14,7 @@ export type PrismicDocument<PrismicData> = {
   data: PrismicData
 }
 
-export { getMetaTagsProps, MetaTagCards } from "./prismic-meta-tags"
+export { getMetaTags, MetaTagCards } from "./prismic-meta-tags"
 
 export { getBlogMeta, getBlogTags } from "./prismic-meta-data"
 

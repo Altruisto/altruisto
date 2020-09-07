@@ -1,7 +1,7 @@
 import React from "react"
 import ErrorPage from "next/error"
 import Prismic from "prismic-javascript"
-import PrismicApi, { getBlogMeta, getMetaTagsProps } from "utils/prismic-api"
+import PrismicApi, { getBlogMeta, getMetaTags } from "utils/prismic-api"
 import { StandardLayout } from "components/layouts/StandardLayout"
 import InstallButton from "components/InstallButton"
 import RenderSlices from "components/blog/RenderSlices"
@@ -18,10 +18,10 @@ type BlogPost = {
   error?: {
     statusCode: number
   }
-  metaTagsProps: MetaTags
+  metaTags: MetaTags
 }
 
-const BlogPost: React.FC<BlogPost> = ({ error, post, similarPosts, metaTagsProps }) => {
+const BlogPost: React.FC<BlogPost> = ({ error, post, similarPosts, metaTags }) => {
   const title = post && post.data.title[0]
   const mainImage = post && post.data.main_image
   if (error || !title || !mainImage) {
@@ -31,7 +31,7 @@ const BlogPost: React.FC<BlogPost> = ({ error, post, similarPosts, metaTagsProps
   const authorName = getNestedPropertyFromObject(post, "data.author.data.name[0].text", null)
 
   return (
-    <StandardLayout {...metaTagsProps} withMenu={true}>
+    <StandardLayout {...metaTags} withMenu={true}>
       <div className="container blog__post-wrapper fill-height">
         <main className="row">
           <article id={post.uid}>
@@ -83,7 +83,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       post,
-      metaTagsProps: getMetaTagsProps(post),
+      metaTags: getMetaTags(post),
       similarPosts: similarPosts
     }
   }

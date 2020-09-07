@@ -3,7 +3,7 @@ import Prismic from "prismic-javascript"
 import PrismicApi, {
   getBlogMeta,
   getBlogTags,
-  getMetaTagsProps,
+  getMetaTags,
   getDataFromPostsList,
   BlogPages
 } from "utils/prismic-api"
@@ -14,6 +14,7 @@ import Categories from "components/blog/Categories"
 import InstallButton from "components/InstallButton"
 import Pagination, { Pagination as PaginationProps } from "components/blog/Pagination"
 import CallToActionSection from "components/CallToActionSection"
+import { MetaTags } from "components/partials/DefaultHead"
 import getNestedPropertyFromObject from "lodash.get"
 
 type BlogMainPage = {
@@ -27,13 +28,15 @@ type Props = {
   tags: Array<string>
   currentTag?: string
   pagination: PaginationProps
+  metaTags: MetaTags
 }
 
-const BlogList: React.FC<Props> = ({ mainPage, posts, tags, currentTag, pagination }) => {
+const BlogList: React.FC<Props> = ({ mainPage, posts, tags, currentTag, pagination, metaTags }) => {
   const { title, supportText } = mainPage
   const isMoreThanOnePage = pagination.totalPages > 1
   return (
     <WithSmallCoverLayout
+      {...metaTags}
       coverContent={
         <div className="text-left container">
           <div className="py-5 col-sm-8">
@@ -79,7 +82,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       mainPage: getDataFromPostsList(categoryPage),
-      metaTagsProps: getMetaTagsProps(categoryPage),
+      metaTags: getMetaTags(categoryPage),
       posts: posts.results,
       tags: blogPostTags,
       currentTag,
