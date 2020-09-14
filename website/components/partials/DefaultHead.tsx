@@ -1,11 +1,29 @@
+import * as React from "react"
 import Head from "next/head"
+import OgMetaTags, { OgMetaTags as OgMetaTagsProps } from "components/meta-tags/OgMetaTags"
+import SeoMetaTags, { SeoMetaTags as SeoMetaTagsProps } from "components/meta-tags/SeoMetaTags"
+import TwitterMetaTags, {
+  TwitterMetaTags as TwitterMetaTagsProps
+} from "../meta-tags/TwitterMetaTags"
 
-export const DefaultHead = () => (
+export type MetaTags = {
+  seoMetaTags?: SeoMetaTagsProps
+  ogMetaTags?: OgMetaTagsProps
+  twitterMetaTags?: TwitterMetaTagsProps
+}
+
+export const DefaultHead: React.FC<MetaTags> = ({
+  seoMetaTags = {},
+  ogMetaTags = {},
+  twitterMetaTags = {}
+}) => (
   <Head>
-    <title key="title">altruisto.com - Do good while shopping online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
 
-    {/* generated with https://github.com/arthurbergmz/webpack-pwa-manifest  */}
-    <link rel="manifest" href="/assets/manifest.json" />
+    <SeoMetaTags {...seoMetaTags} />
+    <OgMetaTags {...ogMetaTags} />
+    <TwitterMetaTags {...twitterMetaTags} />
     <meta name="apple-mobile-web-app-title" content="Altruisto" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -15,6 +33,9 @@ export const DefaultHead = () => (
     <link rel="apple-touch-icon" sizes="167x167" href="/assets/pwa/ios/icon_167x167.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="/assets/pwa/ios/icon_152x152.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="/assets/pwa/ios/icon_120x120.png" />
+
+    {/* generated with https://github.com/arthurbergmz/webpack-pwa-manifest  */}
+    <link rel="manifest" href="/assets/manifest.json" />
 
     {/* generated with https://appsco.pe/developer/splash-screens */}
     <link
@@ -67,35 +88,6 @@ export const DefaultHead = () => (
       media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image"
     />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-    <meta
-      name="keywords"
-      content="browser extension, chrome, firefox, charity, charities, extreme poverty, malaria, schistosomiasis"
-    />
-    <meta
-      name="description"
-      content="Install an extension and when you buy something online, people in extreme poverty will get medicines, bed nets, or financial aid."
-    />
-    <meta property="og:url" content="https://altruisto.com" />
-    <meta property="og:title" content="Do good just by shopping online" />
-    <meta
-      property="og:description"
-      content="Install an extension and when you buy something online,
-people in extreme poverty will get medicines, bed nets, or financial aid."
-    />
-    <meta property="og:image" content="https://altruisto.com/images/social-media-cover.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@altruistocom" />
-    <meta name="twitter:creator" content="@altruistocom" />
-    <meta name="twitter:title" content="Fight poverty, illness, deaths, while shopping online" />
-    <meta
-      name="twitter:description"
-      content="Install an extension and when you buy something online, people in extreme poverty will get medicines, bed nets, or financial aid."
-    />
-    <meta name="twitter:image" content="https://altruisto.com/images/social-media-cover.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link
