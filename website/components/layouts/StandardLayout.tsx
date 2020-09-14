@@ -5,13 +5,14 @@ import { useGoogleAnalytics } from "hooks/use-google-analytics"
 import { useServiceWorker } from "hooks/use-service-worker"
 import { useCta } from "hooks/use-cta"
 import Menu from "components/partials/Menu"
+import { LayoutComponent } from "."
 
 type Props = {
   noCta?: boolean
   withMenu?: boolean
 } & MetaTags
 
-export const StandardLayout: React.FC<Props> = ({
+export const StandardLayout: LayoutComponent<Props> = ({
   children,
   withMenu,
   noCta = false,

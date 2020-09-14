@@ -10,8 +10,8 @@ export enum MetaTagCards {
 }
 
 enum PrismicTwitterCards {
-  'Standard Summary Card' = 'summary',
-  'Summary Card with Large Image' = 'summary_large_image'
+  "Standard Summary Card" = "summary",
+  "Summary Card with Large Image" = "summary_large_image"
 }
 
 export type PrismicMetaTag = {
@@ -27,7 +27,7 @@ type PrismicDocumentData = {
   meta_tags?: PrismicMetaTag[]
 }
 
-const _convertPrismicTwitterCard = cardType => PrismicTwitterCards[cardType];
+const _convertPrismicTwitterCard = (cardType) => PrismicTwitterCards[cardType]
 
 export function getMetaTags(prismicDocument: PrismicDocument<PrismicDocumentData>): MetaTags {
   const prismicMetaTagsData = getNestedPropertyFromObject(prismicDocument, "data.meta_tags", [])

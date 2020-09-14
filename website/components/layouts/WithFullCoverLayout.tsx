@@ -1,6 +1,7 @@
 import { MetaTags } from "../partials/DefaultHead"
 import { StandardLayout } from "./StandardLayout"
 import { ReactNode } from "react"
+import { LayoutComponent } from "."
 
 type Props = {
   coverContent?: ReactNode
@@ -8,7 +9,7 @@ type Props = {
   noCta?: boolean
 } & MetaTags
 
-export const WithFullCoverLayout: React.FC<Props> = ({
+export const WithFullCoverLayout: LayoutComponent<Props> = ({
   coverContent,
   backgroundImage = "url(/images/hero-poster.jpg)",
   noCta = false,

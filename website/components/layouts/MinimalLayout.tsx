@@ -1,10 +1,11 @@
-import { DefaultHead, MetaTags } from "../partials/DefaultHead"
+import { DefaultHead } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { useGoogleAnalytics } from "../../hooks/use-google-analytics"
 import { useServiceWorker } from "../../hooks/use-service-worker"
+import { LayoutComponent } from "."
 
-export const MinimalLayout: React.FC<MetaTags> = ({
+export const MinimalLayout: LayoutComponent = ({
   children,
   seoMetaTags,
   ogMetaTags,
