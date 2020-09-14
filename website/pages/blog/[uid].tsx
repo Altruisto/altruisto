@@ -77,7 +77,7 @@ export async function getServerSideProps({ params }) {
     PrismicApi().query(Prismic.Predicates.similar(post.id, 4)),
     getBlogMeta()
   ])
-
+  console.log(similarPostsQueryData.results)
   const similarPosts = similarPostsQueryData.results
     .filter(({ type }) => type === "blog-post")
     .slice(0, 3)
