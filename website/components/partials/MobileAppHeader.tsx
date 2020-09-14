@@ -9,7 +9,7 @@ export const MobileAppHeader = () => {
       <div className="mobile-app__user-info">
         <span className="text-emphasized">Logged in as:</span>
         <br />
-        <span className="text-muted">{auth.user && auth.user.email}</span>
+        <span className="text-muted">{auth && auth.user && auth.user.email}</span>
       </div>
     </div>
   )

@@ -56,3 +56,14 @@
     max-width: 230px;
   }
 }
+
+.button-link {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &:disabled {
+    color: lightgray;
+    cursor: not-allowed;
+  }
+}

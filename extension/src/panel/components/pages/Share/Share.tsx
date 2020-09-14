@@ -89,8 +89,7 @@ export const Share: React.FC<Props> = ({ isActive }) => {
               </button>
             </a>
           </div>
-          {// TODO: why is ref empty after register?
-          ref ? (
+          {ref ? (
             <div className="field m-t-10">
               <h1 className="m-b-20">Your referral link:</h1>
               <span className="field__appendix share__copy-icon">

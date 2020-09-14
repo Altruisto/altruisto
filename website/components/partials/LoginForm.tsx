@@ -4,11 +4,13 @@ import { useAuth } from "hooks/use-auth"
 import { Formik, Form, ErrorMessage, Field } from "formik"
 import { Loader } from "components/ui/Loader"
 import { Alert } from "components/ui/Alert"
+import { useRouter } from "next/router"
 
 const LoginForm = () => {
   const [failureMessage, setFailureMessage] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const auth = useAuth()
+  const router = useRouter()
 
   return (
     <>
@@ -20,7 +22,7 @@ const LoginForm = () => {
           auth
             .login(values.email, values.password)
             .then(() => {
-              console.log("redirect to dashboard")
+              router.push("/app")
             })
             .catch(error => {
               if (error.response && error.response.data && error.response.data.message) {

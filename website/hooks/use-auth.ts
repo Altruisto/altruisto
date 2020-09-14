@@ -11,10 +11,12 @@ type Auth = {
 
 export const useAuth = (): Auth => {
   const [user, setUser] = useState<User | null>(null)
+  const [isDataLoaded, setIsDataLoaded] = useState(false)
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setUser(JSON.parse(localStorage.getItem("user")) || null)
+      setIsDataLoaded(true)
     }
   }, [])
 
@@ -69,10 +71,21 @@ export const useAuth = (): Auth => {
     () => ({
       login: memoLogin,
       logout: memoLogout,
-      user
+      user,
+      isDataLoaded
     }),
-    [user, memoLogin, memoLogout]
+    [user, memoLogin, memoLogout, isDataLoaded]
   )
 
-  return memoAuth
+  return isDataLoaded ? memoAuth : null
+}
+
+export const useEffectWithAuth = (effect: (auth: Auth) => void, deps: any[]) => {
+  const auth = useAuth()
+  useEffect(() => {
+    console.log("effect with auth", auth)
+    if (auth) {
+      effect(auth)
+    }
+  }, [auth, ...deps])
 }
