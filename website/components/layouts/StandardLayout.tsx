@@ -10,7 +10,7 @@ import { LayoutComponent } from "."
 type Props = {
   noCta?: boolean
   withMenu?: boolean
-} & MetaTags
+}
 
 export const StandardLayout: LayoutComponent<Props> = ({
   children,

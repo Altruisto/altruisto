@@ -7,7 +7,7 @@ type Props = {
   coverContent?: ReactNode
   backgroundImage?: string
   noCta?: boolean
-} & MetaTags
+}
 
 export const WithFullCoverLayout: LayoutComponent<Props> = ({
   coverContent,

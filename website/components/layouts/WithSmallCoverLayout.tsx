@@ -9,7 +9,7 @@ type Props = {
   withMenu?: boolean
   backgroundImage?: string
   noCta?: boolean
-} & MetaTags
+}
 
 export const WithSmallCoverLayout: LayoutComponent<Props> = ({
   title = "",
