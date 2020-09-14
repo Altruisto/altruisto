@@ -1,4 +1,4 @@
-import { DefaultHead, MetaTags } from "../partials/DefaultHead"
+import { DefaultHead } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { useGoogleAnalytics } from "hooks/use-google-analytics"

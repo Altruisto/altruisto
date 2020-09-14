@@ -1,4 +1,3 @@
-import { MetaTags } from "../partials/DefaultHead"
 import { StandardLayout } from "./StandardLayout"
 import { ReactNode } from "react"
 import { LayoutComponent } from "."
