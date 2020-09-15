@@ -7,6 +7,8 @@ export type Props = {
 }
 
 const Recommendation: React.FC<Props> = ({ title, posts }) => {
+  if (posts.length === 0) return null
+
   return (
     <section className="my-5 container">
       <h2>{title}</h2>

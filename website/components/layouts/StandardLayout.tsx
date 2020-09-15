@@ -10,12 +10,14 @@ import { LayoutComponent } from "."
 type Props = {
   noCta?: boolean
   withMenu?: boolean
+  withoutMenuBorder?: boolean
 }
 
 export const StandardLayout: LayoutComponent<Props> = ({
   children,
   withMenu,
   noCta = false,
+  withoutMenuBorder = false,
   seoMetaTags,
   ogMetaTags,
   twitterMetaTags
@@ -32,7 +34,12 @@ export const StandardLayout: LayoutComponent<Props> = ({
         ogMetaTags={ogMetaTags}
         twitterMetaTags={twitterMetaTags}
       />
-      <nav className="menu navbar navbar-expand-lg navbar-shrink fixed-top" id="mainNav">
+      <nav
+        className={`menu navbar navbar-expand-lg navbar-shrink fixed-top${
+          withoutMenuBorder ? " border-0" : ""
+        }`}
+        id="mainNav"
+      >
         <div className="container">
           {withMenu ? (
             <Menu />
