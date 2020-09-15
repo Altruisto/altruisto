@@ -73,12 +73,9 @@ export async function getServerSideProps({ params }) {
   }
 
   const [similarPostsQueryData, metaData] = await Promise.all([
-    // weird api behavior, returns 2 documents on maxResults = 3
     PrismicApi().query(Prismic.Predicates.similar(post.id, 10)),
     getBlogMeta()
   ])
-  console.log(similarPostsQueryData);
-  
 
   const similarPosts = similarPostsQueryData.results
     .filter(({ type }) => type === "blog-post")
