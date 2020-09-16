@@ -95,7 +95,7 @@
 
   &__post-image {
     &>img {
-      max-width: 100%;
+      max-width: fit-content;
     }
 
     &--full-width {
@@ -106,8 +106,9 @@
 
     &--center {
       display: flex;
-      justify-content: center;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: fit-content;
       max-width: fit-content;
       margin: auto;
