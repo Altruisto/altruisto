@@ -14,7 +14,7 @@
     }
 
     &--disabled {
-      & > .blog__pagination-link {
+      &>.blog__pagination-link {
         cursor: initial;
         border: 1px solid $dark-grey;
 
@@ -79,7 +79,7 @@
     padding-bottom: $blog-gutter-xl;
     margin-bottom: $blog-gutter-xl;
 
-    & > h1 {
+    &>h1 {
       font-size: 48px;
     }
 
@@ -94,23 +94,40 @@
   }
 
   &__post-image {
-    & > img {
+    &>img {
       max-width: 100%;
     }
 
-    &__center {
+    &--full-width {
       display: flex;
       justify-content: center;
+      flex-direction: column;
     }
 
-    &__left {
+    &--center {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: fit-content;
+      max-width: fit-content;
+      margin: auto;
+    }
+
+    &--left {
       float: left;
       margin-right: $blog-gutter-sm;
+      display: table;
     }
 
-    &__right {
+    &--right {
       float: right;
       margin-left: $blog-gutter-sm;
+      display: table;
+    }
+
+    &-caption {
+      display: table-caption;
+      caption-side: bottom;
     }
   }
 
@@ -119,30 +136,31 @@
   }
 
   &__post-article {
-    & > h2,
+
+    &>h2,
     h3 {
       margin-top: $blog-gutter-xl;
       margin-bottom: $blog-gutter-sm;
     }
 
-    & > h4,
+    &>h4,
     h5 {
       margin-top: $blog-gutter-lg;
       margin-bottom: $blog-gutter-xs;
     }
 
-    & > h6 {
+    &>h6 {
       margin-top: $blog-gutter-md;
       margin-bottom: $blog-gutter-xs;
     }
 
-    & > p {
+    &>p {
       font-family: $font-family-serif;
       margin-top: $blog-gutter-md;
       margin-bottom: 0px;
     }
 
-    & > ul {
+    &>ul {
       list-style: none;
       padding-inline-start: $blog-gutter-xs;
       margin-block-start: $blog-gutter-xs;
