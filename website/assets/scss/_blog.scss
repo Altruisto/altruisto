@@ -138,6 +138,10 @@
   &__post-article {
     overflow-wrap: break-word;
 
+    a {
+      text-decoration: underline;
+    }
+
     &>h2,
     h3 {
       margin-top: $blog-gutter-xl;
