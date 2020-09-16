@@ -95,6 +95,7 @@
 
   &__post-image {
     &>img {
+      width: fit-content;
       max-width: 100%;
     }
 
@@ -106,10 +107,9 @@
 
     &--center {
       display: flex;
-      justify-content: center;
       flex-direction: column;
-      width: fit-content;
-      max-width: fit-content;
+      justify-content: center;
+      align-items: center;
       margin: auto;
     }
 
@@ -136,6 +136,11 @@
   }
 
   &__post-article {
+    overflow-wrap: break-word;
+
+    a {
+      text-decoration: underline;
+    }
 
     &>h2,
     h3 {

@@ -4,7 +4,7 @@ import { Client } from "prismic-javascript/types/client"
 export const prismicApiUrl =
   process.env.NODE_ENV === "production"
     ? "https://altruisto.cdn.prismic.io/api/v2"
-    : "https://altruisto-beta.cdn.prismic.io/api/v2"
+    : "https://altruisto.cdn.prismic.io/api/v2"
 
 const PrismicApi = (req = null): Client => Prismic.client(prismicApiUrl, createClientOptions(req))
 

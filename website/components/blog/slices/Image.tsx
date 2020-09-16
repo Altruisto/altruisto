@@ -2,7 +2,7 @@ import { useMemo } from "react"
 
 export default ({ slice }) => {
   const { aligment, image, title1 } = slice.primary
-  const text = aligment[0].text || ""
+  const text = (aligment[0] && aligment[0].text) || ""
   const imageClassName = useMemo(() => {
     switch (text || "center") {
       case "left":
