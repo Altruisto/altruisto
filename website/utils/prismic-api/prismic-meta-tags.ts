@@ -1,5 +1,6 @@
 import { MetaTags } from "components/partials/DefaultHead"
 import getNestedPropertyFromObject from "lodash.get"
+import removeUndefinedValuesFromObject from "../remove-undefined-values-from-object"
 import { PrismicDocument } from "."
 
 export enum MetaTagCards {
@@ -47,20 +48,20 @@ export function getMetaTags(prismicDocument: PrismicDocument<PrismicDocumentData
     {}
   )
 
-  const seoMetaTags = {
+  const seoMetaTags = removeUndefinedValuesFromObject({
     title: seoMetaTagsData.title,
     description: seoMetaTagsData.description,
     keywords: seoMetaTagsData.keywords
-  }
+  })
 
-  const ogMetaTags = {
+  const ogMetaTags = removeUndefinedValuesFromObject({
     url: ogMetaTagsData.url,
     title: ogMetaTagsData.title,
     description: ogMetaTagsData.description,
     image: getNestedPropertyFromObject(ogMetaTagsData, "image.url", undefined)
-  }
+  })
 
-  const twitterMetaTags = {
+  const twitterMetaTags = removeUndefinedValuesFromObject({
     card: _convertPrismicTwitterCard(twitterMetaTagsData.card_type),
     site: twitterMetaTagsData.site,
     creator: twitterMetaTagsData.creator,
@@ -69,7 +70,7 @@ export function getMetaTags(prismicDocument: PrismicDocument<PrismicDocumentData
     image:
       getNestedPropertyFromObject(twitterMetaTagsData, "image.url", undefined) ||
       getNestedPropertyFromObject(twitterMetaTagsData, "large_image.url", undefined)
-  }
+  })
   return {
     seoMetaTags,
     ogMetaTags,

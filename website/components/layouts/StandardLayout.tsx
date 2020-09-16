@@ -1,20 +1,23 @@
-import { DefaultHead, MetaTags } from "../partials/DefaultHead"
+import { DefaultHead } from "../partials/DefaultHead"
 import { Footer } from "../partials/Footer"
 import "../../assets/scss/index.scss"
 import { useGoogleAnalytics } from "hooks/use-google-analytics"
 import { useServiceWorker } from "hooks/use-service-worker"
 import { useCta } from "hooks/use-cta"
 import Menu from "components/partials/Menu"
+import { LayoutComponent } from "."
 
 type Props = {
   noCta?: boolean
   withMenu?: boolean
-} & MetaTags
+  withoutMenuBorder?: boolean
+}
 
-export const StandardLayout: React.FC<Props> = ({
+export const StandardLayout: LayoutComponent<Props> = ({
   children,
   withMenu,
   noCta = false,
+  withoutMenuBorder = false,
   seoMetaTags,
   ogMetaTags,
   twitterMetaTags
@@ -31,7 +34,12 @@ export const StandardLayout: React.FC<Props> = ({
         ogMetaTags={ogMetaTags}
         twitterMetaTags={twitterMetaTags}
       />
-      <nav className="menu navbar navbar-expand-lg navbar-shrink fixed-top" id="mainNav">
+      <nav
+        className={`menu navbar navbar-expand-lg navbar-shrink fixed-top${
+          withoutMenuBorder ? " border-0" : ""
+        }`}
+        id="mainNav"
+      >
         <div className="container">
           {withMenu ? (
             <Menu />

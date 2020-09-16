@@ -31,15 +31,13 @@ const BlogPost: React.FC<BlogPost> = ({ error, post, similarPosts, metaTags }) =
   const authorName = getNestedPropertyFromObject(post, "data.author.data.name[0].text", null)
 
   return (
-    <StandardLayout {...metaTags} withMenu={true}>
+    <StandardLayout {...metaTags} withMenu={true} withoutMenuBorder={true}>
       <div className="container blog__post-wrapper fill-height">
         <main className="row">
-          <article id={post.uid}>
-            <div className="col-md-12">
-              <header>
-                <PostTitle title={title} mainImage={mainImage} tags={post.tags} />
-              </header>
-            </div>
+          <article className="mx-auto col-md-12 mt-4" id={post.uid}>
+            <header>
+              <PostTitle title={title} mainImage={mainImage} tags={post.tags} />
+            </header>
             <RenderSlices allSlices={post.data.body} />
             <div className="col-md-8 mx-auto">
               <footer>
@@ -72,15 +70,12 @@ export async function getServerSideProps({ params }) {
     }
   }
 
-  const [similarPostsQueryData, metaData] = await Promise.all([
-    // weird api behavior, returns 2 documents on maxResults = 3
-    PrismicApi().query(Prismic.Predicates.similar(post.id, 4)),
-    getBlogMeta()
+  const similarPostsQueryData = await PrismicApi().query([
+    Prismic.Predicates.similar(post.id, 10),
+    Prismic.Predicates.at("document.type", "blog-post")
   ])
 
-  const similarPosts = similarPostsQueryData.results
-    .filter(({ type }) => type === "blog-post")
-    .slice(0, 3)
+  const similarPosts = similarPostsQueryData.results.slice(0, 3)
 
   return {
     props: {

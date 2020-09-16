@@ -53,7 +53,7 @@ const PostPreview: React.FC<Props> = ({ post, columnsOccupied = 12, isLargeTitle
       )}
       {tags.map((tag) => (
         <span className="font-weight-bold small mr-4" key={tag}>
-          <a href={`blog/category/${tag}`}>{tag}</a>
+          <a href={`/blog/category/${tag}`}>{tag}</a>
         </span>
       ))}
       {title && title[0] ? (

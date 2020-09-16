@@ -1,6 +1,6 @@
-import { MetaTags } from "../partials/DefaultHead"
 import { StandardLayout } from "./StandardLayout"
 import { ReactNode } from "react"
+import { LayoutComponent } from "."
 
 type Props = {
   title?: string
@@ -8,9 +8,9 @@ type Props = {
   withMenu?: boolean
   backgroundImage?: string
   noCta?: boolean
-} & MetaTags
+}
 
-export const WithSmallCoverLayout: React.FC<Props> = ({
+export const WithSmallCoverLayout: LayoutComponent<Props> = ({
   title = "",
   coverContent = null,
   backgroundImage = "url(/images/default-small-cover.jpg)",
