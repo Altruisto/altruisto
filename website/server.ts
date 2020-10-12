@@ -150,8 +150,10 @@ server.get("/axatravel", async (req, res) => {
 server.get("/api/partners", (req, res) => {
   api
     .get<GetPartnersResponse>("/partners")
-    .then(response => res.send(response.data.map(p => p.domain)))
-    .catch(error => res.status(error.status || 500).send(error.message || "Internal Server Error"))
+    .then((response) => res.send(response.data.map((p) => p.domain)))
+    .catch((error) =>
+      res.status(error.status || 500).send(error.message || "Internal Server Error")
+    )
 })
 server.get("/redirect", (req, res) => {
   const query = querystring.stringify(req.query)
@@ -170,6 +172,40 @@ server.get("/thankyou.html", (req, res) => {
 
 // nextjs app
 app.prepare().then(() => {
+  // @TODO: make general solution for cluster rewrites
+  server.get("/blog/poverty", (req, res) => res.redirect("/poverty"))
+  server.get("/poverty", (req, res) => {
+    return app.render(req, res, "/blog/poverty", req.query)
+  })
+  server.get("/blog/poverty-definition", (req, res) => res.redirect("/poverty/poverty-definition"))
+  server.get("/poverty/poverty-definition", (req, res) => {
+    return app.render(req, res, "/blog/poverty-definition", req.query)
+  })
+  server.get("/blog/poverty-definition", (req, res) => res.redirect("/poverty/children-in-poverty"))
+  server.get("/poverty/children-in-poverty", (req, res) => {
+    return app.render(req, res, "/blog/children-in-poverty", req.query)
+  })
+  server.get("/blog/war-on-poverty", (req, res) => res.redirect("/poverty/war-on-poverty"))
+  server.get("/poverty/war-on-poverty", (req, res) => {
+    return app.render(req, res, "/blog/war-on-poverty", req.query)
+  })
+  server.get("/blog/solutions-to-poverty", (req, res) =>
+    res.redirect("/poverty/solutions-to-poverty")
+  )
+  server.get("/poverty/solutions-to-poverty", (req, res) => {
+    return app.render(req, res, "/blog/solutions-to-poverty", req.query)
+  })
+  server.get("/blog/poverty-and-education", (req, res) =>
+    res.redirect("/poverty/poverty-and-education")
+  )
+  server.get("/poverty/poverty-and-education", (req, res) => {
+    return app.render(req, res, "/blog/poverty-and-education", req.query)
+  })
+  server.get("/blog/poverty-in-india", (req, res) => res.redirect("/poverty/poverty-in-india"))
+  server.get("/poverty/poverty-in-india", (req, res) => {
+    return app.render(req, res, "/blog/poverty-in-india", req.query)
+  })
+
   server.all("*", (req, res) => {
     // trail ending slashes, eg. altruisto.com/partners/ should render altruisto.com/partners
     if (req.path.substr(-1) === "/" && req.path.length > 1) {
@@ -178,7 +214,7 @@ app.prepare().then(() => {
     return handle(req, res)
   })
 
-  server.listen(port, err => {
+  server.listen(port, (err) => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
   })
