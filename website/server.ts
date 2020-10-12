@@ -181,7 +181,9 @@ app.prepare().then(() => {
   server.get("/poverty/poverty-definition", (req, res) => {
     return app.render(req, res, "/blog/poverty-definition", req.query)
   })
-  server.get("/blog/poverty-definition", (req, res) => res.redirect("/poverty/children-in-poverty"))
+  server.get("/blog/children-in-poverty", (req, res) =>
+    res.redirect("/poverty/children-in-poverty")
+  )
   server.get("/poverty/children-in-poverty", (req, res) => {
     return app.render(req, res, "/blog/children-in-poverty", req.query)
   })
