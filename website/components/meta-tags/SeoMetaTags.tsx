@@ -12,7 +12,6 @@ const SeoMetaTags: React.FC<SeoMetaTags> = ({
   keywords = "browser extension, chrome, firefox, charity, charities, extreme poverty, malaria, schistosomiasis"
 }) => (
   <>
-    {title && <title key="title">{title}</title>}
     {description && <meta name="description" content={description} />}
     {keywords && <meta name="keywords" content={keywords} />}
   </>
