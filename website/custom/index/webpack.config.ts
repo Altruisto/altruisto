@@ -29,7 +29,12 @@ const config: webpack.Configuration = {
             loader: "extract-loader"
           },
           {
-            loader: "css-loader"
+            loader: "css-loader",
+            options: {
+              url: (url) => {
+                return !url.startsWith('/'); // don't try to process absolute paths
+              }
+            }
           },
           {
             loader: "postcss-loader",
@@ -46,7 +51,7 @@ const config: webpack.Configuration = {
         test: /\.js$/,
         loader: "babel-loader",
         exclude: /node_modules/,
-        query: {
+        options: {
           cacheDirectory: true,
           presets: ["@babel/preset-env"]
         }
