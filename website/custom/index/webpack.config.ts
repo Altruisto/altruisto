@@ -5,14 +5,20 @@ import HtmlWebpackPlugin from "html-webpack-plugin"
 import { CUSTOM_PAGES_ASSETS_DIRECTORY, CUSTOM_PAGES_OUTPUT_DIRECTORY } from "../../settings"
 
 const config: webpack.Configuration = {
-  entry: [
-    path.join(__dirname, "assets/index.js"),
-    path.join(__dirname, "../../assets/scss/index.scss")
-  ],
+  entry: {
+    index: [
+      path.join(__dirname, "assets/js/index.js"),
+      path.join(__dirname, "../../assets/scss/index.scss")
+    ],
+    progress: [
+      path.join(__dirname, "assets/js/progress.js"),
+      path.join(__dirname, "../../assets/scss/index.scss")
+    ]
+  },
   output: {
     path: CUSTOM_PAGES_ASSETS_DIRECTORY,
     publicPath: "/assets/",
-    filename: "index.js"
+    filename: "[name].js"
   },
   module: {
     rules: [
@@ -55,7 +61,7 @@ const config: webpack.Configuration = {
           cacheDirectory: true,
           presets: ["@babel/preset-env"]
         }
-      }
+      },
     ]
   },
   plugins: [
@@ -77,6 +83,11 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "axatravel.html"),
       template: path.join(__dirname, "axatravel.html"),
+      minify: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "progress.html"),
+      template: path.join(__dirname, "progress.html"),
       minify: true
     })
   ]
