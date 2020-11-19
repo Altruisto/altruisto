@@ -3,11 +3,11 @@ import './jquery.svganim.min';
 
 $(document).ready(function() {
   $('#fullpage').fullpage({
-    anchors: ['intro', 'graph1', 'graph2', 'graph3', 'graph4', 'graph5', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
+    anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'world-gdp', 'literacy', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
     sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#1B1C1C'],
     navigation: true,
     navigationPosition: 'right',
-    navigationTooltips: ['Introduction', 'Graph 1', 'Current challenges'],
+    navigationTooltips: ['Introduction', 'Child Mortality', 'Life Expectancy', 'Extreme Poverty', 'World\'s GDP', 'Literacy', 'Challenges', 'How you can help', 'Do it today'],
     afterLoad: function(anchorLink, index) {
       let section = '#section' + index;
       //todo: fix the selection below
