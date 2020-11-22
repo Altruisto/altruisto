@@ -8,6 +8,7 @@
     <meta name="description" content="See the data showing the progress humanity made in the last two centuries." />
     <meta name="keywords"  content="data, progress, infographic" />
     <meta name="Resource-type" content="Document" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css" />
@@ -20,13 +21,25 @@
             font-family: 'Roboto';
         }
 
+        .section .container > * {
+            position: relative;
+        }
+
         .section h1 {
-            font-size: 70px;
+            font-size: 4em;
             font-weight: 100;
         }
 
+        .section h2 {
+            font-size: 2em;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 20px;
+        }
+
         .fade-up {
-            transform: translateY(80px);
+            transform: translateY(0.1vh);
+            font-size: 1em;
             opacity: 0;
             transition-property: opacity, transform;
             transition-delay: 330ms;
@@ -63,7 +76,9 @@
             z-index: 3;
             position: absolute;
             bottom: 10px;
+            left: 50%;
             padding-top: 80px;
+            transform: translateX(-50%);
             color: white;
             text-decoration: none;
         }
@@ -110,6 +125,15 @@
             }
         }
 
+        .section h3 {
+            font-size: 1.5em;
+            font-weight: 100;
+        }
+
+        .section .container ul.no-bullets {
+            list-style-type: none;
+        }
+
         path {
             stroke: white;
             stroke-width: 3px;
@@ -118,6 +142,7 @@
 
         text {
             fill:white;
+            font-size: 1.2em;
         }
 
         line {
@@ -151,7 +176,7 @@
             padding-top: 12px;
         }
 
-        .bg-image-zoom-in {
+        .bg-image {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -159,17 +184,23 @@
             left: 0;
             background-size: cover;
             color: white;
+        }
+
+        .zoom-in {
             transition: transform 13s cubic-bezier(0.2,0,0.7,1);
         }
 
-        .bg-image-zoom-in:after {
+        .bg-image:after {
             content: '\A';
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            background:rgba(0,0,0,0.6);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .zoom-in:after {
             transition: all 1s;
             -webkit-transition: all 1s;
         }
@@ -237,6 +268,14 @@
             background-color: rgb(15, 19, 15);
         }
 
+        .white {
+            background-color: rgb(255, 255, 255)!important;
+        }
+
+        .white .container {
+            background-color: rgb(255, 255, 255);
+        }
+
         #particles-js {
             position: absolute;
             width: 100%;
@@ -244,6 +283,130 @@
             background-color: transparent;
             z-index: 1;
         }
+
+        .install-button {
+            width: 200px;
+            height: 56px;
+            margin: 0 auto 20px auto;
+            border-radius: 6px;
+            background: linear-gradient(136deg, #e70f74, #ff2525);
+            border: 0;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .install-button:after {
+             content: "";
+             position: absolute;
+             left: 0;
+             top: 0;
+             width: 100%;
+             height: 100%;
+             opacity: 0;
+             border-radius: 5px;
+             box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
+             transition: opacity 0.2s ease-in-out;
+         }
+
+        .install-button:hover {
+            text-decoration: none;
+            color: white;
+        }
+
+        .install-button:after {
+             opacity: 1;
+         }
+
+        @media only screen and (max-width: 768px) {
+            .section h1 {
+                font-size: 3em;
+            }
+            .section h2 {
+                font-size: 1.5em;
+            }
+            .hide-on-mobile {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-height: 735px) {
+            #section9 h1 {
+                font-size: 2em;
+            }
+            #section9 h2 {
+                font-size: 1.25em;
+            }
+            #section9 p {
+                margin-bottom: 5px;
+            }
+            #section9 .install-button {
+                width: 150px;
+                height: 44px;
+                margin-bottom: 5px;
+            }
+        }
+
+        .turn-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 100;
+        }
+
+        .turn-screen .content {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .turn-screen .phone {
+            height: 50px;
+            width: 100px;
+            border: 3px solid white;
+            border-radius: 10px;
+            animation: rotate 1.5s ease-in-out infinite alternate;
+        }
+
+        .turn-screen .message {
+            color: white;
+            font-size: 1em;
+            margin-top: 40px;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg)
+            }
+            50% {
+                transform: rotate(-90deg)
+            }
+            100% {
+                transform: rotate(-90deg)
+            }
+        }
+
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+            .turn-screen {
+                display: block;
+            }
+        }
+
     </style>
 
     <!--[if IE]>
@@ -259,9 +422,18 @@
 
 </head>
 <body>
+<div class="turn-screen">
+    <div class="content">
+        <div class="phone">
+        </div>
+        <div class="message">
+            Please rotate your device for the best experience.
+        </div>
+    </div>
+</div>
 <div id="fullpage">
     <div class="section" id="section1">
-        <div class="bg-image-zoom-in" style="background-image: url('/images/bg.jpg');"></div>
+        <div class="bg-image zoom-in" style="background-image: url('/images/bg.jpg');"></div>
         <div class="polygonal-shape-wrapper polygonal-shape-left">
             <div>
                 <img src="/images/polygonal-shape.png" style="width: 1450px; height: 646px;">
@@ -281,7 +453,7 @@
         </div>
 
         <div class="container">
-            <h1>The progress humanity made in&nbsp;the&nbsp;last&nbsp;200&nbsp;years</h1>
+            <h1>The progress humanity made in the last 200 years</h1>
             <p>An easy-to-follow infographic showing how far we've come.</p>
         </div>
 
@@ -315,9 +487,8 @@
     </div>
     <div class="section dark-grey" id="section5">
         <div class="container">
-            <h1 class="fade-up">World's Gross Domestic Product per Capita</h1>
+            <h1 class="fade-up">World's GDP</h1>
             <p class="fade-up">The following graph shows GDP per capita (in&nbsp;2011&nbsp;US&nbsp;Dollars) of the world which is a metric of the combined value of all goods and services produced per person.</p>
-            <p><i>GDP per capita is an indicator of wealth per person in the world</i></p>
             <div class="flip"><div id="gdp-graph-container"></div></div>
             <p class="fade-up"><strong>In 1870 on average a person produced goods and services worth $1,263 whereas in 2016 an average person produced $14,574 in goods and services. That's over ten times as much!</strong></p>
         </div>
@@ -330,63 +501,100 @@
             <p class="fade-up"><strong>In 1800 only 12 out of 100 people could read, whereas in 2014 it was over 85 out of 100 people. Nearly 4 times as many.</strong></p>
         </div>
     </div>
-    <div class="section" id="section7">
+    <div class="section dark-grey" id="section7">
+        <div class="bg-image" style="background-image: url('/images/bg-challenges.jpg');"></div>
         <div class="container">
             <h1>But we still face many challenges...</h1>
-            <div class="row justify-content-center">
-                <div class="col-sm-4 card">
-                    <h3>17,000 children die each day because of conditions of poverty.</h3>
-                    <small><em>Source: <a href="https://www.unicef.org/publications/files/UNICEF_SOWC_2016.pdf" target="_blank">Unicef</a></em></small>
+            <div class="fade-up">
+                <div class="row justify-content-center">
+                    <div class="col-sm-3 card dark-blue m-2 p-3">
+                        <h3>17,000 children die each day because of conditions of poverty.</h3>
+                        <small><em>Source: <a href="https://www.unicef.org/publications/files/UNICEF_SOWC_2016.pdf" target="_blank">Unicef</a></em></small>
+                    </div>
+                    <div class="col-sm-3 card dark-blue m-2 p-3">
+                        <h3>Over 1,000 people die each day because of malaria.</h3>
+                        <small><em>Source: <a href="http://www.who.int/malaria/media/world-malaria-report-2016/en/" target="_blank">World Health Organisation</a></em></small>
+                    </div>
+                    <div class="col-sm-3 card dark-blue m-2 p-3">
+                        <h3>844 million people lack basic access to drinking water.</h3>
+                        <small><em>Source: <a href="http://www.who.int/en/news-room/fact-sheets/detail/drinking-water" target="_blank">World Health Organisation</a></em></small>
+                    </div>
                 </div>
-                <div class="col-sm-4 card">
-                    <h3>Over 1000 people die each day because of malaria.</h3>
-                    <small><em>Source: <a href="http://www.who.int/malaria/media/world-malaria-report-2016/en/" target="_blank">World Health Organisation</a></em></small>
-                </div>
-                <div class="col-sm-4 card">
-                    <h3>844 million people lack basic access to drinking water.</h3>
-                    <small><em>Source: <a href="http://www.who.int/en/news-room/fact-sheets/detail/drinking-water" target="_blank">World Health Organisation</a></em></small>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-sm-4 card">
-                    <h3>Experts estimate that there is an almost 1 in 5 chance of humanity's extinction before 2100 due to global catastrophic risks (nuclear wars, bio-terrorism, molecular nanotechnology weapons, etc.)</h3>
-                    <small><em>Source: <a href="https://www.webcitation.org/6YxiCAV0p?url=http://www.fhi.ox.ac.uk/gcr-report.pdf" target="_blank">Oxford University Future of Humanity Institute</a></em></small>
-                </div>
-                <div class="col-sm-4 card">
-                    <h3>Roughly 11 billion animals are raised and slaughtered in factory farms each year in the US alone, in conditions causing extreme suffering.</h3>
-                    <small><em>Source: <a href="http://www.humanesociety.org/assets/pdfs/farm/welfare_overview.pdf" target="_blank">Humane Society</a></em></small>
+                <div class="row justify-content-center hide-on-mobile">
+                    <div class="col-sm-4 card dark-blue m-2 p-3">
+                        <h3>Experts estimate that there is an almost 1 in 5 chance of humanity's extinction before 2100 due to global catastrophic risks</h3>
+                        <small><em>Source: <a href="https://www.webcitation.org/6YxiCAV0p?url=http://www.fhi.ox.ac.uk/gcr-report.pdf" target="_blank">Oxford University Future of Humanity Institute</a></em></small>
+                    </div>
+                    <div class="col-sm-4 card dark-blue m-2 p-3">
+                        <h3>Roughly 11 billion animals are raised and slaughtered under extreme suffering in factory farms each year in the US alone</h3>
+                        <small><em>Source: <a href="http://www.humanesociety.org/assets/pdfs/farm/welfare_overview.pdf" target="_blank">Humane Society</a></em></small>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="section" id="section8">
-        <div class="container col-sm-6">
+    <div class="section dark-blue" id="section8">
+        <div class="bg-image" style="background-image: url('/images/bg-you-can-help.jpg');"></div>
+        <div class="container col-sm-6 p-4 fade-up">
             <h1>...and <u>YOU</u> have the power to help</h1>
             <p>It has never been more possible for you to have a meaningful, <strong>positive impact on a massive scale.</strong> Using scientific methods we can now figure out which interventions bring the most good, prevent the most suffering, and save the most lives.</p>
             <h2>For example:</h2>
             <ul class="text-left">
                 <li>treating one child from schistosomiasis, the most deadly neglected tropical disease, costs about $1</li>
                 <li>protecting two people from malaria by distributing bed nets costs approximately $5</li>
-                <li><em>TODO dear dudes and dudettes, egoists and altruists, friends and enemies, a help with research here would be greatly appreciated</em></li>
+                <li>providing food-based micronutrient fortification for 1 person for 1 year costs only 53 cents</li>
+                <li class="hide-on-mobile">protecting a child from worm infection costs only 50 cents per year</li>
             </ul>
 
             <p></p>
         </div>
     </div>
-    <div class="section" id="section9">
+    <div class="section white" id="section9">
+        <div class="bg-image" style="background-image: url('/images/bg-what-you-can-do.jpg');"></div>
         <div class="container">
             <h1>Here's what you can do today:</h1>
-            <h2 class="text-muted">1. Donate to highly effective, research-backed charities</h2>
-            <p>Here are our recommendations for various causes:
-                TODOTODOTODOTODO
-            </p>
-            <h2 class="text-muted">2. Install the Altruisto browser extension</h2>
-            <p>LINK TODO</p>
-            <p>After installation, every time you shop online a percentage of the money you spend goes to these charities with <strong>no extra costs for you</strong></p>
-            <h2 class="text-muted">3. Most importantly - share this page with your friends</h2>
-            <button class="btn btn-primary">SHARE ON FACEBOOK TODO</button>
-            <button class="btn btn-primary">SHARE ON TWITTER TODO</button>
+            <div class="fade-up">
+                <h2>1. Donate to highly effective, research-backed charities</h2>
+                <p>Here are our recommendations for various causes:</p>
+                <ul class="no-bullets">
+                    <li><a href="https://www.againstmalaria.com/" target="_blank">Against Malaria Foundation</a></li>
+                    <li><a href="https://schistosomiasiscontrolinitiative.org/" target="_blank">Schistosomiasis Control Initiative</a></li>
+                    <li><a href="https://www.givedirectly.org/" target="_blank">GiveDirectly</a></li>
+                    <li><a href="https://animainternational.org/" target="_blank">Anima International</a></li>
+                </ul>
+            </div>
+            <div class="fade-up">
+                <h2>2. Install the Altruisto browser extension</h2>
+                <a href="https://www.altruisto.com/" class="install-button" target="_blank">
+                    Install Altruisto
+                </a>
+                <p>After installation, every time you shop online a percentage of the money you spend goes to these charities with <strong>no extra costs for you</strong></p>
+            </div>
+            <div class="fade-up">
+                <h2>3. Most importantly - share this page with your friends</h2>
+                <a
+                        className="button mr-3"
+                        id="share-button-facebook"
+                        target="_blank"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://altruisto.com/progress?ref=progress_facebook_share"
+                        style="background: #4267b2 !important; border-color: #4267b2; min-width: 200px; padding: 5px 10px; margin: 10px; color: #fff; border-radius: 5px;"
+                >
+                Share on Facebook
+                </a>
+                <a
+                        className="button"
+                        id="share-button-twitter"
+                        target="_blank"
+                        href="https://twitter.com/intent/tweet?url=https://altruisto.com/progress?ref=progress_twitter_share&text=We've made a tremendous amount of progress in the world, but we also still face challenges to work on. Join me in making a positive impact on the world through Altruisto."
+                        style="background: #1da1f2 !important; border-color: #1da1f2; min-width: 200px; padding: 5px 10px; margin: 10px; color: #fff; border-radius: 5px;"
+                >
+                Share on Twitter
+                </a>
+            </div>
+            <div class="fade-up">
+                <small style="display: block; margin-top: 20px;"><i>Thank you ❤️</i></small>
+            </div>
         </div>
     </div>
     <div class="section fp-auto-height ">
