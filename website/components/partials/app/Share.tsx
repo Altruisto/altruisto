@@ -95,6 +95,7 @@ export const Share: React.FC<Props> = ({ isActive }) => {
               id="ref-link"
               name="ref-link"
               value={`https://altruisto.com/?ref=${ref}`}
+              readOnly
               onClick={event => {
                 copyToClipboard(`https://altruisto.com/?ref=${ref}`)
                 enqueueSnackbar("Copied to clipboard!", {

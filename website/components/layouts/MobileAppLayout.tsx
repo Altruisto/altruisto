@@ -2,9 +2,22 @@ import { DefaultHead } from "../partials/DefaultHead"
 import { useGoogleAnalytics } from "../../hooks/use-google-analytics"
 import { useServiceWorker } from "../../hooks/use-service-worker"
 import { MobileAppHeader } from "components/partials/MobileAppHeader"
-import { MobileAppNavigation } from "components/partials/MobileAppNavigation"
+import dynamic from "next/dynamic"
 
-export const MobileAppLayout: React.FC = ({ children }) => {
+type MobileAppLayoutProps = {
+  onMenuClick: (index: number) => void
+  active: number
+}
+
+const MobileAppNavigation = dynamic(() => import("../partials/MobileAppNavigation"), {
+  ssr: false
+})
+
+export const MobileAppLayout: React.FC<MobileAppLayoutProps> = ({
+  children,
+  onMenuClick,
+  active
+}) => {
   useGoogleAnalytics()
   // useServiceWorker()
 
@@ -14,7 +27,7 @@ export const MobileAppLayout: React.FC = ({ children }) => {
       <div className="full-page mobile-app">
         <MobileAppHeader />
         <div>{children}</div>
-        <MobileAppNavigation />
+        <MobileAppNavigation active={active} onChange={onMenuClick} />
       </div>
     </>
   )

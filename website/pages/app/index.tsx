@@ -30,7 +30,7 @@ const Index = () => {
           horizontal: "right"
         }}
       >
-        <MobileAppLayout>
+        <MobileAppLayout active={activeTab} onMenuClick={index => setActiveTab(index)}>
           <SwipeableViews index={activeTab}>
             <Share isActive={activeTab === 0} />
             <>2</>
