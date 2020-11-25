@@ -9,7 +9,7 @@ type Props = {
   isActive: boolean
 }
 
-export const Share: React.FC<Props> = ({ isActive }) => {
+export const ShareTab: React.FC<Props> = ({ isActive }) => {
   const { enqueueSnackbar } = useSnackbar()
   const [referralsNumber, setReferralsNumber] = useState<number | null>(null)
   const [ref, setRef] = useState<string | null>(null)
@@ -110,7 +110,9 @@ export const Share: React.FC<Props> = ({ isActive }) => {
           {referralsNumber !== null ? (
             <div className="mt-4 mb-2">
               <div className="mobile-app__invited-number">{referralsNumber} </div>
-              <div className="mobile-app__invited-people">people joined thanks to you</div>
+              <div className="mobile-app__invited-people">
+                {referralsNumber === 1 ? "person" : "people"} joined thanks to you
+              </div>
             </div>
           ) : null}
         </>

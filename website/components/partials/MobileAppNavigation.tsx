@@ -34,7 +34,7 @@ export const MobileAppNavigation: FC<Props> = ({ active, onChange }) => {
           <Tab
             className="mobile-app__nav-item"
             icon={<Donate color={getColorForActive(1)} />}
-            label="Donate"
+            label="Shop"
             disableRipple
           />
           <Tab
