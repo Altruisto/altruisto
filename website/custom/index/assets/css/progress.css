@@ -34,7 +34,7 @@
     transition-delay: 800ms;
 }
 
-.active .fade-up {
+.active .fade-up, .fade-up.active {
     opacity: 1;
     transform: translateY(0)
 }

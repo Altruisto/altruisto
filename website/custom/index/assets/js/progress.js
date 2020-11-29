@@ -44,10 +44,16 @@ $(document).ready(function() {
         rect.animate({ svgWidth: 0 }, 2000, 'linear');
       }, 2000);
     },
-    onLeave: function(anchorLink, index) {
-      let section = '#section' + index;
+    onLeave: function(fromIndex, toIndex) {
+      let section = '#section' + toIndex;
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       rect.attr('width', axisLengthXPx + 20);
+      if (fromIndex === 9 && toIndex === 10) {
+        // Scrolling to footer should not hide content on do-it-today (9)
+        $('#section9 .fade-up').addClass('active');
+      } else if (fromIndex === 10 && toIndex === 9) {
+        $('#section9 .fade-up.active').removeClass('active');
+      }
     }
   });
 
