@@ -93,7 +93,7 @@ server.get("/extreme-poverty", (req, res) => {
   )
 })
 
-server.get("/progress", (req, res) => {
+server.get("/progress-of-humanity", (req, res) => {
   const ua = useragent.parse(req.header("user-agent"))
   res.send(
     readFileSync("custom-generated-pages/index/progress.html")
