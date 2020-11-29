@@ -4,8 +4,8 @@ import './jquery.svganim.min';
 $(document).ready(function() {
 
   // Graphs
-  const width = 0.75; // in vw
-  const height = 0.5; // in vh
+  const widthVw = 0.75; // in vw
+  const widthVh = 0.5; // in vh
   let vw, vh;
   if (window.innerWidth !== undefined && window.innerHeight !== undefined) {
     vw = window.innerWidth;
@@ -20,10 +20,10 @@ $(document).ready(function() {
 
   const numTicksX = 9;
   const numTicksY = 10;
-  const tickSizeVw = width / numTicksX;
-  const tickSizeVh = height / numTicksY;
-  const axisLengthXPx = vwToPx(width - tickSizeVw);
-  const axisLengthYPx = vhToPx(height - tickSizeVh);
+  const tickSizeVw = widthVw / numTicksX;
+  const tickSizeVh = widthVh / numTicksY;
+  const axisLengthXPx = vwToPx(widthVw - tickSizeVw);
+  const axisLengthYPx = vhToPx(widthVh - tickSizeVh);
 
 
   $('#fullpage').fullpage({
@@ -122,8 +122,8 @@ $(document).ready(function() {
 
     let svg = d3.select(container)
       .append('svg')
-      .attr('width', vwToPx(width + tickSizeVw))
-      .attr('height', vhToPx(height + tickSizeVh));
+      .attr('width', vwToPx(widthVw + tickSizeVw))
+      .attr('height', vhToPx(widthVh + tickSizeVh));
 
     let chartGroup = svg.append('g')
       .attr('transform', `translate(${vwToPx(tickSizeVw)}, ${vhToPx(tickSizeVh)})`);
@@ -195,8 +195,8 @@ $(document).ready(function() {
 
     let graphDots = chartGroup.append('g')
       .attr('class', 'graph-dot')
-      .attr('width', vwToPx(width))
-      .attr('height', vhToPx(height));
+      .attr('width', vwToPx(widthVw))
+      .attr('height', vhToPx(widthVh));
 
     // hack for getting the group started at 0
     graphDots.append('circle')
