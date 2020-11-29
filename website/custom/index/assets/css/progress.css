@@ -133,7 +133,7 @@ line {
 }
 
 .graph-line {
-    stroke-dasharray: 1000;
+    stroke-dasharray: 10000;
     stroke-dashoffset: 0;
 }
 
