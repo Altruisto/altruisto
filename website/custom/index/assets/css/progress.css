@@ -55,6 +55,10 @@
     transform: perspective(2500px) rotateY(0);
 }
 
+.opacity-0-9 {
+    opacity: 0.9;
+}
+
 .section .scroll-button {
     z-index: 3;
     position: absolute;
