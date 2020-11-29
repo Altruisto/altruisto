@@ -2,19 +2,24 @@ import * as webpack from "webpack"
 import path from "path"
 import autoprefixer from "autoprefixer"
 import HtmlWebpackPlugin from "html-webpack-plugin"
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { CUSTOM_PAGES_ASSETS_DIRECTORY, CUSTOM_PAGES_OUTPUT_DIRECTORY } from "../../settings"
 
 const config: webpack.Configuration = {
   entry: {
     index: [
       path.join(__dirname, "assets/js/index.js"),
-      path.join(__dirname, "../../assets/scss/index.scss")
+      path.join(__dirname, "../../assets/scss/index.scss"),
     ],
     progress: [
       path.join(__dirname, "assets/js/progress.js"),
-      path.join(__dirname, "../../assets/scss/index.scss")
+      path.join(__dirname, "assets/css/jquery.fullpage.css"),
+      path.join(__dirname, "assets/css/bootstrap.min.css"),
+      path.join(__dirname, "assets/css/progress.css"),
+
     ]
   },
+  target: 'web',
   output: {
     path: CUSTOM_PAGES_ASSETS_DIRECTORY,
     publicPath: "/assets/",
@@ -23,17 +28,9 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "index.css"
-            }
-          },
-          {
-            loader: "extract-loader"
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
@@ -62,9 +59,23 @@ const config: webpack.Configuration = {
           presets: ["@babel/preset-env"]
         }
       },
-    ]
+    ],
+  },
+  resolve: {
+    alias: {
+      jquery$: path.resolve(__dirname, "assets/js/jquery.min.js")
+    }
+  },
+  amd: {
+    jQuery: true
   },
   plugins: [
+    new MiniCssExtractPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      "window.jQuery": 'jquery'
+    }),
     new HtmlWebpackPlugin({
       filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "covid.html"),
       template: path.join(__dirname, "covid.html"),

@@ -1,5 +1,9 @@
-import './jquery.svg.min';
-import './jquery.svganim.min';
+import './jquery.min'
+import * as d3 from './d3.v5.min'
+import './jquery.fullpage'
+import './particles.min'
+import './jquery.svg.min'
+import './jquery.svganim.min'
 
 $(document).ready(function() {
 
@@ -25,7 +29,6 @@ $(document).ready(function() {
   const axisLengthXPx = vwToPx(widthVw - tickSizeVw);
   const axisLengthYPx = vhToPx(widthVh - tickSizeVh);
 
-
   $('#fullpage').fullpage({
     anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'world-gdp', 'literacy', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
     sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#1B1C1C'],
@@ -49,43 +52,6 @@ $(document).ready(function() {
   });
 
   $('.zoom-in').css('transform', 'scale(1.2)');
-
-  //I was playing around with animations
-  //the idea was that if you mouse over on left-hand shape all shapes move slowly to right
-  //and if you mouse over on right-hand shape all shapes move slowly to left
-  //but I don't have the patience now to figure it out
-  //feel free to pick it up :)
-  /*
-  $('.polygonal-shape-left')
-      .mouseover(() => {
-          console.log('mouse over left');
-          $('.polygonal-shape-left').css('left', '-400px');
-          $('.polygonal-shape-center').css('left', '80px');
-          $('.polygonal-shape-right').css('left', '970px');
-      })
-      .mouseout(() => {
-          console.log('mouse out left');
-          $('.polygonal-shape-left').css('left', '-470px')
-          $('.polygonal-shape-center').css('left', '60px');
-          $('.polygonal-shape-right').css('left', '900px')
-      })
-  $('.polygonal-shape-right')
-      .mouseover(() => {
-          console.log('mouse over right');
-          $('.polygonal-shape-left').css('left', '-530px');
-          $('.polygonal-shape-center').css('left', '40px');
-          $('.polygonal-shape-right').css('left', '830px');
-      })
-      .mouseout(() => {
-          console.log('mouse out right');
-          $('.polygonal-shape-left').css('left', '-470px')
-          $('.polygonal-shape-center').css('left', '60px');
-          $('.polygonal-shape-right').css('left', '900px')
-      })
-   */
-
-
-
 
   const drawGraph = (container, data, statLabel, yScale = [0, 100]) => {
 
