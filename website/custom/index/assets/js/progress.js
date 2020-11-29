@@ -7,28 +7,6 @@ import './jquery.svganim.min'
 
 $(document).ready(function() {
 
-  // Graphs
-  const widthVw = 0.75; // in vw
-  const widthVh = 0.5; // in vh
-  let vw, vh;
-  if (window.innerWidth !== undefined && window.innerHeight !== undefined) {
-    vw = window.innerWidth;
-    vh = window.innerHeight;
-  } else {
-    vw = document.documentElement.clientWidth;
-    vh = document.documentElement.clientHeight;
-  }
-
-  const vwToPx = (sizeInVw) => sizeInVw * vw;
-  const vhToPx = (sizeInVh) => sizeInVh * vh;
-
-  const numTicksX = 9;
-  const numTicksY = 10;
-  const tickSizeVw = widthVw / numTicksX;
-  const tickSizeVh = widthVh / numTicksY;
-  const axisLengthXPx = vwToPx(widthVw - tickSizeVw);
-  const axisLengthYPx = vhToPx(widthVh - tickSizeVh);
-
   $('#fullpage').fullpage({
     anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'world-gdp', 'literacy', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
     sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#1B1C1C'],
@@ -47,7 +25,7 @@ $(document).ready(function() {
     onLeave: function(fromIndex, toIndex) {
       let section = '#section' + toIndex;
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
-      rect.attr('width', axisLengthXPx + 20);
+      rect.attr('width', window.axisLengthXPx + 20);
       if (fromIndex === 9 && toIndex === 10) {
         // Scrolling to footer should not hide content on do-it-today (9)
         $('#section9 .fade-up').addClass('active');
@@ -59,7 +37,34 @@ $(document).ready(function() {
 
   $('.zoom-in').css('transform', 'scale(1.2)');
 
+  // Graphs
   const drawGraph = (container, data, statLabel, yScale = [0, 100]) => {
+
+    const widthVw = 0.75; // in vw
+    const widthVh = 0.5; // in vh
+    let vw, vh;
+    if (window.innerWidth !== undefined && window.innerHeight !== undefined) {
+      vw = window.innerWidth;
+      vh = window.innerHeight;
+    } else {
+      vw = document.documentElement.clientWidth;
+      vh = document.documentElement.clientHeight;
+    }
+
+    const vwToPx = (sizeInVw) => sizeInVw * vw;
+    const vhToPx = (sizeInVh) => sizeInVh * vh;
+
+    const numTicksX = 9;
+    const numTicksY = 10;
+    const tickSizeVw = widthVw / numTicksX;
+    const tickSizeVh = widthVh / numTicksY;
+    const axisLengthXPx = vwToPx(widthVw - tickSizeVw);
+    const axisLengthYPx = vhToPx(widthVh - tickSizeVh);
+    // Bit ugly, but quick way to get the correct values after a resize in the fullpage callbacks
+    window.axisLengthXPx = axisLengthXPx;
+
+    // Clear container so we can redraw safely
+    d3.select(container).html(null);
 
     const minYear = d3.min(data, d => d.year);
     const maxYear = d3.max(data, d => d.year);
@@ -214,25 +219,39 @@ $(document).ready(function() {
 
   };
 
-  d3.csv('/assets/datasets/child-mortality.csv').then(data => {
-    drawGraph('#child-mortality-graph-container', data, 'notSurvivingFiveYears');
-  });
+  // Load all data only once, not on every resize
+  const dataPromises = {
+    "child-mortality": d3.csv('/assets/datasets/child-mortality.csv'),
+    "life-expectancy": d3.csv('/assets/datasets/life-expectancy-in-uk.csv'),
+    "poverty": d3.csv('/assets/datasets/extreme-poverty-percentage.csv'),
+    "gdp": d3.csv('/assets/datasets/gdp.csv'),
+    "literacy": d3.csv('/assets/datasets/literate-illiterate.csv'),
+  }
 
-  d3.csv('/assets/datasets/life-expectancy-in-uk.csv').then(data => {
-    drawGraph('#life-expectancy-graph-container', data, 'lifeExpectancyInUK');
-  });
+  const drawAllGraphs = () => {
+    dataPromises["child-mortality"].then(data => {
+      drawGraph('#child-mortality-graph-container', data, 'notSurvivingFiveYears');
+    });
 
-  d3.csv('/assets/datasets/extreme-poverty-percentage.csv').then(data => {
-    drawGraph('#extreme-poverty-graph-container', data, 'extremePovertyPercentage');
-  });
+    dataPromises["life-expectancy"].then(data => {
+      drawGraph('#life-expectancy-graph-container', data, 'lifeExpectancyInUK');
+    });
 
-  d3.csv('/assets/datasets/gdp.csv').then(data => {
-    drawGraph('#gdp-graph-container', data, 'gdp', [1000, 15000]);
-  });
+    dataPromises["poverty"].then(data => {
+      drawGraph('#extreme-poverty-graph-container', data, 'extremePovertyPercentage');
+    });
 
-  d3.csv('/assets/datasets/literate-illiterate.csv').then(data => {
-    drawGraph('#literacy-graph-container', data, 'literatePercentage');
-  });
+    dataPromises["gdp"].then(data => {
+      drawGraph('#gdp-graph-container', data, 'gdp', [1000, 15000]);
+    });
+
+    dataPromises["literacy"].then(data => {
+      drawGraph('#literacy-graph-container', data, 'literatePercentage');
+    });
+  };
+
+  drawAllGraphs();
+  $(window).on('resize', drawAllGraphs);
 
 });
 
