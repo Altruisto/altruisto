@@ -23,8 +23,9 @@ export type UserDetails = {
 const Index = () => {
   const router = useRouter()
   const auth = useAuth()
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeTab, setActiveTab] = useState(1)
   const [partners, setPartners] = useState<Partner[]>([])
+  const [partnersLoading, setPartnersLoading] = useState(true)
   const [userDetails, setUserDetails] = useState<UserDetails>(null)
 
   useEffect(() => {
@@ -60,7 +61,9 @@ const Index = () => {
           return response.data.map(p => ({ name: p.name, domain: p.domain }))
         })
         .then(partners => setPartners(partners))
+        .then(() => setPartnersLoading(false))
         .catch(() => {
+          setPartnersLoading(false)
           // @TODO: handle error
         })
     }
@@ -85,7 +88,11 @@ const Index = () => {
         >
           <SwipeableViews index={activeTab}>
             <ShareTab userDetails={userDetails} />
-            <ShopTab partners={partners} userDetails={userDetails} />
+            <ShopTab
+              partners={partners}
+              partnersLoading={partnersLoading}
+              userDetails={userDetails}
+            />
           </SwipeableViews>
         </MobileAppLayout>
       </SnackbarProvider>

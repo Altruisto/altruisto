@@ -4,15 +4,17 @@ import { groupAplabetically } from "utils/group-alphabetically"
 import Link from "next/link"
 import Modal from "react-modal"
 import { UserDetails } from "pages/app"
+import { Loader } from "components/ui/Loader"
 
 type Props = {
   partners: Partner[]
+  partnersLoading: boolean
   userDetails: UserDetails
 }
 
 Modal.setAppElement("#__next")
 
-export const ShopTab: React.FC<Props> = ({ partners, userDetails }) => {
+export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetails }) => {
   const [searchPhrase, setSearchPhrase] = useState("")
   const [searchedPartners, setSearchedPartners] = useState(partners)
   const [activePartner, setActivePartner] = useState<Partner | null>(null)
@@ -55,12 +57,12 @@ export const ShopTab: React.FC<Props> = ({ partners, userDetails }) => {
   return (
     <>
       <div
-        className="cover cover--small with-overlay"
+        className="cover mobile-app__cover with-overlay"
         style={{ backgroundImage: "url(/images/default-small-cover.jpg)" }}
       >
         <h1>Partners List</h1>
       </div>
-      <div className="partners__search-wrapper input-group">
+      <div className="partners__search-wrapper mobile-app__search-wrapper input-group">
         <input
           type="text"
           className="partners__search-input"
@@ -75,25 +77,34 @@ export const ShopTab: React.FC<Props> = ({ partners, userDetails }) => {
         </div>
       </div>
 
-      {Object.entries(groupedPartners).map(([group, partnersInGroup], index) => {
-        return (
-          <Fragment key={group}>
-            <h2 className="mt-3">{group}</h2>
-            <div className="row">
-              <div className="col-12">
+      <div className="mobile-app__content mobile-app__partner-list">
+        {partnersLoading ? (
+          <div className="text-center fill-height">
+            <Loader color="red" />
+          </div>
+        ) : null}
+
+        {Object.entries(groupedPartners).map(([group, partnersInGroup]) => {
+          return (
+            <Fragment key={group}>
+              <h2 className="mt-3">{group}</h2>
+              <div>
                 {(partnersInGroup as Partner[]).map(partner => (
                   <Fragment key={partner.domain}>
-                    <button className="button-link" onClick={() => setActivePartner(partner)}>
+                    <button
+                      className="button-link mobile-app__partner-link"
+                      onClick={() => setActivePartner(partner)}
+                    >
                       {partner.name}
                     </button>
                     <br />
                   </Fragment>
                 ))}
               </div>
-            </div>
-          </Fragment>
-        )
-      })}
+            </Fragment>
+          )
+        })}
+      </div>
       <Modal
         isOpen={activePartner !== null}
         onRequestClose={() => setActivePartner(null)}
