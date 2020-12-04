@@ -1,20 +1,25 @@
 import React, { useState, useEffect, Fragment } from "react"
 import { Partner } from "types/partner"
 import { groupAplabetically } from "utils/group-alphabetically"
-import { splitToEqualChunks } from "utils/split-to-equal-chunks"
 import Link from "next/link"
 import Modal from "react-modal"
+import { UserDetails } from "pages/app"
 
 type Props = {
   partners: Partner[]
+  userDetails: UserDetails
 }
 
 Modal.setAppElement("#__next")
 
-export const ShopTab: React.FC<Props> = ({ partners }) => {
+export const ShopTab: React.FC<Props> = ({ partners, userDetails }) => {
   const [searchPhrase, setSearchPhrase] = useState("")
   const [searchedPartners, setSearchedPartners] = useState(partners)
   const [activePartner, setActivePartner] = useState<Partner | null>(null)
+
+  const tracker = userDetails
+    ? `${userDetails.ref || ""}-${userDetails.causeArea}-${userDetails.referredBy || ""}`
+    : ""
 
   const customModalStyles = {
     overlay: {
@@ -78,7 +83,9 @@ export const ShopTab: React.FC<Props> = ({ partners }) => {
               <div className="col-12">
                 {(partnersInGroup as Partner[]).map(partner => (
                   <Fragment key={partner.domain}>
-                    <button onClick={() => setActivePartner(partner)}>{partner.name}</button>
+                    <button className="button-link" onClick={() => setActivePartner(partner)}>
+                      {partner.name}
+                    </button>
                     <br />
                   </Fragment>
                 ))}
@@ -99,7 +106,7 @@ export const ShopTab: React.FC<Props> = ({ partners }) => {
         <a
           href={`https://api.altruisto.com/redirect?url=${
             activePartner ? activePartner.domain : ""
-          }`}
+          }&tracker=${tracker}`}
           className="button"
           target="_blank"
         >

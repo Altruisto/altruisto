@@ -4,34 +4,15 @@ import { useSnackbar } from "notistack"
 import { useEffectWithAuth } from "hooks/use-auth"
 import { api } from "utils/api-url"
 import { TwitterCarousel } from "./TwitterCarousel"
+import { UserDetails } from "pages/app"
 
 type Props = {
-  isActive: boolean
+  userDetails: UserDetails
 }
 
-export const ShareTab: React.FC<Props> = ({ isActive }) => {
+export const ShareTab: React.FC<Props> = ({ userDetails }) => {
   const { enqueueSnackbar } = useSnackbar()
-  const [referralsNumber, setReferralsNumber] = useState<number | null>(null)
-  const [ref, setRef] = useState<string | null>(null)
-
-  useEffectWithAuth(
-    auth => {
-      if (isActive) {
-        api
-          .get("/user", { headers: { "X-AUTH-TOKEN": auth.user.apiKey } })
-          .then(response => {
-            setRef(response.data.ref)
-            setReferralsNumber(response.data.referrals_count)
-          })
-          .catch(() => {
-            enqueueSnackbar("Something went wrong.", {
-              variant: "error"
-            })
-          })
-      }
-    },
-    [isActive]
-  )
+  const ref = userDetails && userDetails.ref ? userDetails.ref : ""
 
   return (
     <div className="mobile-app__content fill-height">
@@ -107,11 +88,11 @@ export const ShareTab: React.FC<Props> = ({ isActive }) => {
               }}
             />
           </div>
-          {referralsNumber !== null ? (
+          {userDetails && userDetails.referralsCount !== null ? (
             <div className="mt-4 mb-2">
-              <div className="mobile-app__invited-number">{referralsNumber} </div>
+              <div className="mobile-app__invited-number">{userDetails.referralsCount} </div>
               <div className="mobile-app__invited-people">
-                {referralsNumber === 1 ? "person" : "people"} joined thanks to you
+                {userDetails.referralsCount === 1 ? "person" : "people"} joined thanks to you
               </div>
             </div>
           ) : null}

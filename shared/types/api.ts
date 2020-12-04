@@ -22,6 +22,8 @@ export type GetUserResponse = {
   cause_area: CauseArea
   money_raised: number
   currency: Currency
+  ref: string
+  referred_by: string
   created_at: string
   updated_at: string
   registration_source: string
