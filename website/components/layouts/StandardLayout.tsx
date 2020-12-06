@@ -45,7 +45,7 @@ export const StandardLayout: LayoutComponent<Props> = ({
             <Menu />
           ) : (
             <div className="menu__top">
-              <a className="menu__brand navbar-brand js-scroll-trigger" href="#page-top">
+              <a className="menu__brand navbar-brand js-scroll-trigger" href="/#page-top">
                 <img
                   src="/images/logo.svg"
                   alt="Altruisto logo"
