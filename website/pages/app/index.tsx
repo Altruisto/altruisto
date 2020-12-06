@@ -4,12 +4,13 @@ import { useAuth } from "hooks/use-auth"
 import { SnackbarProvider, useSnackbar } from "notistack"
 import { MobileAppLayout } from "components/layouts/MobileAppLayout"
 import SwipeableViews from "react-swipeable-views"
-import { ShareTab } from "components/partials/app/ShareTab"
-import { ShopTab } from "components/partials/app/ShopTab"
+import { ShareTab } from "components/partials/app/ShareTab/ShareTab"
+import { ShopTab } from "components/partials/app/ShopTab/ShopTab"
 import Partner from "pages/partners/[domain]"
 import { api } from "utils/api-url"
 import { GetPartnersResponse, GetUserResponse } from "../../../shared/types/api"
 import { CauseArea, Currency } from "../../../shared/types/user"
+import { YourHelpTab } from "components/partials/app/YourHelpTab/YourHelpTab"
 
 export type UserDetails = {
   causeArea: CauseArea
@@ -23,7 +24,7 @@ export type UserDetails = {
 const Index = () => {
   const router = useRouter()
   const auth = useAuth()
-  const [activeTab, setActiveTab] = useState(1)
+  const [activeTab, setActiveTab] = useState(2)
   const [partners, setPartners] = useState<Partner[]>([])
   const [partnersLoading, setPartnersLoading] = useState(true)
   const [userDetails, setUserDetails] = useState<UserDetails>(null)
@@ -92,6 +93,11 @@ const Index = () => {
               partners={partners}
               partnersLoading={partnersLoading}
               userDetails={userDetails}
+            />
+            <YourHelpTab
+              userDetails={userDetails}
+              isActive={activeTab === 2}
+              onGoToShops={() => setActiveTab(1)}
             />
           </SwipeableViews>
         </MobileAppLayout>

@@ -2,7 +2,6 @@ import { browser } from "webextension-polyfill-ts"
 import React, { useMemo, useState, useEffect } from "react"
 import IconBox from "../../ui/IconBox"
 import { WalletIcon } from "../../icons/WalletIcon"
-import transformUsdToBeingsSaved from "../../../common/utils/transform-usd-to-beings-saved"
 import { extractDomain } from "../../../../helpers/extract-domain"
 import { isAlreadyActivated } from "../../../../helpers/is-already-activated"
 import { getTracker } from "../../../../helpers/get-tracker"
@@ -10,6 +9,7 @@ import { PartnerAlreadyActivated } from "./PartnerAlreadyActivated"
 import { NotAPartner } from "./NotAPartner"
 import { ActivatePartner } from "./ActivatePartner"
 import { storage } from "../../../../helpers/storage"
+import { transformUSDToBeingsSaves } from "../../../common/utils/transform-usd-to-beings-saved"
 
 type CurrentWebsite = {
   domain: string
@@ -24,7 +24,7 @@ const getRandomImpactHighlight = () => {
   }
   const charities = asLiterals(["AMF", "SCI"])
   const randomItem = Math.floor(Math.random() * charities.length)
-  const beingsSaved = transformUsdToBeingsSaved(100 * 0.03, charities[randomItem])
+  const beingsSaved = transformUSDToBeingsSaves(100 * 0.03, charities[randomItem])
 
   switch (charities[randomItem]) {
     case "AMF":

@@ -1,8 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import copyToClipboard from "copy-to-clipboard"
 import { useSnackbar } from "notistack"
-import { useEffectWithAuth } from "hooks/use-auth"
-import { api } from "utils/api-url"
 import { TwitterCarousel } from "./TwitterCarousel"
 import { UserDetails } from "pages/app"
 
@@ -100,6 +98,7 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
       )}
       <h1 className="mobile-app__title mt-5 mb-4">Talking about us:</h1>
       <TwitterCarousel />
+      <div className="mb-2"></div>
     </div>
   )
 }

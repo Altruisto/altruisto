@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { useAuthContext } from "../../../common/auth"
-import {
-  spreadUSDBetweenAllForMaxImpact,
-  ImpactSpreadingResult
-} from "../../../common/utils/transform-usd-to-beings-saved"
 
 import axios from "../../../../helpers/api"
 import { Loader } from "../../ui/Loader"
@@ -12,6 +8,10 @@ import { Animals } from "./Animals"
 import { storage } from "../../../../helpers/storage"
 import { Covid } from "./Covid"
 import { CauseArea } from "../../../../../../shared/types/user"
+import {
+  spreadUSDBetweenCharitiesForMaxImpact,
+  ImpactSpreadingResult
+} from "../../../common/utils/transform-usd-to-beings-saved"
 
 type Props = {
   onRequestLogin: () => void
@@ -41,8 +41,8 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
           }
         })
         .then(response => {
-          const moneyRaised = Number(response.data.money_raised / 100)
-          const [impact, moneyLeft] = spreadUSDBetweenAllForMaxImpact(moneyRaised)
+          const moneyRaised = 25000 // Number(response.data.money_raised / 100)
+          const [impact, moneyLeft] = spreadUSDBetweenCharitiesForMaxImpact(moneyRaised)
           setHelp({
             moneyRaised,
             impact,

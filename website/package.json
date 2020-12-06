@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --config \"nodemon.json\"/",
+    "dev": "nodemon --verbose --config \"nodemon.json\"/",
     "build:custom": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack",
     "build:server": "tsc --project tsconfig.server.json",
     "build": "next build && next export && tsc --project tsconfig.server.json && cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack",

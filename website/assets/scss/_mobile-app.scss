@@ -120,6 +120,12 @@
     border-bottom: 1px solid #f0f0f0;
     text-align: left;
   }
+
+  &__main-button {
+    width: initial;
+    padding: 0 19px;
+    margin: 20px;
+  }
 }
 
 .tweet {
