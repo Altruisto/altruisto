@@ -67,3 +67,12 @@
     cursor: not-allowed;
   }
 }
+
+.uppercase-link {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaaaaa;
+  letter-spacing: 1px;
+  text-decoration: none;
+}

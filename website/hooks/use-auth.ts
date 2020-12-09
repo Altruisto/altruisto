@@ -83,7 +83,6 @@ export const useAuth = (): Auth => {
 export const useEffectWithAuth = (effect: (auth: Auth) => void, deps: any[]) => {
   const auth = useAuth()
   useEffect(() => {
-    console.log("effect with auth", auth)
     if (auth) {
       effect(auth)
     }

@@ -42,6 +42,7 @@ export const YourHelpTab: React.FC<Props> = ({ userDetails, onGoToShops, isActiv
   }
 
   const moneyRaisedInUSD = Number(userDetails.moneyRaised / 100)
+  // const moneyRaisedInUSD = 100
 
   return (
     <div className="mobile-app__content">

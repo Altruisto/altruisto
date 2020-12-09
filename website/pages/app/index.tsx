@@ -11,6 +11,7 @@ import { api } from "utils/api-url"
 import { GetPartnersResponse, GetUserResponse } from "../../../shared/types/api"
 import { CauseArea, Currency } from "../../../shared/types/user"
 import { YourHelpTab } from "components/partials/app/YourHelpTab/YourHelpTab"
+import SettingsTab from "components/partials/app/SettingsTab/SettingsTab"
 
 export type UserDetails = {
   causeArea: CauseArea
@@ -24,10 +25,28 @@ export type UserDetails = {
 const Index = () => {
   const router = useRouter()
   const auth = useAuth()
-  const [activeTab, setActiveTab] = useState(2)
+  const [activeTab, setActiveTab] = useState(3)
   const [partners, setPartners] = useState<Partner[]>([])
   const [partnersLoading, setPartnersLoading] = useState(true)
   const [userDetails, setUserDetails] = useState<UserDetails>(null)
+
+  const getUserDetails = () => {
+    api
+      .get<GetUserResponse>("/user", { headers: { "X-AUTH-TOKEN": auth.user.apiKey } })
+      .then(response => {
+        setUserDetails({
+          causeArea: response.data.cause_area,
+          currency: response.data.currency,
+          moneyRaised: response.data.money_raised,
+          ref: response.data.ref,
+          referralsCount: response.data.referrals_count,
+          referredBy: response.data.referred_by
+        })
+      })
+      .catch(() => {
+        // @TODO: handle error
+      })
+  }
 
   useEffect(() => {
     if (router && auth) {
@@ -40,21 +59,7 @@ const Index = () => {
 
   useEffect(() => {
     if (auth && auth.user) {
-      api
-        .get<GetUserResponse>("/user", { headers: { "X-AUTH-TOKEN": auth.user.apiKey } })
-        .then(response => {
-          setUserDetails({
-            causeArea: response.data.cause_area,
-            currency: response.data.currency,
-            moneyRaised: response.data.money_raised,
-            ref: response.data.ref,
-            referralsCount: response.data.referrals_count,
-            referredBy: response.data.referred_by
-          })
-        })
-        .catch(() => {
-          // @TODO: handle error
-        })
+      getUserDetails()
 
       api
         .get<GetPartnersResponse>("/partners")
@@ -99,6 +104,7 @@ const Index = () => {
               isActive={activeTab === 2}
               onGoToShops={() => setActiveTab(1)}
             />
+            <SettingsTab userDetails={userDetails} refreshUserDetails={getUserDetails} />
           </SwipeableViews>
         </MobileAppLayout>
       </SnackbarProvider>
