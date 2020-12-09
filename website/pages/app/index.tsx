@@ -25,7 +25,7 @@ export type UserDetails = {
 const Index = () => {
   const router = useRouter()
   const auth = useAuth()
-  const [activeTab, setActiveTab] = useState(3)
+  const [activeTab, setActiveTab] = useState(1)
   const [partners, setPartners] = useState<Partner[]>([])
   const [partnersLoading, setPartnersLoading] = useState(true)
   const [userDetails, setUserDetails] = useState<UserDetails>(null)
