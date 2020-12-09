@@ -14,8 +14,8 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
 
   return (
     <div className="mobile-app__content fill-height">
-      <h1 className="mobile-app__title">Together</h1>
-      <h1 className="text-gradient">we can do more!</h1>
+      <h3 className="mobile-app__title">Together</h3>
+      <h3 className="text-gradient">we can do more!</h3>
       <p className="mt-4">
         If every user invited <strong>just three of their friends</strong>, in a few short weeks we
         would be <strong>helping hundreds of thousands of people</strong> experience what's best in
@@ -52,7 +52,7 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
       </div>
       {ref && (
         <>
-          <h1 className="mobile-app__title mt-5 mb-4">Your referral link:</h1>
+          <h3 className="mobile-app__title mt-5 mb-4">Your referral link:</h3>
           <div className="field m-t-10">
             <span className="field__appendix mobile-app__copy-icon">
               <button
@@ -96,7 +96,7 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
           ) : null}
         </>
       )}
-      <h1 className="mobile-app__title mt-5 mb-4">Talking about us:</h1>
+      <h3 className="mobile-app__title mt-5 mb-4">Talking about us:</h3>
       <TwitterCarousel />
       <div className="mb-2"></div>
     </div>
