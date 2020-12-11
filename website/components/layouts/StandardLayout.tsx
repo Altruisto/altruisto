@@ -57,7 +57,7 @@ export const StandardLayout: LayoutComponent<Props> = ({
           )}
           {noCta ? null : (
             <a href={cta} className="menu__cta button">
-              Install now for free
+              Start helping now
             </a>
           )}
         </div>

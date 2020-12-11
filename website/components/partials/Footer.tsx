@@ -48,7 +48,12 @@ export const Footer: React.FC<Props> = ({ noLogo = false, noLinks = false }) => 
       <div className="row d-flex align-items-center">
         <div className="footer__copyrights col-12 col-md-6">Copyright © Altruisto.com</div>
         <div className="footer__social-media col-12 col-md-6">
-          <a href="https://facebook.com/AltruistoCom" target="_blank" rel="noreferrer noopener">
+          <a
+            href="https://facebook.com/AltruistoCom"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="pr-1"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

@@ -6,12 +6,12 @@ import { MobileAppLayout } from "components/layouts/MobileAppLayout"
 import SwipeableViews from "react-swipeable-views"
 import { ShareTab } from "components/partials/app/ShareTab/ShareTab"
 import { ShopTab } from "components/partials/app/ShopTab/ShopTab"
-import Partner from "pages/partners/[domain]"
 import { api } from "utils/api-url"
 import { GetPartnersResponse, GetUserResponse } from "../../../shared/types/api"
 import { CauseArea, Currency } from "../../../shared/types/user"
 import { YourHelpTab } from "components/partials/app/YourHelpTab/YourHelpTab"
 import SettingsTab from "components/partials/app/SettingsTab/SettingsTab"
+import { Partner } from "types/partner"
 
 export type UserDetails = {
   causeArea: CauseArea
