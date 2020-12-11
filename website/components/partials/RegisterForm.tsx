@@ -9,6 +9,7 @@ import { api } from "utils/api-url"
 import { useState, useEffect } from "react"
 import { Alert } from "components/ui/Alert"
 import { useAuth } from "hooks/use-auth"
+import { useRouter } from "next/router";
 
 const referredBy = getCookie(REFERRED_BY_COOKIE_NAME)
 
@@ -16,6 +17,7 @@ const RegisterForm = () => {
   const [failureMessage, setFailureMessage] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const auth = useAuth()
+  const router = useRouter()
 
   return (
     <>
@@ -50,10 +52,7 @@ const RegisterForm = () => {
             })
             .then(loggedUser => {
               if (loggedUser) {
-                console.log(
-                  "redirect to home of webapp (whatever it's going to be, probably some onboarding)"
-                )
-                console.log(loggedUser)
+                router.push('/app')
               }
             })
             .catch(error => {

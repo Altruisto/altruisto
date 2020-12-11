@@ -8,6 +8,7 @@ import { Loader } from "components/ui/Loader"
 import { useAuth } from "hooks/use-auth"
 import { CauseArea } from "../../../../../shared/types/user"
 import { api } from "utils/api-url"
+import { useRouter } from "next/router"
 
 const Select = dynamic(() => import("@material-ui/core/Select"), {
   ssr: false
@@ -46,11 +47,15 @@ type Props = {
 const SettingsTab: React.FC<Props> = ({ userDetails, refreshUserDetails }) => {
   const { enqueueSnackbar } = useSnackbar()
   const auth = useAuth()
+  const router = useRouter()
 
   // @TODO: get this function from auth
   const handleLogout = () => {
     localStorage.setItem("user", null)
     enqueueSnackbar("You have been logged out.", { variant: "success" })
+    setTimeout(() => {
+      router.push("/login")
+    }, 400)
   }
 
   const handleChangeCauseArea = async (newValue: CauseArea) => {
