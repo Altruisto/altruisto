@@ -69,7 +69,7 @@
 
     &.slick-active {
       &>button {
-        @extend .indicators__item.active;
+        @extend .indicators__item, .active;
       }
     }
   }

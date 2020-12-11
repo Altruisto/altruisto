@@ -1,0 +1,396 @@
+.section {
+    color: white;
+    text-align: center;
+    font-family: 'Roboto';
+}
+
+.section .container > * {
+    position: relative;
+}
+
+.section h1 {
+    font-size: 4em;
+    font-weight: 100;
+}
+
+.section h2 {
+    font-size: 2em;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.fade-up {
+    transform: translateY(0.1vh);
+    font-size: 1em;
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-delay: 330ms;
+    transition-duration: 660ms;
+    transition-timing-function: cubic-bezier(.445, .05, .55, .95);
+}
+
+.fade-up + .fade-up {
+    transition-delay: 800ms;
+}
+
+.active .fade-up, .fade-up.active {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.flip {
+    backface-visibility: hidden;
+    transition-property: transform;
+    transform: perspective(2500px) rotateY(-100deg);
+    transition-duration: 660ms;
+    transition-delay: 1800ms;
+}
+
+.flip + .fade-up {
+    transition-delay: 5000ms;
+}
+
+.active .flip {
+    transform: perspective(2500px) rotateY(0);
+}
+
+.opacity-0-9 {
+    opacity: 0.9;
+}
+
+.section .scroll-button {
+    z-index: 3;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    padding-top: 80px;
+    transform: translateX(-50%);
+    color: white;
+    text-decoration: none;
+}
+
+.section .scroll-button span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: scroll-button-animation 2s infinite;
+    animation: scroll-button-animation 2s infinite;
+    opacity: 0;
+    box-sizing: border-box;
+}
+.section .scroll-button span:nth-of-type(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.section .scroll-button span:nth-of-type(2) {
+    top: 16px;
+    -webkit-animation-delay: .15s;
+    animation-delay: .15s;
+}
+.section .scroll-button span:nth-of-type(3) {
+    top: 32px;
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+@-webkit-keyframes scroll-button-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.section h3 {
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+.section .container ul.no-bullets {
+    list-style-type: none;
+}
+
+path {
+    stroke: white;
+    stroke-width: 3px;
+    fill: none;
+}
+
+text {
+    fill:white;
+    font-size: 1.2em;
+}
+
+line {
+    stroke: white;
+}
+
+.graph-line {
+    stroke-dasharray: 10000;
+    stroke-dashoffset: 0;
+}
+
+.axis-grid path {
+    display: none; /*probably I am supposed to get rid of the line with d3 instead of css?*/
+}
+
+.axis-grid line {
+    stroke: rgba(255,255,255, 0.15)
+}
+
+.graph-tooltip {
+    background-color: #fff;
+    position: absolute;
+    visibility: hidden;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.footer {
+    min-height: 50px;
+    color: white;
+    padding-top: 12px;
+}
+
+.bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+}
+
+.zoom-in {
+    transition: transform 13s cubic-bezier(0.2,0,0.7,1);
+}
+
+.bg-image:after {
+    content: '\A';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.zoom-in:after {
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+
+.polygonal-shape-wrapper {
+    position: absolute;
+    display: block;
+    overflow: visible;
+    transition: all 5s linear;
+}
+
+.polygonal-shape-left {
+    left: -470px;
+    top: -137px;
+}
+
+.polygonal-shape-left > div {
+    z-index: 2;
+    opacity: 0.6;
+    transform: matrix3d(-0.731354, 0.681998, 0, 0, 0.681998, 0.731354, 0, 0, 0, 0, -1, 0.00166667, 0, 0, 0, 1);
+    transform-origin: 50% 50% 0px;
+}
+
+.polygonal-shape-right {
+    left: 900px;
+    top: 0px;
+}
+
+.polygonal-shape-right > div {
+    z-index: 2;
+    opacity: 0.6;
+    transform: matrix3d(0.731354, 0.681998, 0, 0, 0.681998, -0.731354, 0, 0, 0, 0, -1, 0.00166667, 0, 0, 0, 1);
+    transform-origin: 50% 50% 0px;
+}
+
+.polygonal-shape-center {
+    z-index: 1;
+    opacity: 0.2;
+    left: 50px;
+    top: -360px;
+    transform: scale(1.6)
+}
+
+#section1 .container {
+    z-index: 1;
+    position: relative;
+}
+
+.dark-blue {
+    background-color: #091B2E!important;
+}
+
+.dark-blue .container {
+    background-color: #091B2E;
+    z-index: 2;
+    position: relative;
+    /*height: 100%;*/
+}
+
+.dark-grey {
+    background-color: rgb(15, 19, 15)!important;
+}
+
+.dark-grey .container {
+    background-color: rgb(15, 19, 15);
+}
+
+.white {
+    background-color: rgb(255, 255, 255)!important;
+}
+
+.white .container {
+    background-color: rgb(255, 255, 255);
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.install-button {
+    width: 200px;
+    height: 56px;
+    margin: 0 auto 20px auto;
+    border-radius: 6px;
+    background: linear-gradient(136deg, #e70f74, #ff2525);
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.install-button:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.15);
+    transition: opacity 0.2s ease-in-out;
+}
+
+.install-button:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.install-button:after {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    .section h1 {
+        font-size: 3em;
+    }
+    .section h2 {
+        font-size: 1.5em;
+    }
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
+@media only screen and (max-height: 735px) {
+    #section9 h1 {
+        font-size: 2em;
+    }
+    #section9 h2 {
+        font-size: 1.25em;
+    }
+    #section9 p {
+        margin-bottom: 5px;
+    }
+    #section9 .install-button {
+        width: 150px;
+        height: 44px;
+        margin-bottom: 5px;
+    }
+}
+
+.turn-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 100;
+}
+
+.turn-screen .content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.turn-screen .phone {
+    height: 50px;
+    width: 100px;
+    border: 3px solid white;
+    border-radius: 10px;
+    animation: rotate 1.5s ease-in-out infinite alternate;
+}
+
+.turn-screen .message {
+    color: white;
+    font-size: 1em;
+    margin-top: 40px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+    50% {
+        transform: rotate(-90deg)
+    }
+    100% {
+        transform: rotate(-90deg)
+    }
+}
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+    .turn-screen {
+        display: block;
+    }
+}

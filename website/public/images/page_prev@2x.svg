@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>page_prev@2x</title>
+    <g id="gotowe-designy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blog" transform="translate(-588.000000, -3329.000000)" fill="#969696">
+            <g transform="translate(375.000000, 467.000000)" id="Pagination">
+                <g transform="translate(200.000000, 2850.000000)" id="left">
+                    <polygon id="page_prev" transform="translate(17.205000, 18.000000) scale(-1, 1) translate(-17.205000, -18.000000) " points="14.91 12 13.5 13.41 18.08 18 13.5 22.59 14.91 24 20.91 18"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

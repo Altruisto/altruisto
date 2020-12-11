@@ -24,7 +24,7 @@ const setUpAlarms = () => {
 
 const openWelcomePage = () =>
   browser.tabs.create({
-    url: "https://altruisto.com/welcome/"
+    url: "https://altruisto.com/onboarding/"
   })
 
 const logInstallationAndSetUpStorage = () => {

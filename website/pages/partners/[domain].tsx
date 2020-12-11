@@ -23,7 +23,14 @@ const Partner: NextPage<Props> = ({ name, domain, logoUrl, donation, error }) =>
   const [selectedCauseArea, setSelectedCauseArea] = useState(causeAreaOptions[0])
 
   return (
-    <WithSmallCoverLayout title="Partner details" noCta>
+    <WithSmallCoverLayout
+      title="Partner details"
+      noCta
+      seoMetaTags={{
+        title: `Help others when shopping at ${name}`,
+        description: `Donate to charities when shopping with ${name} at no extra cost to you. You can choose what cause you want to support and activate the donation.`
+      }}
+    >
       <>
         <div className="partners__details-box">
           <img
@@ -61,7 +68,7 @@ const Partner: NextPage<Props> = ({ name, domain, logoUrl, donation, error }) =>
               <div className="partners__causeArea">
                 <Select
                   value={selectedCauseArea}
-                  onChange={v => setSelectedCauseArea(v)}
+                  onChange={(v) => setSelectedCauseArea(v)}
                   options={causeAreaOptions}
                 />
               </div>
@@ -98,7 +105,7 @@ const Partner: NextPage<Props> = ({ name, domain, logoUrl, donation, error }) =>
 Partner.getInitialProps = ({ query }) => {
   return api
     .get(`/partners/${query.domain}`)
-    .then(response => {
+    .then((response) => {
       return {
         ...response.data,
         logoUrl: response.data.logo_url
