@@ -4,6 +4,7 @@ import { api, apiUrl } from "../../utils/api-url"
 import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
 import { useState } from "react"
 import Link from "next/link"
+import { CauseArea } from "../../../shared/types/user"
 
 type Props = {
   name: string
@@ -14,7 +15,7 @@ type Props = {
 }
 
 const Partner: NextPage<Props> = ({ name, domain, logoUrl, donation, error }) => {
-  const causeAreaOptions = [
+  const causeAreaOptions: Array<{ value: CauseArea; label: string }> = [
     { value: "covid", label: "Fight the coronavirus pandemic" },
     { value: "extreme_poverty", label: "People in extreme poverty" },
     { value: "animals", label: "Reduce animal suffering" }

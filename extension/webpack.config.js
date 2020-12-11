@@ -17,7 +17,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const WaitForFilePlugin = require("./webpack/WaitForFilePlugin")
 
-const localhost = "http://api.altruisto.localhost:8001"
+const localhost = "https://altruisto-backend-playground.herokuapp.com"
 
 module.exports = (env, argv) => [
   // build react app for panel and output it to temporary location: /build/.panel
@@ -36,8 +36,7 @@ module.exports = (env, argv) => [
       minimizer: [new OptimizeCSSAssetsPlugin({})]
     },
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -92,8 +91,7 @@ module.exports = (env, argv) => [
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
       new CopyWebpackPlugin(
-        [
-          {
+        [{
             from: PATHS.src + "/manifest.json",
             transform: content => {
               // for extension reloader we need to inject specific content security policies
@@ -126,11 +124,11 @@ module.exports = (env, argv) => [
           }
         ],
         // for extension reloader we need to inject specific content security policies
-        argv.mode === "production"
-          ? {
-              copyUnmodified: true
-            }
-          : {}
+        argv.mode === "production" ?
+        {
+          copyUnmodified: true
+        } :
+        {}
       ),
       new ExtensionReloader({
         port: 9000
@@ -140,8 +138,7 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",
@@ -179,10 +176,9 @@ module.exports = (env, argv) => [
         BASE_URL: JSON.stringify(localhost)
       }),
       new WaitForFilePlugin(PATHS.build + "/.panel/index.html"),
-      new CopyWebpackPlugin([
-        {
+      new CopyWebpackPlugin([{
           from: PATHS.src + "/manifest.json",
-          transform: function(content) {
+          transform: function (content) {
             let newContent = content.toString()
             newContent = newContent.replace("Altruisto.com Chrome Extension", "Altruisto.com")
             newContent = newContent.replace(
@@ -226,8 +222,7 @@ module.exports = (env, argv) => [
       })
     ],
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "ts-loader",

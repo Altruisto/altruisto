@@ -4,8 +4,8 @@ import Tile from "../../ui/Tile"
 import mosquito from "../../../assets/mosquito.svg"
 import medicine from "../../../assets/medicine.svg"
 import family from "../../../assets/family.svg"
-import { IMPACT_COST_IN_USD } from "../../../common/utils/transform-usd-to-beings-saved"
 import { ProgressBar } from "../../ui/ProgressBar"
+import { IMPACT_COST_IN_USD } from "../../../common/utils/transform-usd-to-beings-saved"
 
 type Props = Help & { isActive: boolean }
 

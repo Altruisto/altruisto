@@ -1,0 +1,35 @@
+.tile {
+  width: 100%;
+  height: 70px;
+  padding-left: 18px;
+  padding-right: 18px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f6f7fb;
+
+  &__icon {
+    margin-right: 20px;
+    color: #3e505d;
+
+    &-image {
+      min-height: 24px;
+      min-width: 24px;
+      max-height: 24px;
+      max-width: 24px;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #3a4c5a;
+    margin-bottom: 2px;
+  }
+
+  &__body {
+    font-size: 12px;
+  }
+}

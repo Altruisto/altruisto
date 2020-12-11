@@ -1,0 +1,163 @@
+@import "~pure-react-carousel/dist/react-carousel.es.css";
+
+.mobile-app {
+  p {
+    color: $mobileapp-font-color;
+  }
+
+  &__form-logo {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 45px;
+  }
+
+  &__header {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__user-info {
+    text-align: right;
+    font-size: 11px;
+  }
+
+  &__navigation {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__nav-items {
+    width: 100%;
+  }
+
+  &__nav-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-width: unset !important;
+    text-transform: none !important;
+    font-size: 12px !important;
+  }
+
+  &__content {
+    padding-left: 30px;
+    padding-right: 30px;
+    height: calc(100vh - 160px);
+  }
+
+  &__title {
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    margin: 10px 0;
+    color: $mobileapp-font-color;
+  }
+
+  &__share-button {
+    height: 40px;
+    width: 150px;
+    border-radius: 4px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    &--facebook {
+      background-color: #3b5998;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    &--twitter {
+      background-color: #55acee;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  &__copy-icon {
+    top: 6px !important;
+  }
+
+  &__invited-number {
+    font-size: 16px;
+    color: $mobileapp-font-color;
+    font-weight: bold;
+  }
+
+  &__invited-people {
+    font-size: 12px;
+    color: #9baab8;
+  }
+
+  &__cover {
+    height: 200px;
+  }
+
+  &__search-wrapper {
+    margin-top: -35px;
+    padding: 0 10px 0 30px;
+  }
+
+  &__partner-list {
+    overflow-y: scroll;
+  }
+
+  &__partner-link {
+    padding: 12px 0;
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+  }
+
+  &__main-button {
+    width: initial;
+    padding: 0 19px;
+    margin: 20px;
+  }
+}
+
+.tweet {
+  width: 245px;
+  margin-left: 30px;
+  margin-top: 30px;
+  box-shadow: 0 10px 45px 0 rgba(0, 0, 0, 0.1);
+}
+
+.twitter-carousel {
+  &__dots {
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #d8d8d8;
+    border: 0;
+    margin-right: 5px;
+
+    &:disabled {
+      width: 20px;
+      height: 4px;
+      border-radius: 2px;
+      background-image: $gradient;
+      border: 0;
+    }
+  }
+}

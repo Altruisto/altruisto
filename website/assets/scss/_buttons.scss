@@ -56,3 +56,23 @@
     max-width: 230px;
   }
 }
+
+.button-link {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &:disabled {
+    color: lightgray;
+    cursor: not-allowed;
+  }
+}
+
+.uppercase-link {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaaaaa;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
