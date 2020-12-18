@@ -77,12 +77,14 @@ server.get("/", async (req, res) => {
         )
     )
   } catch (e) {
-    readFileSync("custom-generated-pages/index/covid.html")
-      .toString("utf8")
-      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
-      .replace(/\{\{\{CTA_TEXT\}\}\}/g, getCtaText(ua))
-      .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 68 million")
-      .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 1,500,000")
+    res.send(
+      readFileSync("custom-generated-pages/index/covid.html")
+        .toString("utf8")
+        .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+        .replace(/\{\{\{CTA_TEXT\}\}\}/g, getCtaText(ua))
+        .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 68 million")
+        .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 1,500,000")
+    )
   }
 })
 
@@ -125,12 +127,14 @@ server.get("/gearbest", async (req, res) => {
         )
     )
   } catch (e) {
-    readFileSync("custom-generated-pages/index/gearbest.html")
-      .toString("utf8")
-      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
-      .replace(/\{\{\{CTA_TEXT\}\}\}/g, getCtaText(ua))
-      .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 4 million")
-      .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 250,000")
+    res.send(
+      readFileSync("custom-generated-pages/index/covid.html")
+        .toString("utf8")
+        .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+        .replace(/\{\{\{CTA_TEXT\}\}\}/g, getCtaText(ua))
+        .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 68 million")
+        .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 1,500,000")
+    )
   }
 })
 server.get("/axatravel", async (req, res) => {
@@ -153,12 +157,14 @@ server.get("/axatravel", async (req, res) => {
         )
     )
   } catch (e) {
-    readFileSync("custom-generated-pages/index/axatravel.html")
-      .toString("utf8")
-      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
-      .replace(/\{\{\{CTA_TEXT\}\}\}/g, getCtaText(ua))
-      .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 4 million")
-      .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 250,000")
+    res.send(
+      readFileSync("custom-generated-pages/index/covid.html")
+        .toString("utf8")
+        .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+        .replace(/\{\{\{CTA_TEXT\}\}\}/g, getCtaText(ua))
+        .replace(/\{\{\{CONFIRMED_COVID_CASES\}\}\}/g, "over 68 million")
+        .replace(/\{\{\{CONFIRMED_COVID_DEATHS\}\}\}/g, "over 1,500,000")
+    )
   }
 })
 
