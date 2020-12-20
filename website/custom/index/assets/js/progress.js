@@ -8,29 +8,29 @@ import './jquery.svganim.min'
 $(document).ready(function() {
 
   $('#fullpage').fullpage({
-    anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'world-gdp', 'literacy', 'gender-equality', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
-    sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#1B1C1C'],
+    anchors: ['intro', 'child-mortality', 'extreme-poverty', 'life-expectancy', 'literacy', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
+    sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#1B1C1C'],
     navigation: true,
     navigationPosition: 'right',
-    navigationTooltips: ['Introduction', 'Child Mortality', 'Life Expectancy', 'Extreme Poverty', 'World\'s GDP', 'Literacy', 'Gender Equalty', 'Challenges', 'How you can help', 'Do it today'],
+    navigationTooltips: ['Introduction', 'Child Mortality', 'Extreme Poverty', 'Life Expectancy', 'Literacy', 'How you can help', 'Do it today'],
     responsiveHeight: 666,
     afterLoad: function(anchorLink, index) {
       let section = '#section' + index;
       //todo: fix the selection below
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       setTimeout(function() {
-        rect.animate({ svgWidth: 0 }, 2000, 'linear');
-      }, 2000);
+        rect.animate({ svgWidth: 0 }, 1000, 'linear');
+      }, 1000);
     },
     onLeave: function(fromIndex, toIndex) {
       let section = '#section' + toIndex;
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       rect.attr('width', window.axisLengthXPx + 20);
-      if (fromIndex === 10 && toIndex === 11) {
-        // Scrolling to footer should not hide content on do-it-today (10)
-        $('#section10 .fade-up').addClass('active');
-      } else if (fromIndex === 11 && toIndex === 10) {
-        $('#section10 .fade-up.active').removeClass('active');
+      if (fromIndex === 7 && toIndex === 8) {
+        // Scrolling to footer should not hide content on do-it-today (8)
+        $('#section7 .fade-up').addClass('active');
+      } else if (fromIndex === 8 && toIndex === 7) {
+        $('#section7 .fade-up.active').removeClass('active');
       }
     }
   });
@@ -224,9 +224,7 @@ $(document).ready(function() {
     "child-mortality": d3.csv('/assets/datasets/child-mortality.csv'),
     "life-expectancy": d3.csv('/assets/datasets/life-expectancy-in-uk.csv'),
     "poverty": d3.csv('/assets/datasets/extreme-poverty-percentage.csv'),
-    "gdp": d3.csv('/assets/datasets/gdp.csv'),
     "literacy": d3.csv('/assets/datasets/literate-illiterate.csv'),
-    "gender-equality": d3.csv('/assets/datasets/gender-equality.csv'),
   }
 
   const drawAllGraphs = () => {
@@ -242,16 +240,8 @@ $(document).ready(function() {
       drawGraph('#extreme-poverty-graph-container', data, 'extremePovertyPercentage');
     });
 
-    dataPromises["gdp"].then(data => {
-      drawGraph('#gdp-graph-container', data, 'gdp', [1000, 15000]);
-    });
-
     dataPromises["literacy"].then(data => {
       drawGraph('#literacy-graph-container', data, 'literatePercentage');
-    });
-
-    dataPromises["gender-equality"].then(data => {
-      drawGraph('#gender-equality-graph-container', data, 'medianGenderPayGap');
     });
   };
 

@@ -20,18 +20,28 @@
     margin-bottom: 20px;
 }
 
+.section .red-stat {
+    font-size: 1.2em;
+    color: rgb(230, 0, 0);
+}
+
+.section .green-stat {
+    font-size: 1.2em;
+    color: rgb(0, 230, 0);
+}
+
 .fade-up {
     transform: translateY(0.1vh);
     font-size: 1em;
     opacity: 0;
     transition-property: opacity, transform;
-    transition-delay: 330ms;
-    transition-duration: 660ms;
+    transition-delay: 400ms;
+    transition-duration: 500ms;
     transition-timing-function: cubic-bezier(.445, .05, .55, .95);
 }
 
 .fade-up + .fade-up {
-    transition-delay: 800ms;
+    transition-delay: 1000ms;
 }
 
 .active .fade-up, .fade-up.active {
@@ -43,12 +53,12 @@
     backface-visibility: hidden;
     transition-property: transform;
     transform: perspective(2500px) rotateY(-100deg);
-    transition-duration: 660ms;
-    transition-delay: 1800ms;
+    transition-duration: 360ms;
+    transition-delay: 1500ms;
 }
 
 .flip + .fade-up {
-    transition-delay: 5000ms;
+    transition-delay: 2750ms;
 }
 
 .active .flip {
