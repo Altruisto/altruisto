@@ -102,11 +102,11 @@ $(document).ready(function() {
 
     let svg = d3.select(container)
       .append('svg')
-      .attr('width', vwToPx(widthVw + tickSizeVw))
-      .attr('height', vhToPx(widthVh + tickSizeVh));
+      .attr('width', vwToPx(widthVw))
+      .attr('height', vhToPx(widthVh));
 
     let chartGroup = svg.append('g')
-      .attr('transform', `translate(${vwToPx(tickSizeVw)}, ${vhToPx(tickSizeVh)})`);
+      .attr('transform', `translate(${vwToPx(tickSizeVw * 0.7)}, 10)`);
 
     let line = d3.line()
       .x(d => x(d.year))
@@ -175,8 +175,8 @@ $(document).ready(function() {
 
     let graphDots = chartGroup.append('g')
       .attr('class', 'graph-dot')
-      .attr('width', vwToPx(widthVw))
-      .attr('height', vhToPx(widthVh));
+      .attr('width', vwToPx(widthVw - tickSizeVw))
+      .attr('height', vhToPx(widthVh - tickSizeVh));
 
     // hack for getting the group started at 0
     graphDots.append('circle')
