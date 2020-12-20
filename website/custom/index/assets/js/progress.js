@@ -40,8 +40,6 @@ $(document).ready(function() {
   // Graphs
   const drawGraph = (container, data, statLabel, yScale = [0, 100]) => {
 
-    const widthVw = 0.75; // in vw
-    const widthVh = 0.5; // in vh
     let vw, vh;
     if (window.innerWidth !== undefined && window.innerHeight !== undefined) {
       vw = window.innerWidth;
@@ -53,6 +51,11 @@ $(document).ready(function() {
 
     const vwToPx = (sizeInVw) => sizeInVw * vw;
     const vhToPx = (sizeInVh) => sizeInVh * vh;
+    const pxToVw = (sizeInPx) => sizeInPx / vw;
+
+    const widthPx = $(container).width(); // in px
+    const widthVw = pxToVw(widthPx); // in vw
+    const widthVh = 0.5; // in vh
 
     const numTicksX = 9;
     const numTicksY = 10;
