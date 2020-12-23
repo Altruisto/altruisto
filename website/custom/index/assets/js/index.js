@@ -4,7 +4,7 @@ import "slick-carousel"
 import "./bcswipe"
 import "./handleA2HS"
 
-  ;
+;
 (function ($) {
   // Closes responsive menu when a scroll trigger link is clicked
   $(".js-scroll-trigger").click(function () {
@@ -23,8 +23,7 @@ import "./handleA2HS"
     slidesToShow: 3,
     speed: 700,
     dots: true,
-    responsive: [
-      {
+    responsive: [{
         breakpoint: 1024,
         settings: {
           arrows: false,
