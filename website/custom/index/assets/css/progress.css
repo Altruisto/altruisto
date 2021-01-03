@@ -13,10 +13,6 @@
     font-weight: 100;
 }
 
-#section1 h1 {
-    font-weight: 400;
-}
-
 .section h2 {
     font-size: 2em;
     font-weight: 400;
@@ -38,7 +34,7 @@
 
 .section .green-stat {
     font-size: 1.2em;
-    color: rgb(0, 230, 0);
+    color: rgb(3, 154, 3);
 }
 
 .fade-up {
@@ -281,11 +277,11 @@ line {
 }
 
 .dark-grey {
-    background-color: rgb(50, 50, 50)!important;
+    background-color: rgb(15, 19, 15)!important;
 }
 
 .dark-grey .container {
-    background-color: rgb(50, 50, 50);
+    background-color: rgb(15, 19, 15);
 }
 
 .white {

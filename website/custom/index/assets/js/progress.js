@@ -8,11 +8,11 @@ import './jquery.svganim.min'
 $(document).ready(function() {
 
   $('#fullpage').fullpage({
-    anchors: ['intro', 'child-mortality', 'extreme-poverty', 'life-expectancy', 'literacy', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
+    anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'literacy', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
     sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#1B1C1C'],
     navigation: true,
     navigationPosition: 'right',
-    navigationTooltips: ['Introduction', 'Child Mortality', 'Extreme Poverty', 'Life Expectancy', 'Literacy', 'How you can help', 'Do it today'],
+    navigationTooltips: ['Introduction', 'Child Mortality', 'Life Expectancy', 'Extreme Poverty', 'Literacy', 'Challenges', 'How you can help', 'Do it today'],
     responsiveHeight: 666,
     afterLoad: function(anchorLink, index) {
       let section = '#section' + index;
@@ -26,11 +26,11 @@ $(document).ready(function() {
       let section = '#section' + toIndex;
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       rect.attr('width', window.axisLengthXPx + 20);
-      if (fromIndex === 7 && toIndex === 8) {
+      if (fromIndex === 8 && toIndex === 9) {
         // Scrolling to footer should not hide content on do-it-today (8)
-        $('#section7 .fade-up').addClass('active');
-      } else if (fromIndex === 8 && toIndex === 7) {
-        $('#section7 .fade-up.active').removeClass('active');
+        $('#section8 .fade-up').addClass('active');
+      } else if (fromIndex === 9 && toIndex === 8) {
+        $('#section8 .fade-up.active').removeClass('active');
       }
     }
   });
