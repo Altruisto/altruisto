@@ -8,29 +8,29 @@ import './jquery.svganim.min'
 $(document).ready(function() {
 
   $('#fullpage').fullpage({
-    anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'world-gdp', 'literacy', 'gender-equality', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
-    sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#1B1C1C'],
+    anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'literacy', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
+    sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#1B1C1C'],
     navigation: true,
     navigationPosition: 'right',
-    navigationTooltips: ['Introduction', 'Child Mortality', 'Life Expectancy', 'Extreme Poverty', 'World\'s GDP', 'Literacy', 'Gender Equalty', 'Challenges', 'How you can help', 'Do it today'],
+    navigationTooltips: ['Introduction', 'Child Mortality', 'Life Expectancy', 'Extreme Poverty', 'Literacy', 'Challenges', 'How you can help', 'Do it today'],
     responsiveHeight: 666,
     afterLoad: function(anchorLink, index) {
       let section = '#section' + index;
       //todo: fix the selection below
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       setTimeout(function() {
-        rect.animate({ svgWidth: 0 }, 2000, 'linear');
-      }, 2000);
+        rect.animate({ svgWidth: 0 }, 1000, 'linear');
+      }, 1000);
     },
     onLeave: function(fromIndex, toIndex) {
       let section = '#section' + toIndex;
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       rect.attr('width', window.axisLengthXPx + 20);
-      if (fromIndex === 10 && toIndex === 11) {
-        // Scrolling to footer should not hide content on do-it-today (10)
-        $('#section10 .fade-up').addClass('active');
-      } else if (fromIndex === 11 && toIndex === 10) {
-        $('#section10 .fade-up.active').removeClass('active');
+      if (fromIndex === 8 && toIndex === 9) {
+        // Scrolling to footer should not hide content on do-it-today (8)
+        $('#section8 .fade-up').addClass('active');
+      } else if (fromIndex === 9 && toIndex === 8) {
+        $('#section8 .fade-up.active').removeClass('active');
       }
     }
   });
@@ -40,8 +40,6 @@ $(document).ready(function() {
   // Graphs
   const drawGraph = (container, data, statLabel, yScale = [0, 100]) => {
 
-    const widthVw = 0.75; // in vw
-    const widthVh = 0.5; // in vh
     let vw, vh;
     if (window.innerWidth !== undefined && window.innerHeight !== undefined) {
       vw = window.innerWidth;
@@ -53,6 +51,11 @@ $(document).ready(function() {
 
     const vwToPx = (sizeInVw) => sizeInVw * vw;
     const vhToPx = (sizeInVh) => sizeInVh * vh;
+    const pxToVw = (sizeInPx) => sizeInPx / vw;
+
+    const widthPx = $(container).width(); // in px
+    const widthVw = pxToVw(widthPx); // in vw
+    const widthVh = 0.5; // in vh
 
     const numTicksX = 9;
     const numTicksY = 10;
@@ -99,11 +102,11 @@ $(document).ready(function() {
 
     let svg = d3.select(container)
       .append('svg')
-      .attr('width', vwToPx(widthVw + tickSizeVw))
-      .attr('height', vhToPx(widthVh + tickSizeVh));
+      .attr('width', vwToPx(widthVw))
+      .attr('height', vhToPx(widthVh));
 
     let chartGroup = svg.append('g')
-      .attr('transform', `translate(${vwToPx(tickSizeVw)}, ${vhToPx(tickSizeVh)})`);
+      .attr('transform', `translate(${vwToPx(tickSizeVw * 0.7)}, 10)`);
 
     let line = d3.line()
       .x(d => x(d.year))
@@ -172,8 +175,8 @@ $(document).ready(function() {
 
     let graphDots = chartGroup.append('g')
       .attr('class', 'graph-dot')
-      .attr('width', vwToPx(widthVw))
-      .attr('height', vhToPx(widthVh));
+      .attr('width', vwToPx(widthVw - tickSizeVw))
+      .attr('height', vhToPx(widthVh - tickSizeVh));
 
     // hack for getting the group started at 0
     graphDots.append('circle')
@@ -224,9 +227,7 @@ $(document).ready(function() {
     "child-mortality": d3.csv('/assets/datasets/child-mortality.csv'),
     "life-expectancy": d3.csv('/assets/datasets/life-expectancy-in-uk.csv'),
     "poverty": d3.csv('/assets/datasets/extreme-poverty-percentage.csv'),
-    "gdp": d3.csv('/assets/datasets/gdp.csv'),
     "literacy": d3.csv('/assets/datasets/literate-illiterate.csv'),
-    "gender-equality": d3.csv('/assets/datasets/gender-equality.csv'),
   }
 
   const drawAllGraphs = () => {
@@ -242,16 +243,8 @@ $(document).ready(function() {
       drawGraph('#extreme-poverty-graph-container', data, 'extremePovertyPercentage');
     });
 
-    dataPromises["gdp"].then(data => {
-      drawGraph('#gdp-graph-container', data, 'gdp', [1000, 15000]);
-    });
-
     dataPromises["literacy"].then(data => {
       drawGraph('#literacy-graph-container', data, 'literatePercentage');
-    });
-
-    dataPromises["gender-equality"].then(data => {
-      drawGraph('#gender-equality-graph-container', data, 'medianGenderPayGap');
     });
   };
 
