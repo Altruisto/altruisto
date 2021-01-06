@@ -18,7 +18,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@zeit/next-sass": "^1.0.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
     "copy-to-clipboard": "^3.3.1",
