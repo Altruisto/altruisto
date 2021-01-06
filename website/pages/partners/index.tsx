@@ -7,8 +7,7 @@ import { api } from "../../utils/api-url"
 import { GetPartnersResponse } from "../../../shared/types/api"
 import { groupAplabetically } from "../../utils/group-alphabetically"
 import { splitToEqualChunks } from "../../utils/split-to-equal-chunks"
-
-type Partner = { name: string; domain: string }
+import { Partner } from "types/partner"
 
 type Props = {
   partners: Partner[]

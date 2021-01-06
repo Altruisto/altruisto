@@ -9,7 +9,10 @@ import { ChangeEmail } from "./ChangeEmail"
 import { ChangePassword } from "./ChangePassword"
 import axios from "../../../../helpers/api"
 import { storage } from "../../../../helpers/storage"
-import { Currency as CurrencyType, CauseArea as CauseAreaType } from "../../../../types/types"
+import {
+  Currency as CurrencyType,
+  CauseArea as CauseAreaType
+} from "../../../../../../shared/types/user"
 
 type Props = {
   onRequestLogin?: () => void

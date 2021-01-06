@@ -178,11 +178,12 @@
             </li>
           </ul>
         </div>
-        <a href="{{{CTA}}}" class="menu__cta button">Install now for free</a>
+        <a href="{{{CTA}}}" class="menu__cta button">{{{CTA_TEXT}}}</a>
       </div>
     </nav>
 
     <section
+      id="page-top"
       class="hero-poster with-overlay"
       style="background-image: url(/images/covid-photo.jpeg);"
     >
@@ -220,15 +221,19 @@
           class="hero-poster__install button install-button"
           target="_blank"
           rel="noreferrer noopener"
-          >Install now for free</a
+          >{{{CTA_TEXT}}}</a
         >
 
         <a href="#make-a-difference" class="hero-poster__link js-scroll-trigger"
           >or find out more first</a
         >
 
-        <div class="d-none d-lg-flex flex-column at-bottom mb-3">
-          <img src="/images/scroll-down.svg" alt="computer mouse" title="computer mouse" />
+        <div class="d-none d-lg-flex column-center at-bottom mb-3">
+          <img 
+            src="/images/scroll-down.svg" 
+            alt="computer mouse" 
+            title="computer mouse" 
+          />
           <span class="mt-1">Scroll down to find out more</span>
         </div>
       </div>
@@ -662,7 +667,7 @@
                     class="why__button button button--white"
                     target="_blank"
                     rel="noreferrer noopener"
-                    ><span class="text-gradient">Install now for free</span></a
+                    ><span class="text-gradient">{{{CTA_TEXT}}}</span></a
                   >
                 </div>
               </div>

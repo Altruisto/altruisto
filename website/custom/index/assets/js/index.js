@@ -23,8 +23,7 @@ import "./handleA2HS"
     slidesToShow: 3,
     speed: 700,
     dots: true,
-    responsive: [
-      {
+    responsive: [{
         breakpoint: 1024,
         settings: {
           arrows: false,

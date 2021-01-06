@@ -23,9 +23,23 @@ export const DefaultHead: React.FC<MetaTags> = ({
     <title key="title">
       {seoMetaTags.title || "altruisto.com - Do good while shopping online"}
     </title>
-    <SeoMetaTags {...seoMetaTags} />
-    <OgMetaTags {...ogMetaTags} />
-    <TwitterMetaTags {...twitterMetaTags} />
+    {seoMetaTags.description && <meta name="description" content={seoMetaTags.description} />}
+    {seoMetaTags.keywords && <meta name="keywords" content={seoMetaTags.keywords} />}
+
+    {ogMetaTags.url && <meta property="og:url" content={ogMetaTags.url} />}
+    {ogMetaTags.title && <meta property="og:title" content={ogMetaTags.title} />}
+    {ogMetaTags.description && <meta property="og:description" content={ogMetaTags.description} />}
+    {ogMetaTags.image && <meta property="og:image" content={ogMetaTags.image} />}
+
+    {twitterMetaTags.card && <meta name="twitter:card" content={twitterMetaTags.card} />}
+    {twitterMetaTags.site && <meta name="twitter:site" content={twitterMetaTags.site} />}
+    {twitterMetaTags.creator && <meta name="twitter:creator" content={twitterMetaTags.creator} />}
+    {twitterMetaTags.title && <meta name="twitter:title" content={twitterMetaTags.title} />}
+    {twitterMetaTags.description && (
+      <meta name="twitter:description" content={twitterMetaTags.description} />
+    )}
+    {twitterMetaTags.image && <meta name="twitter:image" content={twitterMetaTags.image} />}
+    {twitterMetaTags.alt && <meta name="twitter:image:alt" content={twitterMetaTags.alt} />}
     <meta name="apple-mobile-web-app-title" content="Altruisto" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />

@@ -1,6 +1,6 @@
 import { browser } from "webextension-polyfill-ts"
-import { CauseArea, Currency } from "../types/types"
 import { pick } from "./pick"
+import { CauseArea, Currency } from "../../../shared/types/user";
 
 export type LocalStorageSchema = {
   activatedAffiliates: ActivatedAffiliate[]

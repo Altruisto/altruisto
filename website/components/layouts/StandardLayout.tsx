@@ -45,7 +45,7 @@ export const StandardLayout: LayoutComponent<Props> = ({
             <Menu />
           ) : (
             <div className="menu__top">
-              <a className="menu__brand navbar-brand js-scroll-trigger" href="#page-top">
+              <a className="menu__brand navbar-brand js-scroll-trigger" href="/#page-top">
                 <img
                   src="/images/logo.svg"
                   alt="Altruisto logo"
@@ -57,7 +57,7 @@ export const StandardLayout: LayoutComponent<Props> = ({
           )}
           {noCta ? null : (
             <a href={cta} className="menu__cta button">
-              Install now for free
+              Start helping now
             </a>
           )}
         </div>

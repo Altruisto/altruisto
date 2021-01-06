@@ -7,7 +7,7 @@ import axios from "../../../../helpers/api"
 import { useAuthContext } from "../../../common/auth"
 import { Loader } from "../../ui/Loader"
 import { storage } from "../../../../helpers/storage"
-import { Currency } from "../../../../types/types"
+import { Currency } from "../../../../../../shared/types/user"
 
 type Props = {
   onSuccess?: () => void

@@ -1,5 +1,5 @@
 // Heroku doesn't support monorepos with shared code.
-// Beceuase of that we deploy from different repo - "homepage", not "altruisto"
+// Because of that we deploy from different repo - "homepage", not "altruisto"
 // This script automatically creates a deploy branch in that repo
 import fs from "fs"
 import path from "path"
@@ -31,25 +31,30 @@ const branch = `deploy-${time}`
 
 const deploy = async () => {
   await git.checkoutBranch(branch, "HEAD")
-  ncp("../shared", "./shared", async err => {
+  ncp("../shared", "./shared", async (err) => {
     if (err) {
       console.error(err)
     }
     console.log(">> deploy: copied `./shared`")
 
     const options = {
-      files: ["server.ts", "pages/*", "pages/*/*"],
+      files: ["server.ts", "pages/**/*", "components/**/*", "hooks/**/*"],
       from: /\.\.\/shared/g,
       to: "./shared"
     }
     const results = await replace(options)
-    console.log(">> deploy: replacement results:", results)
+    console.log(">> deploy: replacement results:")
+    results.forEach((result) => {
+      if (result.hasChanged) {
+        console.log("    ", result.file)
+      }
+    })
 
     await git.add(".")
     await git.commit(`deploy: ${time}`)
     console.log(">> deploy: commit created")
     const remotes = await git.getRemotes(true)
-    if (remotes.every(r => !r.refs.push.includes("github.com:Altruisto/homepage.git"))) {
+    if (remotes.every((r) => !r.refs.push.includes("github.com:Altruisto/homepage.git"))) {
       await git.addRemote("homepage", "git@github.com:Altruisto/homepage.git")
       console.log(">> deploy: remote 'homepage' added")
     }
