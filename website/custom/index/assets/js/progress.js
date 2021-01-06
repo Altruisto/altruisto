@@ -7,13 +7,16 @@ import './jquery.svganim.min'
 
 $(document).ready(function() {
 
+  const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+
   $('#fullpage').fullpage({
     anchors: ['intro', 'child-mortality', 'life-expectancy', 'extreme-poverty', 'literacy', 'challenges', 'you-have-the-power-to-help', 'do-it-today', 'footer'],
     sectionsColor: ['#F2F2F2', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#D6D6D6', '#F2F2F2', '#D6D6D6', '#1B1C1C'],
-    navigation: true,
+    navigation: !isMobile,
     navigationPosition: 'right',
     navigationTooltips: ['Introduction', 'Child Mortality', 'Life Expectancy', 'Extreme Poverty', 'Literacy', 'Challenges', 'How you can help', 'Do it today'],
     responsiveHeight: 666,
+    autoScrolling: isMobile,
     afterLoad: function(anchorLink, index) {
       let section = '#section' + index;
       //todo: fix the selection below
@@ -249,7 +252,11 @@ $(document).ready(function() {
   };
 
   drawAllGraphs();
-  $(window).on('resize', drawAllGraphs);
+  $(window).on('resize', function() {
+    if (!isMobile) {
+      drawAllGraphs();
+    }
+  });
 
 });
 

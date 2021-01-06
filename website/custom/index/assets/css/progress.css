@@ -2,6 +2,7 @@
     color: white;
     text-align: center;
     font-family: 'Roboto';
+    overflow: hidden;
 }
 
 .section .container > * {
