@@ -343,6 +343,10 @@ line {
     opacity: 1;
 }
 
+.share-buttons {
+    display: block;
+}
+
 @media only screen and (max-width: 768px) {
     .section h1 {
         font-size: 2.2em;
@@ -355,6 +359,11 @@ line {
     }
     .hide-on-mobile {
         display: none;
+    }
+    .share-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
 
