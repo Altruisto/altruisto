@@ -22,8 +22,8 @@ $(document).ready(function() {
       //todo: fix the selection below
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       setTimeout(function() {
-        rect.animate({ svgWidth: 0 }, 1000, 'linear');
-      }, 1000);
+        rect.animate({ svgWidth: 0 }, 1250, 'linear');
+      }, 1500);
     },
     onLeave: function(fromIndex, toIndex) {
       let section = '#section' + toIndex;
