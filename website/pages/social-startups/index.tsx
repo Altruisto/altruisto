@@ -99,20 +99,34 @@ const SocialStartups = () => {
                       >
                         <path
                           fill="#9BAAB8"
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M12.82 24H1.324A1.325 1.325 0 0 1 0 22.675V1.325C0 .593.593 0 1.325 0h21.35C23.407 0 24 .593 24 1.325v21.35c0 .732-.593 1.325-1.325 1.325H16.56v-9.294h3.12l.466-3.622H16.56V8.77c0-1.048.29-1.763 1.795-1.763h1.918v-3.24c-.332-.045-1.47-.143-2.795-.143-2.766 0-4.659 1.688-4.659 4.788v2.67H9.692v3.623h3.127V24z"
                         />
                       </svg>
                     </a>
                   ) : null}
                   {startup.social && startup.social.instagram ? (
-                    <a href={startup.social.instagram} target="_blank"  className="col-4">
-                      <img
-                        src="https://prismic-io.s3.amazonaws.com/altruisto/edcfcc0d-ea0e-4f9b-8214-bcd02650467f_instagram.svg"
-                        alt="Instagram icon"
-                        title="Instagram icon"
-                        style={{ width: 18, height: 18 }}
-                      />
+                    <a href={startup.social.instagram} target="_blank"  className="mx-3">
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24" 
+                        width="24" 
+                        viewBox="0 0 512 512" 
+                        className="footer__icon"
+                      >                         
+                        <path
+                          fill="#9BAAB8"
+                          fillRule="evenodd"
+                          d="m437 0h-362c-41.351562 0-75 33.648438-75 75v362c0 41.351562 33.648438 75 75 75h362c41.351562 0 75-33.648438 75-75v-362c0-41.351562-33.648438-75-75-75zm-180 390c-74.441406 0-135-60.558594-135-135s60.558594-135 135-135 135 60.558594 135 135-60.558594 135-135 135zm150-240c-24.8125 0-45-20.1875-45-45s20.1875-45 45-45 45 20.1875 45 45-20.1875 45-45 45zm0 0"/>
+                        <path 
+                          fill="#9BAAB8"
+                          fillRule="evenodd"
+                          d="m407 90c-8.277344 0-15 6.722656-15 15s6.722656 15 15 15 15-6.722656 15-15-6.722656-15-15-15zm0 0"/>
+                        <path 
+                          fill="#9BAAB8"
+                          fillRule="evenodd"
+                          d="m257 150c-57.890625 0-105 47.109375-105 105s47.109375 105 105 105 105-47.109375 105-105-47.109375-105-105-105zm0 0"/>
+                      </svg>
                     </a>
                   ) : null}
                 </div>
