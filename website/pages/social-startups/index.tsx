@@ -1,58 +1,38 @@
 import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
 import { apiUrl } from "../../utils/api-url"
+import { useState, useEffect } from "react"
+import startupsList from "./startupsList"
 
-const data = [
-  {
-    name: "Altruisto",
-    logo: "https://altruisto.com/images/logo.svg",
-    description:
-      "Altruisto.com is a browser extension that allows users to collect money for extremely effective charities while shopping online. It works with 1000+ shops including Aliexpress, Barnes & Noble, Booking.com, eBay, Etsy and Microsoft. For every $4.59 raised for Against Malaria Foundation two people are protected from malaria (via bed nets) and for every $0.99 raised for Schistosomiasis Control Initiative one child gets a year supply of antiparasitic medicine.",
-    link: "https://altruisto.com",
-    social: {
-      facebook: "https://facebook.com/altruistocom",
-      twitter: "https://twitter.com/altruistocom",
-      instagram: "https://instagram.com/altruistocom"
-    },
-    founders: [
-      {
-        name: "Daniel Wyrzykowski",
-        img:
-          "https://images.prismic.io/altruisto/6f7d02e0-f45c-48af-b899-fb0a0e2fd836_121617059_4656915421017775_8055769448875628569_n.jpg?auto=compress,format"
-      }
-    ]
-  },
-  {
-    name: "Andela",
-    logo:
-      "https://3xyh3sqxv063a8xzo5uk2zn1-wpengine.netdna-ssl.com/wp-content/uploads/2016/01/Andela-logo-landscape-blue-400px.png",
-    description:
-      "Recruits and manages African tech talent (developers) and integrates them into world leading tech companies. Backed by Chan Zuckerberg Iniative.",
-    link: "https://andela.com",
-    social: {
-      facebook: "https://www.facebook.com/thisisandela"
-    },
-    founders: [
-      {
-        name: "Christina Saas",
-        img:
-          "https://3xyh3sqxv063a8xzo5uk2zn1-wpengine.netdna-ssl.com/wp-content/uploads/2017/06/Christina-Sass.jpg"
-      },
-      {
-        name: "Jeremy Johnson",
-        img:
-          "https://3xyh3sqxv063a8xzo5uk2zn1-wpengine.netdna-ssl.com/wp-content/uploads/2017/06/Jeremy@600x600.jpg"
-      }
-    ]
-  }
-]
+const SocialStartups = () => {
+  const [searchPhrase, setSearchPhrase] = useState("")
+  const [searchedStartupsList, setSearchedStartupList] = useState(startupsList)
 
-const SocialStartups = () => (
+  useEffect(() => {
+    if (searchPhrase === "") {
+      setSearchedStartupList(startupsList)
+    } else {
+      setSearchedStartupList(() => 
+          startupsList.filter((v) => v.name.toLowerCase().includes(searchPhrase.toLowerCase()))
+      )
+      }
+  }, [searchPhrase])
+
+  return (
   <WithSmallCoverLayout
     title="50+ Inspiring Social Start-ups That Are Making The World Better"
     noCta
-  >
-    <div className="d-flex flex-column">
-      {data.map((startup) => {
+    > <div className="partners__search-wrapper input-group">
+        <input
+          value={searchPhrase}
+          className="partners__search-input"
+          placeholder="Search..."
+          onChange={(event) => {
+            setSearchPhrase(event.currentTarget.value)
+          }}
+        />
+      </div>
+      <div className="container">
+        {searchedStartupsList.map((startup) => {
         return (
           <div className="d-flex flex-row">
             <img src={startup.logo} style={{ maxWidth: 200 }} />
