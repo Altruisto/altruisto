@@ -45,7 +45,7 @@ const SocialStartups = () => {
                 {startup.founders && startup.founders.length > 0 ? (
                   <div className="d-flex flex-row">
                     {startup.founders.map((founder) => (
-                      <div key={founder.name}>
+                      <div key={founder.name} className="d-flex flex-row flex-nowrap">
                         <img
                           src={founder.img}
                           className="mr-2"
@@ -66,13 +66,13 @@ const SocialStartups = () => {
                 ) : null}
               </div>
 
-              <div className="col-12 col-md-2 row justify-content-center">
-                <a href={startup.link} target="_blank" className="col-12 text-center mt-2 mb-2 mt-md-0 mb-md-0">
+              <div className="col-12 col-md-2 row justify-content-md-center justify-content-start">
+                <a href={startup.link} target="_blank" className="col-12 text-md-center text-start mt-3 mb-3 mt-md-0 mb-md-0 px-0 .link">
                   VISIT WEBSITE
                 </a>
-                <div className="col-12 row justify-content-center mt-2 mb-2 mt-md-0 mb-md-0">
+                <div className="col-12 row justify-content-md-center justify-content-start flex-nowrap mt-3 mb-2 mt-md-0 mb-md-0 px-0">
                   {startup.social && startup.social.facebook ? (
-                    <a href={startup.social.facebook} target="_blank" className="col-4">
+                    <a href={startup.social.facebook} target="_blank" className="mx-3">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -89,7 +89,7 @@ const SocialStartups = () => {
                     </a>
                   ) : null}
                   {startup.social && startup.social.twitter ? (
-                    <a href={startup.social.twitter} target="_blank" className="col-4">
+                    <a href={startup.social.twitter} target="_blank" className="mx-3">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
