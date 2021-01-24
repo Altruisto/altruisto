@@ -43,7 +43,7 @@ const startupsList = [
     },
     {
         name: 'Art Lifting',
-        logo: 'img/logos/artlifting.png',
+        logo: 'https://cdn.shopify.com/s/files/1/0950/0728/t/49/assets/logo__artlifting.png?v=1926912982144732773',
         description: 'Connects socially conscious businesses with artists that are disabled or experiencing homelessness. Either for artwork in building spaces or work with licensing partners to develop co-branded merch.',
         link: 'http://www.artlifting.com/',
         social: {
@@ -101,7 +101,7 @@ const startupsList = [
     },
     {
         name: 'Bayes Impact',
-        logo: 'img/logos/bayes-impact.png',
+        logo: 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/7a/Bayes_Impact_logo.svg/langfr-2560px-Bayes_Impact_logo.svg.png',
         description: 'Bayes Impact is a Y Combinator-backed non-profit that builds operational solutions to the world\'s biggest challenges using data science. Uses data to create interventions for underserved people across the world ',
         link: 'http://www.bayesimpact.org/',
         social: {
@@ -111,13 +111,13 @@ const startupsList = [
         founders: [
             {
                 name: 'Paul Duan',
-                img: 'https://media-exp1.licdn.com/dms/image/C4E03AQG6P8kreZ6F4Q/profile-displayphoto-shrink_200_200/0?e=1587600000&v=beta&t=fTEZF5m7kz6gm2pBYK3h7xUTDQlLi2m70dvE9k_UXE8'
+                img: 'https://www.bayesimpact.org/images/team/paul-duan.jpg'
             }
         ]
     },
     {
         name: 'Bogo Brush',
-        logo: 'img/logos/bogobrush.png',
+        logo: 'https://cdn.shopify.com/s/files/1/0883/6822/t/24/assets/logo.png?v=3230238293993459743',
         description: 'Bogobrush toothbrushes are beautifully modern, eco friendly, and made in the USA. With each toothbrush sold, one is donated to a person in need.',
         link: 'https://www.bogobrush.com',
         social: {
@@ -138,7 +138,7 @@ const startupsList = [
     },
     {
         name: 'Be my Eyes',
-        logo: 'img/logos/bemyeyes.png',
+        logo: 'https://uploads-ssl.webflow.com/5a5de2c1a0eb5000019e4dc0/5f465d8a9a3c0c7c1bfe6fc4_logo-BeMyEyes.svg',
         description: 'Free app that connects blind and low vision people with sighted volunteers and company representatives for visual assistance through a live video call.',
         link: 'http://www.bemyeyes.org/',
         social: {
@@ -158,7 +158,7 @@ const startupsList = [
     },
     {
         name: 'Change.org',
-        logo: 'https://pbs.twimg.com/profile_images/2812594299/9b73fd33e13d2265d3e6aee0a48d5004_400x400.png',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Change.org_logo.svg',
         description: `World's largest online petitioning platform that provides grassroots level empowerment for social change.`,
         link: 'https://www.change.org/',
         social: {
@@ -224,7 +224,7 @@ const startupsList = [
     },
     {
         name: 'Elephant Parade',
-        logo: 'https://www.elephantparade.com/assets/img/logo.png',
+        logo: 'https://www.elephantparade.com/images/logo.png',
         description: 'Open-air exhibitions of artist created elephants are placed in the streets of host cities to increase public awareness of the plights of elephants to support elephant conservation. At the end of the festival, the elephants are auctioned off with the proceeds going to NGO, Elephant Family ',
         link: 'http://www.elephantparade.com/',
         social: {
@@ -305,7 +305,7 @@ const startupsList = [
     },
     {
         name: 'Free Code Camp',
-        logo: 'img/logos/freecodecamp.png',
+        logo: 'https://design-style-guide.freecodecamp.org/downloads/fcc_secondary_large.png',
         description: 'Free Code Camp teaches students to code in several languages for free, then partners them with nonprofit organizations to provide mutually beneficial web development. freeCodeCamp has donated US$ 1,400,000 worth of development work to nonprofits as of January 2017.',
         link: 'https://www.freecodecamp.org/',
         social: {
@@ -321,7 +321,7 @@ const startupsList = [
     },
     {
         name: 'Finnegans',
-        logo: 'img/logos/finnegans.png',
+        logo: 'https://finnegans.org/wp-content/uploads/2016/08/Finnegans-Brew-Co_logo.jpg',
         description: 'Finnegans provides food to food banks through their Good Beer arm which donates 100% of its profits to supplying food to underserved individuals. They also engineered the "reverse food truck" which picks up food from donors instead of selling food for cash.',
         link: 'https://finnegans.org/',
         social: {
@@ -396,7 +396,7 @@ const startupsList = [
     },
     {
         name: 'Handup',
-        logo: 'img/logos/handup.png',
+        logo: 'https://s3.amazonaws.com/handup-static/img/HandUp-Logo-GrayRed.png',
         description: 'A platform for donors to give directly to people who are experiencing homelessness ',
         link: 'https://handup.org/',
         social: {
@@ -414,7 +414,7 @@ const startupsList = [
     },
     {
         name: 'Impossible Foods',
-        logo: 'img/logos/impossible.png',
+        logo: 'https://res.cloudinary.com/dlvhhibcv/image/fetch/f_auto/https://images.ctfassets.net/hhv516v5f7sj/5HnCThStNoafZYy1dKmUYu/3cdbea5f3a865ebcdf2582b176a6beef/impossible_with_transparency.png?w=2560',
         description: `This company creates meat and dairy products without the use of any animal parts. They're the creators of the "Impossible Burger" a meatless burger that bleeds just like the real thing without any of the cruelty.`,
         link: 'https://impossiblefoods.com',
         social: {
@@ -500,7 +500,7 @@ const startupsList = [
     },
     {
         name: `Newman's Own`,
-        logo: 'img/logos/newmans-own.jpeg',
+        logo: 'https://upload.wikimedia.org/wikipedia/en/6/6b/Newman%27s_Own_logo.jpg',
         description: 'CPG company that donates 100% of profits to charity. They have a variety of items from salad dressings to bottled wine.',
         link: 'https://newmansown.com/',
         social: {
@@ -550,7 +550,7 @@ const startupsList = [
     },
     {
         name: 'Pulse Point',
-        logo: 'http://www.pulsepoint.org/wp-content/themes/pulsepoint-20140724/images/logo_pulsepoint-red.png',
+        logo: 'https://d34h86nwtgo5zp.cloudfront.net/default/PulsePoint_Logo_RGB_Color.png?mtime=20200828140200&focal=none',
         description: 'Alerts CPR and AED trained individuals when someone nearby is going through cardiac arrest.',
         link: 'http://www.pulsepoint.org/',
         social: {
@@ -566,7 +566,7 @@ const startupsList = [
     },
     {
         name: 'Raise Me',
-        logo: 'img/logos/raise-me.png',
+        logo: 'https://cdn.raise.me/assets/images/static/logo-blue.0ebb428270f4fe5239620bc711f478bd.png',
         description: 'Provides microscholarships from colleges to high school students. For each achievement (like an A in a core class, or holding a leadership position in a sport), students can receive money towards a scholarship, redeemable once they attend that college',
         link: 'https://www.raise.me/',
         social: {
@@ -645,7 +645,7 @@ const startupsList = [
     },
     {
         name: 'Sevenly',
-        logo: 'img/logos/sevenly.jpg',
+        logo: 'https://cdn.shopify.com/s/files/1/0603/7977/files/sevenly_logo_blue_280x@2x.png?v=1546932906',
         description: 'Sevenly is an apparel e-commerce website. Portion of the money from each purchase is donated to charitable causes.',
         link: 'https://www.sevenly.org',
         social: {
@@ -693,7 +693,7 @@ const startupsList = [
     },
     {
         name: 'Tab for a Cause',
-        logo: 'img/logos/tab-for-a-cause.png',
+        logo: 'https://tab.gladly.io/static/logo-with-text-257bbffc6dcac5076e8ac31eed8ff73c.svg',
         description: 'Donates money to charity every time a user opens a new tab. Through their sponsors, they have raised over $800k for charities.',
         link: 'http://tab.gladly.io',
         social: {
@@ -730,7 +730,7 @@ const startupsList = [
     },
     {
         name: 'TerraCycle',
-        logo: 'img/logos/terracycle.png',
+        logo: 'https://s3.amazonaws.com/tc-global-prod/download_resources/us/downloads/969/Official_TerraCycle_Logo.png',
         description: 'TerraCycle takes non-recyclable pre-consumer and post-consumer waste and turns it into a raw material to be used in new products.',
         link: 'https://www.terracycle.com',
         social: {
@@ -762,7 +762,7 @@ const startupsList = [
     },
     {
         name: 'Toms Shoes',
-        logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/Tom-Logo.jpg/200px-Tom-Logo.jpg',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/%ED%83%90%EC%8A%A4_%EB%A1%9C%EA%B3%A0.jpg',
         description: 'The company designs and sells shoes based on the Argentine alpargata design, eyewear, coffee, apparel, and handbags. When Toms sells a pair of shoes, a new pair of shoes is given to an impoverished child, when Toms sells eyewear, part of the profit is used to save or restore eyesight for people in developing countries.',
         link: 'http://www.toms.com/',
         social: {
@@ -783,7 +783,7 @@ const startupsList = [
     },
     {
         name: 'United by Blue',
-        logo: 'img/logos/united-by-blue.png',
+        logo: 'https://cdn.shopify.com/s/files/1/0287/3670/files/Logo-Horizontal-WebBlue-01.png?height=628&pad_color=ffffff&v=1597930223&width=1200',
         description: 'For every product sold they remove one pound of trash from oceans and waterways.',
         link: 'https://unitedbyblue.com/',
         social: {
@@ -824,7 +824,7 @@ const startupsList = [
     },*/
     {
         name: 'WakaWaka',
-        logo: 'img/logos/wakawaka.svg',
+        logo: 'https://waka-waka.com/wp-content/uploads/2019/10/seo-logo.png',
         description: 'One for One solar social enterprise. For every solar array sold, they donate a solar light to a family previously living without access to electricity.',
         link: 'http://waka-waka.com/',
         social: {
@@ -848,7 +848,7 @@ const startupsList = [
     },
     {
         name: 'Watsi',
-        logo: 'img/logos/watsi.png',
+        logo: 'https://upload.wikimedia.org/wikipedia/en/f/fb/Watsi_blue_3_triangle_logo.png',
         description: 'Builds technology to finance healthcare costs like surgeries through crowdfunding.',
         link: 'https://watsi.org/',
         social: {
@@ -920,7 +920,7 @@ const startupsList = [
     },
     {
         name: 'Zidisha',
-        logo: 'https://www.pinclipart.com/picdir/middle/35-355824_zidisha-inc-logo-finger-biscuits-south-africa-clipart.png',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Zidisha_Inc._Logo.png',
         description: 'The first online microlending community that directly connects lenders and borrowers â€” no matter the distance or disparity between them. Allows users to fund people in developing nations capital for projects. For example, you could give $25 for a grocery stand or give  $100 to a beauty salon. ',
         link: 'https://www.zidisha.org/',
         social: {
