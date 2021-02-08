@@ -22,7 +22,8 @@ const SocialStartups = () => {
     <WithSmallCoverLayout
       title="50+ Inspiring Social Start-ups That Are Making The World Better"
       noCta
-    > <div className="partners__search-wrapper input-group">
+    > 
+      <div className="partners__search-wrapper input-group">
         <input
           value={searchPhrase}
           className="partners__search-input"
@@ -54,7 +55,9 @@ const SocialStartups = () => {
                             width: 40,
                             maxHeight: 40,
                             height: 40,
-                            borderRadius: "50%"
+                            objectFit: "cover",
+                            objectPosition: "35% 15%",
+                            borderRadius: "50%",
                           }}
                         />
                         <span className="mr-2">
@@ -66,7 +69,7 @@ const SocialStartups = () => {
                 ) : null}
               </div>
 
-              <div className="col-12 col-md-2 row justify-content-md-center justify-content-start">
+              <div className="col-12 col-md-2 mt-2 row justify-content-md-center justify-content-start">
                 <a href={startup.link} target="_blank" className="col-12 text-md-center text-start mt-3 mb-3 mt-md-0 mb-md-0 px-0 .link">
                   VISIT WEBSITE
                 </a>
