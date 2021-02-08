@@ -1,7 +1,7 @@
 import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
-import { apiUrl } from "../../utils/api-url"
+// import { apiUrl } from "../../utils/api-url"
 import { useState, useEffect } from "react"
-import { cpus } from "os";
+// import { cpus } from "os";
 import startupsList from "./startupsList"
 
 const SocialStartups = () => {
