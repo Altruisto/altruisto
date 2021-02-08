@@ -37,7 +37,7 @@ const startupsList = [
         {
           name: "Jeremy Johnson",
           img:
-            "https://3xyh3sqxv063a8xzo5uk2zn1-wpengine.netdna-ssl.com/wp-content/uploads/2017/06/Jeremy@600x600.jpg"
+            "https://andela.com/wp-content/uploads/2021/01/icon-2.png"
         }
       ]
     },
@@ -54,11 +54,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Liz Powers',
-                img: 'img/founders/liz-powers.jpg'
+                img: 'images/no-photo.svg'
             },
             {
                 name: 'Spencer Powers',
-                img: 'img/founders/spencer-powers.jpg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -75,7 +75,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Bunker Roy',
-                img: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fnhne-pulse.org%2Fwp-content%2Fuploads%2F2011%2F11%2FBunker-Roy.jpg&f=1'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -95,7 +95,7 @@ const startupsList = [
             },
             {
                 name: 'Harry Andrews',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -147,7 +147,7 @@ const startupsList = [
         },
         founders: [
             {
-                name: 'Hans JÃ˜rgen Wilberg',
+                name: 'Hans Jørgen Wiberg',
                 img: 'https://uploads-ssl.webflow.com/5a5de2c1a0eb5000019e4dc0/5a8d366e1df25e0001d6011c_Hans-J%C3%B8rgen-Wiberg-(inventor).jpg'
             },
             {
@@ -234,11 +234,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Marc Spits',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             },
             {
                 name: 'Mike Spits',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -259,7 +259,7 @@ const startupsList = [
             },
             {
                 name: 'James Henrit',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -274,11 +274,11 @@ const startupsList = [
         },
         founders: [
             {
-                name: 'Fredrik KekÃ¤lÃ¤inen',
+                name: 'Fredrik Kekalainen',
                 img: 'https://images.enevo.com/1.jpg?w1624-h1624-x0-y439-rs70-mw400-mh400'
             },
             {
-                name: 'Johan EngstrÃ¶m',
+                name: 'Johan Engstrom',
                 img: 'https://images.enevo.com/Johan-BW.jpg?w585-h585-x0-y103-rs20-mw400-mh400'
             }
         ]
@@ -330,9 +330,9 @@ const startupsList = [
         founders: [
             {
                 name: 'Jacquie Berglund',
-                img: 'https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAixAAAAJGVjY2FlYzdkLTJiZDAtNDg1OC1hOWIxLTgxOTY1NmQyMTNkZQ.jpg',
-                twitter: 'https://twitter.com/JRBerglund',
-                linkedin: 'https://www.linkedin.com/in/jacquie-berglund-56072a43/'
+                img: 'https://finnegans.org/wp-content/uploads/2020/02/JB-HEadshot-100x150.png',
+                /* twitter: 'https://twitter.com/JRBerglund',
+                linkedin: 'https://www.linkedin.com/in/jacquie-berglund-56072a43/' */
             }
         ]
     },
@@ -349,11 +349,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Mari Kuraishi',
-                img: 'img/founders/mari-kuraishi.jpg'
+                img: 'images/no-photo.svg'
             },
             {
                 name: 'Dennis Whittle',
-                img: 'img/founders/dennis-whittle.jpg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -369,7 +369,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Harold Rosen',
-                img: 'img/founders/default.jpeg'
+                img: 'http://s12048.pcdn.co/wp-content/uploads/2014/03/Harold3-373x280.jpg'
             }
         ]
     },
@@ -406,9 +406,9 @@ const startupsList = [
         founders: [
             {
                 name: 'Rose Broome',
-                img: 'https://media-exp1.licdn.com/dms/image/C4D03AQH3tFTm_kTUDg/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=iRwQxTBrXzFB3bVkw4OaOM7Ysi8XHhMxIqWX2FuNTMw',
-                twitter: 'https://twitter.com/rosical',
-                linkedin: 'https://www.linkedin.com/in/rosebroome'
+                img: 'images/no-photo.svg',
+                /* twitter: 'https://twitter.com/rosical',
+                linkedin: 'https://www.linkedin.com/in/rosebroome' */
             }
         ]
     },
@@ -441,7 +441,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Salman Khan',
-                img: 'img/founders/salman-khan.jpeg'
+                img: 'https://cdn.kastatic.org/images/headshots/sal2.jpg'
             }
         ]
     },
@@ -511,11 +511,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Paul Newman',
-                img: 'img/founders/paul-newman.jpg'
+                img: 'images/no-photo.svg'
             },
             {
                 name: 'A.E. Hotchner',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -543,8 +543,8 @@ const startupsList = [
             {
                 name: 'Natalia Oberti Noguera',
                 img: 'https://lesbianswhotech.org/wp-content/uploads/2017/08/NON-Icon-Med.jpg',
-                twitter: 'https://twitter.com/nakisnakis',
-                linkedin: 'https://www.linkedin.com/in/nataliaobertinoguera'
+               /*  twitter: 'https://twitter.com/nakisnakis',
+                linkedin: 'https://www.linkedin.com/in/nataliaobertinoguera' */
             }
         ]
     },
@@ -560,7 +560,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Richard Price',
-                img: 'http://www.pulsepoint.org/wp-content/uploads/RichardPrice250px.png'
+                img: 'https://d34h86nwtgo5zp.cloudfront.net/default/Leadership_Richard_Price_250px_Circle.png?mtime=20200814093847&amp;focal=none'
             }
         ]
     },
@@ -576,7 +576,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Preston Silverman',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -624,7 +624,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Leila Janah',
-                img: 'img/founders/leila-janah.jpeg'
+                img: 'https://www.sama.com/hubfs/custom/assets/static-assets/img/leila-banner.jpg'
             }
         ]
     },
@@ -656,11 +656,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Dale Partridge',
-                img: 'img/founders/dale-partridge.jpg'
+                img: 'images/no-photo.svg'
             },
             {
                 name: 'Aaron Chavez',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -677,17 +677,17 @@ const startupsList = [
         founders: [
             {
                 name: 'Adam Kircher',
-                img: 'img/founders/adam-kircher.png',
-                linkedin: 'https://www.linkedin.com/in/adam-kircher-b87532a/'
+                img: 'https://www.sirum.org/wp-content/uploads/2019/09/Adam-Kircher.png',
+                /* linkedin: 'https://www.linkedin.com/in/adam-kircher-b87532a/' */
             },
             {
                 name: 'George Wang',
-                img: 'https://media-exp1.licdn.com/dms/image/C4D03AQHuZHG4V0UmzA/profile-displayphoto-shrink_800_800/0?e=1591833600&v=beta&t=ZJQ5m70KUnySWhat3NkzqgbZJtJhDrbXy7ENUZqi4_M'
+                img: 'https://www.sirum.org/wp-content/uploads/2019/09/George-Wang.png'
             },
             {
                 name: 'Kiah Williams',
-                img: 'https://media-exp1.licdn.com/dms/image/C5603AQHtgURjq3YsEA/profile-displayphoto-shrink_800_800/0?e=1591833600&v=beta&t=QzhzIm9KIEoi8t2pfvlXM-uH2mXMh8Fr8GYPd5sw4zI',
-                linkedin: 'https://www.linkedin.com/in/kiahjw/'
+                img: 'https://www.sirum.org/wp-content/uploads/2019/09/Kiah-Williams.png',
+                /* linkedin: 'https://www.linkedin.com/in/kiahjw/' */
             }
         ]
     },
@@ -703,11 +703,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Kevin Jennison',
-                img: 'img/founders/kevin-jennison.jpg'
+                img: 'https://tab.gladly.io/static/kevin-14109c421c811ee2401c40e5d353cdb1.jpg'
             },
             {
                 name: 'Alex Groth',
-                img: 'img/founders/alex-groth.jpg'
+                img: 'https://tab.gladly.io/static/alex-41c0eed4ad1b9445a5349571e42b06df.jpg'
             }
         ]
     },
@@ -724,7 +724,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Wendy Kopp',
-                img: 'img/founders/wendy-kopp.jpeg'
+                img: 'https://www.teachforamerica.org/sites/default/files/styles/staggered_card_image/public/2018-09/Wendy%20Kopp%20-534.jpg?h=37b6de0c&itok=5DuV6Wel'
             }
         ]
     },
@@ -741,11 +741,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Tom Szaky',
-                img: 'img/founders/tom-szaky.jpeg'
+                img: 'images/no-photo.svg'
             },
             {
                 name: 'Jon Beyer',
-                img: 'img/founders/jon-beyer.jpg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -773,11 +773,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Blake Mycoskie',
-                img: 'img/founders/blake-mycoskie.jpeg'
+                img: 'https://www.toms.com/dw/image/v2/BDWV_PRD/on/demandware.static/-/Library-Sites-toms-content-global/default/dwc39b8630/page-designer/landing-pages/blakes-bio/blake-mycoskie-toms-founder-biography-portrait-600x400.jpg'
             },
             {
                 name: 'Alejo Nitti',
-                img: 'img/founders/alejo-nitti.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -794,11 +794,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Brian Linton',
-                img: 'https://media-exp1.licdn.com/dms/image/C4E03AQF0i0bLYxHRdg/profile-displayphoto-shrink_800_800/0?e=1591833600&v=beta&t=A80cbB5R0a_nlgKhwKxVK5j33Zxl1bEns2Eb3VdDuug'
+                img: 'images/no-photo.svg'
             },
             {
                 name: 'Mike Cangi',
-                img: 'https://media-exp1.licdn.com/dms/image/C4D03AQGotmQSLvR2CQ/profile-displayphoto-shrink_800_800/0?e=1591833600&v=beta&t=hWBPlk9RQLwyIcjHhSA1dv-coJN3Ddx4XdzX0D_opt0'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -835,14 +835,14 @@ const startupsList = [
         founders: [
             {
                 name: 'Maurits Groen',
-                img: 'https://media-exp1.licdn.com/dms/image/C5103AQE0RUSSYiNMKg/profile-displayphoto-shrink_800_800/0?e=1591833600&v=beta&t=0nS66UADJJEsXbRago4rbu5ldyQqZkDSOCYr-KcPtFQ',
-                linkedin: 'https://www.linkedin.com/in/mauritsgroen/'
+                img: 'https://waka-waka.com/wp-content/uploads/2019/08/maurits-contact.png',
+               /*  linkedin: 'https://www.linkedin.com/in/mauritsgroen/' */
             },
             {
                 name: 'Camille Van Gestel',
-                img: 'https://media-exp1.licdn.com/dms/image/C5603AQHg76xXkGJgzg/profile-displayphoto-shrink_800_800/0?e=1591833600&v=beta&t=cAcCX7tPNVRFwcDYY1xd841fn8Upw6npC7cBP_k1CCE',
-                twitter: 'https://twitter.com/Camille_van_G',
-                linkedin: 'https://www.linkedin.com/in/camillevangestel'
+                img: 'images/no-photo.svg',
+            /*  twitter: 'https://twitter.com/Camille_van_G',
+                linkedin: 'https://www.linkedin.com/in/camillevangestel' */
             }
         ]
     },
@@ -858,11 +858,11 @@ const startupsList = [
         founders: [
             {
                 name: 'Chase Adam',
-                img: 'img/founders/chase-adam.jpg'
+                img: 'https://d3w52z135jkm97.cloudfront.net/assets/v3/pages/about/board/chase-adam-127b06d17a3601f06ef93cb2fc15fdfb5ab1f034f4984dd0f0a79c10bdf4a7f0.jpg'
             },
             {
                 name: 'Jesse Cooke',
-                img: 'img/founders/default.jpeg'
+                img: 'images/no-photo.svg'
             }
         ]
     },
@@ -896,8 +896,8 @@ const startupsList = [
             {
                 name: 'Mick Jackson',
                 img: 'https://pbs.twimg.com/profile_images/1286606599/MJHeartsm_400x400.jpg',
-                twitter: 'https://twitter.com/mickwildhearts',
-                linkedin: 'https://uk.linkedin.com/in/mickjackson'
+              /*   twitter: 'https://twitter.com/mickwildhearts',
+                linkedin: 'https://uk.linkedin.com/in/mickjackson' */
             }
         ]
     },
@@ -914,7 +914,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Jordan Kassalow',
-                img: 'img/founders/jordan-kassalow.jpg'
+                img: 'https://visionspring.org/Files/Images/VSJ2019/our%20team/jordan1.jpg?format=jpg&width=360'
             }
         ]
     },
@@ -930,7 +930,7 @@ const startupsList = [
         founders: [
             {
                 name: 'Julia Kurnia',
-                img: 'img/founders/julia-kurnia.jpg'
+                img: 'https://www.zidisha.org/uploads/cache/680X/33363/profile.jpg'
             }
         ]
     }
