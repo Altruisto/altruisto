@@ -11,6 +11,7 @@ import Recommendation from "components/blog/Recommendation"
 import CallToActionSection from "components/CallToActionSection"
 import { MetaTags } from "components/partials/DefaultHead"
 import getNestedPropertyFromObject from "lodash.get"
+import ExitIntentModal from "components/ExitIntentModal"
 
 type BlogPost = {
   post?: any
@@ -49,6 +50,7 @@ const BlogPost: React.FC<BlogPost> = ({ error, post, similarPosts, metaTags }) =
       </div>
       <Recommendation title="Check Also" posts={similarPosts} />
       <CallToActionSection button={<InstallButton />} />
+      <ExitIntentModal />
     </StandardLayout>
   )
 }

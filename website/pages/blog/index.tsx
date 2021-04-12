@@ -16,7 +16,7 @@ import Pagination, { Pagination as PaginationProps } from "components/blog/Pagin
 import CallToActionSection from "components/CallToActionSection"
 import { MetaTags } from "components/partials/DefaultHead"
 import getNestedPropertyFromObject from "lodash.get"
-import NewsletterExitIntent from "components/NewsletterExitIntent"
+import ExitIntentModal from "components/ExitIntentModal"
 
 type BlogMainPage = {
   title: string
@@ -60,7 +60,7 @@ const BlogList: React.FC<BlogList> = ({ mainPage, posts, tags, pagination, metaT
         </div>
       </div>
       <CallToActionSection button={<InstallButton />} />
-      <NewsletterExitIntent />
+      <ExitIntentModal />
     </WithSmallCoverLayout>
   )
 }
