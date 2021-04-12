@@ -44,7 +44,7 @@ const SocialStartups = () => {
                 <p>{startup.description}</p>
                 {startup.founders && startup.founders.length > 0 ? (
                   <div className="d-flex flex-row">
-                    {startup.founders.map((founder) => (
+                    {(startup.founders as any).map((founder) => (
                       <div key={founder.name} className="d-flex flex-row flex-nowrap">
                         <img
                           src={founder.img}
