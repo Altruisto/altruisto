@@ -1,6 +1,7 @@
 import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
 import { useState, useEffect } from "react"
 import startupsList from "./startupsList"
+import ExitIntentModal from "components/ExitIntentModal"
 
 const SocialStartups = () => {
   const [searchPhrase, setSearchPhrase] = useState("")
@@ -96,6 +97,7 @@ const SocialStartups = () => {
         })}
       </div>
       <hr />
+      <ExitIntentModal />
     </WithSmallCoverLayout>
   )
 }
