@@ -1,5 +1,5 @@
 
-const startupsList = [
+export const startupsList = [
     {
       name: "Altruisto",
       logo: "https://altruisto.com/images/logo.svg",
@@ -936,5 +936,3 @@ const startupsList = [
         ]
     }
   ]
-
-export default startupsList;

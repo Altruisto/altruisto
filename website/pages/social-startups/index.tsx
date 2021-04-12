@@ -1,6 +1,6 @@
 import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
 import { useState, useEffect } from "react"
-import startupsList from "./startupsList"
+import { startupsList } from "../../data/startupsList"
 import ExitIntentModal from "components/ExitIntentModal"
 
 const SocialStartups = () => {
