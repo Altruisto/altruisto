@@ -7,7 +7,7 @@ export const getCtaDestination = (ua: useragent.Details) => {
       return "https://addons.mozilla.org/firefox/addon/altruisto-com/"
     case ua.browser === "Chrome":
     case ua.browser === "Opera":
-      return "https://chrome.google.com/webstore/detail/djennkbadhfcmhlbejdidgmdgnacbcmi"
+      return "/signup"
     default:
       return "/signup"
   }
@@ -16,9 +16,9 @@ export const getCtaDestination = (ua: useragent.Details) => {
 export const getCtaText = (ua: useragent.Details) => {
   switch (true) {
     case ua.isMobile:
+    case ua.browser === "Chrome":
       return "Sign up for free"
     case ua.browser === "Firefox":
-    case ua.browser === "Chrome":
     case ua.browser === "Opera":
     case ua.browser === "Edge":
       return "Install now for free"
