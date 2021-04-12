@@ -1,3 +1,4 @@
+
 const startupsList = [
     {
       name: "Altruisto",

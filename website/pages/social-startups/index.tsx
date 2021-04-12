@@ -1,7 +1,5 @@
 import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
-// import { apiUrl } from "../../utils/api-url"
 import { useState, useEffect } from "react"
-// import { cpus } from "os";
 import startupsList from "./startupsList"
 
 const SocialStartups = () => {
@@ -12,8 +10,8 @@ const SocialStartups = () => {
     if (searchPhrase === "") {
       setSearchedStartupList(startupsList)
     } else {
-      setSearchedStartupList(() => 
-          startupsList.filter((v) => v.name.toLowerCase().includes(searchPhrase.toLowerCase()))
+      setSearchedStartupList(() =>
+        startupsList.filter((v) => v.name.toLowerCase().includes(searchPhrase.toLowerCase()))
       )
     }
   }, [searchPhrase])
@@ -22,7 +20,7 @@ const SocialStartups = () => {
     <WithSmallCoverLayout
       title="50+ Inspiring Social Start-ups That Are Making The World Better"
       noCta
-    > 
+    >
       <div className="partners__search-wrapper input-group">
         <input
           value={searchPhrase}
@@ -37,7 +35,7 @@ const SocialStartups = () => {
         {searchedStartupsList.map((startup) => {
           return (
             <div className="row justify-content-between mt-5 pb-5" key={startup.name}>
-              <div className=" col-12 col-md-3 row align-items-center mt-3 mb-3"> 
+              <div className=" col-12 col-md-3 row align-items-center mt-3 mb-3">
                 <img src={startup.logo} className="img-fluid" />
               </div>
               <div className="col-12 col-md-7 row align-items-center mt-2 mb-2">
@@ -57,12 +55,10 @@ const SocialStartups = () => {
                             height: 40,
                             objectFit: "cover",
                             objectPosition: "35% 15%",
-                            borderRadius: "50%",
+                            borderRadius: "50%"
                           }}
                         />
-                        <span className="mr-2">
-                          {founder.name}
-                        </span>
+                        <span className="mr-2">{founder.name}</span>
                       </div>
                     ))}
                   </div>
@@ -70,23 +66,27 @@ const SocialStartups = () => {
               </div>
 
               <div className="col-12 col-md-2 mt-2 row justify-content-md-center justify-content-start">
-                <a href={startup.link} target="_blank" className="col-12 text-md-center text-start mt-3 mb-3 mt-md-0 mb-md-0 px-0 .link">
+                <a
+                  href={startup.link}
+                  target="_blank"
+                  className="col-12 text-md-center text-start mt-3 mb-3 mt-md-0 mb-md-0 px-0 .link"
+                >
                   VISIT WEBSITE
                 </a>
                 <div className="col-12 row justify-content-md-center justify-content-start flex-nowrap mt-3 mb-2 mt-md-0 mb-md-0 px-0">
                   {startup.social && startup.social.facebook ? (
                     <a href={startup.social.facebook} target="_blank" className="mx-3">
-                      <img src="/images/facebook-gray.svg"  className="footer__icon" />
+                      <img src="/images/facebook-gray.svg" className="footer__icon" />
                     </a>
                   ) : null}
                   {startup.social && startup.social.twitter ? (
                     <a href={startup.social.twitter} target="_blank" className="mx-3">
-                      <img src="/images/twitter-gray.svg"  className="footer__icon" />
+                      <img src="/images/twitter-gray.svg" className="footer__icon" />
                     </a>
                   ) : null}
                   {startup.social && startup.social.instagram ? (
-                    <a href={startup.social.instagram} target="_blank"  className="mx-3">
-                      <img src="/images/instagram-gray.svg"  className="footer__icon" />
+                    <a href={startup.social.instagram} target="_blank" className="mx-3">
+                      <img src="/images/instagram-gray.svg" className="footer__icon" />
                     </a>
                   ) : null}
                 </div>
