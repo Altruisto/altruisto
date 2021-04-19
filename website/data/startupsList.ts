@@ -316,7 +316,7 @@ export const startupsList = [
         founders: [
             {
                 name: 'Quincy Larson',
-                img: 'https://www.freecodecamp.org/news/content/images/2021/03/Quincy-Larson-photo.jpg'
+                img: 'https://images.prismic.io/altruisto/c10e21e3-c815-42ba-b736-6071e2dfe270_Quincy-Larson-photo.jpeg?auto=compress,format'
             }
         ]
     },
