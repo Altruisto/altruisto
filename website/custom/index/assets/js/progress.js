@@ -4,8 +4,13 @@ import './jquery.fullpage'
 import './particles.min'
 import './jquery.svg.min'
 import './jquery.svganim.min'
+import * as ouibounce from 'ouibounce'
 
-$(document).ready(function() {
+$(document).ready(function () {
+
+  ouibounce(document.getElementById('newsletterModal'), {
+    aggressive: true
+  });
 
   const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
 
@@ -17,15 +22,17 @@ $(document).ready(function() {
     navigationTooltips: ['Introduction', 'Child Mortality', 'Life Expectancy', 'Extreme Poverty', 'Literacy', 'Challenges', 'How you can help', 'Do it today'],
     responsiveHeight: 666,
     autoScrolling: isMobile,
-    afterLoad: function(anchorLink, index) {
+    afterLoad: function (anchorLink, index) {
       let section = '#section' + index;
       //todo: fix the selection below
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
-      setTimeout(function() {
-        rect.animate({ svgWidth: 0 }, 1250, 'linear');
+      setTimeout(function () {
+        rect.animate({
+          svgWidth: 0
+        }, 1250, 'linear');
       }, 1500);
     },
-    onLeave: function(fromIndex, toIndex) {
+    onLeave: function (fromIndex, toIndex) {
       let section = '#section' + toIndex;
       let rect = $(section + ' > div > div.container > div.flip > div > svg > g > rect');
       rect.attr('width', window.axisLengthXPx + 20);
@@ -95,10 +102,10 @@ $(document).ready(function() {
     //it assumes the background color of the rectangle should be the background color of div.container
     //which is two levels above the graph container div -- div.container > div.flip > container
     let backgroundColor = d3.select(container)
-      .select(function() {
+      .select(function () {
         return this.parentNode;
       })
-      .select(function() {
+      .select(function () {
         return this.parentNode;
       })
       .style('background-color');
@@ -197,14 +204,14 @@ $(document).ready(function() {
       .attr('cx', d => x(d.year))
       .attr('cy', d => y(d[statLabel]))
       // & with tooltip
-      .on('mouseover', function(event) {
+      .on('mouseover', function (event) {
         tooltip.style('visibility', 'visible');
         tooltip.text(`${event.year}: ${event[statLabel]}`);
       })
-      .on('mousemove', function() {
+      .on('mousemove', function () {
         tooltip.style('top', (d3.event.pageY - 50) + 'px').style('left', (d3.event.pageX) + 'px');
       })
-      .on('mouseout', function() {
+      .on('mouseout', function () {
         return tooltip.style('visibility', 'hidden');
       });
 
@@ -252,7 +259,7 @@ $(document).ready(function() {
   };
 
   drawAllGraphs();
-  $(window).on('resize', function() {
+  $(window).on('resize', function () {
     if (!isMobile) {
       drawAllGraphs();
     }
