@@ -594,7 +594,7 @@ export const startupsList = [
     },
     {
         name: 'Round It Up America',
-        logo: 'http://www.rounditupamerica.org/images/top_new.jpg',
+        logo: 'https://images.prismic.io/altruisto/23f161e0-5063-4f93-b523-fb46feb8f3a5_round-it-up.jpeg?auto=compress,format',
         description: 'Restaurant partners provide customers the opportunity to round up their purchase to the nearest dollar. Donations are given out quarterly to various nonprofits',
         link: 'http://rounditupamerica.org',
         social: {
@@ -605,11 +605,11 @@ export const startupsList = [
         founders: [
             {
                 name: 'Harald Hermann',
-                img: 'http://www.rounditupamerica.org/images/bio_haroldH.jpg'
+                img: 'https://images.prismic.io/altruisto/97d4dd9a-6075-4e1e-9b60-f4f341cd6abf_bio_haroldH.jpeg?auto=compress,format'
             },
             {
                 name: 'Jennifer Weerhelm',
-                img: 'http://www.rounditupamerica.org/images/bio_jenniferW.jpg'
+                img: 'https://images.prismic.io/altruisto/e4c4d50d-9154-49f4-8dd4-096a75228595_bio_jenniferW.jpeg?auto=compress,format'
             }
         ]
     },
@@ -931,7 +931,7 @@ export const startupsList = [
         founders: [
             {
                 name: 'Julia Kurnia',
-                img: 'https://media-exp1.licdn.com/dms/image/C4D03AQHrkf7n85KJ9g/profile-displayphoto-shrink_400_400/0/1517351015008'
+                img: 'https://images.prismic.io/altruisto/96d2fb94-9089-467b-ad05-d746a09fb979_jkurnia.jpeg?auto=compress,format'
             }
         ]
     }
