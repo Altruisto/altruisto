@@ -70,6 +70,7 @@
     "ncp": "^2.0.0",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.2",
+    "ouibounce": "0.0.12",
     "popper.js": "^1.16.1",
     "postcss-loader": "^3.0.0",
     "replace-in-file": "^5.0.2",
