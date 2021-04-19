@@ -306,7 +306,7 @@ export const startupsList = [
     },
     {
         name: 'Free Code Camp',
-        logo: 'https://design-style-guide.freecodecamp.org/downloads/fcc_secondary_large.png',
+        logo: 'https://www.clipartmax.com/png/middle/255-2555443_free-code-camp-logo-png-free-code-camp-icon.png?fbclid=IwAR0tlfVudVFHzrMQYRhLRP0DF2_WURdqHchBZMETYkQrRGTSytxTzIbQOho',
         description: 'Free Code Camp teaches students to code in several languages for free, then partners them with nonprofit organizations to provide mutually beneficial web development. freeCodeCamp has donated US$ 1,400,000 worth of development work to nonprofits as of January 2017.',
         link: 'https://www.freecodecamp.org/',
         social: {
@@ -316,7 +316,7 @@ export const startupsList = [
         founders: [
             {
                 name: 'Quincy Larson',
-                img: 'https://www.freecodecamp.org/news/content/images/2018/12/quincy-headshot-highres.png'
+                img: 'https://www.freecodecamp.org/news/content/images/2021/03/Quincy-Larson-photo.jpg'
             }
         ]
     },
@@ -448,7 +448,7 @@ export const startupsList = [
     },
     {
         name: 'Kiva',
-        logo: 'http://d9hhrg4mnvzow.cloudfront.net/3bd4fea649c44b35ba4f178807ea67f8.pages.ubembed.com/924a9035-ac4c-4a10-82b5-73a40cc36c74/a83ebe9e-kiva-logo_04001o04001o000000.png',
+        logo: 'https://w7.pngwing.com/pngs/1004/169/png-transparent-kiva-world-poverty-loan-microfinance-others-text-logo-grass.png',
         description: `Kiva is a non-profit that allows people to lend money via the Internet to low-income entrepreneurs and students in over 80 countries. Kiva's mission is "to connect people through lending to alleviate poverty."`,
         link: 'https://www.kiva.org',
         social: {
@@ -469,7 +469,7 @@ export const startupsList = [
     },
     {
         name: 'LifeStraw',
-        logo: 'https://pbs.twimg.com/profile_images/518865211634089985/KIlkTCX6_400x400.png',
+        logo: 'https://momdoesreviews.com/wp-content/uploads/2018/03/lifestraw-logo.png',
         description: 'Water filter company. LifeStraw has been generally praised for its effective and instant method of bacteria and protozoa removal and consumer acceptability. For every LifeStraw product you purchase, a child in need receives safe water for an entire school year.',
         link: 'https://lifestraw.com',
         social: {
@@ -501,7 +501,7 @@ export const startupsList = [
     },
     {
         name: `Newman's Own`,
-        logo: 'https://upload.wikimedia.org/wikipedia/en/6/6b/Newman%27s_Own_logo.jpg',
+        logo: 'https://www.pinclipart.com/picdir/middle/96-963144_newmans-own-newmans-own-logo-clipart.png',
         description: 'CPG company that donates 100% of profits to charity. They have a variety of items from salad dressings to bottled wine.',
         link: 'https://newmansown.com/',
         social: {
@@ -594,7 +594,7 @@ export const startupsList = [
     },
     {
         name: 'Round It Up America',
-        logo: 'http://rounditupamerica.org/images/top_new.jpg',
+        logo: 'http://www.rounditupamerica.org/images/top_new.jpg',
         description: 'Restaurant partners provide customers the opportunity to round up their purchase to the nearest dollar. Donations are given out quarterly to various nonprofits',
         link: 'http://rounditupamerica.org',
         social: {
@@ -605,11 +605,11 @@ export const startupsList = [
         founders: [
             {
                 name: 'Harald Hermann',
-                img: 'http://rounditupamerica.org/images/bio_haroldH.jpg'
+                img: 'http://www.rounditupamerica.org/images/bio_haroldH.jpg'
             },
             {
                 name: 'Jennifer Weerhelm',
-                img: 'http://rounditupamerica.org/images/bio_jenniferW.jpg'
+                img: 'http://www.rounditupamerica.org/images/bio_jenniferW.jpg'
             }
         ]
     },
@@ -931,7 +931,7 @@ export const startupsList = [
         founders: [
             {
                 name: 'Julia Kurnia',
-                img: 'https://www.zidisha.org/uploads/cache/680X/33363/profile.jpg'
+                img: 'https://media-exp1.licdn.com/dms/image/C4D03AQHrkf7n85KJ9g/profile-displayphoto-shrink_400_400/0/1517351015008'
             }
         ]
     }
