@@ -31,7 +31,7 @@ const SocialStartups = () => {
         title: "50+ Inspiring Social Start-ups That Are Making The World Better",
         description:
           "Curated list of over fifty amazing social enterprises that are improving the world. Updated each year.",
-        image: "https://altruisto.com/images/social-startups-social-startups-fb.jpg",
+        image: "https://altruisto.com/images/social-startups-fb.jpg",
         url: "https://altruisto.com/social-startups"
       }}
       twitterMetaTags={{
@@ -39,7 +39,7 @@ const SocialStartups = () => {
         site: "@altruistoCom",
         description:
           "Curated list of over fifty amazing social enterprises that are improving the world. Updated each year.",
-        image: "https://altruisto.com/images/social-startups-social-startups-fb.jpg"
+        image: "https://altruisto.com/images/social-startups-twitter.jpg"
       }}
     >
       <div className="partners__search-wrapper input-group">
