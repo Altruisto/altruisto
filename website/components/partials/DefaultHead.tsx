@@ -1,10 +1,8 @@
 import * as React from "react"
 import Head from "next/head"
-import OgMetaTags, { OgMetaTags as OgMetaTagsProps } from "components/meta-tags/OgMetaTags"
-import SeoMetaTags, { SeoMetaTags as SeoMetaTagsProps } from "components/meta-tags/SeoMetaTags"
-import TwitterMetaTags, {
-  TwitterMetaTags as TwitterMetaTagsProps
-} from "../meta-tags/TwitterMetaTags"
+import { OgMetaTags as OgMetaTagsProps } from "components/meta-tags/OgMetaTags"
+import { SeoMetaTags as SeoMetaTagsProps } from "components/meta-tags/SeoMetaTags"
+import { TwitterMetaTags as TwitterMetaTagsProps } from "../meta-tags/TwitterMetaTags"
 
 export type MetaTags = {
   seoMetaTags?: SeoMetaTagsProps
@@ -126,62 +124,6 @@ export const DefaultHead: React.FC<MetaTags> = ({
           "https://facebook.com/AltruistoCom",
           "https://twitter.com/AltruistoCom"
         ]
-      }
-    `
-      }}
-    ></script>
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: `
-      {
-        "@context": "https://schema.org/", 
-        "@type": "Product", 
-        "name": "Altruisto.com",
-        "image": "https://lh3.googleusercontent.com/o8AWrVR9SntwZBKGYYTw90gI7Ddw-AYB3GmdpwLj_KNvMyfsj6dfwIoNkmBUtjWceMUQoBwb9A=w128-h128-e365",
-        "description": "Raise money for the world's most effective charities through your everyday online shoppings with no extra costs. You can start helping people in extreme poverty with no extra effort or costs. Just install an extension, and when you buy something online, people living in severe poverty will get medicines, bed nets, or financial aid. There are no extra costs for you (the charity donation is covered by our partner stores). We’ve partnered with online stores (including Ebay, Aliexpress, Etsy, Microsoft) to create a unique loyalty program. For every purchase you make in one of our partners’ stores, portion of the money goes to extremely effective, research-backed charities. That way, users can support great causes with no costs, and shops gain clients strongly incentivized to buy from them and not their competition. It works with 1000+ shops including Ebay, Barnes & Noble, Aliexpress, and Etsy. For every $4.85 raised for Against Malaria Foundation two people are protected from malaria (via bed nets) and for every $1.19 raised for Schistosomiasis Control Initiative, one child gets a year supply of medicine. Everyone wins!",
-        "brand": "Altruisto",
-        "offers": {
-          "@type": "Offer",
-          "url": "",
-          "priceCurrency": "",
-          "price": ""
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5",
-          "bestRating": "5",
-          "worstRating": "1",
-          "ratingCount": "7"
-        }
-      }
-    `
-      }}
-    ></script>
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: `
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Altruisto.com",
-        "image": "https://altruisto.com/images/logo.svg",
-        "@id": "",
-        "url": "https://altruisto.com/",
-        "telephone": "",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Unit 4e Enterprise Court, Farfield Park",
-          "addressLocality": "Rotherham",
-          "postalCode": "S63 5DB",
-          "addressCountry": "GB"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 53.504505,
-          "longitude": -1.325666
-        } 
       }
     `
       }}

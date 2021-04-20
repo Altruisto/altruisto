@@ -306,7 +306,7 @@ export const startupsList = [
     },
     {
         name: 'Free Code Camp',
-        logo: 'https://www.clipartmax.com/png/middle/255-2555443_free-code-camp-logo-png-free-code-camp-icon.png?fbclid=IwAR0tlfVudVFHzrMQYRhLRP0DF2_WURdqHchBZMETYkQrRGTSytxTzIbQOho',
+        logo: 'https://images.prismic.io/altruisto/748fcd2c-956f-4820-b9da-72e0e4965203_freecodecamp.jpeg?auto=compress,format',
         description: 'Free Code Camp teaches students to code in several languages for free, then partners them with nonprofit organizations to provide mutually beneficial web development. freeCodeCamp has donated US$ 1,400,000 worth of development work to nonprofits as of January 2017.',
         link: 'https://www.freecodecamp.org/',
         social: {
@@ -316,7 +316,7 @@ export const startupsList = [
         founders: [
             {
                 name: 'Quincy Larson',
-                img: 'https://images.prismic.io/altruisto/c10e21e3-c815-42ba-b736-6071e2dfe270_Quincy-Larson-photo.jpeg?auto=compress,format'
+                img: 'https://images.prismic.io/altruisto/9dc0853f-9aa0-45f9-bed3-3e146f704288_Untitled+design+%2825%29.jpg?auto=compress,format'
             }
         ]
     },
@@ -448,7 +448,7 @@ export const startupsList = [
     },
     {
         name: 'Kiva',
-        logo: 'https://w7.pngwing.com/pngs/1004/169/png-transparent-kiva-world-poverty-loan-microfinance-others-text-logo-grass.png',
+        logo: 'https://images.prismic.io/altruisto/ed44c86c-fd0e-463f-9223-a600b90c9e63_kiva_logo_2+%281%29.png?auto=compress,format',
         description: `Kiva is a non-profit that allows people to lend money via the Internet to low-income entrepreneurs and students in over 80 countries. Kiva's mission is "to connect people through lending to alleviate poverty."`,
         link: 'https://www.kiva.org',
         social: {
@@ -501,7 +501,7 @@ export const startupsList = [
     },
     {
         name: `Newman's Own`,
-        logo: 'https://www.pinclipart.com/picdir/middle/96-963144_newmans-own-newmans-own-logo-clipart.png',
+        logo: 'https://images.prismic.io/altruisto/0d69265a-53e6-4ed1-be2e-cd5884a07a6f_Untitled+design+%2826%29.jpg?auto=compress,format',
         description: 'CPG company that donates 100% of profits to charity. They have a variety of items from salad dressings to bottled wine.',
         link: 'https://newmansown.com/',
         social: {

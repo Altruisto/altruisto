@@ -20,7 +20,27 @@ const SocialStartups = () => {
   return (
     <WithSmallCoverLayout
       title="50+ Inspiring Social Start-ups That Are Making The World Better"
+      backgroundImage="url(images/social-startups/social-startups-cover.jpg)"
       noCta
+      seoMetaTags={{
+        title: "50+ Inspiring Social Start-ups That Are Making The World Better",
+        description:
+          "Curated list of over fifty amazing social enterprises that are improving the world. Updated each year."
+      }}
+      ogMetaTags={{
+        title: "50+ Inspiring Social Start-ups That Are Making The World Better",
+        description:
+          "Curated list of over fifty amazing social enterprises that are improving the world. Updated each year.",
+        image: "https://altruisto.com/images/social-startups-social-startups-fb.jpg",
+        url: "https://altruisto.com/social-startups"
+      }}
+      twitterMetaTags={{
+        title: "50+ Inspiring Social Start-ups That Are Making The World Better",
+        site: "@altruistoCom",
+        description:
+          "Curated list of over fifty amazing social enterprises that are improving the world. Updated each year.",
+        image: "https://altruisto.com/images/social-startups-social-startups-fb.jpg"
+      }}
     >
       <div className="partners__search-wrapper input-group">
         <input
