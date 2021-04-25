@@ -25,9 +25,12 @@ const ExitIntent = () => {
   const [isMouseOut, setMouseOut] = useState(false)
   const [email, setEmail] = useState("")
 
-  const mouseOut = () => {
-    setMouseOut(true)
-    document.removeEventListener("mouseleave", mouseOut)
+  const mouseOut = (event) => {
+    if (event.clientY < 1) 
+      {
+      setMouseOut(true)
+      document.removeEventListener("mouseleave", mouseOut)
+    }
   }
 
   useEffect(() => {
