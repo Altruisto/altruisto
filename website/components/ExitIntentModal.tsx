@@ -73,7 +73,7 @@ const ExitIntent = () => {
                 value="Join now!"
                 name="subscribe"
                 id="mc-embedded-subscribe"
-                style={{ fontSize: "16px;" }}
+                style={{ fontSize: "16px" }}
                 className="button"
               />
             </div>
