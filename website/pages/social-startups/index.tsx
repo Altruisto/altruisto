@@ -39,7 +39,8 @@ const SocialStartups = () => {
         site: "@altruistoCom",
         description:
           "Curated list of over fifty amazing social enterprises that are improving the world. Updated each year.",
-        image: "https://altruisto.com/images/social-startups/social-startups-twitter.jpg"
+        image: "https://altruisto.com/images/social-startups/social-startups-twitter.jpg",
+        card: "summary_large_image"
       }}
     >
       <div className="partners__search-wrapper input-group">
