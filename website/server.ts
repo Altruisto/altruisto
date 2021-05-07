@@ -98,6 +98,16 @@ server.get("/extreme-poverty", (req, res) => {
   )
 })
 
+server.get("/animals", (req, res) => {
+  const ua = useragent.parse(req.header("user-agent"))
+  res.send(
+    readFileSync("custom-generated-pages/index/animals.html")
+      .toString("utf8")
+      .replace(/\{\{\{CTA\}\}\}/g, getCtaDestination(ua))
+      .replace(/\{\{\{CTA_TEXT\}\}\}/g, getCtaText(ua))
+  )
+})
+
 server.get("/progress-of-humanity", (req, res) => {
   const ua = useragent.parse(req.header("user-agent"))
   res.send(
