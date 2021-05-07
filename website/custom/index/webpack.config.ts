@@ -101,6 +101,12 @@ const config: webpack.Configuration = {
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
+      filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "animals.html"),
+      template: path.join(__dirname, "animals.html"),
+      minify: true,
+      chunks: ['index'],
+    }),
+    new HtmlWebpackPlugin({
       filename: path.join(CUSTOM_PAGES_OUTPUT_DIRECTORY, "index", "progress.html"),
       template: path.join(__dirname, "progress.html"),
       minify: true,
