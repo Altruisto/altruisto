@@ -89,6 +89,9 @@ server.get("/", async (req, res) => {
 })
 
 server.get("/extreme-poverty", (req, res) => {
+  if (!req.cookies[REFERRED_BY_COOKIE_NAME] && !req.query["ref"]) {
+    res.cookie(REFERRED_BY_COOKIE_NAME, "poverty")
+  }
   const ua = useragent.parse(req.header("user-agent"))
   res.send(
     readFileSync("custom-generated-pages/index/extreme-poverty.html")
@@ -99,6 +102,9 @@ server.get("/extreme-poverty", (req, res) => {
 })
 
 server.get("/animals", (req, res) => {
+  if (!req.cookies[REFERRED_BY_COOKIE_NAME] && !req.query["ref"]) {
+    res.cookie(REFERRED_BY_COOKIE_NAME, "animals")
+  }
   const ua = useragent.parse(req.header("user-agent"))
   res.send(
     readFileSync("custom-generated-pages/index/animals.html")
@@ -109,6 +115,9 @@ server.get("/animals", (req, res) => {
 })
 
 server.get("/progress-of-humanity", (req, res) => {
+  if (!req.cookies[REFERRED_BY_COOKIE_NAME] && !req.query["ref"]) {
+    res.cookie(REFERRED_BY_COOKIE_NAME, "progress")
+  }
   const ua = useragent.parse(req.header("user-agent"))
   res.send(
     readFileSync("custom-generated-pages/index/progress.html")

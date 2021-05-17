@@ -3,6 +3,7 @@ import { getPartnersList } from "../helpers/get-partners-list"
 import axios from "../helpers/api"
 import { storage } from "../helpers/storage"
 import { REFERRED_BY_COOKIE_NAME } from "../../../shared/globals"
+import { CauseArea } from "../../../shared/types/user"
 
 const setUpAlarms = () => {
   browser.alarms.create("clearClosedWebsites", {
@@ -27,6 +28,18 @@ const openWelcomePage = () =>
     url: "https://altruisto.com/onboarding/"
   })
 
+const recognizeCauseAreaFromReferredBy = (referredBy: string): CauseArea => {
+  switch (referredBy) {
+    case "anima":
+    case "animals":
+      return "animals"
+    case "poverty":
+      return "extreme_poverty"
+    default:
+      return "covid"
+  }
+}
+
 const logInstallationAndSetUpStorage = () => {
   const getRefCookie = browser.cookies.get({
     url: "https://altruisto.com",
@@ -48,8 +61,16 @@ const logInstallationAndSetUpStorage = () => {
       })
       .catch(() => {})
       .finally(() => {
+        const causeArea = recognizeCauseAreaFromReferredBy(referredBy)
         storage.set("local", { installationId })
-        storage.set("sync", { ref, referredBy })
+        storage.set("sync", {
+          ref,
+          referredBy,
+          userSettings: {
+            currency: "USD",
+            causeArea
+          }
+        })
       })
   })
 }
