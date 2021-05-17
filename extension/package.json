@@ -9,7 +9,7 @@
     "build": "rm -rf build && webpack",
     "build:panel": "rm -rf build/.panel && webpack --config-name panel",
     "quickbuild": "rm -rf build && webpack --prototype",
-    "quickbuild:staging": "rm -rf build && webpack --prototype --define BASE_URL='\"https://altruisto-backend-staging.herokuapp.com\"'",
+    "quickbuild:staging": "rm -rf build && webpack --prototype --define BASE_URL='\"https://altruisto-backend-playground.herokuapp.com\"'",
     "quickbuild:production": "rm -rf build && webpack --prototype --define BASE_URL='\"https://api.altruisto.com\"'",
     "prototype:panel": "webpack-dev-server --config-name panel --mode development --prototype --inline --hot --open",
     "test": "jest"
