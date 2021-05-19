@@ -18,7 +18,7 @@ export const MobileFormLayout: React.FC = ({ children }) => {
                 src="/images/sygnet.svg"
                 alt="Altruisto logotype"
                 title="Altruisto"
-                className="mobile-app__form-logo"
+                className="web-app__form-logo"
               />
             </a>
           </div>

@@ -13,8 +13,8 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
   const ref = userDetails && userDetails.ref ? userDetails.ref : ""
 
   return (
-    <div className="mobile-app__content fill-height">
-      <h3 className="mobile-app__title">Together</h3>
+    <div className="web-app__content fill-height">
+      <h3 className="web-app__title">Together</h3>
       <h3 className="text-gradient">we can do more!</h3>
       <p className="mt-4">
         If every user invited <strong>just three of their friends</strong>, in a few short weeks we
@@ -35,7 +35,7 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
           rel="noreferrer noopener"
           className="text-no-decoration"
         >
-          <button className="mobile-app__share-button mobile-app__share-button--facebook">
+          <button className="web-app__share-button web-app__share-button--facebook">
             <img src="/images/facebook.svg" alt="Facebook" title="Facebook" />{" "}
           </button>
         </a>
@@ -45,16 +45,16 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
           rel="noreferrer noopener"
           className="text-no-decoration"
         >
-          <button className="mobile-app__share-button mobile-app__share-button--twitter">
+          <button className="web-app__share-button web-app__share-button--twitter">
             <img src="/images/twitter.svg" alt="Twitter" title="Twitter" />
           </button>
         </a>
       </div>
       {ref && (
         <>
-          <h3 className="mobile-app__title mt-5 mb-4">Your referral link:</h3>
+          <h3 className="web-app__title mt-5 mb-4">Your referral link:</h3>
           <div className="field m-t-10">
-            <span className="field__appendix mobile-app__copy-icon">
+            <span className="field__appendix web-app__copy-icon">
               <button
                 className="button-link"
                 onClick={() => {
@@ -75,7 +75,7 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
               name="ref-link"
               value={`https://altruisto.com/?ref=${ref}`}
               readOnly
-              onClick={event => {
+              onClick={(event) => {
                 copyToClipboard(`https://altruisto.com/?ref=${ref}`)
                 enqueueSnackbar("Copied to clipboard!", {
                   variant: "info",
@@ -88,15 +88,15 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
           </div>
           {userDetails && userDetails.referralsCount !== null ? (
             <div className="mt-4 mb-2">
-              <div className="mobile-app__invited-number">{userDetails.referralsCount} </div>
-              <div className="mobile-app__invited-people">
+              <div className="web-app__invited-number">{userDetails.referralsCount} </div>
+              <div className="web-app__invited-people">
                 {userDetails.referralsCount === 1 ? "person" : "people"} joined thanks to you
               </div>
             </div>
           ) : null}
         </>
       )}
-      <h3 className="mobile-app__title mt-5 mb-4">Talking about us:</h3>
+      <h3 className="web-app__title mt-5 mb-4">Talking about us:</h3>
       <TwitterCarousel />
       <div className="mb-2"></div>
     </div>

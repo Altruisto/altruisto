@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { useAuth } from "hooks/use-auth"
 import { SnackbarProvider, useSnackbar } from "notistack"
-import { MobileAppLayout } from "components/layouts/MobileAppLayout"
+import { WebAppLayout } from "components/layouts/WebAppLayout"
 import SwipeableViews from "react-swipeable-views"
 import { ShareTab } from "components/partials/app/ShareTab/ShareTab"
 import { ShopTab } from "components/partials/app/ShopTab/ShopTab"
@@ -33,7 +33,7 @@ const Index = () => {
   const getUserDetails = () => {
     api
       .get<GetUserResponse>("/user", { headers: { "X-AUTH-TOKEN": auth.user.apiKey } })
-      .then(response => {
+      .then((response) => {
         setUserDetails({
           causeArea: response.data.cause_area,
           currency: response.data.currency,
@@ -63,10 +63,10 @@ const Index = () => {
 
       api
         .get<GetPartnersResponse>("/partners")
-        .then(response => {
-          return response.data.map(p => ({ name: p.name, domain: p.domain }))
+        .then((response) => {
+          return response.data.map((p) => ({ name: p.name, domain: p.domain }))
         })
-        .then(partners => setPartners(partners))
+        .then((partners) => setPartners(partners))
         .then(() => setPartnersLoading(false))
         .catch(() => {
           setPartnersLoading(false)
@@ -85,9 +85,9 @@ const Index = () => {
           horizontal: "right"
         }}
       >
-        <MobileAppLayout
+        <WebAppLayout
           active={activeTab}
-          onMenuClick={index => {
+          onMenuClick={(index) => {
             setActiveTab(index)
             window.scrollTo({ top: 0, behavior: "smooth" })
           }}
@@ -106,7 +106,7 @@ const Index = () => {
             />
             <SettingsTab userDetails={userDetails} refreshUserDetails={getUserDetails} />
           </SwipeableViews>
-        </MobileAppLayout>
+        </WebAppLayout>
       </SnackbarProvider>
     )
   }
