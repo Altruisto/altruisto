@@ -18,7 +18,7 @@ const InputBase = dynamic(() => import("@material-ui/core/InputBase"), {
   ssr: false
 })
 
-const SelectInput = withStyles(theme => ({
+const SelectInput = withStyles((theme) => ({
   root: {
     width: "100%"
   },
@@ -82,20 +82,20 @@ const SettingsTab: React.FC<Props> = ({ userDetails, refreshUserDetails }) => {
 
   if (userDetails === null) {
     return (
-      <div className="mobile-app__content text-center">
+      <div className="web-app__content text-center">
         <Loader color="red" />
       </div>
     )
   }
 
   return (
-    <div className="mobile-app__content">
+    <div className="web-app__content">
       <h3>Settings</h3>
       <span className="settings__label pt-4">Cause area</span>
       <Select
         value={userDetails.causeArea}
         input={<SelectInput />}
-        onChange={event => handleChangeCauseArea(event.target.value as CauseArea)}
+        onChange={(event) => handleChangeCauseArea(event.target.value as CauseArea)}
       >
         <MenuItem value="covid">COVID-19</MenuItem>
         <MenuItem value="extreme_poverty">Extreme Poverty &amp; Global Health</MenuItem>

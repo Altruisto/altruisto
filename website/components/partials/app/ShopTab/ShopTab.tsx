@@ -42,7 +42,7 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
     if (searchPhrase) {
       setSearchedPartners(
         partners.filter(
-          partner =>
+          (partner) =>
             partner.name.toUpperCase().includes(searchPhrase.toUpperCase()) ||
             partner.domain.toUpperCase().includes(searchPhrase.toUpperCase())
         )
@@ -56,19 +56,14 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
 
   return (
     <>
-      <div
-        className="cover mobile-app__cover with-overlay"
-        style={{ backgroundImage: "url(/images/default-small-cover.jpg)" }}
-      >
-        <h1>Partners List</h1>
-      </div>
-      <div className="partners__search-wrapper mobile-app__search-wrapper input-group">
+      <h1 className="web-app__partner-list-title">Partners List</h1>
+      <div className="partners__search-wrapper web-app__search-wrapper input-group">
         <input
           type="text"
-          className="partners__search-input"
+          className="partners__search-input web-app__search-input"
           placeholder="Search..."
           value={searchPhrase}
-          onChange={e => setSearchPhrase(e.target.value)}
+          onChange={(e) => setSearchPhrase(e.target.value)}
         />
         <div className="input-group-append">
           <button className="partners__search-button" type="button">
@@ -77,7 +72,7 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
         </div>
       </div>
 
-      <div className="mobile-app__content mobile-app__partner-list">
+      <div className="web-app__content web-app__partner-list">
         {partnersLoading ? (
           <div className="text-center fill-height">
             <Loader color="red" />
@@ -89,10 +84,10 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
             <Fragment key={group}>
               <h2 className="mt-3">{group}</h2>
               <div>
-                {(partnersInGroup as Partner[]).map(partner => (
+                {(partnersInGroup as Partner[]).map((partner) => (
                   <Fragment key={partner.domain}>
                     <button
-                      className="button-link mobile-app__partner-link"
+                      className="button-link web-app__partner-link"
                       onClick={() => setActivePartner(partner)}
                     >
                       {partner.name}

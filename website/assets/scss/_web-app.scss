@@ -1,8 +1,23 @@
 @import "~pure-react-carousel/dist/react-carousel.es.css";
 
-.mobile-app {
+.web-app {
   p {
     color: $mobileapp-font-color;
+  }
+
+  &__container {
+    width: 100%;
+
+    @include breakpoint("md") {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__view {
+    @include breakpoint("md") {
+      max-width: 380px;
+    }
   }
 
   &__form-logo {
@@ -23,6 +38,30 @@
     font-size: 11px;
   }
 
+  &__desktop-navigation {
+    display: none;
+
+    @include breakpoint("md") {
+      display: flex;
+      flex-direction: column;
+      margin-right: 130px;
+    }
+
+    &-item {
+      margin-bottom: 24px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &-label {
+      margin-left: 15px;
+      font-weight: normal;
+      font-size: 12px;
+    }
+  }
+
   &__navigation {
     display: flex;
     position: fixed;
@@ -31,6 +70,10 @@
     padding-right: 30px;
     justify-content: space-between;
     width: 100%;
+
+    @include breakpoint("md") {
+      display: none;
+    }
   }
 
   &__nav-items {
@@ -106,11 +149,21 @@
   }
 
   &__search-wrapper {
-    margin-top: -35px;
-    padding: 0 10px 0 30px;
+    // padding: 0 10px 0 30px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+
+  &__search-input {
+    background: #ffffff;
+    box-shadow: 30px 10px 50px 0 rgba(0, 0, 0, 0.15);
+    margin-left: 7px;
   }
 
   &__partner-list {
+    &-title {
+      margin-left: 30px;
+    }
     overflow-y: scroll;
   }
 

@@ -27,11 +27,11 @@ export const YourHelpTab: React.FC<Props> = ({ userDetails, onGoToShops, isActiv
 
   if (userDetails.moneyRaised === 0) {
     return (
-      <div className="mobile-app__content d-flex column-center">
+      <div className="web-app__content d-flex column-center">
         <h5 className="text-center">
           Make your first purchase with Altruisto to see how much impact you can have!
         </h5>
-        <button className="button mobile-app__main-button" onClick={onGoToShops}>
+        <button className="button web-app__main-button" onClick={onGoToShops}>
           See our partner shops
         </button>
         <small className="text-center">
@@ -44,7 +44,7 @@ export const YourHelpTab: React.FC<Props> = ({ userDetails, onGoToShops, isActiv
   const moneyRaisedInUSD = Number(userDetails.moneyRaised / 100)
 
   return (
-    <div className="mobile-app__content">
+    <div className="web-app__content">
       {(() => {
         switch (userDetails.causeArea) {
           case "animals":
