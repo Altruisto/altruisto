@@ -60,7 +60,9 @@ server.use(express.static(NEXT_PAGES_OUTPUT_DIRECTORY_NAME))
 server.get("/", async (req, res) => {
   const ua = useragent.parse(req.header("user-agent"))
   try {
-    const covidApiResponse = await api.get("https://covidapi.info/api/v1/global")
+    const covidApiResponse = await api.get("https://covidapi.info/api/v1/global", {
+      timeout: 3000
+    })
     const covidStatistics = covidApiResponse.data.result
     res.send(
       readFileSync("custom-generated-pages/index/covid.html")
