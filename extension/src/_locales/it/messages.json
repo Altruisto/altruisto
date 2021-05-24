@@ -1,47 +1,56 @@
 {
-    "name": {
-        "message": "Altruisto.com"
-    },
-    "description": {
-        "message": "Raccogli fondi a favore degli enti benefici più attivi del mondo senza costi aggiuntivi grazie ai tuoi acquisti quotidiani online."
-    },
-    "topbarActivateInfo": {
-        "message": "Inizia a raccogliere fondi a favore degli enti benefici tramite questo sito Web facendo clic qui: "
-    },
-    "topbarActivateButton": {
-        "message": "Inizia a raccogliere fondi"
-    },
-    "topbarActivatedInfo": {
-        "message": "Tramite questo sito Web stai raccogliendo fondi per gli enti benefici. "
-    },
-    "topbarActivatedClose": {
-        "message": "Questa finestra si chiuderà automaticamente tra 5 secondi."
-    },
-    "optionsTitle": {
-        "message": "Impostazioni dell'estensione Altruisto.com"
-    },
-    "optionsComingSoon": {
-        "message": "Prossimamente..."
-    },
-    "optionsTopbarTitle": {
-        "message": "Desidero essere informato sulle opportunità di raccogliere fondi a favore di enti benefici durante l'acquisto."
-    },
-    "optionsTopbarDescription": {
-        "message": "Ogni volta che visiterai il sito Web di uno dei nostri partner, vedrai una barra nella sezione superiore della pagina che ti dà l'opportunità di raccogliere fondi a favore di enti benefici semplicemente facendo clic sul pulsante. Se selezioni il pulsante, ti verrà chiesto di confermare se desideri sostenere Altruisto con gli acquisti che farai sul sito che stai visualizzando. Dopo la selezione, l'1-6% del prezzo dell'acquisto verrà generalmente donato agli enti benefici che sosteniamo."
-    },
-    "optionsSuggestionsTitle": {
-        "message": "Visualizza suggerimenti durante la navigazione su Internet."
-    },
-    "optionsSuggestionsDescription": {
-        "message": "Questa opzione consente di visualizzare una piccola casella che contiene informazioni su promozioni, coupon e prodotti che possono interessarti in base al contenuto della pagina che stai visualizzand                                                                                                                               o. La casella viene talvolta visualizzata nell'angolo in basso a destra del browser. Ogni volta che decidi di acquistare uno dei prodotti suggeriti, uno dei più attivi enti benefici del mondo riceve una parte del profitto della vendta (per te il prezzo rimane invariato). Cerchiamo di rendere il tutto il più veloce e meno invadente possibile."
-    },
-    "optionsSearchTitle": {
-        "message": "Evidenzia i negozi dei partner nei risultati della ricerca"
-    },
-    "optionsSearchDescription": {
-        "message": "Quando usi un motore di ricerca come Google, Bing o DuckDuckGo, i collegamenti dei siti Web dei nostri partner vengono evidenziati in modo che tu sappia subito quali siti Web partecipano alla raccolta di fondi."
-    },
-    "optionsThankYou": {
-        "message": ""
-    }
+  "name": {
+    "message": "Altruisto.com"
+  },
+  "description": {
+    "message": "Raccogli fondi a favore degli enti benefici più attivi del mondo senza costi aggiuntivi grazie ai tuoi acquisti quotidiani online."
+  },
+  "notificationActivate": {
+    "message": "Start raising money for charities with this website by clicking here:"
+  },
+  "notificationActivated": {
+    "message": "You are now collecting money for charities with this website."
+  },
+  "notificationButtonLabel": {
+    "message": "Activate donation"
+  },
+  "topbarActivateInfo": {
+    "message": "Inizia a raccogliere fondi a favore degli enti benefici tramite questo sito Web facendo clic qui: "
+  },
+  "topbarActivateButton": {
+    "message": "Inizia a raccogliere fondi"
+  },
+  "topbarActivatedInfo": {
+    "message": "Tramite questo sito Web stai raccogliendo fondi per gli enti benefici. "
+  },
+  "topbarActivatedClose": {
+    "message": "Questa finestra si chiuderà automaticamente tra 5 secondi."
+  },
+  "optionsTitle": {
+    "message": "Impostazioni dell'estensione Altruisto.com"
+  },
+  "optionsComingSoon": {
+    "message": "Prossimamente..."
+  },
+  "optionsTopbarTitle": {
+    "message": "Desidero essere informato sulle opportunità di raccogliere fondi a favore di enti benefici durante l'acquisto."
+  },
+  "optionsTopbarDescription": {
+    "message": "Ogni volta che visiterai il sito Web di uno dei nostri partner, vedrai una barra nella sezione superiore della pagina che ti dà l'opportunità di raccogliere fondi a favore di enti benefici semplicemente facendo clic sul pulsante. Se selezioni il pulsante, ti verrà chiesto di confermare se desideri sostenere Altruisto con gli acquisti che farai sul sito che stai visualizzando. Dopo la selezione, l'1-6% del prezzo dell'acquisto verrà generalmente donato agli enti benefici che sosteniamo."
+  },
+  "optionsSuggestionsTitle": {
+    "message": "Visualizza suggerimenti durante la navigazione su Internet."
+  },
+  "optionsSuggestionsDescription": {
+    "message": "Questa opzione consente di visualizzare una piccola casella che contiene informazioni su promozioni, coupon e prodotti che possono interessarti in base al contenuto della pagina che stai visualizzand                                                                                                                               o. La casella viene talvolta visualizzata nell'angolo in basso a destra del browser. Ogni volta che decidi di acquistare uno dei prodotti suggeriti, uno dei più attivi enti benefici del mondo riceve una parte del profitto della vendta (per te il prezzo rimane invariato). Cerchiamo di rendere il tutto il più veloce e meno invadente possibile."
+  },
+  "optionsSearchTitle": {
+    "message": "Evidenzia i negozi dei partner nei risultati della ricerca"
+  },
+  "optionsSearchDescription": {
+    "message": "Quando usi un motore di ricerca come Google, Bing o DuckDuckGo, i collegamenti dei siti Web dei nostri partner vengono evidenziati in modo che tu sappia subito quali siti Web partecipano alla raccolta di fondi."
+  },
+  "optionsThankYou": {
+    "message": ""
+  }
 }

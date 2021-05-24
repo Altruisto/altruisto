@@ -1,47 +1,56 @@
 {
-    "name": {
-        "message": "Altruisto.com"
-    },
-    "description": {
-        "message": "Støt verdens mest effektive velgørende organisationer gennem dine daglige køb online uden ekstra omkostninger."
-    },
-    "topbarActivateInfo": {
-        "message": "Begynd at støtte velgørende organisationer med dette website ved at klikke her: "
-    },
-    "topbarActivateButton": {
-        "message": "Støt med penge"
-    },
-    "topbarActivatedInfo": {
-        "message": "Du støtter nu velgørende organisationer med dette website. "
-    },
-    "topbarActivatedClose": {
-        "message": "Dette vindue lukker automatisk om 5 sekunder"
-    },
-    "optionsTitle": {
-        "message": "Altruisto.com udvidelsesindstillinger"
-    },
-    "optionsComingSoon": {
-        "message": "Kommer snart!"
-    },
-    "optionsTopbarTitle": {
-        "message": "Fortæl mig, når jeg har mulighed for at støtte velgørenhedsorganisationer med mit køb"
-    },
-    "optionsTopbarDescription": {
-        "message": "Når du besøger en af vores partneres website, vil du kunne se en bjælke øverst på siden, der giver dig mulighed for at støtte velgørenhedsorganisationer ved blot at klikke på en knap. Hvis du klikker på knappen, vil du blive bedt om at bekræfte, at du vil støtte Altruisto gennem dine køb på det website, du besøger. Derefter doneres der normalt mellem 1-6 % af dit køb til de velgørende organisationer, vi støtter."
-    },
-    "optionsSuggestionsTitle": {
-        "message": "Vis mig forslag, mens jeg surfer på internettet"
-    },
-    "optionsSuggestionsDescription": {
-        "message": "Denne indstilling giver dig mulighed for at se en lille kasse med kampagner, kuponer og produkter, der muligvis interesserer dig, baseret på indholdet af den side, du er på. Den vises med mellemrum i nederste højre hjørne af din browser. Når du beslutter dig for at købe et foreslået produkt, modtager en af verdens mest effektive velgørende organisationer en del af overskuddet fra salget (prisen, du betaler, ændres ikke). Vi forsøger at gøre det så hurtigt og uforstyrrende som muligt."
-    },
-    "optionsSearchTitle": {
-        "message": "Fremhæv partnerbutikker i søgeresultater"
-    },
-    "optionsSearchDescription": {
-        "message": "Når du bruger en søgemaskine som for eksempel Google, Bing eller DuckDuckGo, vil  links til en af vores partners websites være fremhævede, så du straks kan se, gennem hvilke websites, du kan støtte velgørende formål."
-    },
-    "optionsThankYou": {
-        "message": ""
-    }
+  "name": {
+    "message": "Altruisto.com"
+  },
+  "description": {
+    "message": "Støt verdens mest effektive velgørende organisationer gennem dine daglige køb online uden ekstra omkostninger."
+  },
+  "notificationActivate": {
+    "message": "Start raising money for charities with this website by clicking here:"
+  },
+  "notificationActivated": {
+    "message": "You are now collecting money for charities with this website."
+  },
+  "notificationButtonLabel": {
+    "message": "Activate donation"
+  },
+  "topbarActivateInfo": {
+    "message": "Begynd at støtte velgørende organisationer med dette website ved at klikke her: "
+  },
+  "topbarActivateButton": {
+    "message": "Støt med penge"
+  },
+  "topbarActivatedInfo": {
+    "message": "Du støtter nu velgørende organisationer med dette website. "
+  },
+  "topbarActivatedClose": {
+    "message": "Dette vindue lukker automatisk om 5 sekunder"
+  },
+  "optionsTitle": {
+    "message": "Altruisto.com udvidelsesindstillinger"
+  },
+  "optionsComingSoon": {
+    "message": "Kommer snart!"
+  },
+  "optionsTopbarTitle": {
+    "message": "Fortæl mig, når jeg har mulighed for at støtte velgørenhedsorganisationer med mit køb"
+  },
+  "optionsTopbarDescription": {
+    "message": "Når du besøger en af vores partneres website, vil du kunne se en bjælke øverst på siden, der giver dig mulighed for at støtte velgørenhedsorganisationer ved blot at klikke på en knap. Hvis du klikker på knappen, vil du blive bedt om at bekræfte, at du vil støtte Altruisto gennem dine køb på det website, du besøger. Derefter doneres der normalt mellem 1-6 % af dit køb til de velgørende organisationer, vi støtter."
+  },
+  "optionsSuggestionsTitle": {
+    "message": "Vis mig forslag, mens jeg surfer på internettet"
+  },
+  "optionsSuggestionsDescription": {
+    "message": "Denne indstilling giver dig mulighed for at se en lille kasse med kampagner, kuponer og produkter, der muligvis interesserer dig, baseret på indholdet af den side, du er på. Den vises med mellemrum i nederste højre hjørne af din browser. Når du beslutter dig for at købe et foreslået produkt, modtager en af verdens mest effektive velgørende organisationer en del af overskuddet fra salget (prisen, du betaler, ændres ikke). Vi forsøger at gøre det så hurtigt og uforstyrrende som muligt."
+  },
+  "optionsSearchTitle": {
+    "message": "Fremhæv partnerbutikker i søgeresultater"
+  },
+  "optionsSearchDescription": {
+    "message": "Når du bruger en søgemaskine som for eksempel Google, Bing eller DuckDuckGo, vil  links til en af vores partners websites være fremhævede, så du straks kan se, gennem hvilke websites, du kan støtte velgørende formål."
+  },
+  "optionsThankYou": {
+    "message": ""
+  }
 }

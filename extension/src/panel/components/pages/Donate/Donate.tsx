@@ -75,7 +75,7 @@ export const Donate: React.FC = () => {
     <div className="page">
       <div className="container fill-height">
         <div className="page__title m-b-0">
-          <h1>Help others</h1>
+          <h1>{browser.i18n.getMessage("helpOthers")}</h1>
           <h1 className="text-gradient">with just one click!</h1>
         </div>
         <div className="justify-center fill-height">

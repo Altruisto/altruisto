@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect } from "react"
 import copyToClipboard from "copy-to-clipboard"
 import { useSnackbar } from "notistack"
 import { TwitterCarousel } from "./TwitterCarousel"
 import { UserDetails } from "pages/app"
+import { useIntl } from "translations/useIntl"
 
 type Props = {
   userDetails: UserDetails
@@ -10,10 +11,16 @@ type Props = {
 
 export const ShareTab: React.FC<Props> = ({ userDetails }) => {
   const { enqueueSnackbar } = useSnackbar()
+  const { formatMessage } = useIntl()
   const ref = userDetails && userDetails.ref ? userDetails.ref : ""
+
+  useEffect(() => {
+    console.log("TEST TŁUMACZEŃ:", formatMessage({ id: "someText" }))
+  }, [])
 
   return (
     <div className="web-app__content fill-height">
+      {formatMessage({ id: "someText" })}
       <h3 className="web-app__title">Together</h3>
       <h3 className="text-gradient">we can do more!</h3>
       <p className="mt-4">

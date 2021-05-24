@@ -1,47 +1,56 @@
 {
-    "name": {
-        "message": "Altruisto.com"
-    },
-    "description": {
-        "message": "Collectez de l’argent pour les œuvres caritatives les plus efficaces du monde grâce à vos achats en ligne quotidiens, sans coûts supplémentaires."
-    },
-    "topbarActivateInfo": {
-        "message": "Commencez à collecter de l’argent pour des œuvres caritatives avec ce site Web en cliquant ici : "
-    },
-    "topbarActivateButton": {
-        "message": "Commencez à collecter de l’argent"
-    },
-    "topbarActivatedInfo": {
-        "message": "Vous allez maintenant collecter de l'argent pour des œuvres caritatives avec ce site Web."
-    },
-    "topbarActivatedClose": {
-        "message": "Cette fenêtre se fermera automatiquement dans 5 secondes"
-    },
-    "optionsTitle": {
-        "message": "Paramètres de l’extension Altruisto.com"
-    },
-    "optionsComingSoon": {
-        "message": "Prochainement !"
-    },
-    "optionsTopbarTitle": {
-        "message": "Informez-moi quand j'ai la possibilité de collecter de l’argent pour des œuvres caritatives grâce à mes achats"
-    },
-    "optionsTopbarDescription": {
-        "message": "Chaque fois que vous irez sur le site Web de nos partenaires, vous verrez une barre en haut d’une page vous donnant la possibilité de collecter de l’argent pour des œuvres caritatives, sur simple pression d’un bouton. Si vous cliquez sur ce bouton, il vous sera demandé de confirmer que vous voulez soutenir Altruisto grâce à vos achats sur le site que vous consultez. Ensuite, une commission se montant généralement de 1 à 6 % de votre achat sera donnée aux œuvres caritatives que nous soutenons."
-    },
-    "optionsSuggestionsTitle": {
-        "message": "Montrez-moi des suggestions pendant que je navigue sur Internet"
-    },
-    "optionsSuggestionsDescription": {
-        "message": "Cette option vous permet de voir une petite boîte contenant des promotions, coupons et produits qui peuvent vous intéresser, d'après le contenu de la page que vous consultez. Elle apparaît de temps en temps dans l’angle inférieur droit de votre navigateur. Chaque fois que vous décidez d’acheter un produit suggéré, l’une des œuvres caritatives les plus efficaces du monde reçoit une partie du bénéfice de la vente (le prix que vous paierez ne changera pas). Nous nous efforçons de rendre l’opération aussi rapide et non intrusive que possible."
-    },
-    "optionsSearchTitle": {
-        "message": "Mettre en évidence les magasins partenaires dans les résultats de la recherche"
-    },
-    "optionsSearchDescription": {
-        "message": "Quand vous utilisez un moteur de recherche comme Google, Bing ou DuckDuckGo, les liens menant au site Web de nos partenaires seront mis en évidence afin que vous sachiez immédiatement avec quels sites Web vous pouvez collecter de l’argent."
-    },
-    "optionsThankYou": {
-        "message": ""
-    }
+  "name": {
+    "message": "Altruisto.com"
+  },
+  "description": {
+    "message": "Collectez de l’argent pour les œuvres caritatives les plus efficaces du monde grâce à vos achats en ligne quotidiens, sans coûts supplémentaires."
+  },
+  "notificationActivate": {
+    "message": "Start raising money for charities with this website by clicking here:"
+  },
+  "notificationActivated": {
+    "message": "You are now collecting money for charities with this website."
+  },
+  "notificationButtonLabel": {
+    "message": "Activate donation"
+  },
+  "topbarActivateInfo": {
+    "message": "Commencez à collecter de l’argent pour des œuvres caritatives avec ce site Web en cliquant ici : "
+  },
+  "topbarActivateButton": {
+    "message": "Commencez à collecter de l’argent"
+  },
+  "topbarActivatedInfo": {
+    "message": "Vous allez maintenant collecter de l'argent pour des œuvres caritatives avec ce site Web."
+  },
+  "topbarActivatedClose": {
+    "message": "Cette fenêtre se fermera automatiquement dans 5 secondes"
+  },
+  "optionsTitle": {
+    "message": "Paramètres de l’extension Altruisto.com"
+  },
+  "optionsComingSoon": {
+    "message": "Prochainement !"
+  },
+  "optionsTopbarTitle": {
+    "message": "Informez-moi quand j'ai la possibilité de collecter de l’argent pour des œuvres caritatives grâce à mes achats"
+  },
+  "optionsTopbarDescription": {
+    "message": "Chaque fois que vous irez sur le site Web de nos partenaires, vous verrez une barre en haut d’une page vous donnant la possibilité de collecter de l’argent pour des œuvres caritatives, sur simple pression d’un bouton. Si vous cliquez sur ce bouton, il vous sera demandé de confirmer que vous voulez soutenir Altruisto grâce à vos achats sur le site que vous consultez. Ensuite, une commission se montant généralement de 1 à 6 % de votre achat sera donnée aux œuvres caritatives que nous soutenons."
+  },
+  "optionsSuggestionsTitle": {
+    "message": "Montrez-moi des suggestions pendant que je navigue sur Internet"
+  },
+  "optionsSuggestionsDescription": {
+    "message": "Cette option vous permet de voir une petite boîte contenant des promotions, coupons et produits qui peuvent vous intéresser, d'après le contenu de la page que vous consultez. Elle apparaît de temps en temps dans l’angle inférieur droit de votre navigateur. Chaque fois que vous décidez d’acheter un produit suggéré, l’une des œuvres caritatives les plus efficaces du monde reçoit une partie du bénéfice de la vente (le prix que vous paierez ne changera pas). Nous nous efforçons de rendre l’opération aussi rapide et non intrusive que possible."
+  },
+  "optionsSearchTitle": {
+    "message": "Mettre en évidence les magasins partenaires dans les résultats de la recherche"
+  },
+  "optionsSearchDescription": {
+    "message": "Quand vous utilisez un moteur de recherche comme Google, Bing ou DuckDuckGo, les liens menant au site Web de nos partenaires seront mis en évidence afin que vous sachiez immédiatement avec quels sites Web vous pouvez collecter de l’argent."
+  },
+  "optionsThankYou": {
+    "message": ""
+  }
 }
