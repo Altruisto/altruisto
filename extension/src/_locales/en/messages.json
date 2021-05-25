@@ -236,5 +236,17 @@
   },
   "register": {
     "message": "Register"
+  },
+  "causeArea": {
+    "message": "Cause area"
+  },
+  "covid": {
+    "message": "COVID-19"
+  },
+  "povertyAndHealth": {
+    "message": "Extreme Poverty & Global Health"
+  },
+  "reductionAnimalSuffering": {
+    "message": "Reduction of Animal Suffering"
   }
 }
