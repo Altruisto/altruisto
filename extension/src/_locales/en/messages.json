@@ -257,5 +257,17 @@
   },
   "save": {
     "message": "SAVE"
+  },
+  "changePassword": {
+    "message": "Change password"
+  },
+  "somethingWentWrongTryAgain": {
+    "message": "Something went wrong, we have been notified about it. Please try again in a moment."
+  },
+  "currentPassword": {
+    "message": "Current password"
+  },
+  "newPassword": {
+    "message": "New password"
   }
 }
