@@ -87,16 +87,16 @@
   "optionsThankYou": {
     "message": "By the way - thanks for being awesome and using our extension :) Cheers! "
   },
-  "mainLabelShare": {
+  "share": {
     "message": "Share"
   },
-  "mainLabelDonate": {
+  "donate": {
     "message": "Donate"
   },
-  "mainLabelYourHelp": {
+  "yourHelp": {
     "message": "Your help"
   },
-  "mainLabelSettings": {
+  "settings": {
     "message": "Settings"
   },
   "headerLoggedInAs": {

@@ -70,10 +70,10 @@ const Main: React.FC<Props> = (props: Props) => {
           variant="fullWidth"
           textColor="secondary"
         >
-          <Tab className={classes.tab} icon={<ShareIcon />} label={browser.i18n.getMessage('mainLabelShare')} disableRipple />
-          <Tab className={classes.tab} icon={<WalletIcon />} label={browser.i18n.getMessage('mainLabelDonate')} disableRipple />
-          <Tab className={classes.tab} icon={<ProfileIcon />} label={browser.i18n.getMessage('mainLabelYourHelp')} disableRipple />
-          <Tab className={classes.tab} icon={<SettingsIcon />} label={browser.i18n.getMessage('mainLabelSettings')} disableRipple />
+          <Tab className={classes.tab} icon={<ShareIcon />} label={browser.i18n.getMessage('share')} disableRipple />
+          <Tab className={classes.tab} icon={<WalletIcon />} label={browser.i18n.getMessage('donate')} disableRipple />
+          <Tab className={classes.tab} icon={<ProfileIcon />} label={browser.i18n.getMessage('yourHelp')} disableRipple />
+          <Tab className={classes.tab} icon={<SettingsIcon />} label={browser.i18n.getMessage('settings')} disableRipple />
         </Tabs>
       </Paper>
     </>
