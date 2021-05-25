@@ -17,6 +17,37 @@
   "helpOthers": {
     "message": "Help others"
   },
+  "oneClick": {
+    "message": "with just one click!"
+  },
+  "forEvery": {
+    "message": "For every "
+  },
+  "youSpent": {
+    "message": " you spent with our partner you help:"
+  },
+  "onAvarage": {
+    "message": " (on average)"
+  },
+  "protectFromMalaria": {
+    "message": "protect $beingsSaved$ $personOrPeople$ from malaria",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1"
+      },
+      "personOrPeople": {
+        "content": "$2"
+      }
+    }
+  },
+  "curedFromParasites": {
+    "message": "$beingsSaved$ children get cured from parasites",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1"
+      }
+    }
+  },
   "topbarActivateInfo": {
     "message": "Start raising money for charities with this website by clicking here: "
   },

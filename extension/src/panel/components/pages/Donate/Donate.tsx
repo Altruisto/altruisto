@@ -28,10 +28,11 @@ const getRandomImpactHighlight = () => {
 
   switch (charities[randomItem]) {
     case "AMF":
-      return `protect ${beingsSaved} ${beingsSaved === 1 ? "person" : "people"} from malaria`
+      const personOrPeople = beingsSaved === 1 ? "person" : "people";
+      return `${browser.i18n.getMessage("protectFromMalaria", [beingsSaved, personOrPeople])}`
 
     case "SCI":
-      return `${beingsSaved} children get cured from parasites`
+      return `${browser.i18n.getMessage("curedFromParasites", [beingsSaved])}`
   }
 }
 
@@ -76,7 +77,7 @@ export const Donate: React.FC = () => {
       <div className="container fill-height">
         <div className="page__title m-b-0">
           <h1>{browser.i18n.getMessage("helpOthers")}</h1>
-          <h1 className="text-gradient">with just one click!</h1>
+          <h1 className="text-gradient">{browser.i18n.getMessage("oneClick")}</h1>
         </div>
         <div className="justify-center fill-height">
           {currentWebsite.isPartner && currentWebsite.isAlreadyActivated ? (
@@ -93,9 +94,12 @@ export const Donate: React.FC = () => {
         </div>
       </div>
       <IconBox icon={<WalletIcon />}>
-        For every <strong>$100</strong> you spent with our partner you help:
+        {browser.i18n.getMessage("forEvery")}
+        <strong>$100</strong> 
+        {browser.i18n.getMessage("youSpent")}
         <br />
-        <strong>{memoizedImpactHighlight}</strong> (on average)
+        <strong>{memoizedImpactHighlight}</strong>
+        {browser.i18n.getMessage("onAvarage")}
       </IconBox>
     </div>
   )
