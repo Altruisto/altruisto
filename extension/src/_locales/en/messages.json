@@ -200,5 +200,41 @@
   },
   "logo": {
     "message": "Logo"
+  },
+  "passwordMustHave8Char": {
+    "message": "Password must have at least 8 characters"
+  },
+  "emailsNotMatch": {
+    "message": "Emails do not match"
+  },
+  "serverDidNotResponded": {
+    "message": "Registration: the server did not responded with expected status code (201)"
+  },
+  "problemWithRegistration": {
+    "message": "There was a problem with your registration. We were notified about it and will do our best to solve it as quickly as possible. Please do try again later."
+  },
+  "yourMainEmail": {
+    "message": "Your main email address"
+  },
+  "confirmEmail": {
+    "message": "Confirm email"
+  },
+  "confirmYourEmailAdress": {
+    "message": "Confirm your email address"
+  },
+  "iAcceptThe": {
+    "message": "I accept the "
+  },
+  "termsOfService": {
+    "message": "Terms of Service"
+  },
+  "andThe": {
+    "message": " and the "
+  },
+  "privacyPolicy": {
+    "message": "Privacy Policy"
+  },
+  "register": {
+    "message": "Register"
   }
 }
