@@ -76,5 +76,17 @@
   },
   "switchButtonAriaLabelToggle": {
     "message": "Toggle"
+  },
+  "activatePartnerAnchorActivate": {
+    "message": "Activate donation for:"
+  },
+  "activatePartnerThisSiteIsOur": {
+    "message": "This site is our "
+  },
+  "activatePartnerPartner": {
+    "message": "partner!"
+  },
+  "activatePartnerAnchorViewAll": {
+    "message": "View All"
   }
 }

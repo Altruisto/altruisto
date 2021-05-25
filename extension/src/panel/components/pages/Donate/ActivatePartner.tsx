@@ -1,4 +1,5 @@
 import React from "react"
+import { browser } from "webextension-polyfill-ts"
 
 type Props = {
   domain: string
@@ -14,13 +15,14 @@ export const ActivatePartner = (props: Props) => (
       target="_blank"
       rel="noreferrer noopener"
     >
-      Activate donation for:
+      {browser.i18n.getMessage('activatePartnerAnchorActivate')}
       <br />
       {props.domain}
     </a>
     <div className="d-flex justify-space-between">
       <span>
-        This site is our <strong className="text-accent">partner!</strong>
+        {browser.i18n.getMessage('activatePartnerThisSiteIsOur')}
+        <strong className="text-accent">{browser.i18n.getMessage('activatePartnerPartner')}</strong>
       </span>
 
       <a
@@ -29,7 +31,7 @@ export const ActivatePartner = (props: Props) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        View All
+        {browser.i18n.getMessage('activatePartnerAnchorViewAll')}
       </a>
     </div>
   </>
