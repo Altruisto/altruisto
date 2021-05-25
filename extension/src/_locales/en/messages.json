@@ -269,5 +269,8 @@
   },
   "newPassword": {
     "message": "New password"
+  },
+  "currency": {
+    "message": "Currency"
   }
 }
