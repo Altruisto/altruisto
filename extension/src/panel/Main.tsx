@@ -15,6 +15,7 @@ import { Share } from "./components/pages/Share/Share"
 import { Donate } from "./components/pages/Donate/Donate"
 import { Settings } from "./components/pages/Settings/Settings"
 import { YourHelp } from "./components/pages/YourHelp/YourHelp"
+import { browser } from "webextension-polyfill-ts"
 
 type Props = {
   classes: {
@@ -69,10 +70,10 @@ const Main: React.FC<Props> = (props: Props) => {
           variant="fullWidth"
           textColor="secondary"
         >
-          <Tab className={classes.tab} icon={<ShareIcon />} label="Share" disableRipple />
-          <Tab className={classes.tab} icon={<WalletIcon />} label="Donate" disableRipple />
-          <Tab className={classes.tab} icon={<ProfileIcon />} label="Your help" disableRipple />
-          <Tab className={classes.tab} icon={<SettingsIcon />} label="Settings" disableRipple />
+          <Tab className={classes.tab} icon={<ShareIcon />} label={browser.i18n.getMessage('mainLabelShare')} disableRipple />
+          <Tab className={classes.tab} icon={<WalletIcon />} label={browser.i18n.getMessage('mainLabelDonate')} disableRipple />
+          <Tab className={classes.tab} icon={<ProfileIcon />} label={browser.i18n.getMessage('mainLabelYourHelp')} disableRipple />
+          <Tab className={classes.tab} icon={<SettingsIcon />} label={browser.i18n.getMessage('mainLabelSettings')} disableRipple />
         </Tabs>
       </Paper>
     </>

@@ -55,5 +55,17 @@
   },
   "optionsThankYou": {
     "message": "By the way - thanks for being awesome and using our extension :) Cheers! "
+  },
+  "mainLabelShare": {
+    "message": "Share"
+  },
+  "mainLabelDonate": {
+    "message": "Donate"
+  },
+  "mainLabelYourHelp": {
+    "message": "Your help"
+  },
+  "mainLabelSettings": {
+    "message": "Settings"
   }
 }
