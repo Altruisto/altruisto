@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React, { useState } from "react"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import { Alert } from "../../ui/Alert"
@@ -38,7 +39,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
               ) {
                 setFailureMessage(String(error.response.data.message))
               } else {
-                setFailureMessage("Something went wrong, please try again.")
+                setFailureMessage(`${browser.i18n.getMessage("somethingWentWrong")}`)
               }
               console.warn(error)
               actions.setSubmitting(false)
@@ -47,16 +48,16 @@ const LoginForm: React.FC<Props> = (props: Props) => {
         validate={values => {
           let errors: ValidationErors = {}
           if (!values.email) {
-            errors.email = "This field is required"
+            errors.email = `${browser.i18n.getMessage("fieldIsRequired")}`
           }
 
           const regexp = /\S+@\S+\.\S+/
           if (!regexp.test(String(values.email).toLowerCase())) {
-            errors.email = "Provided email address is not valid"
+            errors.email = `${browser.i18n.getMessage("errorEmailIsNotValid")}`
           }
 
           if (!values.password) {
-            errors.password = "This field is required"
+            errors.password = `${browser.i18n.getMessage("fieldIsRequired")}`
           }
 
           return errors
@@ -65,14 +66,14 @@ const LoginForm: React.FC<Props> = (props: Props) => {
           <Form className="login-form" noValidate>
             <div className="field">
               <label className="field__label" htmlFor="email">
-                Email
+                {browser.i18n.getMessage("email")}
               </label>
               <Field
                 className="field__input"
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Your email"
+                placeholder={browser.i18n.getMessage("yourEmail")}
               />
               <div className="field__error-message">
                 <ErrorMessage name="email" component="span" />
@@ -80,7 +81,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
             </div>
             <div className="field">
               <label className="field__label" htmlFor="password">
-                Password
+                {browser.i18n.getMessage("password")}
               </label>
               <span className="field__appendix">
                 <button
@@ -90,7 +91,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
                     props.onForgot && props.onForgot()
                   }}
                 >
-                  Forgot
+                  {browser.i18n.getMessage("forgot")}
                 </button>
               </span>
               <Field
@@ -98,14 +99,14 @@ const LoginForm: React.FC<Props> = (props: Props) => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Your password"
+                placeholder={browser.i18n.getMessage("yourPassword")}
               />
               <div className="field__error-message">
                 <ErrorMessage name="password" component="span" />
               </div>
             </div>
             <button type="submit" className="button login-form__button">
-              {isSubmitting ? <Loader /> : "Login"}
+              {isSubmitting ? <Loader /> : `${browser.i18n.getMessage("login")}`}
             </button>
           </Form>
         )}

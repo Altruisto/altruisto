@@ -152,5 +152,26 @@
   },
   "resetPassword": {
     "message": "Reset password"
+  },
+  "somethingWentWrong": {
+    "message": "Something went wrong, please try again."
+  },
+  "email": {
+    "message": "Email"
+  },
+  "password": {
+    "message": "Password"
+  },
+  "yourEmail": {
+    "message": "Your email"
+  },
+  "yourPassword": {
+    "message": "Your password"
+  },
+  "forgot": {
+    "message": "Forgot"
+  },
+  "login": {
+    "message": "Login"
   }
 }
