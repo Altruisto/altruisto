@@ -173,5 +173,32 @@
   },
   "login": {
     "message": "Login"
+  },
+  "successfullyRegisteredAndLoggedIn": {
+    "message": "You have been successfully registered and logged in. Thank you!"
+  },
+  "sentLinkToResetPassword": {
+    "message": "We've sent you an email with a link to reset your password."
+  },
+  "dontHaveAccount": {
+    "message": "Don't have an account?"
+  },
+  "singUp": {
+    "message": "Sign up now."
+  },
+  "alreadyHaveAccount": {
+    "message": "Already have an account?"
+  },
+  "loginNow": {
+    "message": "Login now."
+  },
+  "goBackToLogin": {
+    "message": "Go back to login form."
+  },
+  "close": {
+    "message": "close"
+  },
+  "logo": {
+    "message": "Logo"
   }
 }

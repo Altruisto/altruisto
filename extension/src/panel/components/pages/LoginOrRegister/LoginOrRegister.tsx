@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React, { useState } from "react"
 import Zoom from "@material-ui/core/Zoom"
 
@@ -57,7 +58,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
           <>
             <AnimatedCheckmark />
             <p className="text-success text-center m-t-20">
-              <strong>You have been successfully registered and logged in. Thank you!</strong>
+              <strong>{browser.i18n.getMessage("successfullyRegisteredAndLoggedIn")}</strong>
             </p>
           </>
         )
@@ -74,7 +75,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
           <>
             <AnimatedCheckmark />
             <p className="text-success text-center m-t-20">
-              <strong>We've sent you an email with a link to reset your password.</strong>
+              <strong>{browser.i18n.getMessage("sentLinkToResetPassword")}</strong>
             </p>
           </>
         )
@@ -86,12 +87,12 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
       case Views.Login:
         return (
           <>
-            Don't have an account?&nbsp;
+            {browser.i18n.getMessage("dontHaveAccount")}&nbsp;
             <button
               className="login-or-register__link button-link"
               onClick={() => setActivePage(Views.Register)}
             >
-              <span className="text-gradient">Sign up now.</span>
+              <span className="text-gradient">{browser.i18n.getMessage("singUp")}</span>
             </button>
           </>
         )
@@ -99,12 +100,12 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
       case Views.Register:
         return (
           <>
-            Already have an account?&nbsp;
+            {browser.i18n.getMessage("alreadyHaveAccount")}&nbsp;
             <button
               className="login-or-register__link button-link"
               onClick={() => setActivePage(Views.Login)}
             >
-              <span className="text-gradient">Login now.</span>
+              <span className="text-gradient">{browser.i18n.getMessage("loginNow")}</span>
             </button>
           </>
         )
@@ -119,7 +120,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               className="login-or-register__link button-link"
               onClick={() => setActivePage(Views.Login)}
             >
-              <span className="text-gradient">Go back to login form.</span>
+              <span className="text-gradient">{browser.i18n.getMessage("goBackToLogin")}</span>
             </button>
           </>
         )
@@ -133,10 +134,14 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
     <Zoom in={isShowing}>
       <div className="login-or-register">
         <button className="login-or-register__close" onClick={closePage}>
-          <img src={close} alt="close" title="close" />
+          <img src={close} alt="close" title={browser.i18n.getMessage("close")}/>
         </button>
         <div className="login-or-register__content container">
-          <img className="login-or-register__logo" src={logo} alt="Logo" title="Logo" />
+          <img className="login-or-register__logo" 
+            src={logo} 
+            alt={browser.i18n.getMessage("logo")} 
+            title={browser.i18n.getMessage("logo")} 
+          />
           <div className="login-or-register__form">{getForm(activePage)}</div>
           <div className="login-or-register__footer">{getFooter(activePage)}</div>
         </div>
