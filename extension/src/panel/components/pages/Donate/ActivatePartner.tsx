@@ -15,14 +15,14 @@ export const ActivatePartner = (props: Props) => (
       target="_blank"
       rel="noreferrer noopener"
     >
-      {browser.i18n.getMessage('activatePartnerAnchorActivate')}
+      {browser.i18n.getMessage('activateDonationFor')}
       <br />
       {props.domain}
     </a>
     <div className="d-flex justify-space-between">
       <span>
-        {browser.i18n.getMessage('activatePartnerThisSiteIsOur')}
-        <strong className="text-accent">{browser.i18n.getMessage('activatePartnerPartner')}</strong>
+        {browser.i18n.getMessage('thisSiteIsOur')}
+        <strong className="text-accent">{browser.i18n.getMessage('partner')}</strong>
       </span>
 
       <a
@@ -31,7 +31,7 @@ export const ActivatePartner = (props: Props) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        {browser.i18n.getMessage('activatePartnerAnchorViewAll')}
+        {browser.i18n.getMessage('viewAll')}
       </a>
     </div>
   </>

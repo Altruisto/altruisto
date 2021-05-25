@@ -108,16 +108,16 @@
   "toggle": {
     "message": "Toggle"
   },
-  "activatePartnerAnchorActivate": {
+  "activateDonationFor": {
     "message": "Activate donation for:"
   },
-  "activatePartnerThisSiteIsOur": {
+  "thisSiteIsOur": {
     "message": "This site is our "
   },
-  "activatePartnerPartner": {
+  "partner": {
     "message": "partner!"
   },
-  "activatePartnerAnchorViewAll": {
+  "viewAll": {
     "message": "View All"
   }
 }
