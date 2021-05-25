@@ -114,6 +114,9 @@
   "thisSiteIsOur": {
     "message": "This site is our "
   },
+  "thisSiteIsNotOur": {
+    "message": "This site is not our "
+  },
   "partner": {
     "message": "partner!"
   },
