@@ -33,10 +33,12 @@
     "message": "protect $beingsSaved$ $personOrPeople$ from malaria",
     "placeholders": {
       "beingsSaved": {
-        "content": "$1"
+        "content": "$1", 
+        "example": "1"       
       },
       "personOrPeople": {
-        "content": "$2"
+        "content": "$2",
+        "example": "person"
       }
     }
   },
@@ -44,7 +46,8 @@
     "message": "$beingsSaved$ children get cured from parasites",
     "placeholders": {
       "beingsSaved": {
-        "content": "$1"
+        "content": "$1",
+        "example": "3"
       }
     }
   },
