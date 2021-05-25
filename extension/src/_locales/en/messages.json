@@ -99,10 +99,10 @@
   "settings": {
     "message": "Settings"
   },
-  "headerLoggedInAs": {
+  "loggedInAs": {
     "message": "Logged in as:"
   },
-  "headerButtonLoginOrRegister": {
+  "loginOrRegister": {
     "message": "LOGIN OR REGISTER"
   },
   "switchButtonAriaLabelToggle": {
