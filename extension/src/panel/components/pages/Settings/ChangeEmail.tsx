@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React from "react"
 import { Formik, Field, ErrorMessage, Form } from "formik"
 import colors from "../../../assets/scss/colors.scss"
@@ -11,14 +12,14 @@ export const ChangeEmail = () => {
 
   return (
     <div className="settings__option settings__option--vertical">
-      <span className="settings__label">Change email</span>
+      <span className="settings__label">{browser.i18n.getMessage("changeEmail")}</span>
       <Formik
         enableReinitialize={true}
         initialValues={{
           email: auth.user && auth.user.email ? auth.user.email : ""
         }}
         onSubmit={(values, actions) => {
-          enqueueSnackbar("Your settings have been updated", {
+          enqueueSnackbar(browser.i18n.getMessage("settingsHaveBeenUpdated"), {
             variant: "success"
           })
           actions.setSubmitting(false)
@@ -28,11 +29,11 @@ export const ChangeEmail = () => {
             email?: string
           } = {}
           if (!values.email) {
-            errors.email = "This field is required"
+            errors.email = browser.i18n.getMessage("fieldIsRequired")
           }
           const regexp = /\S+@\S+\.\S+/
           if (!regexp.test(String(values.email).toLowerCase())) {
-            errors.email = "Provided email address is not valid"
+            errors.email = browser.i18n.getMessage("errorEmailIsNotValid")
           }
           return errors
         }}
@@ -57,7 +58,7 @@ export const ChangeEmail = () => {
                       }}
                     />
                   ) : (
-                    "SAVE"
+                    browser.i18n.getMessage("save")
                   )}
                 </button>
               </div>

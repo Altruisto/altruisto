@@ -248,5 +248,14 @@
   },
   "reductionAnimalSuffering": {
     "message": "Reduction of Animal Suffering"
+  },
+  "changeEmail": {
+    "message": "Change email"
+  },
+  "settingsHaveBeenUpdated": {
+    "message": "Your settings have been updated"
+  },
+  "save": {
+    "message": "SAVE"
   }
 }
