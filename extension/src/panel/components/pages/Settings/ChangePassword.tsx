@@ -81,7 +81,7 @@ export const ChangePassword = () => {
                 placeholder={browser.i18n.getMessage("currentPassword")}
               />
               <div className="field__error-message">
-                <ErrorMessage name="password" component="span" />
+                <ErrorMessage name="currentPassword" component="span" />
               </div>
             </div>
 
@@ -112,7 +112,7 @@ export const ChangePassword = () => {
                 placeholder={browser.i18n.getMessage("newPassword")}
               />
               <div className="field__error-message">
-                <ErrorMessage name="confirmPassword" component="span" />
+                <ErrorMessage name="newPassword" component="span" />
               </div>
             </div>
           </Form>
