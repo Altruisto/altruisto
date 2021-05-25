@@ -29,7 +29,7 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
             })
             .catch(error => {
               enqueueSnackbar(
-                `${browser.i18n.getMessage("errorProvideCorrectEmail")}`,
+                browser.i18n.getMessage("errorProvideCorrectEmail"),
                 {
                   variant: "error"
                 }
