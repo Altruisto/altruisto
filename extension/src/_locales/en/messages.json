@@ -67,5 +67,11 @@
   },
   "mainLabelSettings": {
     "message": "Settings"
+  },
+  "headerLoggedInAs": {
+    "message": "Logged in as:"
+  },
+  "headerButtonLoginOrRegister": {
+    "message": "LOGIN OR REGISTER"
   }
 }
