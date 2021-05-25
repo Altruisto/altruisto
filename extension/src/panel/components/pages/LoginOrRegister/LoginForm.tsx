@@ -52,7 +52,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
           }
 
           const regexp = /\S+@\S+\.\S+/
-          if (!regexp.test(String(values.email).toLowerCase())) {
+          if (values.email && !regexp.test(String(values.email).toLowerCase())) {
             errors.email = `${browser.i18n.getMessage("errorEmailIsNotValid")}`
           }
 
