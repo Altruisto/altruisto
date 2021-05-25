@@ -43,11 +43,11 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
             email?: string
           } = {}
           if (!values.email) {
-            errors.email = `${browser.i18n.getMessage("fieldIsRequired")}`
+            errors.email = browser.i18n.getMessage("fieldIsRequired")
           }
           const regexp = /\S+@\S+\.\S+/
           if (values.email && !regexp.test(String(values.email).toLowerCase())) {
-            errors.email = `${browser.i18n.getMessage("errorEmailIsNotValid")}`
+            errors.email = browser.i18n.getMessage("errorEmailIsNotValid")
           }
           return errors
         }}
@@ -65,7 +65,7 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
               </div>
             </div>
             <button type="submit" className="button login-form__button">
-              {isSubmitting ? <Loader /> : `${browser.i18n.getMessage("resetPassword")}`}
+              {isSubmitting ? <Loader /> : browser.i18n.getMessage("resetPassword")}
             </button>
           </Form>
         )}

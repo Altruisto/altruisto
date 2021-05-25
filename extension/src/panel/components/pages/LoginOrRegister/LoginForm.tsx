@@ -48,16 +48,16 @@ const LoginForm: React.FC<Props> = (props: Props) => {
         validate={values => {
           let errors: ValidationErors = {}
           if (!values.email) {
-            errors.email = `${browser.i18n.getMessage("fieldIsRequired")}`
+            errors.email = browser.i18n.getMessage("fieldIsRequired")
           }
 
           const regexp = /\S+@\S+\.\S+/
           if (values.email && !regexp.test(String(values.email).toLowerCase())) {
-            errors.email = `${browser.i18n.getMessage("errorEmailIsNotValid")}`
+            errors.email = browser.i18n.getMessage("errorEmailIsNotValid")
           }
 
           if (!values.password) {
-            errors.password = `${browser.i18n.getMessage("fieldIsRequired")}`
+            errors.password = browser.i18n.getMessage("fieldIsRequired")
           }
 
           return errors
@@ -106,7 +106,7 @@ const LoginForm: React.FC<Props> = (props: Props) => {
               </div>
             </div>
             <button type="submit" className="button login-form__button">
-              {isSubmitting ? <Loader /> : `${browser.i18n.getMessage("login")}`}
+              {isSubmitting ? <Loader /> : browser.i18n.getMessage("login")}
             </button>
           </Form>
         )}
