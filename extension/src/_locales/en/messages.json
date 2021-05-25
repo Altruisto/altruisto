@@ -122,5 +122,14 @@
   },
   "viewAll": {
     "message": "View All"
+  },
+  "donationIsActive": {
+    "message": "The donation for $domain$ is active! When you buy something charities will get donations!",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "ebay.com"
+      }
+    }
   }
 }
