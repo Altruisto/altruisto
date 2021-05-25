@@ -59,13 +59,13 @@ export const ChangePassword = () => {
           if (!values.currentPassword) {
             errors.currentPassword = browser.i18n.getMessage("fieldIsRequired")
           }
-          if (values.currentPassword !== undefined && values.currentPassword.length < 8) {
+          if (values.currentPassword && values.currentPassword.length < 8) {
             errors.currentPassword = browser.i18n.getMessage("passwordMustHave8Char")
           }
           if (!values.newPassword) {
             errors.newPassword = browser.i18n.getMessage("fieldIsRequired")
           }
-          if (values.newPassword !== undefined && values.newPassword.length < 8) {
+          if (values.newPassword && values.newPassword.length < 8) {
             errors.newPassword = browser.i18n.getMessage("passwordMustHave8Char")
           }
 
