@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import { Loader } from "../../ui/Loader"
@@ -13,8 +14,7 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
   return (
     <div>
       <p>
-        Please enter your email address below, and we’ll send a link you can use
-        to reset your password
+        {browser.i18n.getMessage("enterYourEmail")}        
       </p>
       <Formik
         initialValues={{ email: "" }}
@@ -29,7 +29,7 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
             })
             .catch(error => {
               enqueueSnackbar(
-                "Something went wrong. Please make sure you have provided a correct email address.",
+                `${browser.i18n.getMessage("errorProvideCorrectEmail")}`,
                 {
                   variant: "error"
                 }
@@ -43,11 +43,11 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
             email?: string
           } = {}
           if (!values.email) {
-            errors.email = "This field is required"
+            errors.email = `${browser.i18n.getMessage("fieldIsRequired")}`
           }
           const regexp = /\S+@\S+\.\S+/
           if (!regexp.test(String(values.email).toLowerCase())) {
-            errors.email = "Provided email address is not valid"
+            errors.email = `${browser.i18n.getMessage("errorEmailIsNotValid")}`
           }
           return errors
         }}
@@ -57,7 +57,7 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
               <Field
                 type="email"
                 name="email"
-                placeholder="E-mail for you account"
+                placeholder={browser.i18n.getMessage("emailPlaceholder")}
                 className="field__input"
               />
               <div className="field__error-message">
@@ -65,7 +65,7 @@ export const ForgotPasswordForm: React.FC<Props> = props => {
               </div>
             </div>
             <button type="submit" className="button login-form__button">
-              {isSubmitting ? <Loader /> : "Reset password"}
+              {isSubmitting ? <Loader /> : `${browser.i18n.getMessage("resetPassword")}`}
             </button>
           </Form>
         )}
