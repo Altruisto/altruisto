@@ -28,7 +28,7 @@ export const Switch: React.FC<
       />
       <button
         className={buttonClassName}
-        aria-label={browser.i18n.getMessage('switchButtonAriaLabelToggle')}
+        aria-label={browser.i18n.getMessage('toggle')}
         type="button"
         {...buttonProps}
       />
