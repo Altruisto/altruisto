@@ -32,7 +32,7 @@ export const ChangeEmail = () => {
             errors.email = browser.i18n.getMessage("fieldIsRequired")
           }
           const regexp = /\S+@\S+\.\S+/
-          if (!regexp.test(String(values.email).toLowerCase())) {
+          if (values.email && !regexp.test(String(values.email).toLowerCase())) {
             errors.email = browser.i18n.getMessage("errorEmailIsNotValid")
           }
           return errors
