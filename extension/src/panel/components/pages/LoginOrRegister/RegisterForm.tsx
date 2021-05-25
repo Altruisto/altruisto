@@ -49,7 +49,7 @@ const validate = (values: FormData) => {
   }
 
   const regexp = /\S+@\S+\.\S+/
-  if (!regexp.test(String(values.email).toLowerCase())) {
+  if (values.email && !regexp.test(String(values.email).toLowerCase())) {
     errors.email = browser.i18n.getMessage("errorEmailIsNotValid")
   }
 
@@ -57,7 +57,7 @@ const validate = (values: FormData) => {
     errors.password = browser.i18n.getMessage("fieldIsRequired")
   }
 
-  if (values.password !== undefined && values.password.length < 8) {
+  if (values.password && values.password.length < 8) {
     errors.password = browser.i18n.getMessage("passwordMustHave8Char")
   }
 
