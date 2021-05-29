@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React, { useEffect, useState } from "react"
 import facebook from "../../../assets/facebook.svg"
 import twitter from "../../../assets/twitter.svg"
@@ -44,20 +45,22 @@ export const Share: React.FC<Props> = ({ isActive }) => {
     <div className="page">
       <div className="container">
         <div className="page__title m-b-0">
-          <h1>Together</h1>
-          <h1 className="text-gradient">we can do more!</h1>
+          <h1>{browser.i18n.getMessage("together")}</h1>
+          <h1 className="text-gradient">{browser.i18n.getMessage("weCanMore")}</h1>
         </div>
         <div className="fill-height">
           <p className="share__explanation">
-            If every user invited <strong>just three of their friends</strong>, in a few short weeks
-            we would be <strong>helping hundreds of thousands of people</strong> experience what's
-            best in life, instead of suffering, pain, helplessness.
+          {browser.i18n.getMessage("ifEveryUserInvited")}
+          <strong>{browser.i18n.getMessage("justThreeFriends")}</strong>
+          {browser.i18n.getMessage("inFewWeeksWeWouldBe")}
+          <strong>{browser.i18n.getMessage("helpingHundredsOfThousandsOfPeople")}</strong>
+          {browser.i18n.getMessage("experienceWhatIsBestInLife")}
           </p>
           <p className="share__explanation">
             <strong>
-              Help your friends discover altruisto
+              {browser.i18n.getMessage("helpYourFriendsDiscoverAltruisto")}
               <br />
-              and do even more good:
+              {browser.i18n.getMessage("andDoMoreGood")}
             </strong>
           </p>
           <div className="share__buttons m-b-20">
@@ -91,19 +94,22 @@ export const Share: React.FC<Props> = ({ isActive }) => {
           </div>
           {ref ? (
             <div className="field m-t-10">
-              <h1 className="m-b-20">Your referral link:</h1>
+              <h1 className="m-b-20">{browser.i18n.getMessage("yourReferralLink")}</h1>
               <span className="field__appendix share__copy-icon">
                 <button
                   className="button-link"
                   onClick={() => {
                     copyToClipboard(`https://altruisto.com/?ref=${ref}`)
-                    enqueueSnackbar("Copied to clipboard!", {
+                    enqueueSnackbar(browser.i18n.getMessage("copiedToClipboard"), {
                       variant: "info",
                       autoHideDuration: 900
                     })
                   }}
                 >
-                  <img src={copy} alt="Copy ref link" title="Copy icon" />
+                  <img src={copy} 
+                    alt={browser.i18n.getMessage("copyRefLink")} 
+                    title={browser.i18n.getMessage("copyIcon")} 
+                  />
                 </button>
               </span>
               <input
@@ -114,7 +120,7 @@ export const Share: React.FC<Props> = ({ isActive }) => {
                 value={`https://altruisto.com/?ref=${ref}`}
                 onClick={event => {
                   copyToClipboard(`https://altruisto.com/?ref=${ref}`)
-                  enqueueSnackbar("Copied to clipboard!", {
+                  enqueueSnackbar(browser.i18n.getMessage("copiedToClipboard"), {
                     variant: "info",
                     autoHideDuration: 900
                   })
@@ -127,12 +133,12 @@ export const Share: React.FC<Props> = ({ isActive }) => {
           {referralsNumber !== null ? (
             <div className="m-t-20 m-b-10 ">
               <div className="share__invited-number">{referralsNumber} </div>
-              <div className="share__invited-people">people joined thanks to you</div>
+              <div className="share__invited-people">{browser.i18n.getMessage("peopleJoinedThanksToYou")}</div>
             </div>
           ) : null}
         </div>
       </div>
-      <h1 className="container m-t-30">Talking about us:</h1>
+      <h1 className="container m-t-30">{browser.i18n.getMessage("talkingAboutUs")}</h1>
       <TwitterCarousel />
     </div>
   )

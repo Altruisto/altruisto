@@ -299,5 +299,50 @@
   },
   "signUp": {
     "message": "Sign up"
+  },
+  "together": {
+    "message": "Together"
+  },
+  "weCanMore": {
+    "message": "we can do more!"
+  },
+  "ifEveryUserInvited": {
+    "message": "If every user invited "
+  },
+  "justThreeFriends": {
+    "message": "just three of their friends"
+  },
+  "inFewWeeksWeWouldBe": {
+    "message": ", in a few short weeks we would be "
+  },
+  "helpingHundredsOfThousandsOfPeople": {
+    "message": "helping hundreds of thousands of people"
+  },
+  "experienceWhatIsBestInLife": {
+    "message": " experience what's best in life, instead of suffering, pain, helplessness."
+  },
+  "helpYourFriendsDiscoverAltruisto": {
+    "message": "Help your friends discover altruisto"
+  },
+  "andDoMoreGood": {
+    "message": "and do even more good:"
+  },
+  "yourReferralLink": {
+    "message": "Your referral link:"
+  },
+  "copiedToClipboard": {
+    "message": "Copied to clipboard!"
+  },
+  "copyRefLink": {
+    "message": "Copy ref link"
+  },
+  "copyIcon": {
+    "message": "Copy icon"
+  },
+  "peopleJoinedThanksToYou": {
+    "message": "people joined thanks to you"
+  },
+  "talkingAboutUs": {
+    "message": "Talking about us:"
   }
 }
