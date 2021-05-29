@@ -183,7 +183,7 @@
   "dontHaveAccount": {
     "message": "Don't have an account?"
   },
-  "singUp": {
+  "signUpNow": {
     "message": "Sign up now."
   },
   "alreadyHaveAccount": {
@@ -272,5 +272,32 @@
   },
   "currency": {
     "message": "Currency"
+  },
+  "youHaveToBeLoggedToChangeSettings": {
+    "message": "You have to be logged in to change this setting."
+  },
+  "youHaveBeenLoggedOut": {
+    "message": "You have been logged out."
+  },
+  "notifications": {
+    "message": "Notifications"
+  },
+  "showMeNotificationWhenIVisitPartners": {
+    "message": "Show me a notification when I visit one of Altruisto's partners' shop and have an opportunity to raise money for charities with my purchases"
+  },
+  "highlightPartners": {
+    "message": "Highlight partners in search results"
+  },
+  "logOut": {
+    "message": "LOG OUT"
+  },
+  "defaultHelp": {
+    "message": "By default the help from unlogged users goes to: Against Malaria Foundation, Schistosomiasis Control Initiative, and Give Directly."
+  },
+  "toChooseDifferentCharities": {
+    "message": "to choose different charities."
+  },
+  "signUp": {
+    "message": "Sign up"
   }
 }

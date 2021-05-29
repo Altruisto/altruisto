@@ -92,7 +92,7 @@ export const LoginOrRegister: React.FC<Props> = (props: Props) => {
               className="login-or-register__link button-link"
               onClick={() => setActivePage(Views.Register)}
             >
-              <span className="text-gradient">{browser.i18n.getMessage("singUp")}</span>
+              <span className="text-gradient">{browser.i18n.getMessage("signUpNow")}</span>
             </button>
           </>
         )

@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React, { useState, useEffect } from "react"
 import { Switch } from "../../ui/Switch"
 import { useSnackbar } from "notistack"
@@ -73,7 +74,7 @@ export const Settings: React.FC<Props> = (props: Props) => {
         )
         .then(response => {
           if (response.status === 200) {
-            enqueueSnackbar("Your settings have been updated", {
+            enqueueSnackbar(browser.i18n.getMessage("settingsHaveBeenUpdated"), {
               variant: "success"
             })
 
@@ -87,14 +88,14 @@ export const Settings: React.FC<Props> = (props: Props) => {
         })
         .catch(() => {
           enqueueSnackbar(
-            "Something went wrong, we have been notified about it. Please try again in a moment.",
+            browser.i18n.getMessage("somethingWentWrongTryAgain"),
             {
               variant: "error"
             }
           )
         })
     } else {
-      enqueueSnackbar("You have to be logged in to change this setting.", {
+      enqueueSnackbar(browser.i18n.getMessage("youHaveToBeLoggedToChangeSettings"), {
         variant: "error"
       })
     }
@@ -102,18 +103,18 @@ export const Settings: React.FC<Props> = (props: Props) => {
 
   const handleLogout = () => {
     auth.logout()
-    enqueueSnackbar("You have been logged out.", { variant: "success" })
+    enqueueSnackbar(browser.i18n.getMessage("youHaveBeenLoggedOut"), { variant: "success" })
   }
 
   return (
     <div className="page">
       <div className="container fill-height">
         <div className="page__title">
-          <h1>Settings</h1>
+          <h1>{browser.i18n.getMessage("settings")}</h1>
         </div>
         <div>
           <div className="settings__option">
-            <span className="settings__label">Notifications</span>
+            <span className="settings__label">{browser.i18n.getMessage("notifications")}</span>
             <Switch
               on={notifications}
               onClick={() =>
@@ -125,12 +126,10 @@ export const Settings: React.FC<Props> = (props: Props) => {
             />
           </div>
           <p className="settings__description">
-            Show me a notification when I visit one of Altruisto's partners' shop and have an
-            opportunity to raise money for charities with my purchases
+            {browser.i18n.getMessage("showMeNotificationWhenIVisitPartners")}
           </p>
-
           <div className="settings__option m-t-20">
-            <span className="settings__label">Highlight partners in search results</span>
+            <span className="settings__label">{browser.i18n.getMessage("highlightPartners")}</span>
             <Switch
               on={searchResults}
               onClick={() =>
@@ -157,21 +156,20 @@ export const Settings: React.FC<Props> = (props: Props) => {
 
             <div className="settings__option">
               <button className="button-link uppercase-link m-b-20" onClick={handleLogout}>
-                LOG OUT
+                {browser.i18n.getMessage("logOut")}
               </button>
             </div>
           </div>
         ) : (
           <div className="settings__info-for-unlogged">
             <p>
-              By default the help from unlogged users goes to: Against Malaria Foundation,
-              Schistosomiasis Control Initiative, and Give Directly.
+              {browser.i18n.getMessage("defaultHelp")}
             </p>
             <p>
               <button className="button-link p-l-0" onClick={props.onRequestLogin}>
-                <span className="text-gradient">Sign up</span>
-              </button>{" "}
-              to choose different charities.
+                <span className="text-gradient">{browser.i18n.getMessage("signUp")}</span>
+              </button>
+              {browser.i18n.getMessage("toChooseDifferentCharities")}
             </p>
           </div>
         )}
