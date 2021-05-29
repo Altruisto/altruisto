@@ -344,5 +344,14 @@
   },
   "talkingAboutUs": {
     "message": "Talking about us:"
+  },
+  "youHaveCollected": {
+    "message": "You have collected: "
+  },
+  "collect": {
+    "message": "Collect "
+  },
+  "moreToReachMilestoneOf": {
+    "message": " more to reach milestone of "
   }
 }
