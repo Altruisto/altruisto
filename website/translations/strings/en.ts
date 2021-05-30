@@ -27,5 +27,11 @@ export const en = {
   covid: "COVID-19",
   povertyAndHealth: "Extreme Poverty & Global Health",
   reductionOfAnimalSuffering: "Reduction of Animal Suffering",
-  logOut: "LOG OUT"
+  logOut: "LOG OUT",
+  searchResults: "Search results",
+  partnersList: "Partners List",
+  search: "Search...",
+  searchIcon: "search icon",
+  clickButtonBelowToActiveDonationFor: "Click the button below to active donation for ",
+  activeDonation: "Active donation"
 } as const
