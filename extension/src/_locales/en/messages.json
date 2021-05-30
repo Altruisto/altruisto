@@ -14,43 +14,6 @@
   "notificationButtonLabel": {
     "message": "Activate donation"
   },
-  "helpOthers": {
-    "message": "Help others"
-  },
-  "oneClick": {
-    "message": "with just one click!"
-  },
-  "forEvery": {
-    "message": "For every "
-  },
-  "youSpent": {
-    "message": " you spent with our partner you help:"
-  },
-  "onAvarage": {
-    "message": " (on average)"
-  },
-  "protectFromMalaria": {
-    "message": "protect $beingsSaved$ $personOrPeople$ from malaria",
-    "placeholders": {
-      "beingsSaved": {
-        "content": "$1", 
-        "example": "1"       
-      },
-      "personOrPeople": {
-        "content": "$2",
-        "example": "person"
-      }
-    }
-  },
-  "childrenGetcuredFromParasites": {
-    "message": "$beingsSaved$ children get cured from parasites",
-    "placeholders": {
-      "beingsSaved": {
-        "content": "$1",
-        "example": "3"
-      }
-    }
-  },
   "topbarActivateInfo": {
     "message": "Start raising money for charities with this website by clicking here: "
   },
@@ -89,6 +52,43 @@
   },
   "optionsThankYou": {
     "message": "By the way - thanks for being awesome and using our extension :) Cheers! "
+  },
+  "helpOthers": {
+    "message": "Help others"
+  },
+  "oneClick": {
+    "message": "with just one click!"
+  },
+  "forEvery": {
+    "message": "For every "
+  },
+  "youSpent": {
+    "message": " you spent with our partner you help:"
+  },
+  "onAvarage": {
+    "message": " (on average)"
+  },
+  "protectFromMalaria": {
+    "message": "protect $beingsSaved$ $personOrPeople$ from malaria",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1", 
+        "example": "1"       
+      },
+      "personOrPeople": {
+        "content": "$2",
+        "example": "person"
+      }
+    }
+  },
+  "childrenGetcuredFromParasites": {
+    "message": "$beingsSaved$ children get cured from parasites",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
   },
   "share": {
     "message": "Share"
