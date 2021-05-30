@@ -5,6 +5,15 @@
     "description": {
         "message": "Sammeln Sie alleine durch Ihr tägliches Einkaufen – und ohne zusätzliche Kosten – Spenden für einige der weltweit effektivsten Wohltätigkeitsorganisationen."
     },
+    "notificationActivate": {
+      "message": "Start raising money for charities with this website by clicking here:"
+    },
+    "notificationActivated": {
+      "message": "You are now collecting money for charities with this website."
+    },
+    "notificationButtonLabel": {
+      "message": "Activate donation"
+    },
     "topbarActivateInfo": {
         "message": "Klicken Sie hier und beginnen Sie mit dem Spendensammeln: "
     },
