@@ -6,6 +6,7 @@ import Settings from "components/ui/icons/Settings"
 import Paper from "@material-ui/core/Paper"
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
+import { useIntl } from "translations/useIntl"
 
 type Props = {
   active: number
@@ -14,6 +15,7 @@ type Props = {
 
 export const WebAppNavigation: FC<Props> = ({ active, onChange }) => {
   const getColorForActive = (index: number) => (active === index ? "red" : "")
+  const { formatMessage } = useIntl()
 
   return (
     <div className="web-app__navigation">
@@ -28,25 +30,25 @@ export const WebAppNavigation: FC<Props> = ({ active, onChange }) => {
           <Tab
             className="web-app__nav-item"
             icon={<Share color={getColorForActive(0)} />}
-            label="Share"
+            label={formatMessage({ id: "share" })}
             disableRipple
           />
           <Tab
             className="web-app__nav-item"
             icon={<Donate color={getColorForActive(1)} />}
-            label="Shop"
+            label={formatMessage({ id: "shop" })}
             disableRipple
           />
           <Tab
             className="web-app__nav-item"
             icon={<YourHelp color={getColorForActive(2)} />}
-            label="Your help"
+            label={formatMessage({ id: "yourHelp" })}
             disableRipple
           />
           <Tab
             className="web-app__nav-item"
             icon={<Settings color={getColorForActive(3)} />}
-            label="Settings"
+            label={formatMessage({ id: "settings" })}
             disableRipple
           />
         </Tabs>
