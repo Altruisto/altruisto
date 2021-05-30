@@ -72,7 +72,7 @@
         }
       }
     },
-    "childrenGetcuredFromParasites": {
+    "childrenGetCuredFromParasites": {
       "message": "$beingsSaved$ children get cured from parasites",
       "placeholders": {
         "beingsSaved": {

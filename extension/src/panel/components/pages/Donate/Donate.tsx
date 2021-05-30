@@ -32,7 +32,7 @@ const getRandomImpactHighlight = () => {
       return browser.i18n.getMessage("protectFromMalaria", [beingsSaved, personOrPeople])
 
     case "SCI":
-      return browser.i18n.getMessage("childrenGetcuredFromParasites", [beingsSaved])
+      return browser.i18n.getMessage("childrenGetCuredFromParasites", [beingsSaved])
   }
 }
 
