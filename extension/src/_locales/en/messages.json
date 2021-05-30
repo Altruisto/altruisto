@@ -386,5 +386,20 @@
   },
   "findOutWhy": {
     "message": "FIND OUT WHY"
+  },
+  "weCouldNotGetDataAboutImpact": {
+    "message": "We couldn't get the data about your impact. Please try again in a moment."
+  },
+  "toSeeTheImpactSingUp": {
+    "message": "To see the exact impact you had with your online shopping you need to sign up."
+  },
+  "calculatingYourImpact": {
+    "message": "Calculating your impact..."
+  },
+  "makeYourFirstPurchaseToSeeImpact": {
+    "message": "Make your first purchase with Altruisto to see how much impact you can have!"
+  },
+  "seeOurPartnerShops": {
+    "message": "See our partner shops"
   }
 }
