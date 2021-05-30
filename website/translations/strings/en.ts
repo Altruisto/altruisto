@@ -20,5 +20,12 @@ export const en = {
   share: "Share",
   shop: "Shop",
   yourHelp: "Your Help",
-  settings: "Settings"
+  settings: "Settings",
+  youHaveBeenLoggedOut: "You have been logged out.",
+  somethingWentWrongTryAgain: "Something went wrong. Please try again in a moment.",
+  causeArea: "Cause area",
+  covid: "COVID-19",
+  povertyAndHealth: "Extreme Poverty & Global Health",
+  reductionOfAnimalSuffering: "Reduction of Animal Suffering",
+  logOut: "LOG OUT"
 } as const
