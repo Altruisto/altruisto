@@ -28,7 +28,7 @@ const getRandomImpactHighlight = () => {
 
   switch (charities[randomItem]) {
     case "AMF":
-      const personOrPeople = beingsSaved === 1 ? "person" : "people";
+      const personOrPeople = beingsSaved === 1 ? browser.i18n.getMessage("person") : browser.i18n.getMessage("people");
       return browser.i18n.getMessage("protectFromMalaria", [beingsSaved, personOrPeople])
 
     case "SCI":

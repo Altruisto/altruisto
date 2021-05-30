@@ -370,10 +370,10 @@
     "message": "to help cure first child from parasites"
   },
   "people": {
-    "message": "people "
+    "message": "people"
   },
   "protectedFromMalaria": {
-    "message": "protected from malaria"
+    "message": " protected from malaria"
   },
   "weeksOfAidFor1FamilyLiving": {
     "message": "weeks of aid for 1 family living "
@@ -401,5 +401,8 @@
   },
   "seeOurPartnerShops": {
     "message": "See our partner shops"
+  },
+  "person": {
+    "message": "person"
   }
 }
