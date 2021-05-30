@@ -5,6 +5,7 @@ import ShareV2 from "components/ui/icons/ShareV2"
 import DonateV2 from "components/ui/icons/DonateV2"
 import YourHelpV2 from "components/ui/icons/YourHelpV2"
 import SettingsV2 from "components/ui/icons/SettingsV2"
+import { useIntl } from "translations/useIntl"
 
 type Props = {
   active: number
@@ -14,6 +15,8 @@ type Props = {
 export const WebAppNavigationDesktop: React.FC<Props> = ({ active, onChange }) => {
   const inactiveColor = "#A3A3A3"
   const getColorForActive = (index: number) => (active === index ? "red" : inactiveColor)
+  const { formatMessage } = useIntl()
+
   return (
     <div className="web-app__desktop-navigation">
       <div className="web-app__desktop-navigation-item" onClick={() => onChange(0)}>
@@ -22,7 +25,7 @@ export const WebAppNavigationDesktop: React.FC<Props> = ({ active, onChange }) =
         <span
           className={cx("web-app__desktop-navigation-label", { "text-gradient": active === 0 })}
         >
-          Share
+          {formatMessage({ id: "share" })}
         </span>
       </div>
       <div className="web-app__desktop-navigation-item" onClick={() => onChange(1)}>
@@ -31,8 +34,8 @@ export const WebAppNavigationDesktop: React.FC<Props> = ({ active, onChange }) =
           className={cx("web-app__desktop-navigation-label", {
             "text-gradient": active === 1
           })}
-        >
-          Shop
+        > 
+          {formatMessage({ id: "shop" })}
         </span>
       </div>
       <div className="web-app__desktop-navigation-item" onClick={() => onChange(2)}>
@@ -40,7 +43,7 @@ export const WebAppNavigationDesktop: React.FC<Props> = ({ active, onChange }) =
         <span
           className={cx("web-app__desktop-navigation-label", { "text-gradient": active === 2 })}
         >
-          Your Help
+          {formatMessage({ id: "yourHelp" })}
         </span>
       </div>
       <div className="web-app__desktop-navigation-item" onClick={() => onChange(3)}>
@@ -48,7 +51,7 @@ export const WebAppNavigationDesktop: React.FC<Props> = ({ active, onChange }) =
         <span
           className={cx("web-app__desktop-navigation-label", { "text-gradient": active === 3 })}
         >
-          Settings
+          {formatMessage({ id: "settings" })}
         </span>
       </div>
     </div>

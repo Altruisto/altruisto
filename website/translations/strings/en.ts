@@ -16,5 +16,9 @@ export const en = {
   people: "people",
   joinedThanksToYou: " joined thanks to you",
   talkingAboutUs: "Talking about us:",
-  loggedInAs: "Logged in as:"
+  loggedInAs: "Logged in as:",
+  share: "Share",
+  shop: "Shop",
+  yourHelp: "Your Help",
+  settings: "Settings"
 } as const
