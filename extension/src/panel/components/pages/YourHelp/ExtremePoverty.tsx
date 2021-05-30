@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React from "react"
 import { Help } from "./YourHelp"
 import Tile from "../../ui/Tile"
@@ -18,7 +19,7 @@ export const ExtremePoverty: React.FC<Props> = ({
   <div className="fill-height">
     <div className="col-6">
       <div className="page__title m-b-0">
-        <h1>Your help:</h1>
+        <h1>{browser.i18n.getMessage("yourHelp")}:</h1>
       </div>
       {impact["SCI"] ? (
         <Tile
@@ -36,15 +37,16 @@ export const ExtremePoverty: React.FC<Props> = ({
           }
           className="m-b-20"
         >
-          children <strong>cured from parasites</strong>
+          {browser.i18n.getMessage("children")}
+          <strong>{browser.i18n.getMessage("curedFromParasites")}</strong>
         </Tile>
       ) : (
         <>
-          <strong>You are so close to helping first person!</strong>
+          <strong>{browser.i18n.getMessage("youAreCloseToHelpingFirstPerson")}</strong>
           <br />
           <span>
-            Collect another ${Math.round((IMPACT_COST_IN_USD["SCI"] - moneyLeft) * 100) / 100} to
-            help cure first child from parasites
+          {browser.i18n.getMessage("collectAnother")}${Math.round((IMPACT_COST_IN_USD["SCI"] - moneyLeft) * 100) / 100}
+          {browser.i18n.getMessage("toHelpCureFirstChildFromParasites")}          
           </span>
           {isActive ? (
             <ProgressBar
@@ -73,7 +75,8 @@ export const ExtremePoverty: React.FC<Props> = ({
           }
           className="m-b-20"
         >
-          people <strong>protected from malaria</strong>
+          {browser.i18n.getMessage("people")}
+          <strong>{browser.i18n.getMessage("protectedFromMalaria")}</strong>
         </Tile>
       ) : null}
 
@@ -93,22 +96,24 @@ export const ExtremePoverty: React.FC<Props> = ({
           }
           className="m-b-20"
         >
-          weeks of aid for 1 family living <strong>in extreme poverty</strong>
+          {browser.i18n.getMessage("weeksOfAidFor1FamilyLiving")}
+          <strong>{browser.i18n.getMessage("inExtremePoverty")}</strong>
         </Tile>
       ) : null}
     </div>
     <div className="col-6">
       <h1>
-        You have collected: <span className="text-gradient">${moneyRaised}</span>
+        {browser.i18n.getMessage("youHaveCollected")}
+        <span className="text-gradient">${moneyRaised}</span>
       </h1>
-      <p>Some purchases take up to several weeks to be processed </p>
+      <p>{browser.i18n.getMessage("somePurchasesTakeUpToSeveralWeeksToBeProcessed")}</p>
       <a
         href="https://altruisto.com/purchase-processing"
         target="_blank"
         rel="noreferrer noopener"
         className="button-link uppercase-link m-b-20"
       >
-        FIND OUT WHY
+        {browser.i18n.getMessage("findOutWhy")}
       </a>
     </div>
   </div>

@@ -42,7 +42,7 @@
       }
     }
   },
-  "curedFromParasites": {
+  "childrenGetcuredFromParasites": {
     "message": "$beingsSaved$ children get cured from parasites",
     "placeholders": {
       "beingsSaved": {
@@ -353,5 +353,38 @@
   },
   "moreToReachMilestoneOf": {
     "message": " more to reach milestone of "
+  },
+  "children": {
+    "message": "children "
+  },
+  "curedFromParasites": {
+    "message": "cured from parasites"
+  },
+  "youAreCloseToHelpingFirstPerson": {
+    "message": "You are so close to helping first person!"
+  },
+  "collectAnother": {
+    "message": "Collect another "
+  },
+  "toHelpCureFirstChildFromParasites": {
+    "message": "to help cure first child from parasites"
+  },
+  "people": {
+    "message": "people "
+  },
+  "protectedFromMalaria": {
+    "message": "protected from malaria"
+  },
+  "weeksOfAidFor1FamilyLiving": {
+    "message": "weeks of aid for 1 family living "
+  },
+  "inExtremePoverty": {
+    "message": "in extreme poverty"
+  },
+  "somePurchasesTakeUpToSeveralWeeksToBeProcessed": {
+    "message": "Some purchases take up to several weeks to be processed "
+  },
+  "findOutWhy": {
+    "message": "FIND OUT WHY"
   }
 }
