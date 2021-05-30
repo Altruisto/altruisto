@@ -1,5 +1,6 @@
 import React from "react"
 import dynamic from "next/dynamic"
+import { useIntl } from "translations/useIntl"
 
 type Props = {
   moneyRaisedInUSD: number
@@ -14,16 +15,18 @@ const MILESTONES = [1, 10, 25, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
 const AnimalsSufferingReduction: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
   const currentMilestone = MILESTONES.find(v => v > moneyRaisedInUSD) || 1
+  const { formatMessage } = useIntl()
 
   return (
     <div className="fill-height">
       <h3 style={{ lineHeight: 1.33 }}>
-        You have collected: <span className="text-gradient">${moneyRaisedInUSD}</span>
+        {formatMessage({ id: "youHaveCollected" })}
+        <span className="text-gradient">${moneyRaisedInUSD}</span>
       </h3>
 
       <span>
-        Collect ${currentMilestone - moneyRaisedInUSD} more to reach milestone of $
-        {currentMilestone}!
+        {formatMessage({ id: "collect" })}${currentMilestone - moneyRaisedInUSD}
+        {formatMessage({ id: "moreToReachMilestoneOf" })}${currentMilestone}!
       </span>
 
       {isActive ? (

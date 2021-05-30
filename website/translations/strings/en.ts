@@ -33,5 +33,8 @@ export const en = {
   search: "Search...",
   searchIcon: "search icon",
   clickButtonBelowToActiveDonationFor: "Click the button below to active donation for ",
-  activeDonation: "Active donation"
+  activeDonation: "Active donation",
+  youHaveCollected: "You have collected: ",
+  collect: "Collect ",
+  moreToReachMilestoneOf : " more to reach milestone of "
 } as const
