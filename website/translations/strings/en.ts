@@ -36,5 +36,14 @@ export const en = {
   activeDonation: "Active donation",
   youHaveCollected: "You have collected: ",
   collect: "Collect ",
-  moreToReachMilestoneOf : " more to reach milestone of "
+  moreToReachMilestoneOf : " more to reach milestone of ",
+  youAreCloseToHelpingTheFirstPerson: "You are so close to helping the first person!",
+  collectAnother : "Collect another ",
+  toHelpCureFirstChildFromParasites: " to help cure first child from parasites",
+  children: "children ",
+  curedFromParasites: "cured from parasites",
+  protectedFromMalaria: " protected from malaria",
+  weeksOfAidForOneFamilyLiving: "weeks of aid for 1 family living ",
+  inExtremePoverty: "in extreme poverty",
+  somePurchasesTakeUpToSeveralWeeksToBeProcessed: "Some purchases take up to several weeks to be processed."
 } as const
