@@ -6,6 +6,7 @@ import ExtremePoverty from "./ExtremePoverty"
 import Covid from "./Covid"
 import AnimalsSufferingReduction from "./AnimalSufferingReduction"
 import { CauseArea } from "../../../../../shared/types/user"
+import { useIntl } from "translations/useIntl"
 
 type Props = {
   userDetails: UserDetails
@@ -14,12 +15,14 @@ type Props = {
 }
 
 export const YourHelpTab: React.FC<Props> = ({ userDetails, onGoToShops, isActive }) => {
+  const { formatMessage } = useIntl()
+
   if (!userDetails) {
     return (
       <>
         <div className="justify-center fill-height text-center" style={{ marginTop: 200 }}>
           <Loader color={"red"} size={42} />
-          <span className="m-b-10">Calculating your impact...</span>
+          <span className="m-b-10">{formatMessage({ id: "calculatingYourImpact" })}</span>
         </div>
       </>
     )
@@ -29,13 +32,13 @@ export const YourHelpTab: React.FC<Props> = ({ userDetails, onGoToShops, isActiv
     return (
       <div className="web-app__content d-flex column-center">
         <h5 className="text-center">
-          Make your first purchase with Altruisto to see how much impact you can have!
+          {formatMessage({ id: "makeYourFirstPurchaseToSeeImpact" })}
         </h5>
         <button className="button web-app__main-button" onClick={onGoToShops}>
-          See our partner shops
+          {formatMessage({ id: "seeOurPartnerShops" })}
         </button>
         <small className="text-center">
-          Some purchases take up to several weeks to be processed{" "}
+          {formatMessage({ id: "somePurchasesTakeUpToSeveralWeeksToBeProcessed" })}{" "}
         </small>
       </div>
     )

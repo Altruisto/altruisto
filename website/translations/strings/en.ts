@@ -45,5 +45,8 @@ export const en = {
   protectedFromMalaria: " protected from malaria",
   weeksOfAidForOneFamilyLiving: "weeks of aid for 1 family living ",
   inExtremePoverty: "in extreme poverty",
-  somePurchasesTakeUpToSeveralWeeksToBeProcessed: "Some purchases take up to several weeks to be processed."
+  somePurchasesTakeUpToSeveralWeeksToBeProcessed: "Some purchases take up to several weeks to be processed.",
+  calculatingYourImpact: "Calculating your impact...",
+  makeYourFirstPurchaseToSeeImpact: "Make your first purchase with Altruisto to see how much impact you can have!",
+  seeOurPartnerShops: "See our partner shops",
 } as const
