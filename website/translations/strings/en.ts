@@ -41,13 +41,14 @@ export const en = {
   youAreCloseToHelpingTheFirstPerson: "You are so close to helping the first person!",
   collectAnother : "Collect another ",
   toHelpCureFirstChildFromParasites: " to help cure first child from parasites",
-  children: "children ",
-  curedFromParasites: "cured from parasites",
-  protectedFromMalaria: " protected from malaria",
-  weeksOfAidForOneFamilyLiving: "weeks of aid for 1 family living ",
-  inExtremePoverty: "in extreme poverty",
-  somePurchasesTakeUpToSeveralWeeksToBeProcessed: "Some purchases take up to several weeks to be processed.",
+  childrenCuredFromParasites: "children <strong>cured from parasites</strong>",
+  peopleProtectedFromMalaria: "people <strong>protected from malaria</strong>",
+  weeksOfAidForOneFamilyLivinginExtremePoverty: 
+    "weeks of aid for 1 family living <strong>in extreme poverty</strong>",
+  somePurchasesTakeUpToSeveralWeeksToBeProcessed: 
+    "Some purchases take up to several weeks to be processed.",
   calculatingYourImpact: "Calculating your impact...",
-  makeYourFirstPurchaseToSeeImpact: "Make your first purchase with Altruisto to see how much impact you can have!",
+  makeYourFirstPurchaseToSeeImpact: 
+    "Make your first purchase with Altruisto to see how much impact you can have!",
   seeOurPartnerShops: "See our partner shops",
 } as const

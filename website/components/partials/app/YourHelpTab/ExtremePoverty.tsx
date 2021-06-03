@@ -60,8 +60,18 @@ const ExtremePoverty: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
           }
           className="mb-3"
         >
-          {formatMessage({ id: "children" })}
-          <strong>{formatMessage({ id: "curedFromParasites" })}</strong>
+          {formatMessage(
+            { 
+              id: "childrenCuredFromParasites" 
+            },
+            {
+              strong: (...chunks: string[]) => (
+                <strong>
+                  {chunks}
+                </strong>
+              ),
+            }
+          )}
         </Tile>
       ) : null}
 
@@ -81,8 +91,18 @@ const ExtremePoverty: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
           }
           className="mb-3"
         >
-          {formatMessage({ id: "people" })}
-          <strong>{formatMessage({ id: "protectedFromMalaria" })}</strong>
+          {formatMessage(
+            { 
+              id: "peopleProtectedFromMalaria" 
+            },
+            {
+              strong: (...chunks: string[]) => (
+                <strong>
+                  {chunks}
+                </strong>
+              ),
+            }
+          )}
         </Tile>
       ) : null}
 
@@ -102,8 +122,18 @@ const ExtremePoverty: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
           }
           className="mb-3"
         >
-          {formatMessage({ id: "weeksOfAidForOneFamilyLiving" })}
-          <strong>{formatMessage({ id: "inExtremePoverty" })}</strong>
+          {formatMessage(
+            { 
+              id: "weeksOfAidForOneFamilyLivinginExtremePoverty" 
+            },
+            {
+              strong: (...chunks: string[]) => (
+                <strong>
+                  {chunks}
+                </strong>
+              ),
+            }
+          )}
         </Tile>
       ) : null}
       <div className="pt-3">
