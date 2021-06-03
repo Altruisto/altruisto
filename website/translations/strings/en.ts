@@ -1,13 +1,14 @@
 export const en = {
   together: "Together",
   weCanDoMore: "we can do more!",
-  ifEveryUserInvited: "If every user invited ",
-  justThreeOfTheirFriends: "just three of their friends",
-  inFewWeeksWeWouldBe: ", in a few short weeks we would be ",
-  helpingHundredsOfThousandsOfPeople: "helping hundreds of thousands of people",
-  experienceWhatIsBestInLife: " experience what's best in life, instead of suffering, pain, helplessness.",
-  helpYourFriendsDiscoverAltruisto: "Help your friends discover altruisto",
-  andDoEvenMoreGood: "and do even more good:",
+  ifEveryUserInvitedJustThreeOfTheirFriends: 
+  "If every user invited " +
+  "<strong>just three of their friends</strong>" +
+  ", in a few short weeks we would be " +
+  "<strong>helping hundreds of thousands of people</strong>" +
+  " experience what's best in life, instead of suffering, pain, helplessness.",
+  helpYourFriendsDiscoverAltruistoAndDoEvenMoreGood: 
+  "Help your friends discover altruisto<br></br>and do even more good:",
   yourReferralLink: "Your referral link:",
   copiedToClipboard: "Copied to clipboard!",
   copyRefLink: "Copy ref link",

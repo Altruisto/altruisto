@@ -19,17 +19,29 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
       <h3 className="web-app__title">{formatMessage({ id: "together" })}</h3>
       <h3 className="text-gradient">{formatMessage({ id: "weCanDoMore" })}</h3>
       <p className="mt-4">
-        {formatMessage({ id: "ifEveryUserInvited" })}
-        <strong>{formatMessage({ id: "justThreeOfTheirFriends" })}</strong>
-        {formatMessage({ id: "inFewWeeksWeWouldBe" })}
-        <strong>{formatMessage({ id: "helpingHundredsOfThousandsOfPeople" })}</strong>
-        {formatMessage({ id:  "experienceWhatIsBestInLife"})}
+        {formatMessage(
+          { 
+            id: "ifEveryUserInvitedJustThreeOfTheirFriends" 
+          },
+          {
+            strong: (...chunks: string[]) => (
+              <strong>
+                {chunks}
+              </strong>
+            ),
+          }
+        )}
       </p>
       <p className="mt-4">
         <strong>
-          {formatMessage({ id:  "helpYourFriendsDiscoverAltruisto" })}
-          <br />
-          {formatMessage({ id:  "andDoEvenMoreGood" })}
+          {formatMessage(
+              { 
+                id:  "helpYourFriendsDiscoverAltruistoAndDoEvenMoreGood" 
+              },
+              {
+                br: () => (<br></br>)
+              }
+          )}
         </strong>
       </p>
       <div className="d-flex justify-content-between">
