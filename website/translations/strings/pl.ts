@@ -13,9 +13,9 @@ export const en = {
     copiedToClipboard: "Skopiowano do schowka",
     copyRefLink: "Skopuj link referencyjny",
     copyIcon: "Ikona kopiowania",
-    /* person: "person",
-    people: "people",
-    joinedThanksToYou: " osób dołączyło dzięki Tobie", */
+    personJoinedThanksToYou: "osoba dołączyła dzięki Tobie",
+    peopleJoinedThanksToYou: "osób dołączyło dzięki Tobie",
+    anotherVariantOfPeopleJoinedThanksToYou: "osoby dołączyły dzięki Tobie",
     talkingAboutUs: "Mówią o nas:",
     loggedInAs: "Zalogowano jako:",
     share: "Udostępnij",
