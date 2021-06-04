@@ -4,30 +4,10 @@ import { useSnackbar } from "notistack"
 import { TwitterCarousel } from "./TwitterCarousel"
 import { UserDetails } from "pages/app"
 import { useIntl } from "translations/useIntl"
+import { getNumberOfPeople } from "../../../../../shared/getNumberOfPeople"
 
 type Props = {
   userDetails: UserDetails
-}
-
-/**
- * Function which returns the appropriate translation depending on the number from `referralsCount`. 
- * It is necessary to translate the "people" into e.g. Polish, where the word "people" declines differently 
- * depending on whether number of people is:
- * 1) (case nr 1) between 5-21 (inclusive 5 and 21) and if number ends with digit:
- *  - 0 or 1 
- *  - between 5-9 (inclusive)
- *  - between 11-19 (inclusive)
- * 2) (case nr 2) number 2, 3 or 4 and if number end with digit 2, 3 or 4
- */ 
-const getNumberOfPeople = (referralsCount: number, formatMessage: Function) => {
-  const number10 = referralsCount % 10
-  const number100 = referralsCount % 100
-  if (referralsCount === 1) {
-    return formatMessage({ id: "personJoinedThanksToYou" })
-  } else if (number10 > 4 || number10 < 2 || (number100 < 15 && number10 > 11)) {
-    return formatMessage({ id: "peopleJoinedThanksToYou" })
-  }
-  return formatMessage({ id: "anotherVariantOfPeopleJoinedThanksToYou" })
 }
 
 export const ShareTab: React.FC<Props> = ({ userDetails }) => {
@@ -130,7 +110,12 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
             <div className="mt-4 mb-2">
               <div className="web-app__invited-number">{userDetails.referralsCount} </div>
               <div className="web-app__invited-people">
-                {getNumberOfPeople(userDetails.referralsCount, formatMessage)};
+                {getNumberOfPeople(
+                  userDetails.referralsCount, 
+                  formatMessage({ id: "personJoinedThanksToYou" }),
+                  formatMessage({ id: "peopleJoinedThanksToYou" }),
+                  formatMessage({ id: "anotherVariantOfPeopleJoinedThanksToYou" })
+                )}
               </div>
             </div>
           ) : null}
