@@ -10,7 +10,7 @@ export const pl = {
     helpYourFriendsDiscoverAltruistoAndDoEvenMoreGood: 
         "Pomóż swoim znajomym odkryć Altruisto<br></br>i zrób jeszcze więcej dobrego:",
     yourReferralLink: "Twój link referencyjny:",
-    copiedToClipboard: "Skopiowano do schowka",
+    copiedToClipboard: "Skopiowano do schowka!",
     copyRefLink: "Skopuj link referencyjny",
     copyIcon: "Ikona kopiowania",
     personJoinedThanksToYou: "osoba dołączyła dzięki Tobie",
