@@ -2,8 +2,8 @@ export const pl = {
     together: "Wspólnie",
     weCanDoMore: "możemy zrobić więcej!",
     ifEveryUserInvitedJustThreeOfTheirFriends: 
-        "Gdyby każdy użytkownik Altruisto " +
-        "<strong>zaprosił trzech znajomych</strong>" +
+        "Gdyby każdy użytkownik Altruisto zaprosił " +
+        "<strong>trzech znajomych</strong>" +
         ", za kilka tygodni moglibyśmy " +
         "<strong>pomóc setkom tysięcy ludzi</strong>" +
         " odczuwać to, co w życiu najlepsze, zamiast cierpienia, bólu i bezradności.",
