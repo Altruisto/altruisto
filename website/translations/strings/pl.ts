@@ -1,4 +1,4 @@
-export const en = {
+export const pl = {
     together: "Wspólnie",
     weCanDoMore: "możemy zrobić więcej!",
     ifEveryUserInvitedJustThreeOfTheirFriends: 
