@@ -339,7 +339,13 @@
   "copyIcon": {
     "message": "Copy icon"
   },
+  "personJoinedThanksToYou": {
+    "message": "person joined thanks to you"
+  },
   "peopleJoinedThanksToYou": {
+    "message": "people joined thanks to you"
+  },
+  "anotherVariantOfPeopleJoinedThanksToYou": {
     "message": "people joined thanks to you"
   },
   "talkingAboutUs": {

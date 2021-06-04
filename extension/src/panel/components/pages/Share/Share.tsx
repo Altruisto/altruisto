@@ -8,6 +8,7 @@ import { useSnackbar } from "notistack"
 import { TwitterCarousel } from "./TwitterCarousel"
 import { useAuthContext } from "../../../common/auth"
 import axios from "../../../../helpers/api"
+import { getNumberOfPeople } from "../../../../../../shared/getNumberOfPeople"
 
 import "./Share.scss"
 import { storage } from "../../../../helpers/storage"
@@ -133,7 +134,14 @@ export const Share: React.FC<Props> = ({ isActive }) => {
           {referralsNumber !== null ? (
             <div className="m-t-20 m-b-10 ">
               <div className="share__invited-number">{referralsNumber} </div>
-              <div className="share__invited-people">{browser.i18n.getMessage("peopleJoinedThanksToYou")}</div>
+              <div className="share__invited-people">
+                {getNumberOfPeople(
+                  referralsNumber, 
+                  browser.i18n.getMessage("personJoinedThanksToYou"),
+                  browser.i18n.getMessage("peopleJoinedThanksToYou"),
+                  browser.i18n.getMessage("anotherVariantOfPeopleJoinedThanksToYou")
+                )}
+              </div>
             </div>
           ) : null}
         </div>

@@ -339,9 +339,15 @@
   "copyIcon": {
     "message": "Ikona kopiowania"
   },
-  /* "peopleJoinedThanksToYou": {
-    "message": "people joined thanks to you"
-  }, */
+  "personJoinedThanksToYou": {
+    "message": "osoba dołączyła dzięki Tobie"
+  },
+  "peopleJoinedThanksToYou": {
+    "message": "osób dołączyło dzięki Tobie"
+  },
+  "anotherVariantOfPeopleJoinedThanksToYou": {
+    "message": "osoby dołączyły dzięki Tobie"
+  },
   "talkingAboutUs": {
     "message": "Mówią o nas:"
   },
