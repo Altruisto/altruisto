@@ -69,17 +69,26 @@
     "message": " (on average)"
   },
   "protectFromMalaria": {
-    "message": "protect $beingsSaved$ $personOrPeople$ from malaria",
+    "message": "protect $beingsSaved$ $personOrPeopleFromMalaria$",
     "placeholders": {
       "beingsSaved": {
         "content": "$1", 
         "example": "1"       
       },
-      "personOrPeople": {
+      "personOrPeopleFromMalaria": {
         "content": "$2",
         "example": "person"
       }
     }
+  },
+  "personFromMalaria": {
+    "message": "person from malaria"
+  },
+  "peopleFromMalaria": {
+    "message": "people from malaria"
+  },
+  "anotherVariantOfPeopleFromMalaria": {
+    "message": "people from malaria"
   },
   "childrenGetCuredFromParasites": {
     "message": "$beingsSaved$ children get cured from parasites",

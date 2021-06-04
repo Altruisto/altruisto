@@ -10,6 +10,7 @@ import { NotAPartner } from "./NotAPartner"
 import { ActivatePartner } from "./ActivatePartner"
 import { storage } from "../../../../helpers/storage"
 import { transformUSDToBeingsSaves } from "../../../common/utils/transform-usd-to-beings-saved"
+import { getNumberOfPeople } from "../../../../../../shared/getNumberOfPeople"
 
 type CurrentWebsite = {
   domain: string
@@ -28,7 +29,12 @@ const getRandomImpactHighlight = () => {
 
   switch (charities[randomItem]) {
     case "AMF":
-      const personOrPeople = beingsSaved === 1 ? browser.i18n.getMessage("person") : browser.i18n.getMessage("people");
+      const personOrPeople = getNumberOfPeople(
+        beingsSaved, 
+        browser.i18n.getMessage("personFromMalaria"),
+        browser.i18n.getMessage("peopleFromMalaria"),
+        browser.i18n.getMessage("anotherVariantOfPeopleFromMalaria"),
+      )
       return browser.i18n.getMessage("protectFromMalaria", [beingsSaved, personOrPeople])
 
     case "SCI":

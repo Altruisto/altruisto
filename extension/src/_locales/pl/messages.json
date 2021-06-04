@@ -66,20 +66,29 @@
     "message": " , które wydasz z naszym partnerem pomagasz:"
   },
   "onAvarage": {
-    "message": " (on average)"
+    "message": " (średnio)"
   },
   "protectFromMalaria": {
-    "message": "protect $beingsSaved$ $personOrPeople$ from malaria",
+    "message": "ochronić $beingsSaved$ $personOrPeopleFromMalaria$",
     "placeholders": {
       "beingsSaved": {
         "content": "$1", 
         "example": "1"       
       },
-      "personOrPeople": {
+      "personOrPeopleFromMalaria": {
         "content": "$2",
         "example": "person"
       }
     }
+  },
+  "personFromMalaria": {
+    "message": "osobę przed malarią"
+  },
+  "peopleFromMalaria": {
+    "message": "osób przed malarią"
+  },
+  "anotherVariantOfPeopleFromMalaria": {
+    "message": "osoby przed malarią"
   },
   "childrenGetCuredFromParasites": {
     "message": "$beingsSaved$ children get cured from parasites",
