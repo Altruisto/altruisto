@@ -2,13 +2,13 @@ export const pl = {
     together: "Wspólnie",
     weCanDoMore: "możemy zrobić więcej!",
     ifEveryUserInvitedJustThreeOfTheirFriends: 
-    "Gdyby każdy użytkownik Altruisto " +
-    "<strong>zaprosił trzech znajomych</strong>" +
-    ", za kilka tygodni moglibyśmy " +
-    "<strong>pomóc setkom tysięcy ludzi</strong>" +
-    " odczuwać to, co w życiu najlepsze, zamiast cierpienia, bólu i bezradności.",
+        "Gdyby każdy użytkownik Altruisto " +
+        "<strong>zaprosił trzech znajomych</strong>" +
+        ", za kilka tygodni moglibyśmy " +
+        "<strong>pomóc setkom tysięcy ludzi</strong>" +
+        " odczuwać to, co w życiu najlepsze, zamiast cierpienia, bólu i bezradności.",
     helpYourFriendsDiscoverAltruistoAndDoEvenMoreGood: 
-    "Pomóż swoim znajomym odkryć Altruisto<br></br>i zrób jeszcze więcej dobrego:",
+        "Pomóż swoim znajomym odkryć Altruisto<br></br>i zrób jeszcze więcej dobrego:",
     yourReferralLink: "Twój link referencyjny:",
     copiedToClipboard: "Skopiowano do schowka",
     copyRefLink: "Skopuj link referencyjny",
@@ -44,12 +44,12 @@ export const pl = {
     childrenCuredFromParasites: "dzieci <strong>wyleczone z pasożytów</strong>",
     peopleProtectedFromMalaria: "ludzie <strong>ochronieni przed malarią</strong>",
     weeksOfAidForOneFamilyLivinginExtremePoverty: 
-      "tygodnie pomocy dla 1 rodziny żyjącej <strong>w skrajnym ubóstwie</strong>",
+        "tygodnie pomocy dla 1 rodziny żyjącej <strong>w skrajnym ubóstwie</strong>",
     somePurchasesTakeUpToSeveralWeeksToBeProcessed: 
         "Przetworzenie niektórych zakupów może potrwać nawet kilka tygodni.",
     calculatingYourImpact: "Obliczam Twój wpływ...",
     makeYourFirstPurchaseToSeeImpact: 
-      "Dokonaj pierwszego zakupu z Altruisto, aby zobaczyć, jaki wpływ możesz mieć!",
+        "Dokonaj pierwszego zakupu z Altruisto, aby zobaczyć, jaki wpływ możesz mieć!",
     seeOurPartnerShops: "Zobacz sklepy naszych partnerów",
-  } as const
+} as const
   
