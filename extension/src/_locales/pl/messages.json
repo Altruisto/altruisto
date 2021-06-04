@@ -3,67 +3,67 @@
       "message": "Altruisto.pl"
   },
   "description": {
-      "message": "Raise money for the world's most effective charities through your everyday online shoppings with no extra costs."
+      "message": "Zbieraj pieniądze dla najskuteczniejszych organizacji charytatywnych na świecie poprzez codzienne zakupy online bez dodatkowych kosztów."
   },
   "notificationActivate": {
-    "message": "Start raising money for charities with this website by clicking here:"
+    "message": "Zacznij zbierać pieniądze na cele charytatywne razem z tą stroną internetową klikając tutaj:"
   },
   "notificationActivated": {
-    "message": "You are now collecting money for charities with this website."
+    "message": "Zbierasz teraz pieniądze na cele charytatywne razem z tą stroną internetową."
   },
   "notificationButtonLabel": {
-    "message": "Activate donation"
+    "message": "Aktywuj przekazywanie darowizn"
   },
   "topbarActivateInfo": {
-      "message": "Start raising money for charities with this website by clicking here: "
+      "message": "Zacznij zbierać pieniądze na cele charytatywne razem z tą stroną internetową klikając tutaj: "
   },
   "topbarActivateButton": {
-      "message": "Start raising money"
+      "message": "Zacznij zbierać pieniądze"
   },
   "topbarActivatedInfo": {
-      "message": "You are now collecting money for charities with this website. "
+      "message": "Zbierasz teraz pieniądze na cele charytatywne razem z tą stroną internetową. "
   },
   "topbarActivatedClose": {
-      "message": "This windows will be automatically closed in 5 seconds"
+      "message": "To okno zostanie automatycznie zamknięte za 5 sekund"
   },
   "optionsTitle": {
-      "message": "Altruisto.com extension options"
+      "message": "Altruisto.com opcje wtyczki"
   },
   "optionsComingSoon": {
-      "message": "Coming soon!"
+      "message": "Wkrótce!"
   },
   "optionsTopbarTitle": {
-      "message": "Inform me when I have an opportunity to raise money for charities from my purchase"
+      "message": "Poinformuj mnie, kiedy będę miał/a możliwość zebrania pieniędzy na cele charytatywne z mojego zakupu"
   },
   "optionsTopbarDescription": {
-      "message": "Anytime you visit a website of one of our partners you will see a bar at the top of a page giving you an opportunity to raise money for charities just by clicking one button. If you click on that button will be asked to confirm that you want to support altruisto through your purchases on the site you're viewing. After that, usually between 1-6% of your purchase will be donated to charities we support."
+      "message": "Za każdym razem, gdy odwiedzasz witrynę jednego z naszych partnerów, u góry strony zobaczysz pasek, który daje Ci możliwość zbierania pieniędzy na cele charytatywne poprzez kliknięcie w jeden przycisk. Jeśli klikniesz ten przycisk, zostaniesz poproszony o potwierdzenie, że chcesz wesprzeć altruisto poprzez zakupy w przeglądanej witrynie. Następnie zazwyczaj 1-6% Twojego zakupu zostanie przekazane organizacjom charytatywnym, które wspieramy."
   },
   "optionsSuggestionsTitle": {
-      "message": "Show me suggestions while I am browsing the internet"
+      "message": "Pokazuj mi sugestie, gdy przeglądam internet"
   },
   "optionsSuggestionsDescription": {
-      "message": "This option allows you to see a small box containing promotions, coupons, and products that may interest you based on the content of the page that you are viewing. It appears from time to time on the bottom right corner of your browser. Anytime you decide to buy a suggested product, one of the World's most effective charities receives a portion of a profit from the sale (the price for you doesn't change). We strive to make it as fast and unintrusive as possible."
+      "message": "Ta opcja umożliwia wyświetlenie małego pola zawierającego promocje, kupony i produkty, które mogą Cię zainteresować w oparciu o zawartość przeglądanej strony. Pojawia się od czasu do czasu w prawym dolnym rogu przeglądarki. Za każdym razem, gdy zdecydujesz się kupić sugerowany produkt, jedna z najskuteczniejszych organizacji charytatywnych na świecie otrzymuje część zysku ze sprzedaży (cena dla Ciebie nie ulega zmianie). Dokładamy wszelkich starań, aby było to jak najszybsze i nienachalne."
   },
   "optionsSearchTitle": {
-      "message": "Highlight partner shops in search results"
+      "message": "Wyróżnij sklepy partnerskie w wynikach wyszukiwania"
   },
   "optionsSearchDescription": {
-      "message": "When you use a search engine like Google, Bing, or DuckDuckGo, links leading to one of our partners' websites will be highlighted so you can immediately know which websites you can raise money with."
+      "message": "Kiedy korzystasz z wyszukiwarki takiej jak Google, Bing lub DuckDuckGo, linki prowadzące do stron internetowych naszych partnerów zostaną podświetlone, dzięki czemu możesz od razu wiedzieć, z których witryn możesz zbierać pieniądze."
   },
   "optionsThankYou": {
-      "message": "By the way - thanks for being awesome and using our extension :) Cheers! "
+      "message": "Przy okazji - dzięki za bycie wspaniałym i korzystanie z naszej wtyczki :) Pozdrawiamy!"
   },
   "helpOthers": {
-    "message": "Help others"
+    "message": "Pomóż innym"
   },
   "oneClick": {
-    "message": "with just one click!"
+    "message": "za pomocą jednego kliknięcia!"
   },
   "forEvery": {
-    "message": "For every "
+    "message": "Za każde "
   },
   "youSpent": {
-    "message": " you spent with our partner you help:"
+    "message": " , które wydasz z naszym partnerem pomagasz:"
   },
   "onAvarage": {
     "message": " (on average)"
@@ -91,19 +91,19 @@
     }
   },
   "share": {
-    "message": "Share"
+    "message": "Udostępnij"
   },
   "donate": {
     "message": "Donate"
   },
   "yourHelp": {
-    "message": "Your help"
+    "message": "Twoja pomoc"
   },
   "settings": {
-    "message": "Settings"
+    "message": "Ustawienia"
   },
   "loggedInAs": {
-    "message": "Logged in as:"
+    "message": "Zalogowano jako:"
   },
   "loginOrRegister": {
     "message": "LOGIN OR REGISTER"
@@ -112,7 +112,7 @@
     "message": "Toggle"
   },
   "activateDonationFor": {
-    "message": "Activate donation for:"
+    "message": "Aktywuj przekazywanie darowizn dla:"
   },
   "thisSiteIsOur": {
     "message": "This site is our "
@@ -238,16 +238,16 @@
     "message": "Register"
   },
   "causeArea": {
-    "message": "Cause area"
+    "message": "Obszar pomocy"
   },
   "covid": {
     "message": "COVID-19"
   },
   "povertyAndHealth": {
-    "message": "Extreme Poverty & Global Health"
+    "message": "Skrajne ubóstwo i zdrowie na świecie"
   },
   "reductionAnimalSuffering": {
-    "message": "Reduction of Animal Suffering"
+    "message": "Redukcja cierpienia zwierząt"
   },
   "changeEmail": {
     "message": "Change email"
@@ -301,88 +301,88 @@
     "message": "Sign up"
   },
   "together": {
-    "message": "Together"
+    "message": "Wspólnie"
   },
   "weCanMore": {
-    "message": "we can do more!"
+    "message": "możemy zrobić więcej!"
   },
   "ifEveryUserInvited": {
-    "message": "If every user invited "
+    "message": "Gdyby każdy użytkownik Altruisto zaprosił "
   },
   "justThreeFriends": {
-    "message": "just three of their friends"
+    "message": "trzech znajomych"
   },
   "inFewWeeksWeWouldBe": {
-    "message": ", in a few short weeks we would be "
+    "message": ", za kilka tygodni moglibyśmy "
   },
   "helpingHundredsOfThousandsOfPeople": {
-    "message": "helping hundreds of thousands of people"
+    "message": "pomóc setkom tysięcy ludzi"
   },
   "experienceWhatIsBestInLife": {
-    "message": " experience what's best in life, instead of suffering, pain, helplessness."
+    "message": " odczuwać to, co w życiu najlepsze, zamiast cierpienia, bólu i bezradności."
   },
   "helpYourFriendsDiscoverAltruisto": {
-    "message": "Help your friends discover altruisto"
+    "message": "Pomóż swoim znajomym odkryć Altruisto"
   },
   "andDoMoreGood": {
-    "message": "and do even more good:"
+    "message": "i zrób jeszcze więcej dobrego:"
   },
   "yourReferralLink": {
-    "message": "Your referral link:"
+    "message": "Twój link referencyjny:"
   },
   "copiedToClipboard": {
-    "message": "Copied to clipboard!"
+    "message": "Skopiowano do schowka!"
   },
   "copyRefLink": {
-    "message": "Copy ref link"
+    "message": "Skopuj link referencyjny"
   },
   "copyIcon": {
-    "message": "Copy icon"
+    "message": "Ikona kopiowania"
   },
-  "peopleJoinedThanksToYou": {
+  /* "peopleJoinedThanksToYou": {
     "message": "people joined thanks to you"
-  },
+  }, */
   "talkingAboutUs": {
-    "message": "Talking about us:"
+    "message": "Mówią o nas:"
   },
   "youHaveCollected": {
-    "message": "You have collected: "
+    "message": "Zebrałeś/aś: "
   },
   "collect": {
-    "message": "Collect "
+    "message": "Zbierz "
   },
   "moreToReachMilestoneOf": {
-    "message": " more to reach milestone of "
+    "message": " więcej, aby osiągnąć etap "
   },
   "children": {
-    "message": "children "
+    "message": "dzieci "
   },
   "curedFromParasites": {
-    "message": "cured from parasites"
+    "message": "wyleczone z pasożytów"
   },
   "youAreCloseToHelpingFirstPerson": {
-    "message": "You are so close to helping first person!"
+    "message": "Jesteś o krok od udzielenia pomocy pierwszej osobie!"
   },
   "collectAnother": {
-    "message": "Collect another "
+    "message": "Zbierz jeszcze "
   },
   "toHelpCureFirstChildFromParasites": {
-    "message": " to help cure first child from parasites"
+    "message": " aby pomóc wyleczyć pierwsze dziecko z pasożytów"
   },
   "people": {
-    "message": "people"
+    "message": "osoby"
   },
   "protectedFromMalaria": {
-    "message": " protected from malaria"
+    "message": " ochronieni przed malarią"
   },
   "weeksOfAidFor1FamilyLiving": {
-    "message": "weeks of aid for 1 family living "
+    "message": "tygodnie pomocy dla 1 rodziny żyjącej "
   },
   "inExtremePoverty": {
-    "message": "in extreme poverty"
+    "message": "w skrajnym ubóstwie"
   },
   "somePurchasesTakeUpToSeveralWeeksToBeProcessed": {
-    "message": "Some purchases take up to several weeks to be processed "
+    "message": "Przetworzenie niektórych zakupów może potrwać nawet kilka tygodni "
   },
   "findOutWhy": {
     "message": "FIND OUT WHY"
@@ -394,15 +394,15 @@
     "message": "To see the exact impact you had with your online shopping you need to sign up."
   },
   "calculatingYourImpact": {
-    "message": "Calculating your impact..."
+    "message": "Obliczam Twój wpływ..."
   },
   "makeYourFirstPurchaseToSeeImpact": {
-    "message": "Make your first purchase with Altruisto to see how much impact you can have!"
+    "message": "Dokonaj pierwszego zakupu z Altruisto, aby zobaczyć, jaki wpływ możesz mieć!"
   },
   "seeOurPartnerShops": {
-    "message": "See our partner shops"
+    "message": "Zobacz sklepy naszych partnerów"
   },
   "person": {
-    "message": "person"
+    "message": "osoba"
   }
 }
