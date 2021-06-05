@@ -90,6 +90,15 @@
   "anotherVariantOfPeopleFromMalaria": {
     "message": "people from malaria"
   },
+  "childGetCuredFromParasites": {
+    "message": "$beingsSaved$ child get cured from parasites",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
   "childrenGetCuredFromParasites": {
     "message": "$beingsSaved$ children get cured from parasites",
     "placeholders": {
