@@ -25,7 +25,7 @@ span {
 
 .app {
   text-align: center;
-  width: 320px;
+  width: 340px;
   height: 600px;
   margin: 0 auto;
   background-color: white;
@@ -250,7 +250,12 @@ a {
   // height: 100%;
 
   &__title {
+    
     margin-bottom: 25px;
+  }
+
+  &__H1LineHeight {
+    line-height: 1.3;
   }
 }
 
