@@ -63,7 +63,7 @@
     "message": "Za każde "
   },
   "youSpent": {
-    "message": " , które wydasz z naszym partnerem pomagasz:"
+    "message": ", które wydasz z naszym partnerem pomagasz:"
   },
   "onAvarage": {
     "message": " (średnio)"
@@ -142,7 +142,7 @@
     "message": "partnerem!"
   },
   "viewAll": {
-    "message": "Zobacz wszystko"
+    "message": "Zobacz wszystkich"
   },
   "donationIsActive": {
     "message": "Twoja darowizna dla $domain$ jest aktywna! Kiedy dokonasz zakupu, organizacje charytatywne otrzymają darowizny.",
@@ -181,7 +181,7 @@
     "message": "Hasło"
   },
   "yourEmail": {
-    "message": "“Twój adres mailowy"
+    "message": "Twój adres mailowy"
   },
   "yourPassword": {
     "message": "Twoje hasło"
