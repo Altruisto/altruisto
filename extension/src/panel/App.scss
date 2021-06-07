@@ -37,7 +37,7 @@ span {
   &__content-wrapper {
     position: relative;
     width: 100%;
-    height: 438px; // TODO: fix this magic number. It's 600px - header - footer.
+    height: 418px; // TODO: fix this magic number. It's 600px - header - footer.
     display: flex;
   }
 }
