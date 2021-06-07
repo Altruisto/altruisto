@@ -428,5 +428,8 @@
   },
   "person": {
     "message": "person"
-  }
+  },
+  "thisSiteIsAltuistosPartnerYouCanDonate": {
+    "message": "This site is altruisto's partner. You can donate portion of your purchases to charities!"
+  }  
 }

@@ -428,5 +428,8 @@
   },
   "person": {
     "message": "osoba"
+  },
+  "thisSiteIsAltuistosPartnerYouCanDonate": {
+    "message": "Ta strona jest partnerem Altruisto. Możesz przekazać część kosztów swoich zakupów na cele charytatywne!"
   }  
 }

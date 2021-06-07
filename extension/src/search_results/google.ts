@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import { extractDomain } from "../helpers/extract-domain"
 import { ASSETS_PATHS } from "../helpers/assets-paths"
 import { storage } from "../helpers/storage"
@@ -15,7 +16,7 @@ const highlightSearchResult = (result: Element, url: string) => {
       color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
-      font-weight: bold;">This site is altruisto's partner. You can donate portion of your purchases to charities!</span>
+      font-weight: bold;">${browser.i18n.getMessage('thisSiteIsAltuistosPartnerYouCanDonate')}</span>
     </span>
   `
   result.prepend(highlight)
