@@ -47,7 +47,7 @@ export const Share: React.FC<Props> = ({ isActive }) => {
       <div className="container">
         <div className="page__title m-b-0">
           <h1>{browser.i18n.getMessage("together")}</h1>
-          <h1 className="text-gradient">{browser.i18n.getMessage("weCanMore")}</h1>
+          <h1 className="page__H1LineHeight text-gradient">{browser.i18n.getMessage("weCanMore")}</h1>
         </div>
         <div className="fill-height">
           <p className="share__explanation">

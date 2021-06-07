@@ -85,7 +85,7 @@ export const Donate: React.FC = () => {
       <div className="container fill-height">
         <div className="page__title m-b-0">
           <h1>{browser.i18n.getMessage("helpOthers")}</h1>
-          <h1 className="text-gradient">{browser.i18n.getMessage("oneClick")}</h1>
+          <h1 className="page__H1LineHeight text-gradient">{browser.i18n.getMessage("oneClick")}</h1>
         </div>
         <div className="justify-center fill-height">
           {currentWebsite.isPartner && currentWebsite.isAlreadyActivated ? (
