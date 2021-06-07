@@ -36,22 +36,22 @@
       "message": "Poinformuj mnie, kiedy będę miał/a możliwość zebrania pieniędzy na cele charytatywne z mojego zakupu"
   },
   "optionsTopbarDescription": {
-      "message": "Za każdym razem, gdy odwiedzasz witrynę jednego z naszych partnerów, u góry strony zobaczysz pasek, który daje Ci możliwość zbierania pieniędzy na cele charytatywne poprzez kliknięcie w jeden przycisk. Jeśli klikniesz ten przycisk, zostaniesz poproszony o potwierdzenie, że chcesz wesprzeć altruisto poprzez zakupy w przeglądanej witrynie. Następnie zazwyczaj 1-6% Twojego zakupu zostanie przekazane organizacjom charytatywnym, które wspieramy."
+      "message": "Za każdym razem, gdy odwiedzasz witrynę jednego z naszych partnerów, u góry strony zobaczysz pasek, który daje Ci możliwość zbierania pieniędzy na cele charytatywne poprzez kliknięcie w jeden przycisk. Jeśli klikniesz ten przycisk, zostaniesz poproszony o potwierdzenie, że chcesz wesprzeć altruisto poprzez zakupy w przeglądanej witrynie. Następnie, zazwyczaj 1-6% Twojego zakupu zostanie przekazane organizacjom charytatywnym, które wspieramy."
   },
   "optionsSuggestionsTitle": {
       "message": "Pokazuj mi sugestie, gdy przeglądam internet"
   },
   "optionsSuggestionsDescription": {
-      "message": "Ta opcja umożliwia wyświetlenie małego pola zawierającego promocje, kupony i produkty, które mogą Cię zainteresować w oparciu o zawartość przeglądanej strony. Pojawia się od czasu do czasu w prawym dolnym rogu przeglądarki. Za każdym razem, gdy zdecydujesz się kupić sugerowany produkt, jedna z najskuteczniejszych organizacji charytatywnych na świecie otrzymuje część zysku ze sprzedaży (cena dla Ciebie nie ulega zmianie). Dokładamy wszelkich starań, aby było to jak najszybsze i nienachalne."
+      "message": "Ta opcja umożliwia wyświetlenie małego pola zawierającego promocje, kupony i produkty, które mogą Cię zainteresować w oparciu o zawartość przeglądanej strony. Pojawia się ono od czasu do czasu w prawym dolnym rogu przeglądarki. Za każdym razem, gdy zdecydujesz się kupić sugerowany produkt, jedna z najskuteczniejszych organizacji charytatywnych na świecie otrzymuje część zysku ze sprzedaży (cena dla Ciebie nie ulega zmianie). Dokładamy wszelkich starań, aby było to jak najszybsze i nienachalne."
   },
   "optionsSearchTitle": {
       "message": "Wyróżnij sklepy partnerskie w wynikach wyszukiwania"
   },
   "optionsSearchDescription": {
-      "message": "Kiedy korzystasz z wyszukiwarki takiej jak Google, Bing lub DuckDuckGo, linki prowadzące do stron internetowych naszych partnerów zostaną podświetlone, dzięki czemu możesz od razu wiedzieć, z których witryn możesz zbierać pieniądze."
+      "message": "Kiedy korzystasz z wyszukiwarki takiej jak Google, Bing lub DuckDuckGo, linki prowadzące do stron internetowych naszych partnerów zostaną wyróżnione, dzięki czemu możesz od razu wiedzieć, z których witryn możesz zbierać pieniądze."
   },
   "optionsThankYou": {
-      "message": "Przy okazji - dzięki za bycie wspaniałym i korzystanie z naszej wtyczki :) Pozdrawiamy!"
+      "message": "Przy okazji - dzięki za bycie wspaniałym i korzystanie z naszej wtyczki :) Pozdrawiamy! "
   },
   "helpOthers": {
     "message": "Pomóż innym"
@@ -112,7 +112,7 @@
     "message": "Udostępnij"
   },
   "donate": {
-    "message": "Donate"
+    "message": "Przekaż darowiznę"
   },
   "yourHelp": {
     "message": "Twoja pomoc"
@@ -124,28 +124,28 @@
     "message": "Zalogowano jako:"
   },
   "loginOrRegister": {
-    "message": "LOGIN OR REGISTER"
+    "message": "ZALOGUJ SIĘ LUB ZAREJESTRUJ"
   },
   "toggle": {
-    "message": "Toggle"
+    "message": "Przełącz"
   },
   "activateDonationFor": {
     "message": "Aktywuj przekazywanie darowizn dla:"
   },
   "thisSiteIsOur": {
-    "message": "This site is our "
+    "message": "Ta strona jest naszym "
   },
   "thisSiteIsNotOur": {
-    "message": "This site is not our "
+    "message": "Ta strona nie jest naszym "
   },
   "partner": {
-    "message": "partner!"
+    "message": "partnerem!"
   },
   "viewAll": {
-    "message": "View All"
+    "message": "Zobacz wszystko"
   },
   "donationIsActive": {
-    "message": "The donation for $domain$ is active! When you buy something charities will get donations!",
+    "message": "Twoja darowizna dla $domain$ jest aktywna! Kiedy dokonasz zakupu, organizacje charytatywne otrzymają darowizny.",
     "placeholders": {
       "domain": {
         "content": "$1",
@@ -154,106 +154,106 @@
     }
   },
   "enterYourEmail": {
-    "message": "Please enter your email address below, and we’ll send a link you can use to reset your password"
+    "message": "Wpisz swój adres mailowy poniżej, a my prześlemy na niego link do zmiany hasła."
   },
   "errorProvideCorrectEmail": {
-    "message": "Something went wrong. Please make sure you have provided a correct email address."
+    "message": "Coś się nie powiodło. Upewnij się, że wpisany został poprawny adres mailowy."
   },
   "fieldIsRequired": {
-    "message": "This field is required"
+    "message": "Wypełnienie tego pola jest wymagane"
   },
   "errorEmailIsNotValid": {
-    "message": "Provided email address is not valid"
+    "message": "Podany adres mailowy jest niepoprawny"
   },
   "emailPlaceholder": {
-    "message": "E-mail for you account"
+    "message": "Adres mailowy dla Twojego konta"
   },
   "resetPassword": {
-    "message": "Reset password"
+    "message": "Zmień hasło"
   },
   "somethingWentWrong": {
-    "message": "Something went wrong, please try again."
+    "message": "Coś się nie powiodło, spróbuj ponownie."
   },
   "email": {
-    "message": "Email"
+    "message": "Mail"
   },
   "password": {
-    "message": "Password"
+    "message": "Hasło"
   },
   "yourEmail": {
-    "message": "Your email"
+    "message": "“Twój adres mailowy"
   },
   "yourPassword": {
-    "message": "Your password"
+    "message": "Twoje hasło"
   },
   "forgot": {
-    "message": "Forgot"
+    "message": "Zapomniałam/em hasła"
   },
   "login": {
     "message": "Login"
   },
   "successfullyRegisteredAndLoggedIn": {
-    "message": "You have been successfully registered and logged in. Thank you!"
+    "message": "Rejestracja i logowanie powiodły się. Dziękujemy!"
   },
   "sentLinkToResetPassword": {
-    "message": "We've sent you an email with a link to reset your password."
+    "message": "Przesłaliśmy Ci mail z linkiem do zmiany hasła."
   },
   "dontHaveAccount": {
-    "message": "Don't have an account?"
+    "message": "Nie masz jeszcze konta?"
   },
   "signUpNow": {
-    "message": "Sign up now."
+    "message": "Zarejestruj się teraz."
   },
   "alreadyHaveAccount": {
-    "message": "Already have an account?"
+    "message": "Masz już konto?"
   },
   "loginNow": {
-    "message": "Login now."
+    "message": "Zaloguj się."
   },
   "goBackToLogin": {
-    "message": "Go back to login form."
+    "message": "Wróć do logowania."
   },
   "close": {
-    "message": "close"
+    "message": "zamknij"
   },
   "logo": {
     "message": "Logo"
   },
   "passwordMustHave8Char": {
-    "message": "Password must have at least 8 characters"
+    "message": "Hasło musi składać się z przynajmniej 8 znaków"
   },
   "emailsNotMatch": {
-    "message": "Emails do not match"
+    "message": "Podane adresy mailowe różnią się"
   },
   "serverDidNotResponded": {
-    "message": "Registration: the server did not responded with expected status code (201)"
+    "message": "Rejestracja: serwer nie odpowiada oczekiwanym kodem statusu (201)"
   },
   "problemWithRegistration": {
-    "message": "There was a problem with your registration. We were notified about it and will do our best to solve it as quickly as possible. Please do try again later."
+    "message": "Wystąpił problem z rejestracją. Zostaliśmy o tym powiadomieni i zrobimy co w naszej mocy, by rozwiązać problem jak najszybciej. Spróbuj ponownie później."
   },
   "yourMainEmail": {
-    "message": "Your main email address"
+    "message": "Twój główny adres mailowy"
   },
   "confirmEmail": {
-    "message": "Confirm email"
+    "message": "Potwierdź maila"
   },
   "confirmYourEmailAdress": {
-    "message": "Confirm your email address"
+    "message": "Potwierdź adres mailowy"
   },
   "iAcceptThe": {
-    "message": "I accept the "
+    "message": "Akceptuję "
   },
   "termsOfService": {
-    "message": "Terms of Service"
+    "message": "Warunki świadczenia usług"
   },
   "andThe": {
-    "message": " and the "
+    "message": " oraz "
   },
   "privacyPolicy": {
-    "message": "Privacy Policy"
+    "message": "Politykę prywatności"
   },
   "register": {
-    "message": "Register"
+    "message": "Zarejestruj się"
   },
   "causeArea": {
     "message": "Obszar pomocy"
@@ -268,55 +268,55 @@
     "message": "Redukcja cierpienia zwierząt"
   },
   "changeEmail": {
-    "message": "Change email"
+    "message": "Zmień adres mailowy"
   },
   "settingsHaveBeenUpdated": {
-    "message": "Your settings have been updated"
+    "message": "Twoje ustawienia zostały zaktualizowane."
   },
   "save": {
-    "message": "SAVE"
+    "message": "ZAPISZ"
   },
   "changePassword": {
-    "message": "Change password"
+    "message": "Zmień hasło"
   },
   "somethingWentWrongTryAgain": {
-    "message": "Something went wrong, we have been notified about it. Please try again in a moment."
+    "message": "Coś się nie powiodło, zostaliśmy o tym powiadomieni. Spróbuj ponownie za chwilę."
   },
   "currentPassword": {
-    "message": "Current password"
+    "message": "Obecne hasło"
   },
   "newPassword": {
-    "message": "New password"
+    "message": "Nowe hasło"
   },
   "currency": {
-    "message": "Currency"
+    "message": "“Waluta"
   },
   "youHaveToBeLoggedToChangeSettings": {
-    "message": "You have to be logged in to change this setting."
+    "message": "Zmiana tego ustawienia wymaga bycia zalogowanym."
   },
   "youHaveBeenLoggedOut": {
-    "message": "You have been logged out."
+    "message": "Zostałaś/eś wylogowana/y."
   },
   "notifications": {
-    "message": "Notifications"
+    "message": "Powiadomienia"
   },
   "showMeNotificationWhenIVisitPartners": {
-    "message": "Show me a notification when I visit one of Altruisto's partners' shop and have an opportunity to raise money for charities with my purchases"
+    "message": "Pokaż mi powiadomienie, kiedy będę na stronie jednego z partnerów Altruisto i będę mieć możliwość przekazania pieniędzy na organizacje charytatywne dzięki moim zakupom."
   },
   "highlightPartners": {
-    "message": "Highlight partners in search results"
+    "message": "Wyróżnij partnerów w wynikach wyszukiwania"
   },
   "logOut": {
-    "message": "LOG OUT"
+    "message": "WYLOGUJ"
   },
   "defaultHelp": {
-    "message": "By default the help from unlogged users goes to: Against Malaria Foundation, Schistosomiasis Control Initiative, and Give Directly."
+    "message": "Domyślnie pomoc od niezalogowanych użytkowników zostaje przekazana na: Against Malaria Foundation, Schistosomiasis Control Initiative oraz Give Directly."
   },
   "toChooseDifferentCharities": {
-    "message": "to choose different charities."
+    "message": "by wybrać inne organizacje charytatywne."
   },
   "signUp": {
-    "message": "Sign up"
+    "message": "Zarejestruj się"
   },
   "together": {
     "message": "Wspólnie"
@@ -328,7 +328,7 @@
     "message": "Gdyby każdy użytkownik Altruisto zaprosił "
   },
   "justThreeFriends": {
-    "message": "trzech znajomych"
+    "message": "tylko trzech znajomych"
   },
   "inFewWeeksWeWouldBe": {
     "message": ", za kilka tygodni moglibyśmy "
@@ -409,13 +409,13 @@
     "message": "Przetworzenie niektórych zakupów może potrwać nawet kilka tygodni "
   },
   "findOutWhy": {
-    "message": "FIND OUT WHY"
+    "message": "DOWIEDZ SIĘ DLACZEGO"
   },
   "weCouldNotGetDataAboutImpact": {
-    "message": "We couldn't get the data about your impact. Please try again in a moment."
+    "message": "Nie mogliśmy dotrzeć do danych na temat Twojego wpływu. Spróbuj ponownie za chwilę."
   },
   "toSeeTheImpactSingUp": {
-    "message": "To see the exact impact you had with your online shopping you need to sign up."
+    "message": "Musisz się zarejestrować, by zobaczyć dokładnie jaki wpływ miały Twoje zakupy online."
   },
   "calculatingYourImpact": {
     "message": "Obliczam Twój wpływ..."
@@ -428,5 +428,5 @@
   },
   "person": {
     "message": "osoba"
-  }
+  }  
 }
