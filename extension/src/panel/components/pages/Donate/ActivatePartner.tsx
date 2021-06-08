@@ -27,7 +27,7 @@ export const ActivatePartner = (props: Props) => (
 
       <a
         href="https://altruisto.com/partners"
-        className="uppercase-link"
+        className="uppercase-link text-right"
         target="_blank"
         rel="noopener noreferrer"
       >
