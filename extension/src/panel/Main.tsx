@@ -19,7 +19,8 @@ import { browser } from "webextension-polyfill-ts"
 
 type Props = {
   classes: {
-    tab: string
+    tab: string,
+    tabs: string,
   }
 }
 
@@ -27,7 +28,11 @@ const styles = () => ({
   tab: {
     minWidth: "unset",
     "text-transform": "none",
-    "font-size": "12px"
+    "font-size": "12px",
+    "align-items": "flex-start"
+  },
+  tabs: {
+    "align-items": "flex-start"
   }
 })
 
@@ -69,6 +74,9 @@ const Main: React.FC<Props> = (props: Props) => {
           indicatorColor="none"
           variant="fullWidth"
           textColor="secondary"
+          classes={{
+            flexContainer: classes.tabs
+          }}
         >
           <Tab className={classes.tab} icon={<ShareIcon />} label={browser.i18n.getMessage('share')} disableRipple />
           <Tab className={classes.tab} icon={<WalletIcon />} label={browser.i18n.getMessage('donate')} disableRipple />
