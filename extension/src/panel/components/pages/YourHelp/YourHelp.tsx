@@ -41,7 +41,8 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
           }
         })
         .then(response => {
-          const moneyRaised = 25000 // Number(response.data.money_raised / 100)
+          // const moneyRaised = 25000
+          const moneyRaised = Number(response.data.money_raised / 100)
           const [impact, moneyLeft] = spreadUSDBetweenCharitiesForMaxImpact(moneyRaised)
           setHelp({
             moneyRaised,
