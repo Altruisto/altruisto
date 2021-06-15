@@ -29,7 +29,8 @@ const styles = () => ({
     minWidth: "unset",
     "text-transform": "none",
     "font-size": "12px",
-    "align-items": "flex-start"
+    "align-items": "flex-start",
+    "line-height": "1.5"
   },
   tabs: {
     "align-items": "flex-start"
