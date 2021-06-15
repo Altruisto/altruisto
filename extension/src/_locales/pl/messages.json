@@ -12,7 +12,7 @@
     "message": "Zbierasz teraz pieniądze na cele charytatywne razem z tą stroną internetową."
   },
   "notificationButtonLabel": {
-    "message": "Aktywuj przekazywanie darowizn"
+    "message": "Aktywuj darowiznę"
   },
   "topbarActivateInfo": {
       "message": "Zacznij zbierać pieniądze na cele charytatywne razem z tą stroną internetową klikając tutaj: "
@@ -130,7 +130,7 @@
     "message": "Przełącz"
   },
   "activateDonationFor": {
-    "message": "Aktywuj przekazywanie darowizn dla:"
+    "message": "Aktywuj darowiznę dla:"
   },
   "thisSiteIsOur": {
     "message": "Ta strona jest naszym "
