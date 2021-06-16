@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React from "react"
 import { Formik, Field, ErrorMessage, Form } from "formik"
 import colors from "../../../assets/scss/colors.scss"
@@ -12,7 +13,7 @@ export const ChangePassword = () => {
 
   return (
     <div className="settings__option settings__option--vertical m-t-0">
-      <span className="settings__label">Change password</span>
+      <span className="settings__label">{browser.i18n.getMessage("changePassword")}</span>
       <Formik
         enableReinitialize={true}
         initialValues={{
@@ -33,14 +34,17 @@ export const ChangePassword = () => {
               }
             )
             .then(() => {
-              enqueueSnackbar("Your settings have been updated", {
-                variant: "success"
-              })
+              enqueueSnackbar(
+                browser.i18n.getMessage("settingsHaveBeenUpdated"), 
+                {
+                  variant: "success"
+                }
+              )
               actions.setSubmitting(false)
             })
             .catch(() => {
               enqueueSnackbar(
-                "Something went wrong, we have been notified about it. Please try again in a moment.",
+                browser.i18n.getMessage("somethingWentWrongTryAgain"),
                 {
                   variant: "error"
                 }
@@ -53,16 +57,16 @@ export const ChangePassword = () => {
             newPassword?: string
           } = {}
           if (!values.currentPassword) {
-            errors.currentPassword = "This field is required"
+            errors.currentPassword = browser.i18n.getMessage("fieldIsRequired")
           }
-          if (values.currentPassword !== undefined && values.currentPassword.length < 8) {
-            errors.currentPassword = "Password must have at least 8 characters"
+          if (values.currentPassword && values.currentPassword.length < 8) {
+            errors.currentPassword = browser.i18n.getMessage("passwordMustHave8Char")
           }
           if (!values.newPassword) {
-            errors.newPassword = "This field is required"
+            errors.newPassword = browser.i18n.getMessage("fieldIsRequired")
           }
-          if (values.newPassword !== undefined && values.newPassword.length < 8) {
-            errors.newPassword = "Password must have at least 8 characters"
+          if (values.newPassword && values.newPassword.length < 8) {
+            errors.newPassword = browser.i18n.getMessage("passwordMustHave8Char")
           }
 
           return errors
@@ -74,10 +78,10 @@ export const ChangePassword = () => {
                 type="password"
                 name="currentPassword"
                 className="field__input"
-                placeholder="Current password"
+                placeholder={browser.i18n.getMessage("currentPassword")}
               />
               <div className="field__error-message">
-                <ErrorMessage name="password" component="span" />
+                <ErrorMessage name="currentPassword" component="span" />
               </div>
             </div>
 
@@ -97,7 +101,7 @@ export const ChangePassword = () => {
                       }}
                     />
                   ) : (
-                    "SAVE"
+                    browser.i18n.getMessage("save")
                   )}
                 </button>
               </div>
@@ -105,10 +109,10 @@ export const ChangePassword = () => {
                 type="password"
                 name="newPassword"
                 className="field__input"
-                placeholder="New password"
+                placeholder={browser.i18n.getMessage("newPassword")}
               />
               <div className="field__error-message">
-                <ErrorMessage name="confirmPassword" component="span" />
+                <ErrorMessage name="newPassword" component="span" />
               </div>
             </div>
           </Form>

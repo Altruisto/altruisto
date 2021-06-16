@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React, { useEffect, useState } from "react"
 import { useAuthContext } from "../../../common/auth"
 
@@ -51,7 +52,7 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
           })
         })
         .catch(() => {
-          setError("We couldn't get the data about yout impact. Please try again in a moment.")
+          setError(browser.i18n.getMessage("weCouldNotGetDataAboutImpact"))
         })
 
       storage
@@ -66,13 +67,13 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
         <div className="container fill-height">
           <div className="justify-center fill-height">
             <h2 className="text-center">
-              To see the exact impact you had with your online shopping you need to sign up.
+            {browser.i18n.getMessage("toSeeTheImpactSingUp")}
             </h2>
             <button
               className="button m-b-20"
               onClick={() => props.onRequestLogin && props.onRequestLogin()}
             >
-              Sign up
+              {browser.i18n.getMessage("signUp")}
             </button>
           </div>
         </div>
@@ -85,7 +86,7 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
       <div className="page">
         <div className="container fill-height">
           <div className="justify-center fill-height text-center">
-            <span className="m-b-10">{error ? error : "Calculating your impact..."}</span>
+            <span className="m-b-10">{error ? error : browser.i18n.getMessage("calculatingYourImpact")}</span>
             <Loader color={"red"} size={42} />
           </div>
         </div>
@@ -100,13 +101,13 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
           {help.moneyRaised === 0 ? (
             <>
               <h2 className="text-center">
-                Make your first purchase with Altruisto to see how much impact you can have!
+                {browser.i18n.getMessage("makeYourFirstPurchaseToSeeImpact")}
               </h2>
               <a href="https://altruisto.com/partners" target="_blank" rel="noreferrer noopener">
-                <button className="button m-b-20">See our partner shops</button>
+                <button className="button m-b-20">{browser.i18n.getMessage("seeOurPartnerShops")}</button>
               </a>
               <p className="text-center">
-                Some purchases take up to several weeks to be processed{" "}
+                {browser.i18n.getMessage("somePurchasesTakeUpToSeveralWeeksToBeProcessed")}
               </p>
               <a
                 href="https://altruisto.com/purchase-processing"
@@ -114,7 +115,7 @@ export const YourHelp: React.FC<Props> = (props: Props) => {
                 rel="noreferrer noopener"
                 className="button-link uppercase-link m-b-20 text-center"
               >
-                FIND OUT WHY
+                {browser.i18n.getMessage("findOutWhy")}
               </a>
             </>
           ) : (

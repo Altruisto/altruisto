@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React from "react"
 import MenuItem from "@material-ui/core/MenuItem"
 import Select, { SelectProps } from "@material-ui/core/Select"
@@ -17,7 +18,7 @@ const CurrencyInput = withStyles(() => ({
 export const Currency = (props: SelectProps) => {
   return (
     <div className="settings__option">
-      <span className="settings__label">Currency</span>
+      <span className="settings__label">{browser.i18n.getMessage("currency")}</span>
       <Select {...props} input={<CurrencyInput />}>
         <MenuItem value="USD">USD</MenuItem>
         <MenuItem value="EUR">EUR</MenuItem>

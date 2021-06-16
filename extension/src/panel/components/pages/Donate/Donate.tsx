@@ -10,6 +10,7 @@ import { NotAPartner } from "./NotAPartner"
 import { ActivatePartner } from "./ActivatePartner"
 import { storage } from "../../../../helpers/storage"
 import { transformUSDToBeingsSaves } from "../../../common/utils/transform-usd-to-beings-saved"
+import { getNumberOfPeople } from "../../../../../utils/getNumberOfPeople"
 
 type CurrentWebsite = {
   domain: string
@@ -28,10 +29,18 @@ const getRandomImpactHighlight = () => {
 
   switch (charities[randomItem]) {
     case "AMF":
-      return `protect ${beingsSaved} ${beingsSaved === 1 ? "person" : "people"} from malaria`
+      const personOrPeople = getNumberOfPeople(
+        beingsSaved, 
+        browser.i18n.getMessage("personFromMalaria"),
+        browser.i18n.getMessage("peopleFromMalaria"),
+        browser.i18n.getMessage("anotherVariantOfPeopleFromMalaria"),
+      )
+      return browser.i18n.getMessage("protectFromMalaria", [beingsSaved, personOrPeople])
 
     case "SCI":
-      return `${beingsSaved} children get cured from parasites`
+      return beingsSaved === 1  
+        ? browser.i18n.getMessage("childGetCuredFromParasites", [beingsSaved])
+        : browser.i18n.getMessage("childrenGetCuredFromParasites", [beingsSaved]);
   }
 }
 
@@ -75,8 +84,10 @@ export const Donate: React.FC = () => {
     <div className="page">
       <div className="container fill-height">
         <div className="page__title m-b-0">
-          <h1>Help others</h1>
-          <h1 className="text-gradient">with just one click!</h1>
+          <h1>
+            {browser.i18n.getMessage("helpOthers")}
+            <span className="page__title-second-line text-gradient">{browser.i18n.getMessage("oneClick")}</span>
+          </h1>
         </div>
         <div className="justify-center fill-height">
           {currentWebsite.isPartner && currentWebsite.isAlreadyActivated ? (
@@ -93,9 +104,12 @@ export const Donate: React.FC = () => {
         </div>
       </div>
       <IconBox icon={<WalletIcon />}>
-        For every <strong>$100</strong> you spent with our partner you help:
+        {browser.i18n.getMessage("forEvery")}
+        <strong>$100</strong> 
+        {browser.i18n.getMessage("youSpent")}
         <br />
-        <strong>{memoizedImpactHighlight}</strong> (on average)
+        <strong>{memoizedImpactHighlight}</strong>
+        {browser.i18n.getMessage("onAvarage")}
       </IconBox>
     </div>
   )

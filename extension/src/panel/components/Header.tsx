@@ -1,6 +1,7 @@
 import React from "react"
 import "./Header.scss"
 import logo from "../assets/logo.svg"
+import { browser } from "webextension-polyfill-ts"
 
 interface User {
   email: string
@@ -18,14 +19,14 @@ export const Header: React.FC<Props> = (props: Props) => {
       <div className="header__login">
         {props.user ? (
           <div>
-            <span className="text-emphasized">Logged in as:</span>
+            <span className="text-emphasized">{browser.i18n.getMessage('loggedInAs')}</span>
             <br />
             <span className="text-muted">{props.user.email}</span>
           </div>
         ) : (
           <div>
             <button className="button-link uppercase-link" onClick={props.onLoginOrRegisterClick}>
-              LOGIN OR REGISTER
+              {browser.i18n.getMessage('loginOrRegister')}
             </button>
           </div>
         )}

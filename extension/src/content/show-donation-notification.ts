@@ -42,14 +42,14 @@ export const showDonationNotification = () => {
     const showNotification = () =>
       isAlreadyActivated(items.activatedAffiliates, currentDomain)
         ? notification({
-            text: "You are now collecting money for charities with this website.",
+            text: browser.i18n.getMessage('notificationActivated'),
             autoclose: true,
             onAutoclose: saveAsClosed,
             onClose: saveAsClosed
           })
         : notification({
-            text: "Start raising money for charities with this website by clicking here: ",
-            primaryButtonLabel: "Activate donation",
+            text: browser.i18n.getMessage('notificationActivate'),
+            primaryButtonLabel: browser.i18n.getMessage('notificationButtonLabel'),
             primaryButtonDestination: `${BASE_URL}/redirect?url=${
               location.href
             }&lang=${browser.i18n.getUILanguage()}&tracker=${tracker}`,

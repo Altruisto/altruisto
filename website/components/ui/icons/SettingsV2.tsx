@@ -8,7 +8,7 @@ type Props = {
 
 export const SettingsV2: FC<Props> = ({ color = "#000", width = "14px", height = "14px" }) => (
   <svg width={width} height={height} viewBox="0 0 14 14" version="1.1" fill={color}>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="share" transform="translate(-576.000000, -220.000000)" fill={color} fillRule="nonzero">
         <g id="menu" transform="translate(575.000000, 99.000000)">
           <g id="4" transform="translate(0.000000, 120.000000)">

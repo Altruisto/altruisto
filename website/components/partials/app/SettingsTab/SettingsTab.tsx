@@ -9,6 +9,7 @@ import { useAuth } from "hooks/use-auth"
 import { CauseArea } from "../../../../../shared/types/user"
 import { api } from "utils/api-url"
 import { useRouter } from "next/router"
+import { useIntl } from "translations/useIntl"
 
 const Select = dynamic(() => import("@material-ui/core/Select"), {
   ssr: false
@@ -48,11 +49,12 @@ const SettingsTab: React.FC<Props> = ({ userDetails, refreshUserDetails }) => {
   const { enqueueSnackbar } = useSnackbar()
   const auth = useAuth()
   const router = useRouter()
+  const { formatMessage } = useIntl()
 
   // @TODO: get this function from auth
   const handleLogout = () => {
     localStorage.setItem("user", null)
-    enqueueSnackbar("You have been logged out.", { variant: "success" })
+    enqueueSnackbar(formatMessage({ id: "youHaveBeenLoggedOut" }), { variant: "success" })
     setTimeout(() => {
       router.push("/login")
     }, 400)
@@ -73,7 +75,7 @@ const SettingsTab: React.FC<Props> = ({ userDetails, refreshUserDetails }) => {
         })
         refreshUserDetails()
       } catch (e) {
-        enqueueSnackbar("Something went wrong. Please try again in a moment.", {
+        enqueueSnackbar(formatMessage({ id: "somethingWentWrongTryAgain" }), {
           variant: "error"
         })
       }
@@ -90,19 +92,19 @@ const SettingsTab: React.FC<Props> = ({ userDetails, refreshUserDetails }) => {
 
   return (
     <div className="web-app__content">
-      <h3>Settings</h3>
-      <span className="settings__label pt-4">Cause area</span>
+      <h3>{formatMessage({ id: "settings" })}</h3>
+      <span className="settings__label pt-4">{formatMessage({ id: "causeArea" })}</span>
       <Select
         value={userDetails.causeArea}
         input={<SelectInput />}
         onChange={(event) => handleChangeCauseArea(event.target.value as CauseArea)}
       >
-        <MenuItem value="covid">COVID-19</MenuItem>
-        <MenuItem value="extreme_poverty">Extreme Poverty &amp; Global Health</MenuItem>
-        <MenuItem value="animals">Reduction of Animal Suffering</MenuItem>
+        <MenuItem value="covid">{formatMessage({ id: "covid" })}</MenuItem>
+        <MenuItem value="extreme_poverty">{formatMessage({ id: "povertyAndHealth" })}</MenuItem>
+        <MenuItem value="animals">{formatMessage({ id: "reductionOfAnimalSuffering" })}</MenuItem>
       </Select>
       <button className="button-link uppercase-link mt-4" onClick={handleLogout}>
-        LOG OUT
+        {formatMessage({ id: "logOut" })}
       </button>
     </div>
   )

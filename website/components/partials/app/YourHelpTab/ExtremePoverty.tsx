@@ -5,6 +5,7 @@ import {
 } from "utils/transform-usd-to-beings-saved"
 import dynamic from "next/dynamic"
 import Tile from "components/ui/Tile"
+import { useIntl } from "translations/useIntl"
 
 type Props = {
   moneyRaisedInUSD: number
@@ -18,15 +19,17 @@ const ProgressBar = dynamic(() => import("../../../ui/ProgressBar"), {
 const ExtremePoverty: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
   const [impact, moneyLeft] = spreadUSDBetweenCharitiesForMaxImpact(moneyRaisedInUSD)
   const cheapestImpactCharity = "SCI"
+  const { formatMessage } = useIntl()
 
   if (!impact[cheapestImpactCharity]) {
     return (
       <>
-        <strong>You are so close to helping the first person!</strong>
+        <strong>{formatMessage({ id: "youAreCloseToHelpingTheFirstPerson" })}</strong>
         <br />
         <span>
-          Collect another ${Math.round(IMPACT_COST_IN_USD["SCI"] - moneyLeft)} to help cure first
-          child from parasites
+          {formatMessage({ id: "collectAnother" })}
+          ${Math.round(IMPACT_COST_IN_USD["SCI"] - moneyLeft)}
+          {formatMessage({ id: "toHelpCureFirstChildFromParasites" })}
         </span>
         {isActive ? (
           <ProgressBar
@@ -57,7 +60,18 @@ const ExtremePoverty: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
           }
           className="mb-3"
         >
-          children <strong>cured from parasites</strong>
+          {formatMessage(
+            { 
+              id: "childrenCuredFromParasites" 
+            },
+            {
+              strong: (...chunks: string[]) => (
+                <strong>
+                  {chunks}
+                </strong>
+              ),
+            }
+          )}
         </Tile>
       ) : null}
 
@@ -77,7 +91,18 @@ const ExtremePoverty: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
           }
           className="mb-3"
         >
-          people <strong>protected from malaria</strong>
+          {formatMessage(
+            { 
+              id: "peopleProtectedFromMalaria" 
+            },
+            {
+              strong: (...chunks: string[]) => (
+                <strong>
+                  {chunks}
+                </strong>
+              ),
+            }
+          )}
         </Tile>
       ) : null}
 
@@ -97,14 +122,26 @@ const ExtremePoverty: React.FC<Props> = ({ moneyRaisedInUSD, isActive }) => {
           }
           className="mb-3"
         >
-          weeks of aid for 1 family living <strong>in extreme poverty</strong>
+          {formatMessage(
+            { 
+              id: "weeksOfAidForOneFamilyLivinginExtremePoverty" 
+            },
+            {
+              strong: (...chunks: string[]) => (
+                <strong>
+                  {chunks}
+                </strong>
+              ),
+            }
+          )}
         </Tile>
       ) : null}
       <div className="pt-3">
         <h3>
-          You have collected: <span className="text-gradient">${moneyRaisedInUSD}</span>
+          {formatMessage({ id: "youHaveCollected" })}
+          <span className="text-gradient">${moneyRaisedInUSD}</span>
         </h3>
-        <p>Some purchases take up to several weeks to be processed.</p>
+        <p>{formatMessage({ id: "somePurchasesTakeUpToSeveralWeeksToBeProcessed" })}</p>
       </div>
     </>
   )

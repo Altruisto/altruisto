@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React from "react"
 import { ProgressBar } from "../../ui/ProgressBar"
 
@@ -10,11 +11,13 @@ export const Covid: React.FC<Props> = ({ moneyRaised, isActive }: Props) => {
   return (
     <div className="fill-height">
       <h1 style={{ lineHeight: 1.33 }}>
-        You have collected: <span className="text-gradient">${moneyRaised}</span>
+        {browser.i18n.getMessage("youHaveCollected")}
+        <span className="text-gradient">${moneyRaised}</span>
       </h1>
 
       <span>
-        Collect ${currentMilestone - moneyRaised} more to reach milestone of ${currentMilestone}!
+        {browser.i18n.getMessage("collect")}${currentMilestone - moneyRaised}
+        {browser.i18n.getMessage("moreToReachMilestoneOf")}${currentMilestone}!
       </span>
 
       {isActive ? (
