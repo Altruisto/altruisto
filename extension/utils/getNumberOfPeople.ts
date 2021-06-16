@@ -12,15 +12,15 @@
 export const getNumberOfPeople = (
     numberOfPeople: number, 
     personTranslation: string,
-    peopleTranslation: string,
-    peopleTranslationV2: string
+    declinationPeopleTranslation: string,
+    anotherDeclinationPeopleTranslation: string
 ) => {
   const number10 = numberOfPeople % 10
   const number100 = numberOfPeople % 100
   if (numberOfPeople === 1) {
     return personTranslation
   } else if (number10 > 4 || number10 < 2 || (number100 < 15 && number10 > 11)) {
-    return peopleTranslation
+    return declinationPeopleTranslation
   }
-  return peopleTranslationV2
+  return anotherDeclinationPeopleTranslation
 }
