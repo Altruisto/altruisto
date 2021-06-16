@@ -11,7 +11,7 @@ const highlightSearchResult = (result: Element, url: string) => {
   // TODO: fix scaling image with css
   highlight.innerHTML = `
     <span style="color: #e70f74">
-      <img src="${ASSETS_PATHS.icons.icon48}" alt="Altruisto logo" title="Altruisto logo" style="margin-left: -34px; max-width: 32px"/>
+      <img src="${ASSETS_PATHS.icons.icon48}" alt="Altruisto logo" title="Altruisto logo" style="margin-left: -36px; max-width: 32px"/>
       <span style="background-image: linear-gradient(136deg, #e70f74, #ff2525);
       color: transparent;
       -webkit-background-clip: text;
