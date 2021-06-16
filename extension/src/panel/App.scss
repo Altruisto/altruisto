@@ -260,8 +260,9 @@ a {
     margin-bottom: 25px;
   }
 
-  &__H1LineHeight {
-    line-height: 1.3;
+  &__title-second-line {
+    display: block;
+    line-height: 1.5;
   }
 }
 
