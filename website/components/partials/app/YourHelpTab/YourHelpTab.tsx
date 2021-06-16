@@ -20,7 +20,7 @@ export const YourHelpTab: React.FC<Props> = ({ userDetails, onGoToShops, isActiv
   if (!userDetails) {
     return (
       <>
-        <div className="justify-center fill-height text-center" style={{ marginTop: 200 }}>
+        <div className="justify-center fill-height text-center">
           <Loader color={"red"} size={42} />
           <span className="m-b-10">{formatMessage({ id: "calculatingYourImpact" })}</span>
         </div>
@@ -30,7 +30,7 @@ export const YourHelpTab: React.FC<Props> = ({ userDetails, onGoToShops, isActiv
 
   if (userDetails.moneyRaised === 0) {
     return (
-      <div className="web-app__content d-flex column-center">
+      <div className="web-app__content d-flex column-start">
         <h5 className="text-center">
           {formatMessage({ id: "makeYourFirstPurchaseToSeeImpact" })}
         </h5>
