@@ -10,10 +10,10 @@
  */ 
 
 export const getNumberOfPeople = (
-    numberOfPeople, 
-    personTranslation,
-    peopleTranslation,
-    peopleTranslationV2
+    numberOfPeople: number, 
+    personTranslation: string,
+    peopleTranslation: string,
+    peopleTranslationV2: string
 ) => {
   const number10 = numberOfPeople % 10
   const number100 = numberOfPeople % 100

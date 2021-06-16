@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack"
 import { TwitterCarousel } from "./TwitterCarousel"
 import { UserDetails } from "pages/app"
 import { useIntl } from "translations/useIntl"
-import { getNumberOfPeople } from "../../../../../shared/getNumberOfPeople"
+import { getNumberOfPeople } from "../../../../utils/getNumberOfPeople"
 
 type Props = {
   userDetails: UserDetails

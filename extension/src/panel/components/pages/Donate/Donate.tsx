@@ -10,7 +10,7 @@ import { NotAPartner } from "./NotAPartner"
 import { ActivatePartner } from "./ActivatePartner"
 import { storage } from "../../../../helpers/storage"
 import { transformUSDToBeingsSaves } from "../../../common/utils/transform-usd-to-beings-saved"
-import { getNumberOfPeople } from "../../../../../../shared/getNumberOfPeople"
+import { getNumberOfPeople } from "../../../../../utils/getNumberOfPeople"
 
 type CurrentWebsite = {
   domain: string

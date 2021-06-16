@@ -8,7 +8,7 @@ import { useSnackbar } from "notistack"
 import { TwitterCarousel } from "./TwitterCarousel"
 import { useAuthContext } from "../../../common/auth"
 import axios from "../../../../helpers/api"
-import { getNumberOfPeople } from "../../../../../../shared/getNumberOfPeople"
+import { getNumberOfPeople } from "../../../../../utils/getNumberOfPeople"
 
 import "./Share.scss"
 import { storage } from "../../../../helpers/storage"
