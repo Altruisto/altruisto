@@ -72,3 +72,52 @@ export function recognizeOtherAffiliates() {
     { urls: ["<all_urls>"], types: ["main_frame"] }
   )
 }
+
+const EBAY_ALTRUISTO_CAMPID = '5338164459'
+const EBAY_ALTRUISTO_PUB = '5575312620'
+
+export function recognizeEbayAffiliates() {
+  let tabsIdsToDisablePartners = new Set<number>()
+
+  browser.webRequest.onBeforeRequest.addListener(details => {
+    const isGetRequest = details.method === "GET"
+    const isRedirectionToEbay = extractDomain(details.url).includes('ebay.')
+    const hasCampId = details.url.includes('campid')
+    const hasPubOrPubID = details.url.includes('pub') || details.url.includes('pubid')
+    const initiatorDomain = extractDomain((details as any).initiator || '')
+
+    if(!isGetRequest) {
+      return
+    }
+    if (!isRedirectionToEbay) {
+      return
+    }
+    if(hasCampId && details.url.includes(`campid=${EBAY_ALTRUISTO_CAMPID}`)){
+      return
+    }
+    if(hasPubOrPubID && details.url.includes(`=${EBAY_ALTRUISTO_PUB}`)) {
+      return
+    }
+    if(initiatorDomain.includes('google.') || initiatorDomain.includes('bing.')) {
+      return
+    }
+    if(!details.url.includes('mkevt') || !details.url.includes('mkcid') || !details.url.includes('campid')) {
+      return
+    }
+    console.log("Add to disable", details.tabId)
+    tabsIdsToDisablePartners.add(details.tabId)
+  },  { urls: ["<all_urls>"], types: ["main_frame"] })
+
+  browser.webRequest.onCompleted.addListener(
+    details => {
+      const currentTabId = details.tabId
+      const currentDomain = extractDomain(details.url)
+
+      if (tabsIdsToDisablePartners.has(currentTabId)) {
+        console.log("disable", currentDomain)
+        disablePartner(currentDomain).then(() => tabsIdsToDisablePartners.delete(currentTabId))
+      }
+    },
+    { urls: ["<all_urls>"], types: ["main_frame"] }
+  )
+}
