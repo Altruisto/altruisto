@@ -104,7 +104,6 @@ export function recognizeEbayAffiliates() {
     if(!details.url.includes('mkevt') || !details.url.includes('mkcid') || !details.url.includes('campid')) {
       return
     }
-    console.log("Add to disable", details.tabId)
     tabsIdsToDisablePartners.add(details.tabId)
   },  { urls: ["<all_urls>"], types: ["main_frame"] })
 
@@ -114,7 +113,6 @@ export function recognizeEbayAffiliates() {
       const currentDomain = extractDomain(details.url)
 
       if (tabsIdsToDisablePartners.has(currentTabId)) {
-        console.log("disable", currentDomain)
         disablePartner(currentDomain).then(() => tabsIdsToDisablePartners.delete(currentTabId))
       }
     },
