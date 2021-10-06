@@ -20,7 +20,7 @@ const JoinTheTeam = () => (
     </p>
 
     <p>
-      In 2019 global e-commerce amounted to
+      In 2019 global e-commerce amounted to&nbsp;
       <a
         style={{ textDecoration: "underline" }}
         target="_blank"
@@ -38,7 +38,7 @@ const JoinTheTeam = () => (
     <p>
       We are looking for someone to <strong>help us grow</strong>. We are constantly testing new
       ways to bring more users on board. We need someone who can facilitate our experiments and
-      <strong>execute</strong> our, meaning yours as well, ideas.
+      &nbsp;<strong>execute</strong> our, meaning yours as well, ideas.
     </p>
 
     <p id="98f2e342-2eee-45e2-92ca-c1a77b0f425b">
@@ -76,7 +76,7 @@ const JoinTheTeam = () => (
     </p>
 
     <p>
-      We&#x27;re open to various modes of cooperation, be it
+      We&#x27;re open to various modes of cooperation, be it&nbsp;
       <strong>per project, part-time, or full-time.</strong>
     </p>
 
@@ -94,7 +94,7 @@ const JoinTheTeam = () => (
     <p> We are looking for people who:</p>
     <ul id="1ff84453-7f40-49aa-89d9-a5ac7d279b35">
       <li>
-        are <strong>self-sufficient</strong>.
+        are <strong>self-sufficient</strong>.&nbsp;
         <a
           href="https://signalvnoise.com/posts/1430-hire-managers-of-one"
           style={{ textDecoration: "underline" }}
@@ -104,7 +104,7 @@ const JoinTheTeam = () => (
         </a>
         . You can set your own objectives that are aligned with the goals of the project and you can
         execute on these objectives. It doesn&#x27;t mean that you won&#x27;t get support when
-        needed but you can and like to work on your own. Extra points if you have read
+        needed but you can and like to work on your own. Extra points if you have read&nbsp;
         <a
           href="https://www.goodreads.com/book/show/25744928-deep-work"
           style={{ textDecoration: "underline" }}
@@ -139,9 +139,9 @@ const JoinTheTeam = () => (
     <h2>Requirements</h2>
     <ul id="fd843b13-8eed-4ab9-b678-97bb6a0ad728">
       <li>
-        Your written English is perfect and you actually
-        <strong>enjoy writing.</strong> A huge part of the job is writing - emails, tweets,
-        copywriting for web pages, emails, and more emails. Also, have we mentioned emails?
+        Your written English is perfect and you actually&nbsp;<strong>enjoy writing.</strong> A huge
+        part of the job is writing - emails, tweets, copywriting for web pages, emails, and more
+        emails. Also, have we mentioned emails?
       </li>
     </ul>
     <ul id="eb28b534-9b52-4217-a16a-f406b3cb78e7">
@@ -181,9 +181,9 @@ const JoinTheTeam = () => (
       whatever you want.
     </p>
     <p id="e2dc1204-5e47-4791-8df2-95f5532bee87">
-      The last part is a small exemplary project that should take up to 2 hours (but probably much
-      less than that). We do realise this is a big commitment so there is no deadline for turning in
-      your results. The project will be similar to something we actually work on.
+      The last part is a small exemplary task that should take up to 3 hours (but probably much less
+      than that). We do realise this is a big commitment so there is no deadline for turning in your
+      results. The project will be similar to something we actually work on.
     </p>
     <p>
       Please note that we&#x27;re unable to provide individual feedback about your performance in
