@@ -1,7 +1,11 @@
 import { MinimalLayout } from "../components/layouts/MinimalLayout"
 
 const JoinTheTeam = () => (
-  <MinimalLayout>
+  <MinimalLayout
+    ogMetaTags={{
+      image: "https://altruisto.com/images/join-the-team.jpg"
+    }}
+  >
     <h2>About us</h2>
     <p>
       We have developed{" "}
