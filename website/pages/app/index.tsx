@@ -12,6 +12,7 @@ import { CauseArea, Currency } from "../../../shared/types/user"
 import { YourHelpTab } from "components/partials/app/YourHelpTab/YourHelpTab"
 import SettingsTab from "components/partials/app/SettingsTab/SettingsTab"
 import { Partner } from "types/partner"
+import TranslationsProvider from "translations/TranslationsProvider"
 
 export type UserDetails = {
   causeArea: CauseArea
@@ -77,37 +78,39 @@ const Index = () => {
 
   if (auth && auth.user) {
     return (
-      <SnackbarProvider
-        maxSnack={1}
-        autoHideDuration={1500}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right"
-        }}
-      >
-        <WebAppLayout
-          active={activeTab}
-          onMenuClick={(index) => {
-            setActiveTab(index)
-            window.scrollTo({ top: 0, behavior: "smooth" })
+      <TranslationsProvider>
+        <SnackbarProvider
+          maxSnack={1}
+          autoHideDuration={1500}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right"
           }}
         >
-          <SwipeableViews index={activeTab}>
-            <ShareTab userDetails={userDetails} />
-            <ShopTab
-              partners={partners}
-              partnersLoading={partnersLoading}
-              userDetails={userDetails}
-            />
-            <YourHelpTab
-              userDetails={userDetails}
-              isActive={activeTab === 2}
-              onGoToShops={() => setActiveTab(1)}
-            />
-            <SettingsTab userDetails={userDetails} refreshUserDetails={getUserDetails} />
-          </SwipeableViews>
-        </WebAppLayout>
-      </SnackbarProvider>
+          <WebAppLayout
+            active={activeTab}
+            onMenuClick={(index) => {
+              setActiveTab(index)
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }}
+          >
+            <SwipeableViews index={activeTab}>
+              <ShareTab userDetails={userDetails} />
+              <ShopTab
+                partners={partners}
+                partnersLoading={partnersLoading}
+                userDetails={userDetails}
+              />
+              <YourHelpTab
+                userDetails={userDetails}
+                isActive={activeTab === 2}
+                onGoToShops={() => setActiveTab(1)}
+              />
+              <SettingsTab userDetails={userDetails} refreshUserDetails={getUserDetails} />
+            </SwipeableViews>
+          </WebAppLayout>
+        </SnackbarProvider>
+      </TranslationsProvider>
     )
   }
 

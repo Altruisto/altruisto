@@ -5,6 +5,7 @@ import Link from "next/link"
 import Modal from "react-modal"
 import { UserDetails } from "pages/app"
 import { Loader } from "components/ui/Loader"
+import { useIntl } from "translations/useIntl"
 
 type Props = {
   partners: Partner[]
@@ -18,6 +19,7 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
   const [searchPhrase, setSearchPhrase] = useState("")
   const [searchedPartners, setSearchedPartners] = useState(partners)
   const [activePartner, setActivePartner] = useState<Partner | null>(null)
+  const { formatMessage } = useIntl()
 
   const tracker = userDetails
     ? `${userDetails.ref || ""}-${userDetails.causeArea}-${userDetails.referredBy || ""}`
@@ -50,24 +52,28 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
     }
   }, [searchPhrase, partners])
 
+  const searchResultsTranslation = formatMessage({ id: "searchResults" });
+
   const groupedPartners = searchPhrase
-    ? { "Search results": searchedPartners }
+    ? {  [searchResultsTranslation] : searchedPartners }
     : groupAplabetically(partners, "name")
 
   return (
     <>
-      <h1 className="web-app__partner-list-title">Partners List</h1>
+      <h1 className="web-app__partner-list-title">{formatMessage({ id: "partnersList" })}</h1>
       <div className="partners__search-wrapper web-app__search-wrapper input-group">
         <input
           type="text"
           className="partners__search-input web-app__search-input"
-          placeholder="Search..."
+          placeholder={formatMessage({ id: "search" })}
           value={searchPhrase}
           onChange={(e) => setSearchPhrase(e.target.value)}
         />
         <div className="input-group-append">
           <button className="partners__search-button" type="button">
-            <img src="/images/search.svg" title="search icon" alt="search icon" />
+            <img src="/images/search.svg" 
+              title={formatMessage({ id: "searchIcon" })} 
+              alt={formatMessage({ id: "searchIcon" })} />
           </button>
         </div>
       </div>
@@ -106,7 +112,7 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
         style={customModalStyles}
       >
         <p>
-          Click the button below to active donation for{" "}
+          {formatMessage({ id: "clickButtonBelowToActiveDonationFor" })}
           <strong>{activePartner && activePartner.name}</strong>
         </p>
         <a
@@ -116,7 +122,7 @@ export const ShopTab: React.FC<Props> = ({ partners, partnersLoading, userDetail
           className="button"
           target="_blank"
         >
-          Active donation
+          {formatMessage({ id: "activeDonation" })}
         </a>
       </Modal>
     </>

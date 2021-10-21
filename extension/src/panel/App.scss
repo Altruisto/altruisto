@@ -20,12 +20,14 @@ body {
 }
 
 span {
-  font-family: "PT Sans";
+  font-family: "PT Sans", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+  sans-serif;
 }
 
 .app {
   text-align: center;
-  width: 320px;
+  width: 360px;
   height: 600px;
   margin: 0 auto;
   background-color: white;
@@ -37,7 +39,7 @@ span {
   &__content-wrapper {
     position: relative;
     width: 100%;
-    height: 438px; // TODO: fix this magic number. It's 600px - header - footer.
+    height: 418px; // TODO: fix this magic number. It's 600px - header - footer.
     display: flex;
   }
 }
@@ -77,6 +79,10 @@ span {
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-no-decoration {
@@ -250,7 +256,13 @@ a {
   // height: 100%;
 
   &__title {
+    
     margin-bottom: 25px;
+  }
+
+  &__title-second-line {
+    display: block;
+    line-height: 1.5;
   }
 }
 

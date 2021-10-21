@@ -1,47 +1,435 @@
 {
-    "name": {
-        "message": "Altruisto.com"
-    },
-    "description": {
-        "message": "通过您日常的网上购物来为全球最有效的慈善机构筹款，同时无需多付分毫。"
-    },
-    "topbarActivateInfo": {
-        "message": "请点击此处，通过本网站为慈善机构筹款："
-    },
-    "topbarActivateButton": {
-        "message": "开始筹款"
-    },
-    "topbarActivatedInfo": {
-        "message": "您现在正通过本网站为慈善机构筹款。"
-    },
-    "topbarActivatedClose": {
-        "message": "本窗口将在5秒后自动关闭"
-    },
-    "optionsTitle": {
-        "message": "Altruisto.com扩展程序设置"
-    },
-    "optionsComingSoon": {
-        "message": "即将推出！"
-    },
-    "optionsTopbarTitle": {
-        "message": "当我在购物期间有机会为慈善机构筹款时，请通知我"
-    },
-    "optionsTopbarDescription": {
-        "message": "每当您浏览我们其中一家合作伙伴的网站时，您都将看到页面顶部的一个功能条，让您有机会通过点击功能条上的一个按钮来为慈善机构筹款。点击该按钮后，系统将要求您确认，您是否希望通过在该网站上购物来支持Altruisto。此后，您的购物金额的1-6%将捐赠给我们支持的慈善机构。"
-    },
-    "optionsSuggestionsTitle": {
-        "message": "在我浏览互联网时显示建议"
-    },
-    "optionsSuggestionsDescription": {
-        "message": "此选项让您可以在一个信息小窗口中看到与您正在查看的页面内容有关的、您可能感兴趣的促销信息、优惠券和产品。它会不时出现在浏览器的右下角。每当您决定购买为您建议的产品时，全球最有效的慈善机构之一将获得销售利润的一部分（您需支付的产品价格不变）。我们努力使这一过程尽可能快速且友好。"
-    },
-    "optionsSearchTitle": {
-        "message": "在搜索结果中突出显示合作伙伴商店"
-    },
-    "optionsSearchDescription": {
-        "message": "当您使用谷歌、必应或DuckDuckGo等搜索引擎时，该搜索引擎将突出显示我们的合作伙伴的网站链接，以便您立即知晓您可以在哪些网站上为慈善机构筹款。"
-    },
-    "optionsThankYou": {
-        "message": ""
+  "name": {
+    "message": "Altruisto.com"
+  },
+  "description": {
+    "message": "通过您日常的网上购物来为全球最有效的慈善机构筹款，同时无需多付分毫。"
+  },
+  "notificationActivate": {
+    "message": "Start raising money for charities with this website by clicking here:"
+  },
+  "notificationActivated": {
+    "message": "You are now collecting money for charities with this website."
+  },
+  "notificationButtonLabel": {
+    "message": "Activate donation"
+  },
+  "topbarActivateInfo": {
+    "message": "请点击此处，通过本网站为慈善机构筹款："
+  },
+  "topbarActivateButton": {
+    "message": "开始筹款"
+  },
+  "topbarActivatedInfo": {
+    "message": "您现在正通过本网站为慈善机构筹款。"
+  },
+  "topbarActivatedClose": {
+    "message": "本窗口将在5秒后自动关闭"
+  },
+  "optionsTitle": {
+    "message": "Altruisto.com扩展程序设置"
+  },
+  "optionsComingSoon": {
+    "message": "即将推出！"
+  },
+  "optionsTopbarTitle": {
+    "message": "当我在购物期间有机会为慈善机构筹款时，请通知我"
+  },
+  "optionsTopbarDescription": {
+    "message": "每当您浏览我们其中一家合作伙伴的网站时，您都将看到页面顶部的一个功能条，让您有机会通过点击功能条上的一个按钮来为慈善机构筹款。点击该按钮后，系统将要求您确认，您是否希望通过在该网站上购物来支持Altruisto。此后，您的购物金额的1-6%将捐赠给我们支持的慈善机构。"
+  },
+  "optionsSuggestionsTitle": {
+    "message": "在我浏览互联网时显示建议"
+  },
+  "optionsSuggestionsDescription": {
+    "message": "此选项让您可以在一个信息小窗口中看到与您正在查看的页面内容有关的、您可能感兴趣的促销信息、优惠券和产品。它会不时出现在浏览器的右下角。每当您决定购买为您建议的产品时，全球最有效的慈善机构之一将获得销售利润的一部分（您需支付的产品价格不变）。我们努力使这一过程尽可能快速且友好。"
+  },
+  "optionsSearchTitle": {
+    "message": "在搜索结果中突出显示合作伙伴商店"
+  },
+  "optionsSearchDescription": {
+    "message": "当您使用谷歌、必应或DuckDuckGo等搜索引擎时，该搜索引擎将突出显示我们的合作伙伴的网站链接，以便您立即知晓您可以在哪些网站上为慈善机构筹款。"
+  },
+  "optionsThankYou": {
+    "message": ""
+  },
+  "helpOthers": {
+    "message": "Help others"
+  },
+  "oneClick": {
+    "message": "with just one click!"
+  },
+  "forEvery": {
+    "message": "For every "
+  },
+  "youSpent": {
+    "message": " you spent with our partner you help:"
+  },
+  "onAvarage": {
+    "message": " (on average)"
+  },
+  "protectFromMalaria": {
+    "message": "protect $beingsSaved$ $personOrPeopleFromMalaria$",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1", 
+        "example": "1"       
+      },
+      "personOrPeopleFromMalaria": {
+        "content": "$2",
+        "example": "person from malaria"
+      }
     }
+  },
+  "personFromMalaria": {
+    "message": "person from malaria"
+  },
+  "peopleFromMalaria": {
+    "message": "people from malaria"
+  },
+  "anotherVariantOfPeopleFromMalaria": {
+    "message": "people from malaria"
+  },
+  "childGetCuredFromParasites": {
+    "message": "$beingsSaved$ child get cured from parasites",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "childrenGetCuredFromParasites": {
+    "message": "$beingsSaved$ children get cured from parasites",
+    "placeholders": {
+      "beingsSaved": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "share": {
+    "message": "Share"
+  },
+  "donate": {
+    "message": "Donate"
+  },
+  "yourHelp": {
+    "message": "Your help"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "loggedInAs": {
+    "message": "Logged in as:"
+  },
+  "loginOrRegister": {
+    "message": "LOGIN OR REGISTER"
+  },
+  "toggle": {
+    "message": "Toggle"
+  },
+  "activateDonationFor": {
+    "message": "Activate donation for:"
+  },
+  "thisSiteIsOur": {
+    "message": "This site is our "
+  },
+  "thisSiteIsNotOur": {
+    "message": "This site is not our "
+  },
+  "partner": {
+    "message": "partner!"
+  },
+  "viewAll": {
+    "message": "View All"
+  },
+  "donationIsActive": {
+    "message": "The donation for $domain$ is active! When you buy something charities will get donations!",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "ebay.com"
+      }
+    }
+  },
+  "enterYourEmail": {
+    "message": "Please enter your email address below, and we’ll send a link you can use to reset your password"
+  },
+  "errorProvideCorrectEmail": {
+    "message": "Something went wrong. Please make sure you have provided a correct email address."
+  },
+  "fieldIsRequired": {
+    "message": "This field is required"
+  },
+  "errorEmailIsNotValid": {
+    "message": "Provided email address is not valid"
+  },
+  "emailPlaceholder": {
+    "message": "E-mail for you account"
+  },
+  "resetPassword": {
+    "message": "Reset password"
+  },
+  "somethingWentWrong": {
+    "message": "Something went wrong, please try again."
+  },
+  "email": {
+    "message": "Email"
+  },
+  "password": {
+    "message": "Password"
+  },
+  "yourEmail": {
+    "message": "Your email"
+  },
+  "yourPassword": {
+    "message": "Your password"
+  },
+  "forgot": {
+    "message": "Forgot"
+  },
+  "login": {
+    "message": "Login"
+  },
+  "successfullyRegisteredAndLoggedIn": {
+    "message": "You have been successfully registered and logged in. Thank you!"
+  },
+  "sentLinkToResetPassword": {
+    "message": "We've sent you an email with a link to reset your password."
+  },
+  "dontHaveAccount": {
+    "message": "Don't have an account?"
+  },
+  "signUpNow": {
+    "message": "Sign up now."
+  },
+  "alreadyHaveAccount": {
+    "message": "Already have an account?"
+  },
+  "loginNow": {
+    "message": "Login now."
+  },
+  "goBackToLogin": {
+    "message": "Go back to login form."
+  },
+  "close": {
+    "message": "close"
+  },
+  "logo": {
+    "message": "Logo"
+  },
+  "passwordMustHave8Char": {
+    "message": "Password must have at least 8 characters"
+  },
+  "emailsNotMatch": {
+    "message": "Emails do not match"
+  },
+  "serverDidNotResponded": {
+    "message": "Registration: the server did not responded with expected status code (201)"
+  },
+  "problemWithRegistration": {
+    "message": "There was a problem with your registration. We were notified about it and will do our best to solve it as quickly as possible. Please do try again later."
+  },
+  "yourMainEmail": {
+    "message": "Your main email address"
+  },
+  "confirmEmail": {
+    "message": "Confirm email"
+  },
+  "confirmYourEmailAdress": {
+    "message": "Confirm your email address"
+  },
+  "iAcceptThe": {
+    "message": "I accept the "
+  },
+  "termsOfService": {
+    "message": "Terms of Service"
+  },
+  "andThe": {
+    "message": " and the "
+  },
+  "privacyPolicy": {
+    "message": "Privacy Policy"
+  },
+  "register": {
+    "message": "Register"
+  },
+  "causeArea": {
+    "message": "Cause area"
+  },
+  "covid": {
+    "message": "COVID-19"
+  },
+  "povertyAndHealth": {
+    "message": "Extreme Poverty & Global Health"
+  },
+  "reductionAnimalSuffering": {
+    "message": "Reduction of Animal Suffering"
+  },
+  "changeEmail": {
+    "message": "Change email"
+  },
+  "settingsHaveBeenUpdated": {
+    "message": "Your settings have been updated"
+  },
+  "save": {
+    "message": "SAVE"
+  },
+  "changePassword": {
+    "message": "Change password"
+  },
+  "somethingWentWrongTryAgain": {
+    "message": "Something went wrong, we have been notified about it. Please try again in a moment."
+  },
+  "currentPassword": {
+    "message": "Current password"
+  },
+  "newPassword": {
+    "message": "New password"
+  },
+  "currency": {
+    "message": "Currency"
+  },
+  "youHaveToBeLoggedToChangeSettings": {
+    "message": "You have to be logged in to change this setting."
+  },
+  "youHaveBeenLoggedOut": {
+    "message": "You have been logged out."
+  },
+  "notifications": {
+    "message": "Notifications"
+  },
+  "showMeNotificationWhenIVisitPartners": {
+    "message": "Show me a notification when I visit one of Altruisto's partners' shop and have an opportunity to raise money for charities with my purchases"
+  },
+  "highlightPartners": {
+    "message": "Highlight partners in search results"
+  },
+  "logOut": {
+    "message": "LOG OUT"
+  },
+  "defaultHelp": {
+    "message": "By default the help from unlogged users goes to: Against Malaria Foundation, Schistosomiasis Control Initiative, and Give Directly."
+  },
+  "toChooseDifferentCharities": {
+    "message": "to choose different charities."
+  },
+  "signUp": {
+    "message": "Sign up"
+  },
+  "together": {
+    "message": "Together"
+  },
+  "weCanMore": {
+    "message": "we can do more!"
+  },
+  "ifEveryUserInvited": {
+    "message": "If every user invited "
+  },
+  "justThreeFriends": {
+    "message": "just three of their friends"
+  },
+  "inFewWeeksWeWouldBe": {
+    "message": ", in a few short weeks we would be "
+  },
+  "helpingHundredsOfThousandsOfPeople": {
+    "message": "helping hundreds of thousands of people"
+  },
+  "experienceWhatIsBestInLife": {
+    "message": " experience what's best in life, instead of suffering, pain, helplessness."
+  },
+  "helpYourFriendsDiscoverAltruisto": {
+    "message": "Help your friends discover altruisto"
+  },
+  "andDoMoreGood": {
+    "message": "and do even more good:"
+  },
+  "yourReferralLink": {
+    "message": "Your referral link:"
+  },
+  "copiedToClipboard": {
+    "message": "Copied to clipboard!"
+  },
+  "copyRefLink": {
+    "message": "Copy ref link"
+  },
+  "copyIcon": {
+    "message": "Copy icon"
+  },
+  "personJoinedThanksToYou": {
+    "message": "person joined thanks to you"
+  },
+  "peopleJoinedThanksToYou": {
+    "message": "people joined thanks to you"
+  },
+  "anotherVariantOfPeopleJoinedThanksToYou": {
+    "message": "people joined thanks to you"
+  },
+  "talkingAboutUs": {
+    "message": "Talking about us:"
+  },
+  "youHaveCollected": {
+    "message": "You have collected: "
+  },
+  "collect": {
+    "message": "Collect "
+  },
+  "moreToReachMilestoneOf": {
+    "message": " more to reach milestone of "
+  },
+  "children": {
+    "message": "children "
+  },
+  "curedFromParasites": {
+    "message": "cured from parasites"
+  },
+  "youAreCloseToHelpingFirstPerson": {
+    "message": "You are so close to helping first person!"
+  },
+  "collectAnother": {
+    "message": "Collect another "
+  },
+  "toHelpCureFirstChildFromParasites": {
+    "message": " to help cure first child from parasites"
+  },
+  "people": {
+    "message": "people"
+  },
+  "protectedFromMalaria": {
+    "message": " protected from malaria"
+  },
+  "weeksOfAidFor1FamilyLiving": {
+    "message": "weeks of aid for 1 family living "
+  },
+  "inExtremePoverty": {
+    "message": "in extreme poverty"
+  },
+  "somePurchasesTakeUpToSeveralWeeksToBeProcessed": {
+    "message": "Some purchases take up to several weeks to be processed "
+  },
+  "findOutWhy": {
+    "message": "FIND OUT WHY"
+  },
+  "weCouldNotGetDataAboutImpact": {
+    "message": "We couldn't get the data about your impact. Please try again in a moment."
+  },
+  "toSeeTheImpactSingUp": {
+    "message": "To see the exact impact you had with your online shopping you need to sign up."
+  },
+  "calculatingYourImpact": {
+    "message": "Calculating your impact..."
+  },
+  "makeYourFirstPurchaseToSeeImpact": {
+    "message": "Make your first purchase with Altruisto to see how much impact you can have!"
+  },
+  "seeOurPartnerShops": {
+    "message": "See our partner shops"
+  },
+  "person": {
+    "message": "person"
+  },
+  "thisSiteIsAltuistosPartnerYouCanDonate": {
+    "message": "This site is altruisto's partner. You can donate portion of your purchases to charities!"
+  }
 }

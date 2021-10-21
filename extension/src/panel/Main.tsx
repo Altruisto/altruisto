@@ -15,10 +15,12 @@ import { Share } from "./components/pages/Share/Share"
 import { Donate } from "./components/pages/Donate/Donate"
 import { Settings } from "./components/pages/Settings/Settings"
 import { YourHelp } from "./components/pages/YourHelp/YourHelp"
+import { browser } from "webextension-polyfill-ts"
 
 type Props = {
   classes: {
-    tab: string
+    tab: string,
+    tabs: string,
   }
 }
 
@@ -26,7 +28,12 @@ const styles = () => ({
   tab: {
     minWidth: "unset",
     "text-transform": "none",
-    "font-size": "12px"
+    "font-size": "12px",
+    "align-items": "flex-start",
+    "line-height": "1.5"
+  },
+  tabs: {
+    "align-items": "flex-start"
   }
 })
 
@@ -68,11 +75,14 @@ const Main: React.FC<Props> = (props: Props) => {
           indicatorColor="none"
           variant="fullWidth"
           textColor="secondary"
+          classes={{
+            flexContainer: classes.tabs
+          }}
         >
-          <Tab className={classes.tab} icon={<ShareIcon />} label="Share" disableRipple />
-          <Tab className={classes.tab} icon={<WalletIcon />} label="Donate" disableRipple />
-          <Tab className={classes.tab} icon={<ProfileIcon />} label="Your help" disableRipple />
-          <Tab className={classes.tab} icon={<SettingsIcon />} label="Settings" disableRipple />
+          <Tab className={classes.tab} icon={<ShareIcon />} label={browser.i18n.getMessage('share')} disableRipple />
+          <Tab className={classes.tab} icon={<WalletIcon />} label={browser.i18n.getMessage('donate')} disableRipple />
+          <Tab className={classes.tab} icon={<ProfileIcon />} label={browser.i18n.getMessage('yourHelp')} disableRipple />
+          <Tab className={classes.tab} icon={<SettingsIcon />} label={browser.i18n.getMessage('settings')} disableRipple />
         </Tabs>
       </Paper>
     </>

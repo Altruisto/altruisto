@@ -1,5 +1,6 @@
 import React from "react"
 import "./Switch.scss"
+import { browser } from "webextension-polyfill-ts"
 
 type Props = {
   on: boolean
@@ -27,7 +28,7 @@ export const Switch: React.FC<
       />
       <button
         className={buttonClassName}
-        aria-label="Toggle"
+        aria-label={browser.i18n.getMessage('toggle')}
         type="button"
         {...buttonProps}
       />

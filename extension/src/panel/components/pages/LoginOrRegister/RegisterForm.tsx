@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts"
 import React, { useState, useRef, useEffect } from "react"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import Checkbox from "@material-ui/core/Checkbox"
@@ -44,28 +45,28 @@ type RegistrationData = {
 const validate = (values: FormData) => {
   let errors: ValidationErrors = {}
   if (!values.email) {
-    errors.email = "This field is required"
+    errors.email = browser.i18n.getMessage("fieldIsRequired")
   }
 
   const regexp = /\S+@\S+\.\S+/
-  if (!regexp.test(String(values.email).toLowerCase())) {
-    errors.email = "Provided email address is not valid"
+  if (values.email && !regexp.test(String(values.email).toLowerCase())) {
+    errors.email = browser.i18n.getMessage("errorEmailIsNotValid")
   }
 
   if (!values.password) {
-    errors.password = "This field is required"
+    errors.password = browser.i18n.getMessage("fieldIsRequired")
   }
 
-  if (values.password !== undefined && values.password.length < 8) {
-    errors.password = "Password must have at least 8 characters"
+  if (values.password && values.password.length < 8) {
+    errors.password = browser.i18n.getMessage("passwordMustHave8Char")
   }
 
   if (values.confirmEmail !== values.email && values.confirmEmail !== "" && values.email !== "") {
-    errors.confirmEmail = "Emails do not match"
+    errors.confirmEmail = browser.i18n.getMessage("emailsNotMatch")
   }
 
   if (!values.acceptTerms) {
-    errors.acceptTerms = "This field is required"
+    errors.acceptTerms = browser.i18n.getMessage("fieldIsRequired")
   }
 
   return errors
@@ -118,7 +119,7 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
                 return auth.login(values.email, values.password)
               } else {
                 throw new Error(
-                  "Registration: the server did not responded with expected status code (201)"
+                  `${browser.i18n.getMessage("serverDidNotResponded")}`
                 )
               }
             })
@@ -140,10 +141,7 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
                 })
               } else {
                 setFailureMessage(
-                  `There was a problem with your registration.
-                  We were notified about it and will do our best
-                  to solve it as quickly as possible.
-                  Please do try again later.`
+                  `${browser.i18n.getMessage("problemWithRegistration")}`
                 )
               }
               actions.setSubmitting(false)
@@ -156,14 +154,14 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
           <Form noValidate>
             <div className="field">
               <label className="field__label" htmlFor="email">
-                Email
+                {browser.i18n.getMessage("email")}
               </label>
               <Field
                 className="field__input"
                 type="text"
                 id="email"
                 name="email"
-                placeholder="Your main email address"
+                placeholder={browser.i18n.getMessage("yourMainEmail")}
               />
               <div className="field__error-message">
                 <ErrorMessage name="email" component="span" />
@@ -171,14 +169,14 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
             </div>
             <div className="field">
               <label className="field__label" htmlFor="email">
-                Confirm email
+                {browser.i18n.getMessage("confirmEmail")}
               </label>
               <Field
                 className="field__input"
                 type="text"
                 id="confirmEmail"
                 name="confirmEmail"
-                placeholder="Confirm your email address"
+                placeholder={browser.i18n.getMessage("confirmYourEmailAdress")}
               />
               <div className="field__error-message">
                 <ErrorMessage name="confirmEmail" component="span" />
@@ -186,14 +184,14 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
             </div>
             <div className="field">
               <label className="field__label" htmlFor="password">
-                Password
+                {browser.i18n.getMessage("password")}
               </label>
               <Field
                 className="field__input"
                 type="password"
                 id="password"
                 name="password"
-                placeholder="Your password"
+                placeholder={browser.i18n.getMessage("yourPassword")}
               />
               <div className="field__error-message">
                 <ErrorMessage name="password" component="span" />
@@ -214,21 +212,21 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
               }
               label={
                 <label htmlFor="acceptTerms" className="field__label login-form__checkbox-label">
-                  I accept the{" "}
+                  {browser.i18n.getMessage("iAcceptThe")}
                   <a
                     href="https://altruisto.com/terms-of-service.html"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    Terms of Service
-                  </a>{" "}
-                  and the{" "}
+                    {browser.i18n.getMessage("termsOfService")}
+                  </a>
+                  {browser.i18n.getMessage("andThe")}
                   <a
                     href="https://altruisto.com/privacy-policy.html"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    Privacy Policy
+                    {browser.i18n.getMessage("privacyPolicy")}
                   </a>
                 </label>
               }
@@ -237,7 +235,7 @@ const RegisterForm: React.FC<Props> = (props: Props) => {
               <ErrorMessage name="acceptTerms" component="span" />
             </div>
             <button type="submit" className="button login-form__button">
-              {isSubmitting ? <Loader /> : "Register"}
+              {isSubmitting ? <Loader /> : browser.i18n.getMessage("register")}
             </button>
           </Form>
         )}

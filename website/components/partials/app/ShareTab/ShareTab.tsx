@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
 import copyToClipboard from "copy-to-clipboard"
 import { useSnackbar } from "notistack"
 import { TwitterCarousel } from "./TwitterCarousel"
 import { UserDetails } from "pages/app"
+import { useIntl } from "translations/useIntl"
+import { getNumberOfPeople } from "../../../../utils/getNumberOfPeople"
 
 type Props = {
   userDetails: UserDetails
@@ -10,22 +12,37 @@ type Props = {
 
 export const ShareTab: React.FC<Props> = ({ userDetails }) => {
   const { enqueueSnackbar } = useSnackbar()
+  const { formatMessage } = useIntl()
   const ref = userDetails && userDetails.ref ? userDetails.ref : ""
 
   return (
     <div className="web-app__content fill-height">
-      <h3 className="web-app__title">Together</h3>
-      <h3 className="text-gradient">we can do more!</h3>
+      <h3 className="web-app__title">{formatMessage({ id: "together" })}</h3>
+      <h3 className="text-gradient">{formatMessage({ id: "weCanDoMore" })}</h3>
       <p className="mt-4">
-        If every user invited <strong>just three of their friends</strong>, in a few short weeks we
-        would be <strong>helping hundreds of thousands of people</strong> experience what's best in
-        life, instead of suffering, pain, helplessness.
+        {formatMessage(
+          { 
+            id: "ifEveryUserInvitedJustThreeOfTheirFriends" 
+          },
+          {
+            strong: (...chunks: string[]) => (
+              <strong>
+                {chunks}
+              </strong>
+            ),
+          }
+        )}
       </p>
       <p className="mt-4">
         <strong>
-          Help your friends discover altruisto
-          <br />
-          and do even more good:
+          {formatMessage(
+              { 
+                id:  "helpYourFriendsDiscoverAltruistoAndDoEvenMoreGood" 
+              },
+              {
+                br: () => (<br></br>)
+              }
+          )}
         </strong>
       </p>
       <div className="d-flex justify-content-between">
@@ -52,20 +69,23 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
       </div>
       {ref && (
         <>
-          <h3 className="web-app__title mt-5 mb-4">Your referral link:</h3>
+          <h3 className="web-app__title mt-5 mb-4">{formatMessage({ id: "yourReferralLink" })}</h3>
           <div className="field m-t-10">
             <span className="field__appendix web-app__copy-icon">
               <button
                 className="button-link"
                 onClick={() => {
                   copyToClipboard(`https://altruisto.com/?ref=${ref}`)
-                  enqueueSnackbar("Copied to clipboard!", {
+                  enqueueSnackbar(formatMessage({ id: "copiedToClipboard" }), {
                     variant: "info",
                     autoHideDuration: 900
                   })
                 }}
               >
-                <img src="/images/copy.svg" alt="Copy ref link" title="Copy icon" />
+                <img src="/images/copy.svg" 
+                  alt={formatMessage({ id: "copyRefLink"})} 
+                  title={formatMessage({ id: "copyIcon" })}
+                />
               </button>
             </span>
             <input
@@ -77,7 +97,7 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
               readOnly
               onClick={(event) => {
                 copyToClipboard(`https://altruisto.com/?ref=${ref}`)
-                enqueueSnackbar("Copied to clipboard!", {
+                enqueueSnackbar(formatMessage({ id: "copiedToClipboard" }), {
                   variant: "info",
                   autoHideDuration: 900
                 })
@@ -90,13 +110,18 @@ export const ShareTab: React.FC<Props> = ({ userDetails }) => {
             <div className="mt-4 mb-2">
               <div className="web-app__invited-number">{userDetails.referralsCount} </div>
               <div className="web-app__invited-people">
-                {userDetails.referralsCount === 1 ? "person" : "people"} joined thanks to you
+                {getNumberOfPeople(
+                  userDetails.referralsCount, 
+                  formatMessage({ id: "personJoinedThanksToYou" }),
+                  formatMessage({ id: "peopleJoinedThanksToYou" }),
+                  formatMessage({ id: "anotherVariantOfPeopleJoinedThanksToYou" })
+                )}
               </div>
             </div>
           ) : null}
         </>
       )}
-      <h3 className="web-app__title mt-5 mb-4">Talking about us:</h3>
+      <h3 className="web-app__title mt-5 mb-4">{formatMessage({ id: "talkingAboutUs" })}</h3>
       <TwitterCarousel />
       <div className="mb-2"></div>
     </div>
