@@ -1,4 +1,6 @@
-export const pl = {
+import { Translation } from "translations/types"
+
+export const pl: Translation = {
   together: "Wspólnie",
   weCanDoMore: "możemy zrobić więcej!",
   ifEveryUserInvitedJustThreeOfTheirFriends:
@@ -51,5 +53,27 @@ export const pl = {
   calculatingYourImpact: "Obliczam impakt Twojej pomocy...",
   makeYourFirstPurchaseToSeeImpact:
     "Dokonaj pierwszego zakupu z Altruisto, aby zobaczyć, jaki wpływ możesz mieć!",
-  seeOurPartnerShops: "Zobacz sklepy naszych partnerów"
+  seeOurPartnerShops: "Zobacz sklepy naszych partnerów",
+  alreadyHaveAnAccount: "Masz już konto?",
+  signInNow: "Zaloguj się.",
+  dontHaveAnAccount: "Nie masz jeszcze konta?",
+  signUpNow: "Zarejestruj się tutaj.",
+  fieldRequired: "To pole jest wymagane",
+  emailInvalid: "Podany adres email nie jest prawidłowy",
+  emailsDontMatch: "Podane adresy email nie są jednakowe",
+  email: "Adres e-mail",
+  yourEmail: "Twój adres e-mail",
+  yourMainEmail: "Twój główny adres e-mail",
+  confirmEmail: "Powtórz adres e-mail",
+  confirmYourEmail: "Powtórz swój adres e-mail",
+  password: "Hasło",
+  yourPassword: "Twoje hasło",
+  passwordHasToBeAtLeast8Characters: "Hasło musi składać się z conajmniej ośmiu znaków",
+  login: "Zaloguj",
+  registrationProblem: `Wystąpił błąd podczas rejestracji. Zostaliśmy o tym powiadomieni i postaramy się rozwiązać problem tak szybko jak to możliwę. Prosimy spróbować ponownie później.`,
+  iAccept: "Akceptuję",
+  termsOfService: "Regulamin Usługi",
+  andThe: "oraz",
+  privacyPolicy: "Politykę Prywatności",
+  register: "Zarejestruj się"
 } as const

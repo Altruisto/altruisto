@@ -1,3 +1,4 @@
 import { en } from "./strings/en"
 
-export type Translation = typeof en
+type Keys = keyof typeof en
+export type Translation = Record<Keys, string>

@@ -9,7 +9,8 @@ import { api } from "utils/api-url"
 import { useState, useEffect } from "react"
 import { Alert } from "components/ui/Alert"
 import { useAuth } from "hooks/use-auth"
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
+import { useIntl } from "translations/useIntl"
 
 const referredBy = getCookie(REFERRED_BY_COOKIE_NAME)
 
@@ -18,6 +19,7 @@ const RegisterForm = () => {
   const [submitting, setSubmitting] = useState(false)
   const auth = useAuth()
   const router = useRouter()
+  const { formatMessage } = useIntl()
 
   return (
     <>
@@ -41,7 +43,7 @@ const RegisterForm = () => {
           }
           api
             .post("/register", registrationData)
-            .then(response => {
+            .then((response) => {
               if (Number(response.status) === 201) {
                 return auth.login(values.email, values.password)
               } else {
@@ -50,12 +52,12 @@ const RegisterForm = () => {
                 )
               }
             })
-            .then(loggedUser => {
+            .then((loggedUser) => {
               if (loggedUser) {
-                router.push('/app')
+                router.push("/app")
               }
             })
-            .catch(error => {
+            .catch((error) => {
               if (
                 error.response &&
                 error.response.status &&
@@ -67,42 +69,37 @@ const RegisterForm = () => {
                     : actions.setFieldError(String(key), String(value))
                 })
               } else {
-                setFailureMessage(
-                  `There was a problem with your registration.
-              We were notified about it and will do our best
-              to solve it as quickly as possible.
-              Please do try again later.`
-                )
+                setFailureMessage(formatMessage({ id: "registrationProblem" }))
               }
               setSubmitting(false)
             })
         }}
         validationSchema={Yup.object({
           email: Yup.string()
-            .email("Provided email address is not valid")
-            .required("This field is required"),
+            .email(formatMessage({ id: "emailInvalid" }))
+            .required(formatMessage({ id: "fieldRequired" })),
           confirmEmail: Yup.string()
-            .email("Provided email address is not valid")
-            .oneOf([Yup.ref("email")], "Emails do not match")
+            .email(formatMessage({ id: "emailInvalid" }))
+            .oneOf([Yup.ref("email")], formatMessage({ id: "emailsDontMatch" }))
             .required("This field is required"),
           password: Yup.string()
-            .min(8, "Password must have at least 8 characters")
+            .min(8, formatMessage({ id: "passwordHasToBeAtLeast8Characters" }))
             .required("This field is required"),
-          acceptTerms: Yup.boolean().oneOf([true], "This field is required")
+          acceptTerms: Yup.boolean().oneOf([true], formatMessage({ id: "fieldRequired" }))
         })}
       >
-        {({ values, setFieldTouched, setFieldValue, isSubmitting }) => (
+        {({ values, setFieldTouched, setFieldValue }) => (
           <Form>
             <div className="field">
               <label className="field__label" htmlFor="email">
-                Email
+                {formatMessage({ id: "email" })}
               </label>
               <Field
                 className="field__input"
                 type="text"
                 id="email"
                 name="email"
-                placeholder="Your main email address"
+                placeholder={formatMessage({ id: "yourMainEmail" })}
               />
               <div className="field__error-message">
                 <ErrorMessage name="email" component="span" />
@@ -111,14 +108,14 @@ const RegisterForm = () => {
 
             <div className="field">
               <label className="field__label" htmlFor="email">
-                Confirm email
+                {formatMessage({ id: "confirmEmail" })}
               </label>
               <Field
                 className="field__input"
                 type="text"
                 id="confirmEmail"
                 name="confirmEmail"
-                placeholder="Confirm your email address"
+                placeholder={formatMessage({ id: "confirmYourEmail" })}
               />
               <div className="field__error-message">
                 <ErrorMessage name="confirmEmail" component="span" />
@@ -127,14 +124,14 @@ const RegisterForm = () => {
 
             <div className="field">
               <label className="field__label" htmlFor="password">
-                Password
+                {formatMessage({ id: "password" })}
               </label>
               <Field
                 className="field__input"
                 type="password"
                 id="password"
                 name="password"
-                placeholder="Your password"
+                placeholder={formatMessage({ id: "yourPassword" })}
               />
               <div className="field__error-message">
                 <ErrorMessage name="password" component="span" />
@@ -148,7 +145,7 @@ const RegisterForm = () => {
               control={
                 <Checkbox
                   value={values.acceptTerms}
-                  onChange={event => {
+                  onChange={(event) => {
                     setFieldTouched("acceptTerms", true)
                     setFieldValue("acceptTerms", Boolean(event.target.checked))
                   }}
@@ -156,21 +153,21 @@ const RegisterForm = () => {
               }
               label={
                 <label htmlFor="acceptTerms" className="field__label" style={{ marginBottom: 0 }}>
-                  I accept the{" "}
+                  {formatMessage({ id: "iAccept" })}{" "}
                   <a
                     href="https://altruisto.com/terms-of-service.html"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    Terms of Service
+                    {formatMessage({ id: "termsOfService" })}
                   </a>{" "}
-                  and the{" "}
+                  {formatMessage({ id: "andThe" })}{" "}
                   <a
                     href="https://altruisto.com/privacy-policy.html"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    Privacy Policy
+                    {formatMessage({ id: "privacyPolicy" })}
                   </a>
                 </label>
               }
@@ -180,7 +177,7 @@ const RegisterForm = () => {
             </div>
 
             <button type="submit" className="button" style={{ marginTop: 16 }}>
-              {submitting ? <Loader /> : "Register"}
+              {submitting ? <Loader /> : formatMessage({ id: "register" })}
             </button>
           </Form>
         )}
