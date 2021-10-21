@@ -5,53 +5,55 @@ import { Formik, Form, ErrorMessage, Field } from "formik"
 import { Loader } from "components/ui/Loader"
 import { Alert } from "components/ui/Alert"
 import { useRouter } from "next/router"
+import { useIntl } from "translations/useIntl"
 
 const LoginForm = () => {
   const [failureMessage, setFailureMessage] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const auth = useAuth()
   const router = useRouter()
+  const { formatMessage } = useIntl()
 
   return (
     <>
       {failureMessage && <Alert message={failureMessage} />}
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values, actions) => {
+        onSubmit={(values) => {
           setSubmitting(true)
           auth
             .login(values.email, values.password)
             .then(() => {
               router.push("/app")
             })
-            .catch(error => {
+            .catch((error) => {
               if (error.response && error.response.data && error.response.data.message) {
                 setFailureMessage(String(error.response.data.message))
               } else {
-                setFailureMessage("Something went wrong, please try again.")
+                setFailureMessage(formatMessage({ id: "somethingWentWrongTryAgain" }))
               }
               setSubmitting(false)
             })
         }}
         validationSchema={Yup.object({
           email: Yup.string()
-            .email("Provided email address is not valid")
-            .required("This field is required"),
-          password: Yup.string().required("This field is required")
+            .email(formatMessage({ id: "emailInvalid" }))
+            .required(formatMessage({ id: "fieldRequired" })),
+          password: Yup.string().required(formatMessage({ id: "fieldRequired" }))
         })}
       >
         {() => (
           <Form>
             <div className="field">
               <label className="field__label" htmlFor="email">
-                Email
+                {formatMessage({ id: "email" })}
               </label>
               <Field
                 className="field__input"
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Your email"
+                placeholder={formatMessage({ id: "yourEmail" })}
               />
               <div className="field__error-message">
                 <ErrorMessage name="email" component="span" />
@@ -59,7 +61,7 @@ const LoginForm = () => {
             </div>
             <div className="field">
               <label className="field__label" htmlFor="password">
-                Password
+                {formatMessage({ id: "password" })}
               </label>
 
               <Field
@@ -67,14 +69,14 @@ const LoginForm = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Your password"
+                placeholder={formatMessage({ id: "yourPassword" })}
               />
               <div className="field__error-message">
                 <ErrorMessage name="password" component="span" />
               </div>
             </div>
             <button type="submit" className="button login-form__button">
-              {submitting ? <Loader /> : "Login"}
+              {submitting ? <Loader /> : formatMessage({ id: "login" })}
             </button>
           </Form>
         )}

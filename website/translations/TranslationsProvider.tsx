@@ -13,13 +13,21 @@ const getMessages = (language: string) => {
   return en
 }
 
-const TranslationsProvider: FunctionComponent<any> = ({ children }) => {
-  // logic for storing language preference in localStorage or recognizing browser's language ()
+const getLanguage = () => {
+  // server side rendering should use "en" as default
+  if (typeof window === "undefined") {
+    return "en"
+  }
   let language = localStorage.getItem("lang")
   if (!language) {
     language = navigator.language
     localStorage.setItem("lang", language)
   }
+  return language
+}
+
+const TranslationsProvider: FunctionComponent<any> = ({ children }) => {
+  const language = getLanguage()
 
   return (
     <IntlProvider locale={language} messages={getMessages(language)}>
