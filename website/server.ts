@@ -58,6 +58,7 @@ server.use(express.static(CUSTOM_PAGES_OUTPUT_DIRECTORY))
 server.use(express.static(NEXT_PAGES_OUTPUT_DIRECTORY_NAME))
 
 server.get("/", async (req, res) => {
+  return res.redirect(301, "https://join.altruisto.com")
   const ua = useragent.parse(req.header("user-agent"))
   try {
     const covidApiResponse = await api.get("https://covidapi.info/api/v1/global", {
