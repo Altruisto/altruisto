@@ -47,12 +47,20 @@
       opacity: 1;
     }
   }
+
+  &--gray {
+    background: #eeeeee;
+    color: #3a4c5a;
+    &:hover {
+      color: #3a4c5a;
+    }
+  }
 }
 
 .install-button {
   width: 100%;
 
-  @include breakpoint('md') {
+  @include breakpoint("md") {
     max-width: 230px;
   }
 }

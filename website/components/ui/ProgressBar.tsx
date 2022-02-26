@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react"
 import LinearProgress, { LinearProgressProps } from "@material-ui/core/LinearProgress"
-import { withStyles } from "@material-ui/core/styles"
+import { createStyles, withStyles } from "@material-ui/core/styles"
 
-const StyledLinearProgress = withStyles({
+const styles = createStyles({
   determinate: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "#DEDFE4",
     height: 6,
     borderRadius: 4
+  },
+
+  barColorPrimary: {
+    background: "linear-gradient(136deg, #e70f74, #ff2525)"
   }
-})(LinearProgress)
+})
+const StyledLinearProgress = withStyles(styles)(LinearProgress)
 
 export const ProgressBar = (props: LinearProgressProps & { value: number }) => {
   const [timedValue, setTimedValue] = useState(0)
