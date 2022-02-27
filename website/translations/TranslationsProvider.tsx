@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from "react"
 import { IntlProvider } from "react-intl"
 import { en } from "./strings/en"
 import { pl } from "./strings/pl"
+import navigatorLanguages from "navigator-languages"
 
 const getMessages = (language: string) => {
   // because Safari uses notation pl-pl, I used regex test instead of checking hardcoded string
@@ -28,9 +29,10 @@ const getLanguage = () => {
 
 const TranslationsProvider: FunctionComponent<any> = ({ children }) => {
   const language = getLanguage()
+  const locale = navigatorLanguages() ? navigatorLanguages()[0] : "en"
 
   return (
-    <IntlProvider locale={language} messages={getMessages(language)}>
+    <IntlProvider locale={locale} messages={getMessages(language)}>
       {children}
     </IntlProvider>
   )
