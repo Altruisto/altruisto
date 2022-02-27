@@ -3,14 +3,11 @@ import { StandardLayout } from "../../components/layouts"
 import { loadStripe } from "@stripe/stripe-js"
 import dynamic from "next/dynamic"
 import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
-import axios from "axios"
-import { DonationEventData, subscribeToDonationsEvent } from "./getDonationData"
 import navigatorLanguages from "navigator-languages"
 import * as localeCurrency from "locale-currency"
 import { api2 } from "utils/api-url"
 import { useIntl } from "translations/useIntl"
 import { FormattedNumber } from "react-intl"
-import ShareModal from "../../components/partials/ShareModal"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
   ssr: false
@@ -18,35 +15,17 @@ const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
 
 const Ukraine = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [donations, setDonations] = useState<DonationEventData>()
   const isMd = useMediaQuery("(min-width: 768px)")
 
-  const [isDonateModalOpen, setIsDonateModalOpen] = useState(false)
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false)
-  
   const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
   const userCurrency = useMemo(() => localeCurrency.getCurrency(userLocale[0]) || "USD", [
     userLocale
   ])
-  
-  const getUrlToShare = () => {
-    if (typeof window === "undefined") {
-      return ""
-    }
-    return window.location.href
-  }
-  
+
   const { formatNumber } = useIntl()
-  
-  useEffect(() => {
-    async function handleDonationsSubscription() {
-      await subscribeToDonationsEvent(setDonations)
-    }
-    handleDonationsSubscription()
-  }, [])
 
   return (
-    <StandardLayout withMenu={true} withoutMenuBorder={true}>
+    <StandardLayout withMenu={false} withoutMenuBorder={false} noCta={true}>
       <main className="ukraine">
         <div
           className="ukraine__banner"
@@ -57,9 +36,9 @@ const Ukraine = () => {
               <div className="ukraine__flag--top" />
               <div className="ukraine__flag--bottom" />
             </div>
-            <h2>Help for victims of war in Ukraine</h2>
+            <h2>Ayuda humanitaria para las víctimas de la guerra en Ucrania</h2>
             <p>
-              Fundraiser organizer:{" "}
+              Organizador de la campaña de recaudación de fondos:{" "}
               <a href="https://www.pah.org.pl/en/">
                 <u>Polish Humanitarian Action</u>
               </a>
@@ -69,47 +48,51 @@ const Ukraine = () => {
         <div className="ukraine__centered-content ukraine__overlap-content">
           <div className="ukraine__left-panel ukraine__left-panel--offset">
             <p>
-              In the wake of the latest events and the escalation of conflict in Ukraine, we are
-              starting a fundraiser to supply food and hygiene products to the inhabitants of the
-              Donetsk and Luhansk oblasts who are currently at war. We also want to provide those
-              who are fleeing their homes with food and other means of help, including the people
-              moving inside the country, and refugees escaping to Poland.
+              A raíz de los recientes acontecimientos y de la escalada del conflicto en Ucrania,
+              iniciamos una campaña de recaudación de fondos para suministrar alimentos y productos
+              de higiene personal a los habitantes de las provincias de Donetsk y Lugansk, que
+              actualmente se encuentran en guerra. También queremos proporcionar alimentos y otras
+              formas de ayuda a quienes se han visto forzados a huir de sus hogares, incluidos tanto
+              quienes se trasladan al interior del país como los refugiados que escapan a Polonia.
             </p>
             <p>
-              The conflict in Ukraine means unimaginable suffering for thousands of innocent people.
-              Although we do not have the power to stop the war, we can act and help how we know
-              best. To give to those in need and who have been affected by this tragedy.
+              El conflicto en Ucrania supone un sufrimiento inimaginable para miles de personas
+              inocentes. Aunque nosotros no tengamos el poder para detener la guerra, igualmente
+              podemos actuar y ayudar, proporcionando nuestra asistencia a los necesitados y a
+              quienes se han visto afectados por esta tragedia.
             </p>
             <p style={{ margin: 0 }}>
-              The war in Ukraine started in 2014 and never ended. The recent events have shown that
-              the war turmoil has gone too far and the next 5 weeks could prove to be critical for
-              the 5 million people living along the 420 km-long front line. Nearly 3 million
-              civilians are in need of humanitarian aid. To a larger extent, they are sick, lonely
-              elders who did not want to or could not leave their homes. Children and adults who
-              have suffered as a result of a landmine explosion also need special support.
+              La guerra en Ucrania comenzó en 2014 y nunca ha terminado. Los recientes
+              acontecimientos demuestran que la agitación bélica ha llegado demasiado lejos, por lo
+              que las próximas 5 semanas podrían ser clave para los 5 millones de personas que viven
+              a lo largo de los 420 km que abarca la primera línea de defensa. Casi 3 millones de
+              civiles necesitan ayuda humanitaria. La mayoría son ancianos solos y enfermos que no
+              han querido o no han podido abandonar sus casas. También necesitan ayuda especializada
+              los niños y adultos que han sufrido la explosión de una mina terrestre.
             </p>
             <img src="/images/ukraine1.png" alt="ukraine 1" className="ukraine__article-image" />
             <p>
-              There will be more and more victims. The tank has never been a symbol of peace. We
-              cannot predict what will happen in the coming days, but the scenarios are not
-              optimistic, and people need immediate help.
+              Habrá cada vez más víctimas. El tanque nunca ha sido un símbolo de paz. No podemos
+              predecir lo que sucederá en los próximos días, pero los pronósticos no son optimistas
+              y las personas necesitan ayuda inmediata.
             </p>
             <p style={{ margin: 0 }}>
-              This fundraiser was created to be able to raise money in the form of a fund to help
-              the victims of war. The scope of assistance will depend on the development of the
-              conflict in Ukraine and will be adjusted accordingly. We cannot predict what will
-              happen in the coming days, but the scenarios are not optimistic, and those impacted
-              need immediate help. We will continue to monitor the situation, and remain in constant
-              contact with aid organizations working in Ukraine. Every hour provides us with new
-              information, and everything is changing dynamically. We will keep you informed about
-              the next steps.
+              Esta campaña de recaudación de fondos se crea para recaudar dinero en modalidad de
+              Fondo de ayuda a las víctimas de la guerra. El alcance de la asistencia dependerá de
+              cómo se desarrolle del conflicto en Ucrania, por lo que se irá ajustando en función de
+              los sucesos. No podemos predecir lo que sucederá en los próximos días, pero los
+              posibles escenarios son pesimistas y los afectados precisan ayuda inmediata.
+              Continuaremos monitorizando la situación y nos mantendremos en contacto constante con
+              las organizaciones de ayuda humanitaria que trabajan en Ucrania. Cada hora nos llega
+              nueva información y todo el contexto cambia dinámicamente. Les mantendremos informados
+              sobre los próximos pasos a dar.
             </p>
 
             <p style={{ margin: 0 }}>
-              Thank you to everyone who is not indifferent to the suffering of others.
+              Gracias a todos aquellos que no son indiferentes ante el sufrimiento de los demás.
             </p>
 
-            <p style={{ margin: 0 }}>Let’s help Ukraine together!</p>
+            <p style={{ margin: 0 }}>¡Ayudemos a Ucrania juntos!</p>
           </div>
           <div className="ukraine__right-panel">
             <div className="ukraine__donate">
@@ -131,13 +114,10 @@ const Ukraine = () => {
                   <img src="/images/family.svg" alt="family logo" />
                   <span>Supported by 20 people</span>
                 </div>
-                <button className="button" onClick={() => setIsDonateModalOpen(true)}>
+                <button className="button" onClick={() => setIsOpen(true)}>
                   Donate
                 </button>
-                <button
-                  className="button button--gray ukraine__share-button"
-                  onClick={() => setIsShareModalOpen(true)}
-                >
+                <button className="button button--gray ukraine__share-button">
                   <img src="/images/share.svg" alt="Share icon" />
                   Share
                 </button>
@@ -173,15 +153,10 @@ const Ukraine = () => {
         </div>
       </main>
       <DonateModal
-        isOpen={isDonateModalOpen}
-        onClose={() => setIsDonateModalOpen(false)}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         currency={userCurrency}
         locale={userLocale}
-      />
-      <ShareModal
-        isOpen={isShareModalOpen}
-        onClose={() => setIsShareModalOpen(false)}
-        url={getUrlToShare()}
       />
     </StandardLayout>
   )
@@ -262,9 +237,28 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
   }
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <div className="modal-content">
+      <div
+        style={{
+          maxWidth: "424px",
+          width: "100%",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          padding: "20px"
+        }}
+      >
         <div style={{ background: "white", position: "relative" }}>
-          <button onClick={onClose} className="modal-content__close-button">
+          <button
+            onClick={onClose}
+            style={{
+              position: "absolute",
+              right: "16px",
+              top: "16px",
+              border: "none",
+              background: "transparent"
+            }}
+          >
             <img src="/images/close.svg" alt="Cross icon" />
           </button>
           <div
