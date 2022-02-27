@@ -1,11 +1,16 @@
 import { StandardLayout } from "../../components/layouts"
-import React, { useEffect, useRef } from "react"
-import { useRouter } from "next/router"
+import React, { useEffect, useState } from "react"
 import "../../lib/canvas-confetti/confetti"
+import ShareModal from "../../components/partials/ShareModal"
 
 const ThankYou = () => {
-  const router = useRouter()
-
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false)
+  const getUrlToShare = () => {
+    if (typeof window === "undefined") {
+      return ""
+    }
+    return window.origin + "/ukraine"
+  }
   useEffect(() => {
     const confetti = (window as any).confetti
 
@@ -55,11 +60,20 @@ const ThankYou = () => {
           <h2>Thank you for your support!</h2>
         </div>
         <div className="thank-you__flag-bottom">
-          <button className="button button--gray" onClick={() => router.replace("/ukraine")}>
-            Back to homepage
+          <button
+            className="button button--gray ukraine__share-button"
+            onClick={() => setIsShareModalOpen(true)}
+          >
+            <img src="/images/share.svg" alt="Share icon" />
+            Share
           </button>
         </div>
       </div>
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        url={getUrlToShare()}
+      />
     </StandardLayout>
   )
 }

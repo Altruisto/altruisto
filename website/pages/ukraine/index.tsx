@@ -8,19 +8,28 @@ import * as localeCurrency from "locale-currency"
 import { api2 } from "utils/api-url"
 import { useIntl } from "translations/useIntl"
 import { FormattedNumber } from "react-intl"
+import ShareModal from "../../components/partials/ShareModal"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
   ssr: false
 })
 
 const Ukraine = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isDonateModalOpen, setIsDonateModalOpen] = useState(false)
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false)
   const isMd = useMediaQuery("(min-width: 768px)")
 
   const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
   const userCurrency = useMemo(() => localeCurrency.getCurrency(userLocale[0]) || "USD", [
     userLocale
   ])
+
+  const getUrlToShare = () => {
+    if (typeof window === "undefined") {
+      return ""
+    }
+    return window.location.href
+  }
 
   const { formatNumber } = useIntl()
 
@@ -110,10 +119,13 @@ const Ukraine = () => {
                   <img src="/images/family.svg" alt="family logo" />
                   <span>Supported by 20 people</span>
                 </div>
-                <button className="button" onClick={() => setIsOpen(true)}>
+                <button className="button" onClick={() => setIsDonateModalOpen(true)}>
                   Donate
                 </button>
-                <button className="button button--gray ukraine__share-button">
+                <button
+                  className="button button--gray ukraine__share-button"
+                  onClick={() => setIsShareModalOpen(true)}
+                >
                   <img src="/images/share.svg" alt="Share icon" />
                   Share
                 </button>
@@ -149,10 +161,15 @@ const Ukraine = () => {
         </div>
       </main>
       <DonateModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        isOpen={isDonateModalOpen}
+        onClose={() => setIsDonateModalOpen(false)}
         currency={userCurrency}
         locale={userLocale}
+      />
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        url={getUrlToShare()}
       />
     </StandardLayout>
   )
@@ -233,28 +250,9 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
   }
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <div
-        style={{
-          maxWidth: "424px",
-          width: "100%",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          padding: "20px"
-        }}
-      >
+      <div className="modal-content">
         <div style={{ background: "white", position: "relative" }}>
-          <button
-            onClick={onClose}
-            style={{
-              position: "absolute",
-              right: "16px",
-              top: "16px",
-              border: "none",
-              background: "transparent"
-            }}
-          >
+          <button onClick={onClose} className="modal-content__close-button">
             <img src="/images/close.svg" alt="Cross icon" />
           </button>
           <div
