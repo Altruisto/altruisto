@@ -19,10 +19,12 @@ export const ProgressBar = (props: LinearProgressProps & { value: number }) => {
   const [timedValue, setTimedValue] = useState(0)
   const { value, ...rest } = props
   useEffect(() => {
-    setTimeout(() => {
+    const timeOut = setTimeout(() => {
       setTimedValue(value)
     }, 300)
-  }, [])
+
+    return () => clearTimeout(timeOut)
+  }, [value])
 
   return <StyledLinearProgress value={timedValue} {...rest} />
 }
