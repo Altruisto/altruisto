@@ -12,7 +12,7 @@ const Cancel = () => {
         <div className="ukraine__centered-content ukraine__overlap-content">
           <div className="ukraine__info">
             <div className="">
-              <h2>The payment failed :(</h2>
+              <h2>The payment has failed :(</h2>
               <p>Please try again.</p>
               <p>#StandWithUkraine</p>
             </div>
