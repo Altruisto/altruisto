@@ -1,0 +1,37 @@
+.modal-content {
+  max-width: 424px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+
+  &__close-button {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    border: none;
+    background: transparent;
+  }
+}
+
+.share-modal {
+  &__container {
+    width: 100%;
+    background: white;
+    position: relative;
+    padding: 40px;
+  }
+  &__title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}

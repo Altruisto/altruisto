@@ -8,16 +8,7 @@ import * as localeCurrency from "locale-currency"
 import { api2 } from "utils/api-url"
 import { useIntl } from "translations/useIntl"
 import { FormattedNumber } from "react-intl"
-import {
-  EmailIcon,
-  EmailShareButton,
-  FacebookIcon,
-  FacebookShareButton,
-  LinkedinIcon,
-  LinkedinShareButton,
-  TwitterIcon,
-  TwitterShareButton
-} from "react-share"
+import ShareModal from "../../components/partials/ShareModal"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
   ssr: false
@@ -32,6 +23,13 @@ const Ukraine = () => {
   const userCurrency = useMemo(() => localeCurrency.getCurrency(userLocale[0]) || "USD", [
     userLocale
   ])
+
+  const getUrlToShare = () => {
+    if (typeof window === "undefined") {
+      return ""
+    }
+    return window.location.href
+  }
 
   const { formatNumber } = useIntl()
 
@@ -168,7 +166,11 @@ const Ukraine = () => {
         currency={userCurrency}
         locale={userLocale}
       />
-      <ShareModal isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        url={getUrlToShare()}
+      />
     </StandardLayout>
   )
 }
@@ -248,9 +250,9 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
   }
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <div className="ukraine__modal">
+      <div className="modal-content">
         <div style={{ background: "white", position: "relative" }}>
-          <button onClick={onClose} className="ukraine__modal__close-button">
+          <button onClick={onClose} className="modal-content__close-button">
             <img src="/images/close.svg" alt="Cross icon" />
           </button>
           <div
@@ -353,44 +355,6 @@ const DonationList = () => {
         ))}
       </div>
     </div>
-  )
-}
-
-type ShareModalProps = {
-  isOpen: boolean
-  onClose: () => void
-}
-const ShareModal: FC<ShareModalProps> = ({ isOpen, onClose }) => {
-  if (typeof window === "undefined") {
-    return null
-  }
-  const linkToShare = window.location.href
-
-  return (
-    <Modal open={isOpen} onClose={onClose}>
-      <div className="ukraine__modal">
-        <div className="ukraine__share-modal__container">
-          <button onClick={onClose} className="ukraine__modal__close-button">
-            <img src="/images/close.svg" alt="Cross icon" />
-          </button>
-          <h3 className="ukraine__share-modal__title">Spread the word</h3>
-          <div className="ukraine__share-modal__buttons">
-            <FacebookShareButton url={linkToShare}>
-              <FacebookIcon />
-            </FacebookShareButton>
-            <TwitterShareButton url={linkToShare}>
-              <TwitterIcon />
-            </TwitterShareButton>
-            <LinkedinShareButton url={linkToShare}>
-              <LinkedinIcon />
-            </LinkedinShareButton>
-            <EmailShareButton url={linkToShare}>
-              <EmailIcon />
-            </EmailShareButton>
-          </div>
-        </div>
-      </div>
-    </Modal>
   )
 }
 
