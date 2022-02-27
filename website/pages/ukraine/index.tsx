@@ -1,9 +1,10 @@
-import React, { FC, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { StandardLayout } from "../../components/layouts"
 import { loadStripe } from "@stripe/stripe-js"
 import dynamic from "next/dynamic"
 import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
 import axios from "axios"
+import { DonationEventData, subscribeToDonationsEvent } from "./getDonationData"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
   ssr: false
@@ -11,7 +12,15 @@ const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
 
 const Ukraine = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [donations, setDonations] = useState<DonationEventData>()
   const isMd = useMediaQuery("(min-width: 768px)")
+
+  useEffect(() => {
+    async function handleDonationsSubscription() {
+      await subscribeToDonationsEvent(setDonations)
+    }
+    handleDonationsSubscription()
+  }, [])
 
   return (
     <StandardLayout withMenu={true} withoutMenuBorder={true}>
