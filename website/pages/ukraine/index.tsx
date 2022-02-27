@@ -38,37 +38,55 @@ const Ukraine = () => {
             </div>
             <h2>Help for victims of war in Ukraine</h2>
             <p>
-              Fundraiser for: <a href="https://www.pah.org.pl/en/">Polish Humanitarian Action</a>
+              Fundraiser organizer:{" "}
+              <a href="https://www.pah.org.pl/en/">Polish Humanitarian Action</a>
             </p>
           </div>
         </div>
         <div className="ukraine__centered-content ukraine__overlap-content">
           <div className="ukraine__left-panel ukraine__left-panel--offset">
             <p>
-              The conflict in Ukraine is unimaginable suffering for thousands of innocent people.
-              There is a war...
+              In the wake of the latest events and the escalation of conflict in Ukraine, we are
+              starting a fundraiser to supply food and hygiene products to the inhabitants of the
+              Donetsk and Luhansk oblasts who are currently at war. We also want to provide those
+              who are fleeing their homes with food and other means of help, including the people
+              moving inside the country, and refugees escaping to Poland.
             </p>
             <p>
-              We looked with particular concern at the east of Ukraine and what any moment could
-              befall innocent people living in areas threatened by armed conflict - then barely a
-              thousand kilometers from Poland. Unfortunately, the worst has happened. There are
-              bombs, fire, guns and victims.
+              The conflict in Ukraine means unimaginable suffering for thousands of innocent people.
+              Although we do not have the power to stop the war, we can act and help how we know
+              best. To give to those in need and who have been affected by this tragedy.
             </p>
             <p style={{ margin: 0 }}>
-              And there will be more and more victims. The tank has never been a symbol of peace. We
-              cannot predict what will happen in the coming days, but the scenarios are not
-              optimistic, and people need help.
+              The war in Ukraine started in 2014 and never ended. The recent events have shown that
+              the war turmoil has gone too far and the next 5 weeks could prove to be critical for
+              the 5 million people living along the 420 km-long front line. Nearly 3 million
+              civilians are in need of humanitarian aid. To a larger extent, they are sick, lonely
+              elders who did not want to or could not leave their homes. Children and adults who
+              have suffered as a result of a landmine explosion also need special support.
             </p>
             <img src="/images/ukraine1.png" alt="ukraine 1" className="ukraine__article-image" />
             <p>
-              Armed conflicts fomented in the cabinets at the highest levels of government most
-              affect the smallest and most vulnerable - civilians, women, children, the elderly.
+              There will be more and more victims. The tank has never been a symbol of peace. We
+              cannot predict what will happen in the coming days, but the scenarios are not
+              optimistic, and people need immediate help.
             </p>
             <p style={{ margin: 0 }}>
-              The one in eastern Ukraine has been ongoing since 2014, but the events of recent days
-              show that the war turmoil has gone too far. We wish we had the power to say stop.
-              However, we can act and do what we know best. To bring help where there is suffering.
+              This fundraiser was created to be able to raise money in the form of a fund to help
+              the victims of war. The scope of assistance will depend on the development of the
+              conflict in Ukraine and will be adjusted accordingly. We cannot predict what will
+              happen in the coming days, but the scenarios are not optimistic, and those impacted
+              need immediate help. We will continue to monitor the situation, and remain in constant
+              contact with aid organizations working in Ukraine. Every hour provides us with new
+              information, and everything is changing dynamically. We will keep you informed about
+              the next steps.
             </p>
+
+            <p style={{ margin: 0 }}>
+              Thank you to everyone who is not indifferent to the suffering of others.
+            </p>
+
+            <p style={{ margin: 0 }}>Let’s help Ukraine together!</p>
           </div>
           <div className="ukraine__right-panel">
             <div className="ukraine__donate">
@@ -97,6 +115,9 @@ const Ukraine = () => {
                   <img src="/images/share.svg" alt="Share icon" />
                   Share
                 </button>
+                <div className="ukraine__donate--supporters">
+                  * The number is approximated based on today's currency exchange rates
+                </div>
               </div>
             </div>
             {isMd && <DonationList />}
