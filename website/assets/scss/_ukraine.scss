@@ -38,19 +38,47 @@
   }
 
   &__banner-content {
-    margin-left: 100px;
-    margin-bottom: 64px;
+    padding: 20px 20px 40px;
     z-index: 2;
+    p {
+      font-weight: 700;
+      font-size: 16px;
+      margin: 0;
+    }
+    a {
+      color: white;
+    }
+    h2 {
+      font-weight: 400;
+      font-size: 38px;
+      margin-bottom: 20px;
+      color: white;
+      @include breakpoint("md") {
+        font-size: 48px;
+      }
+    }
+    @include breakpoint("md") {
+      padding: 20px 20px 64px 100px;
+    }
   }
 
   &__overlap-content {
-    margin-top: -84px;
-    align-items: flex-start;
+    margin-top: 20px;
+    @include breakpoint("md") {
+      margin-top: -84px;
+      align-items: flex-start;
+      padding: 0;
+    }
   }
 
   &__centered-content {
     display: flex;
     justify-content: center;
+    flex-direction: column-reverse;
+    width: 100%;
+    @include breakpoint("md") {
+      flex-direction: row;
+    }
   }
 
   &__left-panel {
@@ -58,17 +86,33 @@
     display: flex;
     flex-direction: column;
     max-width: 570px;
-    margin: 0 30px;
+    width: 100%;
+    margin: 0;
+    @include breakpoint("md") {
+      margin: 0 30px;
+    }
     &--offset {
-      padding-top: 124px;
+      padding-top: 40px;
+      @include breakpoint("md") {
+        padding-top: 124px;
+      }
     }
   }
 
   &__right-panel {
-    width: 370px;
+    max-width: 370px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  &__article-image-container {
+    display: flex;
+    flex-direction: column;
+    @include breakpoint("md") {
+      flex-direction: row;
+    }
   }
 
   &__article-image {
@@ -76,10 +120,19 @@
     height: 100%;
     padding: 40px 0;
     &--inline {
-      max-width: 270px;
-      padding-bottom: 40px;
+      padding: 0 0 40px;
+
       &:first-of-type {
         margin-right: 30px;
+      }
+    }
+    @include breakpoint("md") {
+      &--inline {
+        max-width: 270px;
+        padding-bottom: 40px;
+        &:first-of-type {
+          margin-right: 30px;
+        }
       }
     }
   }
@@ -88,7 +141,8 @@
     background: #ffffff;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
-    width: 370px;
+    max-width: 370px;
+    width: 100%;
 
     &--container {
       padding: 40px;
@@ -108,6 +162,11 @@
     &--supporters {
       font-size: 12px;
       margin-top: 14px;
+      img {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
     }
 
     button:first-of-type {

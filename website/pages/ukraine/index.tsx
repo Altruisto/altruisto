@@ -2,7 +2,7 @@ import React, { FC, useState } from "react"
 import { StandardLayout } from "../../components/layouts"
 import { loadStripe } from "@stripe/stripe-js"
 import dynamic from "next/dynamic"
-import { InputAdornment, Modal, OutlinedInput } from "@material-ui/core"
+import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
 import axios from "axios"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
@@ -11,6 +11,8 @@ const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
 
 const Ukraine = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const isMd = useMediaQuery("(min-width: 768px)")
+
   return (
     <StandardLayout withMenu={true} withoutMenuBorder={true}>
       <main className="ukraine">
@@ -23,11 +25,9 @@ const Ukraine = () => {
               <div className="ukraine__flag--top" />
               <div className="ukraine__flag--bottom" />
             </div>
-            <p style={{ fontWeight: 700, fontSize: "16px", margin: 0 }}>Purpose of collection:</p>
-            <p style={{ fontWeight: 400, fontSize: "48px", marginBottom: "20px" }}>
-              Help for victims of war in Ukraine
-            </p>
-            <p style={{ fontWeight: 700, fontSize: "16px", margin: 0 }}>
+            <p>Purpose of collection:</p>
+            <h2>Help for victims of war in Ukraine</h2>
+            <p>
               Collection organizer:{" "}
               <a href="https://mui.com/api/linear-progress/#main-content">LINK GOES HERE</a>
             </p>
@@ -69,7 +69,7 @@ const Ukraine = () => {
                 </p>
                 <ProgressBar value={89} variant="determinate" />
                 <div className="ukraine__donate--supporters">
-                  {/*TODO: use family icon <span>FAMILY</span>*/}
+                  <img src="images/family.svg" alt="family logo" />
                   <span>Supported by 20 people</span>
                 </div>
                 <button className="button" onClick={() => setIsOpen(true)}>
@@ -81,24 +81,7 @@ const Ukraine = () => {
                 </button>
               </div>
             </div>
-            <div className="ukraine__donate-list">
-              <div className="ukraine__donate-list--container">
-                <p className="ukraine__donate-list--title">
-                  Donations: <strong>$500</strong>
-                </p>
-                {[...Array(5).keys()].map((key) => (
-                  <div key={key} className="ukraine__donate-list--item">
-                    <img src="/images/sygnet.svg" alt="Altruisto logotype" title="Altruisto" />
-                    <div className="ukraine__donate-list--item--name">
-                      <span>Matka Teresa</span>
-                      <span>
-                        <strong>$60</strong>
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {isMd && <DonationList />}
           </div>
         </div>
         <img
@@ -106,17 +89,18 @@ const Ukraine = () => {
           style={{ width: "100%", height: "100%", padding: "40px 0" }}
         />
         <div className="ukraine__centered-content">
+          {!isMd && <DonationList />}
           <div className="ukraine__left-panel">
-            <div style={{ display: "flex" }}>
+            <div className="ukraine__article-image-container">
               <img
                 src="images/ukraine3.png"
                 alt="ukraine 1"
-                className="ukraine__article-image--inline"
+                className="ukraine__article-image ukraine__article-image--inline"
               />
               <img
                 src="images/ukraine4.png"
                 alt="ukraine 1"
-                className="ukraine__article-image--inline"
+                className=" ukraine__article-image ukraine__article-image--inline"
               />
             </div>
             <p>
@@ -135,7 +119,7 @@ const Ukraine = () => {
               Let's stand together with our neighbors.
             </p>
           </div>
-          <div className="ukraine__right-panel" />
+          {isMd && <div className="ukraine__right-panel" />}
         </div>
       </main>
       <DonateModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
@@ -152,13 +136,27 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
   const [name, setName] = useState("")
   const [amount, setAmount] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMsg, setMerrorMsg] = useState<string>()
 
   const handleAmountChange = (value: string) => {
-    setAmount(Number(value))
+    if (!!errorMsg) {
+      setMerrorMsg(undefined)
+    }
+    const numericValue = Number(value)
+    if (numericValue < 0) {
+      return
+    }
+    setAmount(numericValue)
   }
 
   const handleDonation = async () => {
     setIsLoading(true)
+    setMerrorMsg(undefined)
+    if (amount <= 0) {
+      setIsLoading(false)
+      setMerrorMsg("Amount must be greater than 0")
+      return
+    }
     try {
       const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
       const response = await axios.post(
@@ -170,14 +168,17 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
           donor: name
         }
       )
-      const result = await stripe.redirectToCheckout({
+      await stripe.redirectToCheckout({
         sessionId: response.data
       })
       setIsLoading(false)
-      console.log("RESPONSE", result)
     } catch (e) {
+      if (e.data) {
+        setMerrorMsg(e.data.raw.message)
+      } else {
+        setMerrorMsg(e.message)
+      }
       setIsLoading(false)
-      console.error(e)
       //TODO: handle errors
     }
   }
@@ -185,80 +186,122 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
     <Modal open={isOpen} onClose={onClose}>
       <div
         style={{
-          background: "white",
-          maxWidth: "384px",
+          maxWidth: "424px",
           width: "100%",
           position: "absolute",
           top: "50%",
           left: "50%",
-          transform: "translate(-50%, -50%)"
+          transform: "translate(-50%, -50%)",
+          padding: "20px"
         }}
       >
-        <div
-          style={{
-            padding: "40px",
-            display: "flex",
-            flexDirection: "column"
-          }}
-        >
-          <h2
+        <div style={{ background: "white", position: "relative" }}>
+          <button
+            onClick={onClose}
             style={{
-              fontSize: "32px",
-              marginBottom: "24px"
+              position: "absolute",
+              right: "16px",
+              top: "16px",
+              border: "none",
+              background: "transparent"
             }}
           >
-            Select amount
-          </h2>
-          <div style={{ display: "flex", marginBottom: "12px" }}>
-            <button
-              className="button button--gray"
-              onClick={() => setAmount(10)}
-              style={{ marginRight: "8px" }}
+            <img src="images/close.svg" alt="Cross icon" />
+          </button>
+          <div
+            style={{
+              padding: "40px",
+              display: "flex",
+              flexDirection: "column"
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "32px",
+                marginBottom: "24px"
+              }}
             >
-              $10
-            </button>
+              Select amount
+            </h2>
+            <div style={{ display: "flex", marginBottom: "12px" }}>
+              <button
+                className="button button--gray"
+                onClick={() => setAmount(10)}
+                style={{ marginRight: "8px" }}
+              >
+                $10
+              </button>
+              <button
+                className="button button--gray"
+                onClick={() => setAmount(50)}
+                style={{ marginRight: "8px" }}
+              >
+                $50
+              </button>
+              <button className="button button--gray" onClick={() => setAmount(100)}>
+                $100
+              </button>
+            </div>
+            <label htmlFor="amount" style={{ marginBottom: "8px" }}>
+              Amount
+            </label>
+            <TextField
+              variant="outlined"
+              type="number"
+              id="amount"
+              value={amount}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>
+              }}
+              onChange={(e) => handleAmountChange(e.target.value)}
+              error={!!errorMsg}
+              helperText={errorMsg}
+            />
+            <label htmlFor="name" style={{ marginTop: "12px", marginBottom: "8px" }}>
+              Add your name if you wanna
+            </label>
+            <OutlinedInput
+              placeholder="Add name..."
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+
             <button
-              className="button button--gray"
-              onClick={() => setAmount(50)}
-              style={{ marginRight: "8px" }}
+              disabled={isLoading}
+              className="button"
+              style={{ marginTop: "32px" }}
+              onClick={handleDonation}
             >
-              $50
-            </button>
-            <button className="button button--gray" onClick={() => setAmount(100)}>
-              $100
+              {isLoading ? "Submitting..." : "Donate"}
             </button>
           </div>
-          <label htmlFor="amount" style={{ marginBottom: "8px" }}>
-            Amount
-          </label>
-          <OutlinedInput
-            type="number"
-            id="amount"
-            value={amount}
-            onChange={(e) => handleAmountChange(e.target.value)}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          />
-          <label htmlFor="name" style={{ marginTop: "12px", marginBottom: "8px" }}>
-            Add your name if you wanna
-          </label>
-          <OutlinedInput
-            placeholder="Add name..."
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-
-          <button
-            disabled={isLoading}
-            className="button"
-            style={{ marginTop: "32px" }}
-            onClick={handleDonation}
-          >
-            {isLoading ? "Submitting..." : "Donate"}
-          </button>
         </div>
       </div>
     </Modal>
+  )
+}
+
+const DonationList = () => {
+  return (
+    <div className="ukraine__donate-list">
+      <div className="ukraine__donate-list--container">
+        <p className="ukraine__donate-list--title">
+          Donations: <strong>$500</strong>
+        </p>
+        {[...Array(5).keys()].map((key) => (
+          <div key={key} className="ukraine__donate-list--item">
+            <img src="/images/sygnet.svg" alt="Altruisto logotype" title="Altruisto" />
+            <div className="ukraine__donate-list--item--name">
+              <span>Matka Teresa</span>
+              <span>
+                <strong>$60</strong>
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
