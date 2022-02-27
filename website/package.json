@@ -52,7 +52,7 @@
     "react-modal": "^3.12.1",
     "react-paginate": "^6.3.2",
     "react-select": "^3.0.8",
-    "react-share": "^4.2.1",
+    "react-share": "^4.4.0",
     "react-swipeable-views": "^0.13.9",
     "sass": "^1.26.5",
     "webpack": "^4.44.2",

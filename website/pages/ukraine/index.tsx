@@ -8,13 +8,24 @@ import * as localeCurrency from "locale-currency"
 import { api2 } from "utils/api-url"
 import { useIntl } from "translations/useIntl"
 import { FormattedNumber } from "react-intl"
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  TwitterIcon,
+  TwitterShareButton
+} from "react-share"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
   ssr: false
 })
 
 const Ukraine = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isDonateModalOpen, setIsDonateModalOpen] = useState(false)
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false)
   const isMd = useMediaQuery("(min-width: 768px)")
 
   const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
@@ -110,10 +121,13 @@ const Ukraine = () => {
                   <img src="/images/family.svg" alt="family logo" />
                   <span>Supported by 20 people</span>
                 </div>
-                <button className="button" onClick={() => setIsOpen(true)}>
+                <button className="button" onClick={() => setIsDonateModalOpen(true)}>
                   Donate
                 </button>
-                <button className="button button--gray ukraine__share-button">
+                <button
+                  className="button button--gray ukraine__share-button"
+                  onClick={() => setIsShareModalOpen(true)}
+                >
                   <img src="/images/share.svg" alt="Share icon" />
                   Share
                 </button>
@@ -149,11 +163,12 @@ const Ukraine = () => {
         </div>
       </main>
       <DonateModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        isOpen={isDonateModalOpen}
+        onClose={() => setIsDonateModalOpen(false)}
         currency={userCurrency}
         locale={userLocale}
       />
+      <ShareModal isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
     </StandardLayout>
   )
 }
@@ -233,28 +248,9 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
   }
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <div
-        style={{
-          maxWidth: "424px",
-          width: "100%",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          padding: "20px"
-        }}
-      >
+      <div className="ukraine__modal">
         <div style={{ background: "white", position: "relative" }}>
-          <button
-            onClick={onClose}
-            style={{
-              position: "absolute",
-              right: "16px",
-              top: "16px",
-              border: "none",
-              background: "transparent"
-            }}
-          >
+          <button onClick={onClose} className="ukraine__modal__close-button">
             <img src="/images/close.svg" alt="Cross icon" />
           </button>
           <div
@@ -357,6 +353,44 @@ const DonationList = () => {
         ))}
       </div>
     </div>
+  )
+}
+
+type ShareModalProps = {
+  isOpen: boolean
+  onClose: () => void
+}
+const ShareModal: FC<ShareModalProps> = ({ isOpen, onClose }) => {
+  if (typeof window === "undefined") {
+    return null
+  }
+  const linkToShare = window.location.href
+
+  return (
+    <Modal open={isOpen} onClose={onClose}>
+      <div className="ukraine__modal">
+        <div className="ukraine__share-modal__container">
+          <button onClick={onClose} className="ukraine__modal__close-button">
+            <img src="/images/close.svg" alt="Cross icon" />
+          </button>
+          <h3 className="ukraine__share-modal__title">Spread the word</h3>
+          <div className="ukraine__share-modal__buttons">
+            <FacebookShareButton url={linkToShare}>
+              <FacebookIcon />
+            </FacebookShareButton>
+            <TwitterShareButton url={linkToShare}>
+              <TwitterIcon />
+            </TwitterShareButton>
+            <LinkedinShareButton url={linkToShare}>
+              <LinkedinIcon />
+            </LinkedinShareButton>
+            <EmailShareButton url={linkToShare}>
+              <EmailIcon />
+            </EmailShareButton>
+          </div>
+        </div>
+      </div>
+    </Modal>
   )
 }
 
