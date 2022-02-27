@@ -1,9 +1,13 @@
-import React, { FC, useState } from "react"
+import React, { FC, useEffect, useMemo, useState } from "react"
 import { StandardLayout } from "../../components/layouts"
 import { loadStripe } from "@stripe/stripe-js"
 import dynamic from "next/dynamic"
 import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
-import axios from "axios"
+import navigatorLanguages from "navigator-languages"
+import * as localeCurrency from "locale-currency"
+import { api2 } from "utils/api-url"
+import { useIntl } from "translations/useIntl"
+import { FormattedNumber } from "react-intl"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
   ssr: false
@@ -13,23 +17,28 @@ const Ukraine = () => {
   const [isOpen, setIsOpen] = useState(false)
   const isMd = useMediaQuery("(min-width: 768px)")
 
+  const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
+  const userCurrency = useMemo(() => localeCurrency.getCurrency(userLocale[0]) || "USD", [
+    userLocale
+  ])
+
+  const { formatNumber } = useIntl()
+
   return (
     <StandardLayout withMenu={true} withoutMenuBorder={true}>
       <main className="ukraine">
         <div
           className="ukraine__banner"
-          style={{ backgroundImage: "url(images/ukraine-banner.png)" }}
+          style={{ backgroundImage: "url(/images/ukraine-banner.png)" }}
         >
           <div className="ukraine__banner-content">
             <div className="ukraine__flag">
               <div className="ukraine__flag--top" />
               <div className="ukraine__flag--bottom" />
             </div>
-            <p>Purpose of collection:</p>
             <h2>Help for victims of war in Ukraine</h2>
             <p>
-              Collection organizer:{" "}
-              <a href="https://mui.com/api/linear-progress/#main-content">LINK GOES HERE</a>
+              Fundraiser for: <a href="https://www.pah.org.pl/en/">Polish Humanitarian Action</a>
             </p>
           </div>
         </div>
@@ -50,7 +59,7 @@ const Ukraine = () => {
               cannot predict what will happen in the coming days, but the scenarios are not
               optimistic, and people need help.
             </p>
-            <img src="images/ukraine1.png" alt="ukraine 1" className="ukraine__article-image" />
+            <img src="/images/ukraine1.png" alt="ukraine 1" className="ukraine__article-image" />
             <p>
               Armed conflicts fomented in the cabinets at the highest levels of government most
               affect the smallest and most vulnerable - civilians, women, children, the elderly.
@@ -65,11 +74,20 @@ const Ukraine = () => {
             <div className="ukraine__donate">
               <div className="ukraine__donate--container">
                 <p className="ukraine__donate--text">
-                  <span className="ukraine__donate--current">$500</span> raised of $5.000 goal
+                  <span className="ukraine__donate--current">
+                    {formatNumber(500, { style: "currency", currency: userCurrency })}
+                  </span>{" "}
+                  raised
+                  <br />
+                  of{" "}
+                  <strong>
+                    {formatNumber(5000, { style: "currency", currency: userCurrency })}
+                  </strong>{" "}
+                  goal
                 </p>
                 <ProgressBar value={89} variant="determinate" />
                 <div className="ukraine__donate--supporters">
-                  <img src="images/family.svg" alt="family logo" />
+                  <img src="/images/family.svg" alt="family logo" />
                   <span>Supported by 20 people</span>
                 </div>
                 <button className="button" onClick={() => setIsOpen(true)}>
@@ -85,7 +103,7 @@ const Ukraine = () => {
           </div>
         </div>
         <img
-          src="images/ukraine2.png"
+          src="/images/ukraine2.png"
           style={{ width: "100%", height: "100%", padding: "40px 0" }}
         />
         <div className="ukraine__centered-content">
@@ -93,12 +111,12 @@ const Ukraine = () => {
           <div className="ukraine__left-panel">
             <div className="ukraine__article-image-container">
               <img
-                src="images/ukraine3.png"
+                src="/images/ukraine3.png"
                 alt="ukraine 1"
                 className="ukraine__article-image ukraine__article-image--inline"
               />
               <img
-                src="images/ukraine4.png"
+                src="/images/ukraine4.png"
                 alt="ukraine 1"
                 className=" ukraine__article-image ukraine__article-image--inline"
               />
@@ -122,7 +140,12 @@ const Ukraine = () => {
           {isMd && <div className="ukraine__right-panel" />}
         </div>
       </main>
-      <DonateModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <DonateModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        currency={userCurrency}
+        locale={userLocale}
+      />
     </StandardLayout>
   )
 }
@@ -130,18 +153,37 @@ const Ukraine = () => {
 type DonateModalProps = {
   isOpen: boolean
   onClose: () => void
+  currency: string
+  locale: string
 }
 
-const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
+const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }) => {
   const [name, setName] = useState("")
-  const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState<number | string>(25)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMsg, setMerrorMsg] = useState<string>()
+  const { formatNumber, formatNumberToParts } = useIntl()
+  const getCurrencySymbol = () => {
+    const result = formatNumberToParts(1, {
+      style: "currency",
+      currency,
+      currencyDisplay: "symbol"
+    })
+    const symbol = result.find(({ type }) => type === "currency").value
+    return symbol
+  }
 
   const handleAmountChange = (value: string) => {
+    console.log("v", value, typeof value)
     if (!!errorMsg) {
       setMerrorMsg(undefined)
     }
+
+    if (value === "") {
+      setAmount("")
+      return
+    }
+
     const numericValue = Number(value)
     if (numericValue < 0) {
       return
@@ -159,15 +201,14 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
     }
     try {
       const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
-      const response = await axios.post(
-        "https://altruisto-api-playground.herokuapp.com/v2/direct-donation",
-        {
-          amount: Math.round(amount * 100),
-          fundraiser: "Donation for Polish Humanitarian Action",
-          subPath: "ukraine",
-          donor: name
-        }
-      )
+      const response = await api2.post("/direct-donation", {
+        amount: Math.round((typeof amount === "string" ? parseInt(amount) : amount) * 100),
+        fundraiser: "Donation for Polish Humanitarian Action",
+        subPath: "ukraine",
+        donor: name,
+        currency,
+        locale
+      })
       await stripe.redirectToCheckout({
         sessionId: response.data
       })
@@ -206,7 +247,7 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
               background: "transparent"
             }}
           >
-            <img src="images/close.svg" alt="Cross icon" />
+            <img src="/images/close.svg" alt="Cross icon" />
           </button>
           <div
             style={{
@@ -229,17 +270,23 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
                 onClick={() => setAmount(10)}
                 style={{ marginRight: "8px" }}
               >
-                $10
+                {formatNumber(10, { style: "currency", currency })}
               </button>
               <button
                 className="button button--gray"
                 onClick={() => setAmount(50)}
                 style={{ marginRight: "8px" }}
               >
-                $50
+                {formatNumber(50, {
+                  style: "currency",
+                  currency
+                })}
               </button>
               <button className="button button--gray" onClick={() => setAmount(100)}>
-                $100
+                {formatNumber(100, {
+                  style: "currency",
+                  currency
+                })}
               </button>
             </div>
             <label htmlFor="amount" style={{ marginBottom: "8px" }}>
@@ -251,17 +298,19 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose }) => {
               id="amount"
               value={amount}
               InputProps={{
-                startAdornment: <InputAdornment position="start">$</InputAdornment>
+                startAdornment: (
+                  <InputAdornment position="start">{getCurrencySymbol()}</InputAdornment>
+                )
               }}
               onChange={(e) => handleAmountChange(e.target.value)}
               error={!!errorMsg}
               helperText={errorMsg}
             />
             <label htmlFor="name" style={{ marginTop: "12px", marginBottom: "8px" }}>
-              Add your name if you wanna
+              Your name (leave blank if you want your donation to be anonymous)
             </label>
             <OutlinedInput
-              placeholder="Add name..."
+              placeholder="Your name..."
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -286,9 +335,7 @@ const DonationList = () => {
   return (
     <div className="ukraine__donate-list">
       <div className="ukraine__donate-list--container">
-        <p className="ukraine__donate-list--title">
-          Donations: <strong>$500</strong>
-        </p>
+        <p className="ukraine__donate-list--title">Donations:</p>
         {[...Array(5).keys()].map((key) => (
           <div key={key} className="ukraine__donate-list--item">
             <img src="/images/sygnet.svg" alt="Altruisto logotype" title="Altruisto" />
