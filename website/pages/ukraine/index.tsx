@@ -43,6 +43,7 @@ const Ukraine = () => {
       await subscribeToDonationsEvent(setDonations)
     }
     handleDonationsSubscription()
+    console.log('check')
   }, [])
 
   return (
@@ -353,7 +354,7 @@ const DonationList = () => {
   return (
     <div className="ukraine__donate-list">
       <div className="ukraine__donate-list--container">
-        <p className="ukraine__donate-list--title">Donations:</p>
+        <p className="ukraine__donate-list--title">Donations:TESTESZTETSE</p>
         {[...Array(5).keys()].map((key) => (
           <div key={key} className="ukraine__donate-list--item">
             <img src="/images/sygnet.svg" alt="Altruisto logotype" title="Altruisto" />
