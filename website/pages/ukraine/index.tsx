@@ -32,7 +32,7 @@ const Ukraine = () => {
   const [donations, setDonations] = useState<DonationEventData>({
     raised: {
       current: 0,
-      goal: 500000,
+      goal: 5000,
       currency: userCurrency,
       donorsCount: 0
     },
@@ -130,7 +130,7 @@ const Ukraine = () => {
               <div className="ukraine__donate--container">
                 <DonateInfo
                   current={donations.raised.current / 100}
-                  goal={donations.raised.goal / 100}
+                  goal={donations.raised.goal / 10}
                   donorsCount={donations.raised.donorsCount}
                 />
                 <button className="button" onClick={() => setIsDonateModalOpen(true)}>
