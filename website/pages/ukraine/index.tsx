@@ -240,13 +240,58 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
     }
     try {
       const stripe = await loadStripe(getStripeApiKey())
+      const supportedLocale = [
+        "bg",
+        "cs",
+        "da",
+        "de",
+        "el",
+        "en",
+        "en-GB",
+        "es",
+        "es-419",
+        "et",
+        "fi",
+        "fil",
+        "fr",
+        "fr-CA",
+        "hr",
+        "hu",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "lt",
+        "lv",
+        "ms",
+        "mt",
+        "nb",
+        "nl",
+        "pl",
+        "pt",
+        "pt-BR",
+        "ro",
+        "ru",
+        "sk",
+        "sl",
+        "sv",
+        "th",
+        "tr",
+        "vi",
+        "zh",
+        "zh-HK"
+      ]
+      const usersLocale = locale[0]
+
+      const targetLocale = supportedLocale.includes(usersLocale) ? usersLocale : "en"
+
       const response = await api2.post("/direct-donation", {
         amount: Math.round((typeof amount === "string" ? parseInt(amount) : amount) * 100),
         fundraiser: "Donation for Polish Humanitarian Action",
         subPath: "ukraine",
         donor: name,
         currency,
-        locale: locale[0]
+        locale: targetLocale
       })
       await stripe.redirectToCheckout({
         sessionId: response.data
