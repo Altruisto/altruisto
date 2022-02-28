@@ -24,7 +24,7 @@ export const subscribeToDonationsEvent = async (
     const client = socketIOClient(
       "https://altruisto-api-playground.herokuapp.com/direct-donation-events",
       {
-        path: "/v2",
+        path: "/v2/socket",
         query: {
           currency: userCurrency || "USD"
         }
