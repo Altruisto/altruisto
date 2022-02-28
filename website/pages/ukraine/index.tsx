@@ -1,28 +1,43 @@
-import React, { FC, useEffect, useMemo, useState } from "react"
-import { StandardLayout } from "../../components/layouts"
-import { loadStripe } from "@stripe/stripe-js"
-import dynamic from "next/dynamic"
 import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
-import navigatorLanguages from "navigator-languages"
+import { loadStripe } from "@stripe/stripe-js"
 import * as localeCurrency from "locale-currency"
-import { api2 } from "utils/api-url"
+import navigatorLanguages from "navigator-languages"
+import dynamic from "next/dynamic"
+import React, { FC, useEffect, useMemo, useState } from "react"
 import { useIntl } from "translations/useIntl"
-import { FormattedNumber } from "react-intl"
+import { api2 } from "utils/api-url"
+import { StandardLayout } from "../../components/layouts"
 import ShareModal from "../../components/partials/ShareModal"
+import {
+  Donation,
+  DonationEventData,
+  subscribeToDonationsEvent
+} from "../../utils/events-api/subscribeToDonationsEvent"
 
 const ProgressBar = dynamic(() => import("../../components/ui/ProgressBar"), {
   ssr: false
 })
 
 const Ukraine = () => {
+  const isMd = useMediaQuery("(min-width: 768px)")
+
   const [isDonateModalOpen, setIsDonateModalOpen] = useState(false)
   const [isShareModalOpen, setIsShareModalOpen] = useState(false)
-  const isMd = useMediaQuery("(min-width: 768px)")
 
   const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
   const userCurrency = useMemo(() => localeCurrency.getCurrency(userLocale[0]) || "USD", [
     userLocale
   ])
+
+  const [donations, setDonations] = useState<DonationEventData>({
+    raised: {
+      current: 0,
+      goal: 1_000,
+      currency: userCurrency,
+      donorsCount: 0
+    },
+    mostRecentDonations: []
+  })
 
   const getUrlToShare = () => {
     if (typeof window === "undefined") {
@@ -31,7 +46,12 @@ const Ukraine = () => {
     return window.location.href
   }
 
-  const { formatNumber } = useIntl()
+  useEffect(() => {
+    async function handleDonationsSubscription() {
+      await subscribeToDonationsEvent(userCurrency, setDonations)
+    }
+    handleDonationsSubscription()
+  }, [userCurrency])
 
   return (
     <StandardLayout withMenu={true} withoutMenuBorder={true}>
@@ -102,23 +122,11 @@ const Ukraine = () => {
           <div className="ukraine__right-panel">
             <div className="ukraine__donate">
               <div className="ukraine__donate--container">
-                <p className="ukraine__donate--text">
-                  <span className="ukraine__donate--current">
-                    {formatNumber(500, { style: "currency", currency: userCurrency })}
-                  </span>{" "}
-                  raised
-                  <br />
-                  of{" "}
-                  <strong>
-                    {formatNumber(5000, { style: "currency", currency: userCurrency })}
-                  </strong>{" "}
-                  goal
-                </p>
-                <ProgressBar value={89} variant="determinate" />
-                <div className="ukraine__donate--supporters">
-                  <img src="/images/family.svg" alt="family logo" />
-                  <span>Supported by 20 people</span>
-                </div>
+                <DonateInfo
+                  current={donations.raised.current}
+                  goal={donations.raised.goal}
+                  donorsCount={donations.raised.donorsCount}
+                />
                 <button className="button" onClick={() => setIsDonateModalOpen(true)}>
                   Donate
                 </button>
@@ -134,7 +142,7 @@ const Ukraine = () => {
                 </div>
               </div>
             </div>
-            {isMd && <DonationList />}
+            {isMd && <DonationList mostRecentDonations={donations.mostRecentDonations} />}
           </div>
         </div>
         <img
@@ -142,7 +150,7 @@ const Ukraine = () => {
           style={{ width: "100%", height: "100%", padding: "40px 0" }}
         />
         <div className="ukraine__centered-content">
-          {!isMd && <DonationList />}
+          {!isMd && <DonationList mostRecentDonations={donations.mostRecentDonations} />}
           <div className="ukraine__left-panel">
             <div className="ukraine__article-image-container">
               <img
@@ -337,24 +345,67 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
   )
 }
 
-const DonationList = () => {
+const DonationList = ({ mostRecentDonations }: { mostRecentDonations: Donation[] }) => {
+  const { formatNumber } = useIntl()
+
   return (
     <div className="ukraine__donate-list">
       <div className="ukraine__donate-list--container">
         <p className="ukraine__donate-list--title">Donations:</p>
-        {[...Array(5).keys()].map((key) => (
-          <div key={key} className="ukraine__donate-list--item">
+        {mostRecentDonations.map((donation, index) => (
+          <div className="ukraine__donate-list--item">
             <img src="/images/sygnet.svg" alt="Altruisto logotype" title="Altruisto" />
             <div className="ukraine__donate-list--item--name">
-              <span>Matka Teresa</span>
+              <span>{donation.donor || "Anonymous"}</span>
               <span>
-                <strong>$60</strong>
+                <strong>
+                  {formatNumber(donation.amount, {
+                    style: "currency",
+                    currency: donation.currency
+                  })}
+                </strong>
               </span>
             </div>
           </div>
         ))}
       </div>
     </div>
+  )
+}
+
+const DonateInfo = ({ current, goal, donorsCount }) => {
+  const { formatNumber } = useIntl()
+  const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
+  const userCurrency = useMemo(() => localeCurrency.getCurrency(userLocale[0]) || "USD", [
+    userLocale
+  ])
+
+  return (
+    <>
+      <p className="ukraine__donate--text">
+        <span className="ukraine__donate--current">
+          {formatNumber(current, {
+            style: "currency",
+            currency: userCurrency
+          })}
+        </span>{" "}
+        raised
+        <br />
+        of{" "}
+        <strong>
+          {formatNumber(goal, {
+            style: "currency",
+            currency: userCurrency
+          })}
+        </strong>{" "}
+        goal
+      </p>
+      <ProgressBar value={(100 * current) / goal} variant="determinate" />
+      <div className="ukraine__donate--supporters">
+        <img src="/images/family.svg" alt="family logo" />
+        <span>Supported by {donorsCount} people</span>
+      </div>
+    </>
   )
 }
 
