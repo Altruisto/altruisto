@@ -5,7 +5,7 @@ import navigatorLanguages from "navigator-languages"
 import dynamic from "next/dynamic"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import { useIntl } from "translations/useIntl"
-import { api2 } from "utils/api-url"
+import { api2, getStripeApiKey } from "utils/api-url"
 import { StandardLayout } from "../../components/layouts"
 import ShareModal from "../../components/partials/ShareModal"
 import {
@@ -239,14 +239,14 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
       return
     }
     try {
-      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+      const stripe = await loadStripe(getStripeApiKey())
       const response = await api2.post("/direct-donation", {
         amount: Math.round((typeof amount === "string" ? parseInt(amount) : amount) * 100),
         fundraiser: "Donation for Polish Humanitarian Action",
         subPath: "ukraine",
         donor: name,
         currency,
-        locale
+        locale: locale[0]
       })
       await stripe.redirectToCheckout({
         sessionId: response.data
