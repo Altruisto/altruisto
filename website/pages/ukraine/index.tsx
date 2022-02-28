@@ -32,7 +32,7 @@ const Ukraine = () => {
   const [donations, setDonations] = useState<DonationEventData>({
     raised: {
       current: 0,
-      goal: 5_000,
+      goal: 500000,
       currency: userCurrency,
       donorsCount: 0
     },
@@ -129,8 +129,8 @@ const Ukraine = () => {
             <div className="ukraine__donate">
               <div className="ukraine__donate--container">
                 <DonateInfo
-                  current={donations.raised.current}
-                  goal={donations.raised.goal}
+                  current={donations.raised.current / 100}
+                  goal={donations.raised.goal / 100}
                   donorsCount={donations.raised.donorsCount}
                 />
                 <button className="button" onClick={() => setIsDonateModalOpen(true)}>
@@ -365,7 +365,7 @@ const DonationList = ({ mostRecentDonations }: { mostRecentDonations: Donation[]
               <span>{donation.donor || "Anonymous"}</span>
               <span>
                 <strong>
-                  {formatNumber(donation.amount, {
+                  {formatNumber(donation.amount / 100, {
                     style: "currency",
                     currency: donation.currency
                   })}
