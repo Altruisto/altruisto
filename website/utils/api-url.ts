@@ -9,8 +9,13 @@ export const api = axios.create({
 })
 export const api2Url =
   process.env.NODE_ENV === "production"
-    ? "https://api2.altruisto.com/v2"
+    ? "https://altruisto-api-playground.herokuapp.com/v2"
     : "https://altruisto-api-playground.herokuapp.com/v2"
 export const api2 = axios.create({
-  baseURL: apiUrl
+  baseURL: api2Url
 })
+
+export const getStripeApiKey = () =>
+  process.env.NODE_ENV === "production"
+    ? "pk_test_51KWgX8ATvvx9S1LEtXxgh0aWJFEbYI2Ab2L0pGrAiwUKGWqT0qDwn5QOB64Rb684fh3dMKtZG1gg2M8zpVvmmShm00Iz9frXnN"
+    : "pk_test_51KWgX8ATvvx9S1LEtXxgh0aWJFEbYI2Ab2L0pGrAiwUKGWqT0qDwn5QOB64Rb684fh3dMKtZG1gg2M8zpVvmmShm00Iz9frXnN"

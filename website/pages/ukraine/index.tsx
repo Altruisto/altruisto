@@ -5,7 +5,7 @@ import navigatorLanguages from "navigator-languages"
 import dynamic from "next/dynamic"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import { useIntl } from "translations/useIntl"
-import { api2 } from "utils/api-url"
+import { api2, getStripeApiKey } from "utils/api-url"
 import { StandardLayout } from "../../components/layouts"
 import ShareModal from "../../components/partials/ShareModal"
 import {
@@ -32,7 +32,7 @@ const Ukraine = () => {
   const [donations, setDonations] = useState<DonationEventData>({
     raised: {
       current: 0,
-      goal: 1_000,
+      goal: 5000,
       currency: userCurrency,
       donorsCount: 0
     },
@@ -46,12 +46,18 @@ const Ukraine = () => {
     return window.location.href
   }
 
+  // useEffect(() => {
+  //   async function handleDonationsSubscription() {
+  //     await subscribeToDonationsEvent(userCurrency, setDonations)
+  //   }
+  //   handleDonationsSubscription()
+  // }, [userCurrency])
+
   useEffect(() => {
-    async function handleDonationsSubscription() {
-      await subscribeToDonationsEvent(userCurrency, setDonations)
-    }
-    handleDonationsSubscription()
-  }, [userCurrency])
+    api2.get("/direct-donation/ukraine").then(({ data }) => {
+      setDonations(data)
+    })
+  }, [])
 
   return (
     <StandardLayout withMenu={true} withoutMenuBorder={true}>
@@ -123,8 +129,8 @@ const Ukraine = () => {
             <div className="ukraine__donate">
               <div className="ukraine__donate--container">
                 <DonateInfo
-                  current={donations.raised.current}
-                  goal={donations.raised.goal}
+                  current={donations.raised.current / 100}
+                  goal={donations.raised.goal / 10}
                   donorsCount={donations.raised.donorsCount}
                 />
                 <button className="button" onClick={() => setIsDonateModalOpen(true)}>
@@ -233,14 +239,59 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
       return
     }
     try {
-      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+      const stripe = await loadStripe(getStripeApiKey())
+      const supportedLocale = [
+        "bg",
+        "cs",
+        "da",
+        "de",
+        "el",
+        "en",
+        "en-GB",
+        "es",
+        "es-419",
+        "et",
+        "fi",
+        "fil",
+        "fr",
+        "fr-CA",
+        "hr",
+        "hu",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "lt",
+        "lv",
+        "ms",
+        "mt",
+        "nb",
+        "nl",
+        "pl",
+        "pt",
+        "pt-BR",
+        "ro",
+        "ru",
+        "sk",
+        "sl",
+        "sv",
+        "th",
+        "tr",
+        "vi",
+        "zh",
+        "zh-HK"
+      ]
+      const usersLocale = locale[0]
+
+      const targetLocale = supportedLocale.includes(usersLocale) ? usersLocale : "en"
+
       const response = await api2.post("/direct-donation", {
         amount: Math.round((typeof amount === "string" ? parseInt(amount) : amount) * 100),
         fundraiser: "Donation for Polish Humanitarian Action",
         subPath: "ukraine",
         donor: name,
         currency,
-        locale
+        locale: targetLocale
       })
       await stripe.redirectToCheckout({
         sessionId: response.data
@@ -359,7 +410,7 @@ const DonationList = ({ mostRecentDonations }: { mostRecentDonations: Donation[]
               <span>{donation.donor || "Anonymous"}</span>
               <span>
                 <strong>
-                  {formatNumber(donation.amount, {
+                  {formatNumber(donation.amount / 100, {
                     style: "currency",
                     currency: donation.currency
                   })}
