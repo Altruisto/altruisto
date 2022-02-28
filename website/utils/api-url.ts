@@ -12,5 +12,5 @@ export const api2Url =
     ? "https://api2.altruisto.com/v2"
     : "https://altruisto-api-playground.herokuapp.com/v2"
 export const api2 = axios.create({
-  baseURL: apiUrl
+  baseURL: api2Url
 })

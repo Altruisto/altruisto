@@ -32,7 +32,7 @@ const Ukraine = () => {
   const [donations, setDonations] = useState<DonationEventData>({
     raised: {
       current: 0,
-      goal: 1_000,
+      goal: 5_000,
       currency: userCurrency,
       donorsCount: 0
     },
@@ -46,12 +46,18 @@ const Ukraine = () => {
     return window.location.href
   }
 
+  // useEffect(() => {
+  //   async function handleDonationsSubscription() {
+  //     await subscribeToDonationsEvent(userCurrency, setDonations)
+  //   }
+  //   handleDonationsSubscription()
+  // }, [userCurrency])
+
   useEffect(() => {
-    async function handleDonationsSubscription() {
-      await subscribeToDonationsEvent(userCurrency, setDonations)
-    }
-    handleDonationsSubscription()
-  }, [userCurrency])
+    api2.get("/direct-donation/ukraine").then(({ data }) => {
+      setDonations(data)
+    })
+  }, [])
 
   return (
     <StandardLayout withMenu={true} withoutMenuBorder={true}>
