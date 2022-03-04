@@ -26,7 +26,7 @@
   "homepage": "https://altruisto.com",
   "dependencies": {
     "@material-ui/core": "4.3.0",
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "copy-to-clipboard": "3.2.0",
     "formik": "1.5.8",
     "loaders.css": "0.1.2",
