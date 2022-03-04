@@ -7,3 +7,4 @@ build
 out
 dist
 website/custom-generated-pages
+.env.local
