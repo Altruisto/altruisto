@@ -7,12 +7,12 @@ export const apiUrl =
 export const api = axios.create({
   baseURL: apiUrl
 })
-export const api2Url =
-  process.env.NODE_ENV === "production"
-    ? "https://altruisto-api-playground.herokuapp.com/v2"
-    : "https://altruisto-api-playground.herokuapp.com/v2"
+// export const api2Url =
+//   process.env.NODE_ENV === "production"
+//     ? "https://altruisto-api-playground.herokuapp.com/v2"
+//     : "https://altruisto-api-playground.herokuapp.com/v2"
 export const api2 = axios.create({
-  baseURL: api2Url
+  baseURL: "http://localhost:9091/v2"
 })
 
 export const getStripeApiKey = () =>

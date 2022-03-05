@@ -1,5 +1,6 @@
 import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
 import { loadStripe } from "@stripe/stripe-js"
+import { GIVEAWAYS } from "data/ukraineGiveaways"
 import * as localeCurrency from "locale-currency"
 import navigatorLanguages from "navigator-languages"
 import dynamic from "next/dynamic"
@@ -108,7 +109,7 @@ const Ukraine = () => {
               cannot predict what will happen in the coming days, but the scenarios are not
               optimistic, and people need immediate help.
             </p>
-            <p style={{ margin: 0 }}>
+            <p>
               This fundraiser was created to be able to raise money in the form of a fund to help
               the victims of war. The scope of assistance will depend on the development of the
               conflict in Ukraine and will be adjusted accordingly. We cannot predict what will
@@ -119,18 +120,43 @@ const Ukraine = () => {
               the next steps.
             </p>
 
-            <p style={{ margin: 0 }}>
-              Thank you to everyone who is not indifferent to the suffering of others.
-            </p>
+            <p>Thank you to everyone who is not indifferent to the suffering of others.</p>
 
             <p style={{ margin: 0 }}>Let’s help Ukraine together!</p>
+
+            <hr />
+            <p>
+              We are committed to full transparency, you can see the receipts from transfers{" "}
+              <a href="/ukraine/receipts" target="_blank">
+                <u>here</u>
+              </a>{" "}
+              and the source code of the website{" "}
+              <a href="https://github.com/altruisto/altruisto" target="_blank">
+                <u>here</u>
+              </a>
+              .
+            </p>
+            <hr />
+
+            <strong>
+              The following companies decided to giveaway their products for free to anyone who
+              donates:
+            </strong>
+            <DonateGiveAways />
+            <p style={{ marginTop: 12 }}>
+              Would you like to give away your product as well?{" "}
+              <a href="mailto:luiza@altruisto.com">
+                <u>Contact us.</u>
+              </a>
+            </p>
+            <hr />
           </div>
           <div className="ukraine__right-panel">
             <div className="ukraine__donate">
               <div className="ukraine__donate--container">
                 <DonateInfo
                   current={donations.raised.current / 100}
-                  goal={donations.raised.goal / 10}
+                  goal={donations.raised.goal / 100}
                   donorsCount={donations.raised.donorsCount}
                 />
                 <button className="button" onClick={() => setIsDonateModalOpen(true)}>
@@ -145,10 +171,35 @@ const Ukraine = () => {
                 </button>
                 <div className="ukraine__donate--supporters">
                   * The number is approximated based on today's currency exchange rates
+                  <br />
+                  ** We are committed to full transparency, see the receipts from transfers{" "}
+                  <a href="/ukraine/receipts" target="_blank">
+                    <u>here</u>
+                  </a>
                 </div>
               </div>
             </div>
             {isMd && <DonationList mostRecentDonations={donations.mostRecentDonations} />}
+            {/* <div className="ukraine__donate" style={{ marginTop: 20 }}>
+              <div
+                className="ukraine__donate--container"
+                style={{ paddingTop: 16, paddingBottom: 16 }}
+              >
+                The following companies decided to giveaway their products for free to anyone who
+                donates:
+              </div>
+              {GIVEAWAYS.map(({ name, logo, perk }) => (
+                <div className="ukraine__donate-list--item">
+                  <img src={logo} alt="Altruisto logotype" title="Altruisto" />
+                  <div className="ukraine__donate-list--item--name">
+                    <span>
+                      <strong>{name}</strong>
+                    </span>
+                    <span>{perk}</span>
+                  </div>
+                </div>
+              ))}
+            </div> */}
           </div>
         </div>
         <img
@@ -186,6 +237,33 @@ const Ukraine = () => {
         url={getUrlToShare()}
       />
     </StandardLayout>
+  )
+}
+
+const DonateGiveAways = () => {
+  return (
+    <div className="ukraine__products row">
+      {GIVEAWAYS.map((giveaway) => (
+        <div className="col-4" key={giveaway.name}>
+          <div className="ukraine__product ">
+            <img src={giveaway.logo} alt={giveaway.name} className="ukraine__product-logo" />
+            <p className="ukraine__product-name">{giveaway.name}</p>
+            <div style={{ width: "100%" }}>
+              <p className="ukraine__product-perk">{giveaway.perk}</p>
+              <div className="ukraine__product-description">
+                <p>{giveaway.description}</p>
+
+                <p className="ukraine__product-website">
+                  <a href={giveaway.website} target="_blank">
+                    Visit Website
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   )
 }
 
