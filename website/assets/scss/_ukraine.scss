@@ -241,4 +241,44 @@
       margin-right: 11px;
     }
   }
+
+  &__products {
+    margin-top: 16px;
+  }
+
+  &__product {
+    border: 1px solid #f3f3f3;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    &-logo {
+      width: 33%;
+    }
+
+    &-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    &-perk {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.6);
+      text-align: left;
+    }
+
+    &-description {
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 8px;
+      color: rgba(0, 0, 0, 0.6);
+      text-align: left;
+    }
+  }
 }
