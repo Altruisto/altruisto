@@ -7,8 +7,8 @@ import querystring from "querystring"
 import { readFileSync } from "fs"
 import { CUSTOM_PAGES_OUTPUT_DIRECTORY, NEXT_PAGES_OUTPUT_DIRECTORY_NAME } from "./settings"
 import { getCtaDestination, getCtaText } from "./utils/get-cta-destination"
-import { REFERRED_BY_COOKIE_NAME } from "../shared/globals"
-import { GetPartnersResponse } from "../shared/types/api"
+import { REFERRED_BY_COOKIE_NAME } from "./shared/globals"
+import { GetPartnersResponse } from "./shared/types/api"
 import { api, apiUrl } from "./utils/api-url"
 
 const port = parseInt(process.env.PORT, 10) || 3000
