@@ -65,7 +65,10 @@ const Ukraine = () => {
       <main className="ukraine">
         <div
           className="ukraine__banner"
-          style={{ backgroundImage: "url(/images/ukraine-banner.png)" }}
+          style={{
+            backgroundImage:
+              "url(/images/ukraine-baner-2.jpg), linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2))"
+          }}
         >
           <div className="ukraine__banner-content">
             <div className="ukraine__flag">

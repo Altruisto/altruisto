@@ -35,6 +35,9 @@
     justify-content: flex-end;
     border-radius: 8px;
     background-position: center;
+    // position: relative;
+    background-blend-mode: overlay;
+    background-size: cover;
   }
 
   &__banner-content {
