@@ -515,7 +515,7 @@ const DonateInfo = ({ current, goal, donorsCount }) => {
         <span className="ukraine__donate--current">
           {formatNumber(current, {
             style: "currency",
-            currency: userCurrency
+            currency: "usd"
           })}
         </span>{" "}
         raised
@@ -524,7 +524,7 @@ const DonateInfo = ({ current, goal, donorsCount }) => {
         <strong>
           {formatNumber(goal, {
             style: "currency",
-            currency: userCurrency
+            currency: "usd"
           })}
         </strong>{" "}
         goal
