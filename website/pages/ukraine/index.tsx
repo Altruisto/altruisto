@@ -61,13 +61,37 @@ const Ukraine = () => {
   }, [])
 
   return (
-    <StandardLayout withMenu={true} withoutMenuBorder={true}>
+    <StandardLayout
+      withMenu={true}
+      withoutMenuBorder={true}
+      seoMetaTags={{
+        title: "Let's help the victims of war in Ukraine",
+        description:
+          "The conflict in Ukraine means unimaginable suffering for thousands of innocent people. Although we do not have the power to stop the war, we can act and help how we know best. To give to those in need and who have been affected by this tragedy."
+      }}
+      ogMetaTags={{
+        title: "Let's help the victims of war in Ukraine",
+        description:
+          "The conflict in Ukraine means unimaginable suffering for thousands of innocent people. Although we do not have the power to stop the war, we can act and help how we know best. To give to those in need and who have been affected by this tragedy.",
+        image: "https://altruisto.com/images/ukraine-cover-1.jpg",
+        url: "https://altruisto.com/ukraine"
+      }}
+      twitterMetaTags={{
+        title: "Let's help the victims of war in Ukraine",
+        site: "@altruistoCom",
+        description:
+          "The conflict in Ukraine means unimaginable suffering for thousands of innocent people. Although we do not have the power to stop the war, we can act and help how we know best. To give to those in need and who have been affected by this tragedy.",
+        image: "https://altruisto.com/images/ukraine-cover-1.jpg",
+        card: "summary_large_image"
+      }}
+    >
       <main className="ukraine">
         <div
           className="ukraine__banner"
           style={{
             backgroundImage:
-              "url(/images/ukraine-baner-2.jpg), linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2))"
+              "url(/images/ukraine-baner-3.jpg), linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2))",
+            backgroundPosition: "50% 30%"
           }}
         >
           <div className="ukraine__banner-content">
@@ -77,7 +101,7 @@ const Ukraine = () => {
             </div>
             <h2>Help for victims of war in Ukraine</h2>
             <p>
-              Fundraiser organizer:{" "}
+              Recipient of funds:{" "}
               <a href="https://www.pah.org.pl/en/">
                 <u>Polish Humanitarian Action</u>
               </a>
@@ -94,7 +118,7 @@ const Ukraine = () => {
               moving inside the country, and refugees escaping to Poland.
             </p>
             <p>
-              The conflict in Ukraine means unimaginable suffering for thousands of innocent people.
+              The war in Ukraine means unimaginable suffering for thousands of innocent people.
               Although we do not have the power to stop the war, we can act and help how we know
               best. To give to those in need and who have been affected by this tragedy.
             </p>
@@ -247,7 +271,7 @@ const DonateGiveAways = () => {
   return (
     <div className="ukraine__products row">
       {GIVEAWAYS.map((giveaway) => (
-        <div className="col-4" key={giveaway.name}>
+        <div className="col-6 col-md-4" key={giveaway.name}>
           <div className="ukraine__product ">
             <img src={giveaway.logo} alt={giveaway.name} className="ukraine__product-logo" />
             <p className="ukraine__product-name">{giveaway.name}</p>

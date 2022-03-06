@@ -79,9 +79,10 @@ const Claim = () => {
     }
   }
 
-  const claimPromoCode = async (name: "Bear App") => {
+  const claimPromoCode = async (name: "Bear App (iOS)" | "Bear App (Mac)") => {
     const map = {
-      "Bear App": "bear"
+      "Bear App (iOS)": "bearIOS",
+      "Bear App (Mac)": "bearMac"
     }
     try {
       const result = await api2.post("/direct-donation/claim/promo-code", {
@@ -107,7 +108,8 @@ const Claim = () => {
         claimBetterMe(name)
         break
 
-      case "Bear App":
+      case "Bear App (iOS)":
+      case "Bear App (Mac)":
         claimPromoCode(name)
         break
     }

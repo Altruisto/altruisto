@@ -37,10 +37,18 @@ export const GIVEAWAYS = [
     claimInstructions: `Please make sure that you have a registered account in the BetterMe Mental Health app with the email address you used on the payment page before clicking "claim". It may takes up to a few hours for your account to be upgraded.`
   },
   {
-    name: "Bear App",
+    name: "Bear App (iOS)",
     website: "https://bear.app",
     logo: "/images/fundraiser/bearapp.jpeg",
-    perk: "1 year of Bear Pro (only 50 spots)",
+    perk: "1 year of Bear Pro (only 25 spots)",
+    description: "Bear is a beautiful, flexible writing app for crafting notes and prose.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Bear App (Mac)",
+    website: "https://bear.app",
+    logo: "/images/fundraiser/bearapp.jpeg",
+    perk: "1 year of Bear Pro (only 25 spots)",
     description: "Bear is a beautiful, flexible writing app for crafting notes and prose.",
     claimInstructions: "You will receive a promo code you can use in the app."
   }
