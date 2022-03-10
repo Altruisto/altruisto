@@ -25,7 +25,7 @@ export const GIVEAWAYS = [
     perk: "Free access",
     description:
       "Personalized workout and nutrition plans supported by real human coaches, comprehensive progress tracking, and cognitive therapy practice-based tips. Created by a team from 🇺🇦",
-    claimInstructions: `Please make sure that you have a registered account in the BetterMe Health Coaching app with the email address you used on the payment page before clicking "claim". It may takes up to a few hours for your account to be upgraded.`
+    claimInstructions: `Please make sure that you have a registered account in the BetterMe Health Coaching app with the email address you used on the payment page before clicking "claim". It may takes up to a few hours for your account to be upgraded. Please make sure to reopen the app to check if the entitlement is granted.`
   },
   {
     name: "BetterMe Mental Health",
@@ -34,7 +34,7 @@ export const GIVEAWAYS = [
     perk: "Free access",
     description:
       "Simple meditations and guided courses for mental well-being. Created by a team from 🇺🇦",
-    claimInstructions: `Please make sure that you have a registered account in the BetterMe Mental Health app with the email address you used on the payment page before clicking "claim". It may takes up to a few hours for your account to be upgraded.`
+    claimInstructions: `Please make sure that you have a registered account in the BetterMe Mental Health app with the email address you used on the payment page before clicking "claim". It may takes up to a few hours for your account to be upgraded. Please make sure to reopen the app to check if the entitlement is granted.`
   },
   {
     name: "Bear App (iOS)",

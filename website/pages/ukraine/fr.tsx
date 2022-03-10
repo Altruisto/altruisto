@@ -65,23 +65,23 @@ const Ukraine = () => {
       withMenu={true}
       withoutMenuBorder={true}
       seoMetaTags={{
-        title: "¡Ayudemos a Ucrania juntos!",
+        title: "Ensemble, aidons l'Ukraine!",
         description:
-          "El conflicto en Ucrania supone un sufrimiento inimaginable para miles de personas inocentes. Aunque nosotros no tengamos el poder para detener la guerra, igualmente podemos actuar y ayudar, proporcionando nuestra asistencia a los necesitados y a quienes se han visto afectados por esta tragedia. "
+          "Le conflit en Ukraine est synonyme de souffrances inimaginables pour des milliers d'innocents. Bien que nous n'ayons pas le pouvoir d'arrêter la guerre, nous pouvons agir et aider comme nous le savons le mieux. Pour donner à ceux qui sont dans le besoin et qui ont été touchés par cette tragédie."
       }}
       ogMetaTags={{
-        title: "¡Ayudemos a Ucrania juntos!",
+        title: "Ensemble, aidons l'Ukraine!",
         description:
-          "El conflicto en Ucrania supone un sufrimiento inimaginable para miles de personas inocentes. Aunque nosotros no tengamos el poder para detener la guerra, igualmente podemos actuar y ayudar, proporcionando nuestra asistencia a los necesitados y a quienes se han visto afectados por esta tragedia. ",
-        image: "https://altruisto.com/images/ukraine-cover-es.png",
-        url: "https://altruisto.com/ukraine/es"
+          "Le conflit en Ukraine est synonyme de souffrances inimaginables pour des milliers d'innocents. Bien que nous n'ayons pas le pouvoir d'arrêter la guerre, nous pouvons agir et aider comme nous le savons le mieux. Pour donner à ceux qui sont dans le besoin et qui ont été touchés par cette tragédie.",
+        image: "https://altruisto.com/images/ukraine-cover-fr.png",
+        url: "https://altruisto.com/ukraine/fr"
       }}
       twitterMetaTags={{
-        title: "¡Ayudemos a Ucrania juntos!",
+        title: "Ensemble, aidons l'Ukraine!",
         site: "@altruistoCom",
         description:
-          "El conflicto en Ucrania supone un sufrimiento inimaginable para miles de personas inocentes. Aunque nosotros no tengamos el poder para detener la guerra, igualmente podemos actuar y ayudar, proporcionando nuestra asistencia a los necesitados y a quienes se han visto afectados por esta tragedia.",
-        image: "https://altruisto.com/images/ukraine-cover-es.png",
+          "Le conflit en Ukraine est synonyme de souffrances inimaginables pour des milliers d'innocents. Bien que nous n'ayons pas le pouvoir d'arrêter la guerre, nous pouvons agir et aider comme nous le savons le mieux. Pour donner à ceux qui sont dans le besoin et qui ont été touchés par cette tragédie.",
+        image: "https://altruisto.com/images/ukraine-cover-fr.png",
         card: "summary_large_image"
       }}
     >
@@ -99,9 +99,9 @@ const Ukraine = () => {
               <div className="ukraine__flag--top" />
               <div className="ukraine__flag--bottom" />
             </div>
-            <h2>Ayuda humanitaria para las víctimas de la guerra en Ucrania</h2>
+            <h2>Aide aux victimes de la guerre en Ukraine</h2>
             <p>
-              Recepción de fondos:{" "}
+              Bénéficiaire des fonds:{" "}
               <a href="https://www.pah.org.pl/en/">
                 <u>Polish Humanitarian Action</u>
               </a>
@@ -111,70 +111,69 @@ const Ukraine = () => {
         <div className="ukraine__centered-content ukraine__overlap-content">
           <div className="ukraine__left-panel ukraine__left-panel--offset">
             <p>
-              A raíz de los recientes acontecimientos y de la escalada del conflicto en Ucrania,
-              iniciamos una campaña de recaudación de fondos para suministrar alimentos y productos
-              de higiene personal a los habitantes de las provincias de Donetsk y Lugansk, que
-              actualmente se encuentran en guerra. También queremos proporcionar alimentos y otras
-              formas de ayuda a quienes se han visto forzados a huir de sus hogares, incluidos tanto
-              quienes se trasladan al interior del país como los refugiados que escapan a Polonia.
+              À la suite des derniers événements et de l'escalade du conflit en Ukraine, nous
+              lançons une collecte de fonds pour fournir de la nourriture et des produits d'hygiène
+              aux habitants des régions de Donetsk et de Louhansk qui sont actuellement en guerre.
+              Nous voulons également fournir de la nourriture et d'autres moyens d'aide à ceux qui
+              fuient leurs maisons, notamment les personnes qui se déplacent à l'intérieur du pays
+              et les réfugiés qui s'échappent vers la Pologne.
             </p>
             <p>
-              El conflicto en Ucrania supone un sufrimiento inimaginable para miles de personas
-              inocentes. Aunque nosotros no tengamos el poder para detener la guerra, igualmente
-              podemos actuar y ayudar, proporcionando nuestra asistencia a los necesitados y a
-              quienes se han visto afectados por esta tragedia.
+              Le conflit en Ukraine est synonyme de souffrances inimaginables pour des milliers
+              d'innocents. Bien que nous n'ayons pas le pouvoir d'arrêter la guerre, nous pouvons
+              agir et aider comme nous le savons le mieux. Pour donner à ceux qui sont dans le
+              besoin et qui ont été touchés par cette tragédie.
             </p>
             <p style={{ margin: 0 }}>
-              La guerra en Ucrania comenzó en 2014 y nunca ha terminado. Los recientes
-              acontecimientos demuestran que la agitación bélica ha llegado demasiado lejos, por lo
-              que las próximas 5 semanas podrían ser clave para los 5 millones de personas que viven
-              a lo largo de los 420 km que abarca la primera línea de defensa. Casi 3 millones de
-              civiles necesitan ayuda humanitaria. La mayoría son ancianos solos y enfermos que no
-              han querido o no han podido abandonar sus casas. También necesitan ayuda especializada
-              los niños y adultos que han sufrido la explosión de una mina terrestre.
+              La guerre en Ukraine a commencé en 2014 et ne s'est jamais terminée. Les récents
+              événements ont montré que les troubles de la guerre sont allés trop loin et les 5
+              prochaines semaines pourraient s'avérer critiques pour les 5 millions de personnes
+              vivant le long de la ligne de front longue de 420 km. Près de 3 millions de civils ont
+              besoin d'aide humanitaire. Dans une large mesure, il s'agit de personnes âgées malades
+              et isolées qui n'ont pas voulu ou pu quitter leur maison. Les enfants et les adultes
+              qui ont souffert de l'explosion d'une mine terrestre ont également besoin d'un soutien
+              particulier.
             </p>
             <img src="/images/ukraine1.png" alt="ukraine 1" className="ukraine__article-image" />
             <p>
-              Habrá cada vez más víctimas. El tanque nunca ha sido un símbolo de paz. No podemos
-              predecir lo que sucederá en los próximos días, pero los pronósticos no son optimistas
-              y las personas necesitan ayuda inmediata.
+              Il y aura de plus en plus de victimes. Le char n'a jamais été un symbole de paix. Nous
+              ne pouvons prédire ce qui se passera dans les jours à venir, mais les scénarios ne
+              sont pas optimistes, et les gens ont besoin d'une aide immédiate.
             </p>
             <p>
-              Esta campaña de recaudación de fondos se crea para recaudar dinero en modalidad de
-              Fondo de ayuda a las víctimas de la guerra. El alcance de la asistencia dependerá de
-              cómo se desarrolle del conflicto en Ucrania, por lo que se irá ajustando en función de
-              los sucesos. No podemos predecir lo que sucederá en los próximos días, pero los
-              posibles escenarios son pesimistas y los afectados precisan ayuda inmediata.
-              Continuaremos monitorizando la situación y nos mantendremos en contacto constante con
-              las organizaciones de ayuda humanitaria que trabajan en Ucrania. Cada hora nos llega
-              nueva información y todo el contexto cambia dinámicamente. Les mantendremos informados
-              sobre los próximos pasos a dar.
+              Cette collecte de fonds a été créée afin de pouvoir récolter de l'argent sous la forme
+              d'un fond destiné à aider les victimes de la guerre. L'ampleur de l'aide dépendra de
+              l'évolution du conflit en Ukraine et sera adaptée en conséquence. Nous ne pouvons
+              prédire ce qui se passera dans les prochains jours, mais les scénarios ne sont pas
+              optimistes, et les personnes touchées ont besoin d'une aide immédiate. Nous
+              continuerons à surveiller la situation, et restons en contact permanent avec les
+              organisations d'aide travaillant en Ukraine. Chaque heure nous apporte de nouvelles
+              informations, et tout évolue de manière dynamique. Nous vous tiendrons informés des
+              prochaines étapes.
             </p>
 
-            <p>
-              Gracias a todos aquellos que no son indiferentes ante el sufrimiento de los demás.{" "}
-            </p>
+            <p>Merci à tous ceux qui ne sont pas indifférents à la souffrance des autres. </p>
 
-            <p style={{ margin: 0 }}>¡Ayudemos a Ucrania juntos!</p>
+            <p style={{ margin: 0 }}>Ensemble, aidons l'Ukraine!</p>
 
             <hr />
             <p>
-              Estamos comprometidos con transparencia total, vean los recibos de transferencias{" "}
+              Nous nous engageons à une transparence totale, voir les reçus des virements{" "}
               <a href="/ukraine/receipts" target="_blank">
-                <u>aquí.</u>
-              </a>{" "}
+                <u>ici.</u>
+              </a>
             </p>
             <hr />
 
             <strong>
-              Las siguientes empresas decidieron regalar sus productos de forma gratuita a todos los
-              que donen:
+              Les entreprises suivantes ont décidé de donner leurs produits gratuitement à quiconque
+              fait un don :
             </strong>
             <DonateGiveAways />
             <p style={{ marginTop: 12 }}>
-              ¿Quiere regalar también su producto? Póngase en{" "}
+              Souhaitez-vous également donner votre produit ?{" "}
               <a href="mailto:luiza@altruisto.com">
-                <u>contacto con nosotros.</u>
+                <u>Contactez-nous.</u>
               </a>
             </p>
             <hr />
@@ -188,22 +187,21 @@ const Ukraine = () => {
                   donorsCount={donations.raised.donorsCount}
                 />
                 <button className="button" onClick={() => setIsDonateModalOpen(true)}>
-                  Donar
+                  Faire un don
                 </button>
                 <button
                   className="button button--gray ukraine__share-button"
                   onClick={() => setIsShareModalOpen(true)}
                 >
                   <img src="/images/share.svg" alt="Share icon" />
-                  Compartir
+                  Partager
                 </button>
                 <div className="ukraine__donate--supporters">
-                  * El número se aproxima en función de los tipos de cambio actuales
+                  * Le nombre est approximatif sur la base des taux de change actuels.
                   <br />
-                  ** Estamos comprometidos con transparencia total, vean los recibos de
-                  transferencias{" "}
+                  ** Nous nous engageons à une transparence totale, voir les reçus des virements{" "}
                   <a href="/ukraine/receipts" target="_blank">
-                    <u>aquí</u>
+                    <u>ici</u>
                   </a>
                 </div>
               </div>
@@ -434,7 +432,7 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
                 marginBottom: "24px"
               }}
             >
-              Seleccione el monto de la donación
+              Sélectionnez le montant du don
             </h2>
             <div style={{ display: "flex", marginBottom: "12px" }}>
               <button
@@ -462,7 +460,7 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
               </button>
             </div>
             <label htmlFor="amount" style={{ marginBottom: "8px" }}>
-              Monto de donación
+              Montant du don
             </label>
             <TextField
               variant="outlined"
@@ -479,10 +477,10 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
               helperText={errorMsg}
             />
             <label htmlFor="name" style={{ marginTop: "12px", marginBottom: "8px" }}>
-              Su nombre (opcional)
+              Votre nom (facultatif)
             </label>
             <OutlinedInput
-              placeholder="Su nombre..."
+              placeholder="Votre nom..."
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -494,7 +492,7 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
               style={{ marginTop: "32px" }}
               onClick={handleDonation}
             >
-              {isLoading ? "Procesando..." : "Donar"}
+              {isLoading ? "Traitement du don..." : "Faire un don"}
             </button>
           </div>
         </div>
@@ -509,12 +507,12 @@ const DonationList = ({ mostRecentDonations }: { mostRecentDonations: Donation[]
   return (
     <div className="ukraine__donate-list">
       <div className="ukraine__donate-list--container">
-        <p className="ukraine__donate-list--title">Donaciones:</p>
+        <p className="ukraine__donate-list--title">Derniers dons :</p>
         {mostRecentDonations.map((donation, index) => (
           <div className="ukraine__donate-list--item">
             <img src="/images/sygnet.svg" alt="Altruisto logotype" title="Altruisto" />
             <div className="ukraine__donate-list--item--name">
-              <span>{donation.donor || "Anonymous"}</span>
+              <span>{donation.donor || "Anonyme"}</span>
               <span>
                 <strong>
                   {formatNumber(donation.amount / 100, {
@@ -547,20 +545,20 @@ const DonateInfo = ({ current, goal, donorsCount }) => {
             currency: "usd"
           })}
         </span>{" "}
-        recaudados
+        levé
         <br />
-        de un objetivo de{" "}
+        de l'objectif{" "}
         <strong>
           {formatNumber(goal, {
             style: "currency",
             currency: "usd"
           })}
-        </strong>{" "}
+        </strong>
       </p>
       <ProgressBar value={(100 * current) / goal} variant="determinate" />
       <div className="ukraine__donate--supporters">
         <img src="/images/family.svg" alt="family logo" />
-        <span>Apoyado por {donorsCount} personas</span>
+        <span>Soutenu par {donorsCount} personnes</span>
       </div>
     </>
   )
