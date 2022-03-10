@@ -97,6 +97,20 @@ const Claim = () => {
     }
   }
 
+  const claimAbaEnglish = async () => {
+    try {
+      const result = await api2.post("/direct-donation/claim/promo-code", {
+        token: router.query.token,
+        claimType: "abaEnglish"
+      })
+      router.push("/ukraine/aba-instructions?code=" + result.data)
+    } catch (e) {
+      e.response.data.errors.forEach((error) => {
+        handleError(error.type, enqueueSnackbar)
+      })
+    }
+  }
+
   const claim = (name: GiveAwayName) => {
     switch (name) {
       case "UNUM":
@@ -112,6 +126,9 @@ const Claim = () => {
       case "Bear App (Mac)":
         claimPromoCode(name)
         break
+
+      case "ABA English":
+        claimAbaEnglish()
     }
   }
 

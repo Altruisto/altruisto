@@ -13,7 +13,17 @@ const Receipts = () => {
           <div className="ukraine__info">
             <div className="">
               <h2>Receipts</h2>
-              <p>The first transfer will be made on the 14th of March.</p>
+              <p>
+                <strong>07.03.2022</strong>
+              </p>
+              <p>
+                <a href="/receipts/ukraine/receipt_eur_2022_03_07.pdf">EUR 296.61</a>
+              </p>
+              <p>
+                <a href="/receipts/ukraine/receipt_usd_2022_03_07.pdf">USD 338.03</a>
+              </p>
+              <hr />
+              <p>The next transfer will be made on the 14th of March.</p>
             </div>
             <div className="">
               <button className="button button--gray" onClick={() => router.replace("/ukraine")}>

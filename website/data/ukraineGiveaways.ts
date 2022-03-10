@@ -51,5 +51,14 @@ export const GIVEAWAYS = [
     perk: "1 year of Bear Pro (only 25 spots)",
     description: "Bear is a beautiful, flexible writing app for crafting notes and prose.",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "ABA English",
+    website: "https://www.abaenglish.com/",
+    logo: "/images/fundraiser/abaenglish.png",
+    perk: "Free access for 1 year",
+    description:
+      "Recognized as one of the best English language learning apps in the world. Take your English to the next level.",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
