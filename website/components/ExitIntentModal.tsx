@@ -50,8 +50,9 @@ const ExitIntent = () => {
     >
       <h2>Let's help the victims of war in Ukraine</h2>
       <p>
-        We created a fundraiser for Polish Humanitarian Action and partnered with several startups
-        that decided to give away their products to anyone who donates (and more partnerships are
+        We created a <strong>fundraiser for Polish Humanitarian Action</strong> and partnered with
+        several startups that decided to{" "}
+        <strong>give away their products to anyone who donates</strong> (and more partnerships are
         coming). In this way, we want to create an additional source of financing humanitarian aid
         for Ukraine, which will be able to function for the upcoming weeks, even when the first
         emotions subside.
