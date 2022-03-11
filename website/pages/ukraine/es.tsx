@@ -397,7 +397,7 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
         fundraiser: "Donation for Polish Humanitarian Action",
         subPath: "ukraine",
         donor: name,
-        currency: "NOK",
+        currency,
         locale: targetLocale
       })
       await stripe.redirectToCheckout({
