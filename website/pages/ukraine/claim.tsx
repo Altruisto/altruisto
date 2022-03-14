@@ -79,11 +79,22 @@ const Claim = () => {
     }
   }
 
-  const claimPromoCode = async (name: "Bear App (iOS)" | "Bear App (Mac)" | "Pixitca") => {
+  const claimPromoCode = async (
+    name:
+      | "Bear App (iOS)"
+      | "Bear App (Mac)"
+      | "Pixitca"
+      | "Focus - Time Management for iOS"
+      | "Attentive - Screen Time Control for iOS"
+      | "Filter - App & Website Blocker for Mac"
+  ) => {
     const map = {
       "Bear App (iOS)": "bearIOS",
       "Bear App (Mac)": "bearMac",
-      Pixitca: "pixitca"
+      Pixitca: "pixitca",
+      "Focus - Time Management for iOS": "focus",
+      "Attentive - Screen Time Control for iOS": "attentive",
+      "Filter - App & Website Blocker for Mac": "filter"
     }
     try {
       const result = await api2.post("/direct-donation/claim/promo-code", {
@@ -126,6 +137,9 @@ const Claim = () => {
       case "Bear App (iOS)":
       case "Bear App (Mac)":
       case "Pixitca":
+      case "Focus - Time Management for iOS":
+      case "Attentive - Screen Time Control for iOS":
+      case "Filter - App & Website Blocker for Mac":
         claimPromoCode(name)
         break
 

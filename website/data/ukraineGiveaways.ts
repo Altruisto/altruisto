@@ -69,5 +69,31 @@ export const GIVEAWAYS = [
     description:
       "Pixitca is a feature-rich «All-in-One» camera app with great photo and video editors, a comprehensive gallery, and plenty of creative tools.",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Focus - Time Management for iOS",
+    website: "https://meaningful-things.com/focus",
+    logo: "/images/fundraiser/focus.png",
+    perk: "Free access for 1 year",
+    description: "Pomodoro Time Manager for Professionals",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Attentive - Screen Time Control for iOS",
+    website: "https://meaningful-things.com/attentive",
+    logo: "/images/fundraiser/attentive.png",
+    perk: "Free access for 1 year",
+    description:
+      "App that help you build healthy smartphone habits. Cut back on mindless screen time and change the way you use your phone.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Filter - App & Website Blocker for Mac",
+    website: "https://meaningful-things.com/filter",
+    logo: "/images/fundraiser/filter.png",
+    perk: "Free access for 1 year",
+    description:
+      "Filter App helps you to block distractions and lets you regain time for what really matters. Don’t let distracting websites and apps steal your time. ",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
