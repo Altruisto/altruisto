@@ -60,5 +60,14 @@ export const GIVEAWAYS = [
     description:
       "Recognized as one of the best English language learning apps in the world. Take your English to the next level.",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Pixitca",
+    website: "https://play.google.com/store/apps/details?id=com.perracolabs.pixtica",
+    logo: "/images/fundraiser/pixitca.jpg",
+    perk: "Free access",
+    description:
+      "Pixitca is a feature-rich «All-in-One» camera app with great photo and video editors, a comprehensive gallery, and plenty of creative tools.",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
