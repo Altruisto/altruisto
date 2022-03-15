@@ -405,6 +405,14 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
     } catch (e) {
       if (e.data) {
         setMerrorMsg(e.data.raw.message)
+      } else if (
+        e &&
+        e.response &&
+        e.response.data &&
+        e.response.data.errors &&
+        e.response.data.errors[0].type === "invalid_amount"
+      ) {
+        setMerrorMsg("Amount must be at least 10 USD")
       } else {
         setMerrorMsg(e.message)
       }
