@@ -338,9 +338,9 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
   const handleDonation = async () => {
     setIsLoading(true)
     setMerrorMsg(undefined)
-    if (amount <= 0) {
+    if (amount <= 9.99) {
       setIsLoading(false)
-      setMerrorMsg("Amount must be greater than 0")
+      setMerrorMsg("Amount must be at least 10")
       return
     }
     try {
