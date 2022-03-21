@@ -28,6 +28,12 @@ const Receipts = () => {
               <p>
                 <a href="/receipts/ukraine/receipt_eur_2022_03_14.pdf">EUR 1000.25</a>
               </p>
+              <p>
+                <strong>21.03.2022</strong>
+              </p>
+              <p>
+                <a href="/receipts/ukraine/receipt_eur_2022_03_21.pdf">EUR 1377.37</a>
+              </p>
               <hr />
               <p>The next transfer will be made on the 28th of March.</p>
             </div>
