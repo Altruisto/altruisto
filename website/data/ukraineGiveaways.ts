@@ -97,3 +97,15 @@ export const GIVEAWAYS = [
     claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
+
+export const POLISH_GIVEAWAYS = [
+  {
+    name: "Wczesnoszkolni.pl",
+    website: "https://wczesnoszkolni.pl/",
+    description:
+      "Wczesnoszkolni.pl to portal z różnymi inspiracjami dla nauczycieli oraz rodziców. Znajdziesz tutaj pomysły na prace plastyczne czy zajęcia matematyczne!",
+    logo: "/images/fundraiser/wczesnoszkolni.png",
+    perk: "Pakiet 250 punktów",
+    claimInstructions: "Otrzymany kod obniża do 0 zł pakiet 250 punktów w naszym portalu."
+  }
+] as const

@@ -75,5 +75,12 @@ export const pl: Translation = {
   termsOfService: "Regulamin Usługi",
   andThe: "oraz",
   privacyPolicy: "Politykę Prywatności",
-  register: "Zarejestruj się"
+  register: "Zarejestruj się",
+  yourGiveaways: "Twoje prezenty",
+  claim: "Odbierz",
+  global: "Międzynarodowe",
+  polish: "Polskie",
+  yourPromoCode: "Twój kod promocyjny",
+  thankYouForSupport: "Dziękujemy za Twoje wsparcie!",
+  claimYourFreeApps: "Odbierz swoje prezenty"
 } as const

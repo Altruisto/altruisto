@@ -1,13 +1,15 @@
 import { StandardLayout } from "../../components/layouts"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import "../../lib/canvas-confetti/confetti"
-import { GIVEAWAYS } from "data/ukraineGiveaways"
+import { GIVEAWAYS, POLISH_GIVEAWAYS } from "data/ukraineGiveaways"
 import { api2 } from "utils/api-url"
 import { useSnackbar } from "notistack"
 import { Modal } from "@material-ui/core"
+import { useIntl } from "translations/useIntl"
+import navigatorLanguages from "navigator-languages"
 
-type GiveAwayName = typeof GIVEAWAYS[number]["name"]
+type GiveAwayName = typeof GIVEAWAYS[number]["name"] | typeof POLISH_GIVEAWAYS[number]["name"]
 
 const handleError = (
   type: string,
@@ -44,6 +46,9 @@ const Claim = () => {
   const router = useRouter()
   const { enqueueSnackbar } = useSnackbar()
   const [currentPromoCode, setCurrentPromoCode] = useState<string>("")
+
+  const { formatMessage } = useIntl()
+  const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
 
   const claimUnum = async () => {
     try {
@@ -87,6 +92,7 @@ const Claim = () => {
       | "Focus - Time Management for iOS"
       | "Attentive - Screen Time Control for iOS"
       | "Filter - App & Website Blocker for Mac"
+      | "Wczesnoszkolni.pl"
   ) => {
     const map = {
       "Bear App (iOS)": "bearIOS",
@@ -94,7 +100,8 @@ const Claim = () => {
       Pixitca: "pixitca",
       "Focus - Time Management for iOS": "focus",
       "Attentive - Screen Time Control for iOS": "attentive",
-      "Filter - App & Website Blocker for Mac": "filter"
+      "Filter - App & Website Blocker for Mac": "filter",
+      "Wczesnoszkolni.pl": "wczesnoszkolni"
     }
     try {
       const result = await api2.post("/direct-donation/claim/promo-code", {
@@ -140,6 +147,7 @@ const Claim = () => {
       case "Focus - Time Management for iOS":
       case "Attentive - Screen Time Control for iOS":
       case "Filter - App & Website Blocker for Mac":
+      case "Wczesnoszkolni.pl":
         claimPromoCode(name)
         break
 
@@ -154,18 +162,31 @@ const Claim = () => {
         <div className="ukraine__centered-content ukraine__overlap-content">
           <div className="ukraine__info">
             <div className="">
-              <h2>Your giveaways:</h2>
+              <h2>{formatMessage({ id: "yourGiveaways" })}:</h2>
             </div>
+            {userLocale.includes("pl") &&
+              POLISH_GIVEAWAYS.map((giveaway) => (
+                <div key={giveaway.name}>
+                  <strong>{giveaway.name}</strong>
+                  <p>{giveaway.claimInstructions}</p>
+                  <button className="button button--gray" onClick={() => claim(giveaway.name)}>
+                    {formatMessage({ id: "claim" })}
+                  </button>
+                  <hr />
+                </div>
+              ))}
+
             {GIVEAWAYS.map((giveaway) => (
               <div key={giveaway.name}>
                 <strong>{giveaway.name}</strong>
                 <p>{giveaway.claimInstructions}</p>
                 <button className="button button--gray" onClick={() => claim(giveaway.name)}>
-                  Claim
+                  {formatMessage({ id: "claim" })}
                 </button>
                 <hr />
               </div>
             ))}
+            <hr />
             <div className=""></div>
           </div>
         </div>
@@ -181,6 +202,7 @@ type PromoCodeModalProps = {
 }
 
 const PromoCodeModal = ({ onClose, promoCode }: PromoCodeModalProps) => {
+  const { formatMessage } = useIntl()
   return (
     <Modal open={!!promoCode} onClose={onClose}>
       <div className="modal-content">
@@ -195,7 +217,7 @@ const PromoCodeModal = ({ onClose, promoCode }: PromoCodeModalProps) => {
               flexDirection: "column"
             }}
           >
-            <h2>Your promo code</h2>
+            <h2>{formatMessage({ id: "yourPromoCode" })}</h2>
             <input type="text" value={promoCode} readOnly />
           </div>
         </div>

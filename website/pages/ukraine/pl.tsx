@@ -1,6 +1,6 @@
 import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
 import { loadStripe } from "@stripe/stripe-js"
-import { GIVEAWAYS } from "data/ukraineGiveaways"
+import { GIVEAWAYS, POLISH_GIVEAWAYS } from "data/ukraineGiveaways"
 import * as localeCurrency from "locale-currency"
 import navigatorLanguages from "navigator-languages"
 import dynamic from "next/dynamic"
@@ -270,7 +270,7 @@ const Ukraine = () => {
 const DonateGiveAways = () => {
   return (
     <div className="ukraine__products row">
-      {GIVEAWAYS.map((giveaway) => (
+      {[...POLISH_GIVEAWAYS, ...GIVEAWAYS].map((giveaway) => (
         <div className="col-6 col-md-4" key={giveaway.name}>
           <div className="ukraine__product ">
             <img src={giveaway.logo} alt={giveaway.name} className="ukraine__product-logo" />
