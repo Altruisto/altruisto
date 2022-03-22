@@ -62,7 +62,7 @@ const Ukraine = () => {
 
   return (
     <StandardLayout
-      withMenu={!userLocale.includes("pl")}
+      withMenu={false}
       withoutMenuBorder={true}
       seoMetaTags={{
         title: "Pomóżmy ofiarom wojny na Ukrainie",
