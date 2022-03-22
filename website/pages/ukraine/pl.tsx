@@ -412,7 +412,7 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
         e.response.data.errors &&
         e.response.data.errors[0].type === "invalid_amount"
       ) {
-        setMerrorMsg("Minimalna darowizna to 10 PLN")
+        setMerrorMsg("Minimalna darowizna to 20 PLN")
       } else {
         setMerrorMsg(e.message)
       }
