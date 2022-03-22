@@ -4,7 +4,7 @@ import { api, apiUrl } from "../../utils/api-url"
 import { WithSmallCoverLayout } from "../../components/layouts/WithSmallCoverLayout"
 import { useState } from "react"
 import Link from "next/link"
-import { CauseArea } from "../../../shared/types/user"
+import { CauseArea } from "../.././shared/types/user"
 
 type Props = {
   name: string

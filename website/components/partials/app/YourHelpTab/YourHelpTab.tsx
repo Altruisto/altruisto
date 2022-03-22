@@ -5,7 +5,7 @@ import Tile from "components/ui/Tile"
 import ExtremePoverty from "./ExtremePoverty"
 import Covid from "./Covid"
 import AnimalsSufferingReduction from "./AnimalSufferingReduction"
-import { CauseArea } from "../../../../../shared/types/user"
+import { CauseArea } from "../../../.././shared/types/user"
 import { useIntl } from "translations/useIntl"
 
 type Props = {

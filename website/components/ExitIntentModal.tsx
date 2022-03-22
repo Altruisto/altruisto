@@ -1,9 +1,10 @@
+import Link from "next/link"
 import React, { useState, useEffect } from "react"
 import Modal from "react-modal"
 
 const customModalStyles = {
   overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backgroundColor: "rgba(0, 0, 0, 0.45)",
     zIndex: 2147483646
   },
   content: {
@@ -37,6 +38,38 @@ const ExitIntent = () => {
       document.removeEventListener("mouseleave", mouseOut)
     }
   }, [setMouseOut])
+
+  // @TODO this is only temporary
+  return (
+    <Modal
+      isOpen={isMouseOut}
+      style={customModalStyles}
+      onRequestClose={() => {
+        setMouseOut(false)
+      }}
+    >
+      <h2>Let's help the victims of war in Ukraine</h2>
+      <p>
+        We created a <strong>fundraiser for Polish Humanitarian Action</strong> and partnered with
+        several startups that decided to{" "}
+        <strong>give away their products to anyone who donates</strong> (and more partnerships are
+        coming). In this way, we want to create an additional source of financing humanitarian aid
+        for Ukraine, which will be able to function for the upcoming weeks, even when the first
+        emotions subside.
+      </p>
+      <Link href="/ukraine">
+        <button
+          className="button install-button"
+          style={{ marginLeft: "auto", marginRight: "auto" }}
+        >
+          I want to help!
+        </button>
+      </Link>
+      <button className="button-link uppercase-link mt-4" onClick={() => setMouseOut(false)}>
+        No, thanks.
+      </button>
+    </Modal>
+  )
 
   return (
     <Modal isOpen={isMouseOut} style={customModalStyles}>

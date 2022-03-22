@@ -1,7 +1,7 @@
-import { User } from "../../shared/types/user"
+import { User } from ".././shared/types/user"
 import { useState, useCallback, useMemo, useEffect } from "react"
 import { api } from "utils/api-url"
-import { PostLoginResponse, GetUserResponse } from "../../shared/types/api"
+import { PostLoginResponse, GetUserResponse } from ".././shared/types/api"
 
 type Auth = {
   user: User | null

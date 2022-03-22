@@ -75,5 +75,12 @@ export const en = {
   termsOfService: "Terms of Service",
   andThe: "and the",
   privacyPolicy: "Privacy Policy",
-  register: "Register"
+  register: "Register",
+  yourGiveaways: "Your giveaways",
+  claim: "Claim",
+  global: "Global",
+  polish: "Polish",
+  yourPromoCode: "Your promo code",
+  thankYouForSupport: "Thank you for your support!",
+  claimYourFreeApps: "Claim your free apps"
 } as const

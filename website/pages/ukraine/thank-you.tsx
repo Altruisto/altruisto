@@ -1,19 +1,25 @@
 import { StandardLayout } from "../../components/layouts"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import "../../lib/canvas-confetti/confetti"
 import ShareModal from "../../components/partials/ShareModal"
 import { api2 } from "utils/api-url"
 import Link from "next/link"
+import { useIntl } from "translations/useIntl"
+import navigatorLanguages from "navigator-languages"
 
 const ThankYou = () => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false)
   const [token, setToken] = useState("")
+  const { formatMessage } = useIntl()
+  const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
+
   const getUrlToShare = () => {
     if (typeof window === "undefined") {
       return ""
     }
     return window.origin + "/ukraine"
   }
+
   useEffect(() => {
     const confetti = (window as any).confetti
 
@@ -70,11 +76,11 @@ const ThankYou = () => {
   }, [])
 
   return (
-    <StandardLayout withMenu={true} withoutMenuBorder={true}>
+    <StandardLayout withMenu={!userLocale.includes("pl")} withoutMenuBorder={true}>
       <div className="thank-you">
         <div className="thank-you__flag-top">
           <p>#StandWithUkraine</p>
-          <h2>Thank you for your support!</h2>
+          <h2>{formatMessage({ id: "thankYouForSupport" })}</h2>
         </div>
         <div className="thank-you__flag-bottom">
           <button
@@ -82,12 +88,12 @@ const ThankYou = () => {
             onClick={() => setIsShareModalOpen(true)}
           >
             <img src="/images/share.svg" alt="Share icon" />
-            Share
+            {formatMessage({ id: "share" })}
           </button>
 
           <Link href={`/ukraine/claim?token=${token}`}>
             <button className="button button--gray ukraine__share-button" style={{ marginTop: 10 }}>
-              Claim your free apps
+              {formatMessage({ id: "claimYourFreeApps" })}
             </button>
           </Link>
         </div>
