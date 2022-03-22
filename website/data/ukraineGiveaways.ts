@@ -104,7 +104,7 @@ export const POLISH_GIVEAWAYS = [
     website: "https://wczesnoszkolni.pl/",
     description:
       "Wczesnoszkolni.pl to portal z różnymi inspiracjami dla nauczycieli oraz rodziców. Znajdziesz tutaj pomysły na prace plastyczne czy zajęcia matematyczne!",
-    logo: "/images/fundraiser/wczesnoszkolni.png",
+    logo: "/images/fundraiser/wczesnoszkolni.svg",
     perk: "Pakiet 250 punktów",
     claimInstructions: "Otrzymany kod obniża do 0 zł pakiet 250 punktów w naszym portalu."
   }

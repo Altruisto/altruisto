@@ -55,7 +55,7 @@ const Ukraine = () => {
   // }, [userCurrency])
 
   useEffect(() => {
-    api2.get("/direct-donation/ukraine").then(({ data }) => {
+    api2.get("/direct-donation/ukraine?currency=PLN").then(({ data }) => {
       setDonations(data)
     })
   }, [])
@@ -500,7 +500,7 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
               style={{ marginTop: "32px" }}
               onClick={handleDonation}
             >
-              {isLoading ? "Przetważanie..." : "Przekaż darowiznę"}
+              {isLoading ? "Przetwarzanie..." : "Przekaż darowiznę"}
             </button>
           </div>
         </div>
@@ -551,14 +551,14 @@ const DonateInfo = ({ current, goal, donorsCount }) => {
         <span className="ukraine__donate--current">
           {formatNumber(current, {
             style: "currency",
-            currency: "usd"
+            currency: "pln"
           })}
         </span>{" "}
         <br />z planowanych{" "}
         <strong>
           {formatNumber(goal, {
             style: "currency",
-            currency: "usd"
+            currency: "pln"
           })}
         </strong>
       </p>
