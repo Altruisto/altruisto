@@ -130,6 +130,24 @@ const Claim = () => {
     }
   }
 
+  const claimMyTasksApp = async () => {
+    try {
+      await api2.post("/direct-donation/claim/mytasksapp", {
+        token: router.query.token
+      })
+      enqueueSnackbar(
+        "You are now able to upgrade to premium account for free. Please read the instructions.",
+        {
+          variant: "success"
+        }
+      )
+    } catch (e) {
+      e.response.data.errors.forEach((error) => {
+        handleError(error.type, enqueueSnackbar)
+      })
+    }
+  }
+
   const claim = (name: GiveAwayName) => {
     switch (name) {
       case "UNUM":
@@ -153,6 +171,9 @@ const Claim = () => {
 
       case "ABA English":
         claimAbaEnglish()
+
+      case "My Tasks App":
+        claimMyTasksApp()
     }
   }
 

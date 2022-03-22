@@ -37,6 +37,16 @@ export const GIVEAWAYS = [
     claimInstructions: `Please make sure that you have a registered account in the BetterMe Mental Health app with the email address you used on the payment page before clicking "claim". It may takes up to a few hours for your account to be upgraded. Please make sure to reopen the app to check if the entitlement is granted.`
   },
   {
+    name: "My Tasks App",
+    website: "https://mytasksapp.com",
+    logo: "/images/fundraiser/mytasksapp.png",
+    perk: "Get premium account for free",
+    description:
+      "Tasks is a beautifully simple, todo list and reminder app that will help keep your busy life organised everyday. Used by over 1 million people worldwide.",
+    claimInstructions:
+      "Click the button below to activate the account. Then login to the app on your phone and click Upgrade to Premium. The last step is to click continue (ignore the paywall) and you're done!"
+  },
+  {
     name: "Bear App (iOS)",
     website: "https://bear.app",
     logo: "/images/fundraiser/bearapp.jpeg",
