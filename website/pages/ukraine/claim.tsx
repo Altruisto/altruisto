@@ -46,6 +46,7 @@ const Claim = () => {
   const router = useRouter()
   const { enqueueSnackbar } = useSnackbar()
   const [currentPromoCode, setCurrentPromoCode] = useState<string>("")
+  const [currentTextInstructions, setCurrentTextInstructions] = useState<string>("")
 
   const { formatMessage } = useIntl()
   const userLocale = useMemo(() => navigatorLanguages() || ["en"], [])
@@ -93,6 +94,7 @@ const Claim = () => {
       | "Attentive - Screen Time Control for iOS"
       | "Filter - App & Website Blocker for Mac"
       | "Wczesnoszkolni.pl"
+      | "Concepts (only iOS app)"
   ) => {
     const map = {
       "Bear App (iOS)": "bearIOS",
@@ -101,7 +103,8 @@ const Claim = () => {
       "Focus - Time Management for iOS": "focus",
       "Attentive - Screen Time Control for iOS": "attentive",
       "Filter - App & Website Blocker for Mac": "filter",
-      "Wczesnoszkolni.pl": "wczesnoszkolni"
+      "Wczesnoszkolni.pl": "wczesnoszkolni",
+      "Concepts (only iOS app)": "concepts"
     }
     try {
       const result = await api2.post("/direct-donation/claim/promo-code", {
@@ -148,6 +151,12 @@ const Claim = () => {
     }
   }
 
+  const claimMindspa = () => {
+    setCurrentTextInstructions(
+      "Please download th app and use the contact form in the app to request the free PTSD programme."
+    )
+  }
+
   const claim = (name: GiveAwayName) => {
     switch (name) {
       case "UNUM":
@@ -166,14 +175,21 @@ const Claim = () => {
       case "Attentive - Screen Time Control for iOS":
       case "Filter - App & Website Blocker for Mac":
       case "Wczesnoszkolni.pl":
+      case "Concepts (only iOS app)":
         claimPromoCode(name)
         break
 
       case "ABA English":
         claimAbaEnglish()
+        break
 
       case "My Tasks App":
         claimMyTasksApp()
+        break
+
+      case "Mindspa":
+        claimMindspa()
+        break
     }
   }
 
@@ -213,6 +229,10 @@ const Claim = () => {
         </div>
       </main>
       <PromoCodeModal promoCode={currentPromoCode} onClose={() => setCurrentPromoCode("")} />
+      <TextInstructionsModal
+        text={currentTextInstructions}
+        onClose={() => setCurrentTextInstructions("")}
+      />
     </StandardLayout>
   )
 }
@@ -240,6 +260,29 @@ const PromoCodeModal = ({ onClose, promoCode }: PromoCodeModalProps) => {
           >
             <h2>{formatMessage({ id: "yourPromoCode" })}</h2>
             <input type="text" value={promoCode} readOnly />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  )
+}
+
+const TextInstructionsModal = ({ onClose, text }: { onClose: () => void; text: string }) => {
+  return (
+    <Modal open={!!text} onClose={onClose}>
+      <div className="modal-content">
+        <div style={{ background: "white", position: "relative" }}>
+          <button onClick={onClose} className="modal-content__close-button">
+            <img src="/images/close.svg" alt="Cross icon" />
+          </button>
+          <div
+            style={{
+              padding: "40px",
+              display: "flex",
+              flexDirection: "column"
+            }}
+          >
+            <p>{text}</p>
           </div>
         </div>
       </div>

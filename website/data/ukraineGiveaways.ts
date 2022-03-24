@@ -105,6 +105,24 @@ export const GIVEAWAYS = [
     description:
       "Filter App helps you to block distractions and lets you regain time for what really matters. Don’t let distracting websites and apps steal your time. ",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Mindspa",
+    website: "https://www.mindspa.me/",
+    logo: "/images/fundraiser/mindspa.png",
+    perk: "Free access to PTSD therapeutic program",
+    description:
+      "Mindspa is a mobile app designed to provide emotional support in everyday challenges.",
+    claimInstructions: "Please contact the app via the contact form in the application."
+  },
+  {
+    name: "Concepts (only iOS app)",
+    website: "https://concepts.app ",
+    logo: "/images/fundraiser/concepts.png",
+    perk: "Free access for 1 year",
+    description:
+      "Every idea begins as a concept. Write notes on the infinite canvas, make mind-maps and mood boards, sketch plans, designs and illustrations. Share with friends, clients and other apps.",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
 
