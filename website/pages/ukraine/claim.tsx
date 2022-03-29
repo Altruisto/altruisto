@@ -94,7 +94,9 @@ const Claim = () => {
       | "Attentive - Screen Time Control for iOS"
       | "Filter - App & Website Blocker for Mac"
       | "Wczesnoszkolni.pl"
-      | "Concepts (only iOS app)"
+      | "Concepts (iOS)"
+      | "OurFlat (iOS)"
+      | "OurFlat (Android)"
   ) => {
     const map = {
       "Bear App (iOS)": "bearIOS",
@@ -104,7 +106,9 @@ const Claim = () => {
       "Attentive - Screen Time Control for iOS": "attentive",
       "Filter - App & Website Blocker for Mac": "filter",
       "Wczesnoszkolni.pl": "wczesnoszkolni",
-      "Concepts (only iOS app)": "concepts"
+      "Concepts (only iOS app)": "concepts",
+      "OurFlat (iOS)": "ourFlatIOS",
+      "OurFlat (Android)": "ourFlatAndroid"
     }
     try {
       const result = await api2.post("/direct-donation/claim/promo-code", {
@@ -175,7 +179,9 @@ const Claim = () => {
       case "Attentive - Screen Time Control for iOS":
       case "Filter - App & Website Blocker for Mac":
       case "Wczesnoszkolni.pl":
-      case "Concepts (only iOS app)":
+      case "Concepts (iOS)":
+      case "OurFlat (iOS)":
+      case "OurFlat (Android)":
         claimPromoCode(name)
         break
 

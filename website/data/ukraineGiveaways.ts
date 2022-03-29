@@ -116,12 +116,28 @@ export const GIVEAWAYS = [
     claimInstructions: "Please contact the app via the contact form in the application."
   },
   {
-    name: "Concepts (only iOS app)",
+    name: "Concepts (iOS)",
     website: "https://concepts.app ",
     logo: "/images/fundraiser/concepts.png",
     perk: "Free access for 1 year",
     description:
       "Every idea begins as a concept. Write notes on the infinite canvas, make mind-maps and mood boards, sketch plans, designs and illustrations. Share with friends, clients and other apps.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "OurFlat (iOS)",
+    website: "https://ourflat-app.com/",
+    logo: "/images/fundraiser/ourflat.png",
+    perk: "Free access for 1 year",
+    description: "Shared shopping list, finances, calendar, chores, and chat for your household.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "OurFlat (Android)",
+    website: "https://ourflat-app.com/",
+    logo: "/images/fundraiser/ourflat.png",
+    perk: "Free access for 1 year",
+    description: "Shared shopping list, finances, calendar, chores, and chat for your household.",
     claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
