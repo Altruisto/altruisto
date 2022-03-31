@@ -139,6 +139,24 @@ export const GIVEAWAYS = [
     perk: "Free access for 1 year",
     description: "Shared shopping list, finances, calendar, chores, and chat for your household.",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Food List Tracking & Shopping",
+    website: "https://chester-sw.com/food-checklist/",
+    logo: "/images/fundraiser/foodlist.png",
+    perk: "Free access",
+    description:
+      "This application allows you to track your food supplies at home, keep an eye on expiration dates of products, use the shopping list to replenish your stock of food. Scan barcodes to speed up your work. Made by a team in 🇷🇺.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Stock and Inventory Simple",
+    website: "https://chester-sw.com/",
+    logo: "/images/fundraiser/stock.png",
+    perk: "Free access",
+    description:
+      "If you need to keep track of your stock of any kind of items - this application can help you to do it. It can be used as a stock management tool or inventory tracker at home or in a warehouse. A small shop can use it for sales and purchases management. Made by a team in 🇷🇺.",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
 

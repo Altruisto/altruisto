@@ -97,6 +97,8 @@ const Claim = () => {
       | "Concepts (iOS)"
       | "OurFlat (iOS)"
       | "OurFlat (Android)"
+      | "Food List Tracking & Shopping"
+      | "Stock and Inventory Simple"
   ) => {
     const map = {
       "Bear App (iOS)": "bearIOS",
@@ -108,7 +110,9 @@ const Claim = () => {
       "Wczesnoszkolni.pl": "wczesnoszkolni",
       "Concepts (only iOS app)": "concepts",
       "OurFlat (iOS)": "ourFlatIOS",
-      "OurFlat (Android)": "ourFlatAndroid"
+      "OurFlat (Android)": "ourFlatAndroid",
+      "Food List Tracking & Shopping": "foodList",
+      "Stock and Inventory Simple": "stock"
     }
     try {
       const result = await api2.post("/direct-donation/claim/promo-code", {
@@ -182,6 +186,8 @@ const Claim = () => {
       case "Concepts (iOS)":
       case "OurFlat (iOS)":
       case "OurFlat (Android)":
+      case "Food List Tracking & Shopping":
+      case "Stock and Inventory Simple":
         claimPromoCode(name)
         break
 
