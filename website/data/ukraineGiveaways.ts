@@ -157,6 +157,14 @@ export const GIVEAWAYS = [
     description:
       "If you need to keep track of your stock of any kind of items - this application can help you to do it. It can be used as a stock management tool or inventory tracker at home or in a warehouse. A small shop can use it for sales and purchases management. Made by a team in 🇷🇺.",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Taskito",
+    website: "https://taskito.io/",
+    logo: "/images/fundraiser/taskito.png",
+    perk: "Free access",
+    description: "Keep daily goals small, life goals bigger!",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
 
