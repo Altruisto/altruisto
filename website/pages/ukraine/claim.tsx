@@ -143,6 +143,20 @@ const Claim = () => {
     }
   }
 
+  const claimUTalk = async () => {
+    try {
+      const result = await api2.post("/direct-donation/claim/promo-code", {
+        token: router.query.token,
+        claimType: "utalk"
+      })
+      router.push("/ukraine/utalk-instructions?code=" + result.data)
+    } catch (e) {
+      e.response.data.errors.forEach((error) => {
+        handleError(error.type, enqueueSnackbar)
+      })
+    }
+  }
+
   const claimMyTasksApp = async () => {
     try {
       await api2.post("/direct-donation/claim/mytasksapp", {
@@ -204,6 +218,10 @@ const Claim = () => {
 
       case "Mindspa":
         claimMindspa()
+        break
+
+      case "uTalk":
+        claimUTalk()
         break
     }
   }

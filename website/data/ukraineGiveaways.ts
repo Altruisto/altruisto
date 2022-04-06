@@ -165,6 +165,15 @@ export const GIVEAWAYS = [
     perk: "Free access",
     description: "Keep daily goals small, life goals bigger!",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "uTalk",
+    website: "https://utalk.com",
+    logo: "/images/fundraiser/utalk.svg",
+    perk: "Free access for 1 language",
+    description:
+      "We have over 140 languages to start speaking. Simple, fun and with immediate results.",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
 
