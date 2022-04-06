@@ -174,6 +174,15 @@ export const GIVEAWAYS = [
     description:
       "We have over 140 languages to start speaking. Simple, fun and with immediate results.",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Bazaart",
+    website: "https://bazaart.me",
+    logo: "/images/fundraiser/bazaart.png",
+    perk: "Free yearly subscription",
+    description:
+      "Bazaart is an award-winning photo editor and graphic design app that helps you easily create beautiful photos, professional designs & stunning collage art.",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
 
