@@ -1,4 +1,12 @@
-import { InputAdornment, Modal, OutlinedInput, TextField, useMediaQuery } from "@material-ui/core"
+import {
+  Checkbox,
+  FormControlLabel,
+  InputAdornment,
+  Modal,
+  OutlinedInput,
+  TextField,
+  useMediaQuery
+} from "@material-ui/core"
 import { loadStripe } from "@stripe/stripe-js"
 import { GIVEAWAYS, POLISH_GIVEAWAYS } from "data/ukraineGiveaways"
 import * as localeCurrency from "locale-currency"
@@ -304,6 +312,7 @@ type DonateModalProps = {
 const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }) => {
   const [name, setName] = useState("")
   const [amount, setAmount] = useState<number | string>(25)
+  const [agreedToEmail, setAgreedToEmail] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMsg, setMerrorMsg] = useState<string>()
   const { formatNumber, formatNumberToParts } = useIntl()
@@ -318,7 +327,6 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
   }
 
   const handleAmountChange = (value: string) => {
-    console.log("v", value, typeof value)
     if (!!errorMsg) {
       setMerrorMsg(undefined)
     }
@@ -396,7 +404,8 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
         subPath: "ukraine",
         donor: name,
         currency,
-        locale: targetLocale
+        locale: "pl",
+        agreedToEmail
       })
       await stripe.redirectToCheckout({
         sessionId: response.data
@@ -492,6 +501,22 @@ const DonateModal: FC<DonateModalProps> = ({ isOpen, onClose, currency, locale }
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+            />
+
+            <div style={{ marginTop: 16 }}></div>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={agreedToEmail}
+                  onChange={(e) => setAgreedToEmail(e.target.checked)}
+                />
+              }
+              label={
+                <label style={{ fontSize: 12 }}>
+                  Chcę otrzymywać maile z informacjami o pomocy humanitarnej udzielonej dzięki
+                  wpłatom, nowych aplikacjach, osiągniętych celach, itp.
+                </label>
+              }
             />
 
             <button
