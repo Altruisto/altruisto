@@ -183,6 +183,51 @@ export const GIVEAWAYS = [
     description:
       "Bazaart is an award-winning photo editor and graphic design app that helps you easily create beautiful photos, professional designs & stunning collage art.",
     claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Neo (iOS)",
+    website: "https://www.neomeditation.com/en",
+    logo: "/images/fundraiser/neo.jpeg",
+    perk: "Free access",
+    description:
+      "Let us carry you away by the inviting and soothing voice of your meditation guide in inspiring landscapes. This app takes you on a personal, poetic, and immersive voyage to approach this ancient practice of meditation in a new way.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Neo (Android)",
+    website: "https://www.neomeditation.com/en",
+    logo: "/images/fundraiser/neo.jpeg",
+    perk: "Free access",
+    description:
+      "Let us carry you away by the inviting and soothing voice of your meditation guide in inspiring landscapes. This app takes you on a personal, poetic, and immersive voyage to approach this ancient practice of meditation in a new way.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Ckbk",
+    website: "https://app.ckbk.com/",
+    logo: "/images/fundraiser/ckbk.png",
+    perk: "Free access for 3 months",
+    description:
+      "Ckbk is a digital cookbook with over 100,000 recipes recommended by leading chefs and food writers.",
+    claimInstructions: "You will receive a promo code you can use in the app."
+  },
+  {
+    name: "Slowly",
+    website: "https://getslowly.com",
+    logo: "/images/fundraiser/slowly.jpeg",
+    perk: "Free access for 1 year",
+    description:
+      "SLOWLY lets you meet pen pals from your smartphone! Match with someone that shares your passion, write a letter and collect stamps from around the world. Speak your mind – one letter at a time!",
+    claimInstructions: `Please make sure that you have a registered account in the BetterMe Mental Health app with the email address you used on the payment page before clicking "claim". It may takes up to a few hours for your account to be upgraded. Please make sure to reopen the app to check if the entitlement is granted.`
+  },
+  {
+    name: "Timelog Plus (Pro) - Android",
+    website: "https://timelog.link",
+    logo: "/images/fundraiser/timelog.png",
+    perk: "Free access",
+    description:
+      "Track your habits and activities, set goals and gain insights on how you spend your time.",
+    claimInstructions: "You will receive a promo code you can use in the app."
   }
 ] as const
 

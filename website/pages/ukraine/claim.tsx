@@ -101,6 +101,9 @@ const Claim = () => {
       | "Stock and Inventory Simple"
       | "Taskito"
       | "Bazaart"
+      | "Neo (iOS)"
+      | "Neo (Android)"
+      | "Timelog Plus (Pro) - Android"
   ) => {
     const map = {
       "Bear App (iOS)": "bearIOS",
@@ -116,7 +119,10 @@ const Claim = () => {
       "Food List Tracking & Shopping": "foodList",
       "Stock and Inventory Simple": "stock",
       Taskito: "taskito",
-      Bazaart: "bazaart"
+      Bazaart: "bazaart",
+      "Neo (iOS)": "neoIOS",
+      "Neo (Android)": "neoAndroid",
+      "Timelog Plus (Pro) - Android": "timelog"
     }
     try {
       const result = await api2.post("/direct-donation/claim/promo-code", {
@@ -183,6 +189,34 @@ const Claim = () => {
     )
   }
 
+  const claimCkbk = async () => {
+    const result = await api2.post("/direct-donation/claim/promo-code", {
+      token: router.query.token,
+      claimType: "ckbk"
+    })
+    const code = result.data
+
+    if (typeof window !== "undefined") {
+      window.location.href = `https://join.ckbk.com/gift/claim?voucher=${code}`
+    }
+  }
+
+  const claimSlowly = async () => {
+    try {
+      await api2.post("/direct-donation/claim/slowly", {
+        token: router.query.token
+      })
+      enqueueSnackbar(
+        "Request to upgrade your account has been sent. It may takes up to a few hours for your account to be upgraded.",
+        { variant: "success" }
+      )
+    } catch (e) {
+      e.response.data.errors.forEach((error) => {
+        handleError(error.type, enqueueSnackbar)
+      })
+    }
+  }
+
   const claim = (name: GiveAwayName) => {
     switch (name) {
       case "UNUM":
@@ -208,6 +242,9 @@ const Claim = () => {
       case "Stock and Inventory Simple":
       case "Taskito":
       case "Bazaart":
+      case "Neo (iOS)":
+      case "Neo (Android)":
+      case "Timelog Plus (Pro) - Android":
         claimPromoCode(name)
         break
 
@@ -225,6 +262,14 @@ const Claim = () => {
 
       case "uTalk":
         claimUTalk()
+        break
+
+      case "Ckbk":
+        claimCkbk()
+        break
+
+      case "Slowly":
+        claimSlowly()
         break
     }
   }
