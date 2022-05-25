@@ -46,8 +46,14 @@ const Receipts = () => {
               <p>
                 <a href="/receipts/ukraine/receipt_eur_2022_04_11.pdf">EUR 730.05</a>
               </p>
+              <p>
+                <strong>19.05.2022</strong>
+              </p>
+              <p>
+                <a href="/receipts/ukraine/receipt_eur_2022_05_19.pdf">EUR 260.55</a>
+              </p>
               <hr />
-              <p>The next transfer will be made on 18.04.2022.</p>
+              <p>The next transfer will be made on 18.06.2022.</p>
             </div>
             <div className="">
               <button className="button button--gray" onClick={() => router.replace("/ukraine")}>
