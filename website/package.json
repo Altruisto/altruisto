@@ -87,7 +87,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^10.1.0",
     "shell-exec": "^1.0.2",
-    "simple-git": "^1.131.0",
+    "simple-git": "^3.15.0",
     "slick-carousel": "^1.8.1",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
